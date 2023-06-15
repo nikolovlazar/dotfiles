@@ -12,6 +12,8 @@ If you want to take the automatic route, run this:
 curl -Lks https://gist.githubusercontent.com/nikolovlazar/195f33efd2cd20bb99bdc6263076cca4/raw/f2e79fed00584dbce9d577641390740f2d13227e/dotfiles-install.sh | /bin/bash
 ```
 
+> This will download [this gist](https://gist.github.com/nikolovlazar/195f33efd2cd20bb99bdc6263076cca4) and pass it to `bash` for execution.
+
 This will clone this repo to the `$HOME/.dotfiles` directory, create a `dotfiles` alias, create a `.config-backup` directory, move any existing config into the backup directory, checkout the actual content from the bare repository to your `$HOME`, and set the `showUntrackedFiles` property to `no`.
 
 ### Manual
