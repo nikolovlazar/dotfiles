@@ -2,6 +2,13 @@
 
 This repository contains my dotfiles. Feel free to use them as you wish.
 
+![Screenshot](https://i.imgur.com/O2ilEQk.png)
+
+## Requirements
+
+- [Hack Nerd Font](https://www.nerdfonts.com/font-downloads) (scroll down to find the Hack font. it's for the icons)
+- [kitty](https://sw.kovidgoyal.net/kitty/) (a fast GPU based terminal emulator)
+
 ## Installation
 
 ### Automatic
