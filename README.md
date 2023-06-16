@@ -4,6 +4,27 @@ This repository contains my dotfiles. Feel free to use them as you wish.
 
 ![Screenshot](https://i.imgur.com/O2ilEQk.png)
 
+## Neovim Plugins
+
+- [Catppuccin Mocha](https://github.com/catppuccin/nvim) (colorscheme)
+- [packer.nvim](https://github.com/wbthomason/packer.nvim) (plugin manager)
+- [GitHub Copilot](https://github.com/github/copilot.vim) (plugin for GitHub Copilot, remove this if you don't want it)
+- [Neovim Telescope](https://github.com/nvim-telescope/telescope.nvim) (fuzzy finder, used for searching files, buffers, keymaps, etc.)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (code parser, needed for imroved syntax highlighting)
+- [harpoon](https://github.com/theprimeagen/harpoon) (quickly jump between files)
+- [undotree](https://github.com/mbbill/undotree) (visualize undo history)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive) (Git wrapper)
+- [vim-gitgutter](https://github.com/airblade/vim-gitgutter) (shows git diff in the gutter)
+- [nvterm](https://github.com/NvChad/nvterm) (embedded terminals)
+- [neoformat](https://github.com/sbdchd/neoformat) (for code formatting. it uses a variety of formatters for many filetypes)
+- [which-key](https://github.com/folke/which-key.nvim) (shows keymaps in a bottom panel)
+- [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim) (an plugin to have [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) working together)
+- [Mason](https://github.com/williamboman/mason.nvim) (a plugin to install LSPs, DAPs, linters and formatters)
+- [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb) (shows a lightbulb in the gutter when a code action is available
+- [cosmic-ui](https://github.com/CosmicNvim/cosmic-ui) (a plugin to rename popups and show code actions in a floating window)
+- [vim-illuminate](https://github.com/RRethy/vim-illuminate) (highlights the word under the cursor matched by either LSP, Tree-sitter, or regex)
+- And maybe some more that I forgot to mention. This config changes from time to time. I'll try to keep this list up to date.
+
 ## Requirements
 
 - [Hack Nerd Font](https://www.nerdfonts.com/font-downloads) (scroll down to find the Hack font. it's for the icons)
