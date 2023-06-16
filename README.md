@@ -1,6 +1,6 @@
-# Lazar's dotfiles
+# Lazar's dotfiles ✨💽
 
-This repository contains my dotfiles. Feel free to use them as you wish.
+This repository contains my ever-evolving dotfiles. Check them out! If you find something useful, feel free to add it to your own dotfiles.
 
 ![Screenshot](https://i.imgur.com/O2ilEQk.png)
 
