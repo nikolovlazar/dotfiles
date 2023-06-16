@@ -8,7 +8,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	use("nvim-tree/nvim-web-devicons")
-  use("justinmk/vim-sneak")
+	use("justinmk/vim-sneak")
 
 	use("github/copilot.vim")
 
