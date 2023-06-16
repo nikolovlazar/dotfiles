@@ -14,7 +14,15 @@ curl -Lks https://gist.githubusercontent.com/nikolovlazar/195f33efd2cd20bb99bdc6
 
 > This will download [this gist](https://gist.github.com/nikolovlazar/195f33efd2cd20bb99bdc6263076cca4) and pass it to `bash` for execution.
 
-This will clone this repo to the `$HOME/.dotfiles` directory, create a `dotfiles` alias, create a `.config-backup` directory, move any existing config into the backup directory, checkout the actual content from the bare repository to your `$HOME`, and set the `showUntrackedFiles` property to `no`.
+This will:
+
+- Clone the [packer.nvim](https://github.com/wbthomason/packer.nvim) repository to the `$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim` directory
+- Clone this repo to the `$HOME/.dotfiles` directory
+- Create a `dotfiles` alias
+- Create a `.config-backup` directory
+- Move any existing config into the backup directory
+- Checkout the actual content from the bare repository to your `$HOME`
+- Set the `showUntrackedFiles` property to `no`
 
 ### Manual
 
@@ -22,6 +30,12 @@ If you wish to do this manually, first clone this repo:
 
 ```bash
 git clone --bare http://github.com/nikolovlazar/dotfiles.git $HOME/.dotfiles
+```
+
+Also clone the `packer.nvim` repo:
+
+```bash
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 Define the `dotfiles` alias in the current shell scope:
