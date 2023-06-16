@@ -57,7 +57,7 @@ This will:
 If you wish to do this manually, first clone this repo:
 
 ```bash
-git clone --bare http://github.com/nikolovlazar/dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/nikolovlazar/dotfiles.git $HOME/.dotfiles
 ```
 
 Also clone the `packer.nvim` repo:
