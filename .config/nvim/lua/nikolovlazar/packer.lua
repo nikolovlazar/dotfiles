@@ -32,6 +32,14 @@ return require("packer").startup(function(use)
 	})
 
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+		config = function()
+			require("tailwindcss-colorizer-cmp").setup({
+				color_square_width = 4,
+			})
+		end,
+	})
 
 	use("wuelnerdotexe/vim-astro")
 	use("virchau13/tree-sitter-astro")

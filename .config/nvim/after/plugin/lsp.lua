@@ -4,12 +4,12 @@ local mason = require("mason-lspconfig")
 lsp.preset("recommended")
 
 mason.setup({
-  ensure_installed = {
-    "lua_ls",
-    "cssls",
-    "tsserver",
-  },
-  automatic_installation = true,
+	ensure_installed = {
+		"lua_ls",
+		"cssls",
+		"tsserver",
+	},
+	automatic_installation = true,
 })
 
 lsp.nvim_workspace()
@@ -147,7 +147,9 @@ cmp.setup({
 			kind.kind = " " .. (strings[1] or "") .. " "
 			kind.menu = "    (" .. (strings[2] or "") .. ")"
 
-			return kind
+			local twitem = require("tailwindcss-colorizer-cmp").formatter(entry, kind)
+
+			return twitem
 		end,
 	},
 })
