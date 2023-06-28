@@ -21,9 +21,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
+		requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	})
 
 	use({
@@ -43,7 +41,10 @@ return require("packer").startup(function(use)
 
 	use("wuelnerdotexe/vim-astro")
 	use("virchau13/tree-sitter-astro")
-	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
 	use("theprimeagen/harpoon")
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
