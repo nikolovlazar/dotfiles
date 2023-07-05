@@ -29,6 +29,8 @@ return require("packer").startup(function(use)
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
 
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
+
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({
 		"roobert/tailwindcss-colorizer-cmp.nvim",
@@ -54,7 +56,6 @@ return require("packer").startup(function(use)
 	--	opt = true,
 	--	run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	--})
-	use("airblade/vim-gitgutter")
 	use("rcarriga/nvim-notify")
 	use("NvChad/nvterm")
 	use("sbdchd/neoformat")
