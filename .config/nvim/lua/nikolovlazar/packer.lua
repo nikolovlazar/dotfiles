@@ -11,6 +11,9 @@ return require("packer").startup(function(use)
 	use("justinmk/vim-sneak")
 	use("airblade/vim-gitgutter")
 
+	use("tpope/vim-surround")
+	use("windwp/nvim-ts-autotag")
+
 	use("github/copilot.vim")
 
 	use({
