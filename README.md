@@ -23,6 +23,8 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 - [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb) (shows a lightbulb in the gutter when a code action is available
 - [cosmic-ui](https://github.com/CosmicNvim/cosmic-ui) (a plugin to rename popups and show code actions in a floating window)
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate) (highlights the word under the cursor matched by either LSP, Tree-sitter, or regex)
+- [vim-surround](https://github.com/tpope/vim-surround) (surround text with quotes, brackets, etc.)
+- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) (automatically closes HTML/JSX tags)
 - And maybe some more that I forgot to mention. This config changes from time to time. I'll try to keep this list up to date.
 
 ## Requirements
