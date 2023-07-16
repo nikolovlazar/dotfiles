@@ -130,5 +130,5 @@ dotfiles push
 | `<C-l>`      | Move to the right split (tmux)            |
 | `<C-a>`      | Resize current split to the left (tmux)   |
 | `<C-s>`      | Resize current split to the bottom (tmux) |
-| `<C-w>`      | Resize current split to the top (tmux)    |
-| `<C-d>`      | Resize current split to the right (tmux)  |
+| `<C-d>`      | Resize current split to the top (tmux)    |
+| `<C-f>`      | Resize current split to the right (tmux)  |
