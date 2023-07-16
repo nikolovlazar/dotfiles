@@ -2,11 +2,13 @@
 
 This repository contains my ever-evolving dotfiles. Check them out! If you find something useful, feel free to add it to your own dotfiles.
 
-![Screenshot](https://i.imgur.com/O2ilEQk.png)
+![Screenshot](https://i.imgur.com/Zwijh0w.png)
 
 ## Neovim Plugins
 
 - [Catppuccin Mocha](https://github.com/catppuccin/nvim) (colorscheme)
+- [Catppuccin Tmux](https://github.com/catppuccin/tmux) (tmux theme integration)
+- [aserowy/tmux.nvim](https://github.com/aserowy/tmux.nvim) (tmux + neovim integration)
 - [packer.nvim](https://github.com/wbthomason/packer.nvim) (plugin manager)
 - [GitHub Copilot](https://github.com/github/copilot.vim) (plugin for GitHub Copilot, remove this if you don't want it)
 - [Neovim Telescope](https://github.com/nvim-telescope/telescope.nvim) (fuzzy finder, used for searching files, buffers, keymaps, etc.)
@@ -96,3 +98,37 @@ dotfiles add .vimrc
 dotfiles commit -m "Add vimrc"
 dotfiles push
 ```
+
+## First run
+
+- When you open Neovim for the first time, you'd need to install the plugins. To do that, run `:PackerInstall`. This will install all plugins and their dependencies.
+- You'd also need to install the Tmux plugins. To do that, press `Ctrl-b` and then `I` (capital i). This will install all tmux plugins.
+
+## Some keymaps
+
+| Keymap       | Action                                    |
+| ------------ | ----------------------------------------- |
+| `<leader>ff` | Open Telescope file finder                |
+| `<leader>fw` | Find word in files                        |
+| `<leader>pv` | File explorer                             |
+| `<leader>gs` | Git status                                |
+| `<leader>gc` | Git commit                                |
+| `<leader>gp` | Git push                                  |
+| `<leader>gd` | Go to definition                          |
+| `<leader>s`  | Replace word under cursor                 |
+| `<leader>vd` | View diagnostics                          |
+| `<leader>fd` | Format document                           |
+| `<F2>`       | Rename variable under cursor              |
+| `gr`         | Go to references                          |
+| `<S-j>`      | Move selected line down                   |
+| `<S-k>`      | Move selected line up                     |
+| `<C-b>h`     | Create a horizontal split (tmux)          |
+| `<C-b>v`     | Create a vertical split (tmux)            |
+| `<C-h>`      | Move to the left split (tmux)             |
+| `<C-j>`      | Move to the bottom split (tmux)           |
+| `<C-k>`      | Move to the top split (tmux)              |
+| `<C-l>`      | Move to the right split (tmux)            |
+| `<C-a>`      | Resize current split to the left (tmux)   |
+| `<C-s>`      | Resize current split to the bottom (tmux) |
+| `<C-w>`      | Resize current split to the top (tmux)    |
+| `<C-d>`      | Resize current split to the right (tmux)  |
