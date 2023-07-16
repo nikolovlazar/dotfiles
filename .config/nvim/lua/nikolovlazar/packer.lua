@@ -35,6 +35,17 @@ return require("packer").startup(function(use)
 
 	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
 
+	use({
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			local nvim_tmux_nav = require("nvim-tmux-navigation")
+
+			nvim_tmux_nav.setup({
+				disable_when_zoomed = true, -- defaults to false
+			})
+		end,
+	})
+
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({
 		"roobert/tailwindcss-colorizer-cmp.nvim",
@@ -61,7 +72,6 @@ return require("packer").startup(function(use)
 	--	run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	--})
 	use("rcarriga/nvim-notify")
-	use("NvChad/nvterm")
 	use("sbdchd/neoformat")
 	use({
 		"folke/which-key.nvim",
