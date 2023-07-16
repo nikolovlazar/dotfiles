@@ -106,29 +106,37 @@ dotfiles push
 
 ## Some keymaps
 
-| Keymap       | Action                                    |
-| ------------ | ----------------------------------------- |
-| `<leader>ff` | Open Telescope file finder                |
-| `<leader>fw` | Find word in files                        |
-| `<leader>pv` | File explorer                             |
-| `<leader>gs` | Git status                                |
-| `<leader>gc` | Git commit                                |
-| `<leader>gp` | Git push                                  |
-| `<leader>gd` | Go to definition                          |
-| `<leader>s`  | Replace word under cursor                 |
-| `<leader>vd` | View diagnostics                          |
-| `<leader>fd` | Format document                           |
-| `<F2>`       | Rename variable under cursor              |
-| `gr`         | Go to references                          |
-| `<S-j>`      | Move selected line down                   |
-| `<S-k>`      | Move selected line up                     |
-| `<C-b>h`     | Create a horizontal split (tmux)          |
-| `<C-b>v`     | Create a vertical split (tmux)            |
-| `<C-h>`      | Move to the left split (tmux)             |
-| `<C-j>`      | Move to the bottom split (tmux)           |
-| `<C-k>`      | Move to the top split (tmux)              |
-| `<C-l>`      | Move to the right split (tmux)            |
-| `<C-a>`      | Resize current split to the left (tmux)   |
-| `<C-s>`      | Resize current split to the bottom (tmux) |
-| `<C-d>`      | Resize current split to the top (tmux)    |
-| `<C-f>`      | Resize current split to the right (tmux)  |
+| Keymap       | Action                                                                                                                                                          |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<leader>ff` | Open Telescope file finder                                                                                                                                      |
+| `<leader>fw` | Find word in files                                                                                                                                              |
+| `<leader>pv` | File explorer                                                                                                                                                   |
+| `<leader>gs` | Git status                                                                                                                                                      |
+| `<leader>gc` | Git commit                                                                                                                                                      |
+| `<leader>gp` | Git push                                                                                                                                                        |
+| `<leader>gd` | Go to definition                                                                                                                                                |
+| `<leader>s`  | Replace word under cursor                                                                                                                                       |
+| `<leader>vd` | View diagnostics                                                                                                                                                |
+| `<leader>fd` | Format document                                                                                                                                                 |
+| `<F2>`       | Rename variable under cursor                                                                                                                                    |
+| `gr`         | Go to references                                                                                                                                                |
+| `gc`         | Comment lines (visual line mode)                                                                                                                                |
+| `gb`         | Comment block (visual line mode)                                                                                                                                |
+| `gcc`        | Comment line under cursor (normal mode)                                                                                                                         |
+| `ysiw[1]`    | Surround the word with [1] (either (), {}, [], or type in < to open an HTML tag)                                                                                |
+| `cs[1][2]`   | Change surrounding [1] with [2] (ex. `cs'"` will replace the single quote with a double quote)                                                                  |
+| `ds[1]`      | Delete surrounding [1] (ex. `ds'` will remove the single quotes)                                                                                                |
+| `S[1]`       | (visual line mode) surround line with [1] (ex. `V` to select line/block -> `S<div class="hello">` will wrap the selected line/block with a div with that class) |
+| `<S-j>`      | Move selected line down                                                                                                                                         |
+| `<S-k>`      | Move selected line up                                                                                                                                           |
+| `<C-b>h`     | Create a horizontal split (tmux)                                                                                                                                |
+| `<C-b>v`     | Create a vertical split (tmux)                                                                                                                                  |
+| `<C-h>`      | Move to the left split (tmux)                                                                                                                                   |
+| `<C-j>`      | Move to the bottom split (tmux)                                                                                                                                 |
+| `<C-k>`      | Move to the top split (tmux)                                                                                                                                    |
+| `<C-l>`      | Move to the right split (tmux)                                                                                                                                  |
+| `<C-a>`      | Resize current split to the left (tmux)                                                                                                                         |
+| `<C-s>`      | Resize current split to the bottom (tmux)                                                                                                                       |
+| `<C-d>`      | Resize current split to the top (tmux)                                                                                                                          |
+| `<C-f>`      | Resize current split to the right (tmux)                                                                                                                        |
+| `<C-b>z`     | Zoom into current pane (a 🔍 will appear next to the window name in the bottom bar to indicate that a pane is zoomed in)                                        |
