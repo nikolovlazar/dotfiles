@@ -22,14 +22,6 @@ end, { desc = "Format document" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Something about yanking to system clipboard too but don't use it" })
 
--- Tabs
-vim.keymap.set("n", "<leader>ta", ":tabnew<cr>")
-vim.keymap.set("n", "<leader>tx", ":tabclose<cr>")
-vim.keymap.set("n", "<leader>tl", ":tabn<cr>")
-vim.keymap.set("n", "<leader>th", ":tabp<cr>")
-vim.keymap.set("n", "<leader>tmn", ":+tabmove<cr>")
-vim.keymap.set("n", "<leader>tmp", ":-tabmove<cr>")
-
 vim.keymap.set(
 	"n",
 	"<leader>s",
