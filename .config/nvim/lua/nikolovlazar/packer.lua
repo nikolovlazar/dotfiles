@@ -36,13 +36,9 @@ return require("packer").startup(function(use)
 	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
 
 	use({
-		"alexghergh/nvim-tmux-navigation",
+		"aserowy/tmux.nvim",
 		config = function()
-			local nvim_tmux_nav = require("nvim-tmux-navigation")
-
-			nvim_tmux_nav.setup({
-				disable_when_zoomed = true, -- defaults to false
-			})
+			return require("tmux").setup()
 		end,
 	})
 
