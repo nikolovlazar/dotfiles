@@ -38,7 +38,11 @@ return require("packer").startup(function(use)
 	use({
 		"aserowy/tmux.nvim",
 		config = function()
-			return require("tmux").setup()
+			return require("tmux").setup({
+				resize = {
+					enable_default_keybindings = false,
+				},
+			})
 		end,
 	})
 
