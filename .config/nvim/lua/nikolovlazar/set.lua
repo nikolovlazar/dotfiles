@@ -2,34 +2,42 @@ vim.opt.guicursor = ""
 
 -- Colorscheme Config
 require("catppuccin").setup({
-	flavour = "mocha",
-	integrations = {
-		harpoon = true,
-		mason = true,
-		notify = true,
-		which_key = true,
-		treesitter_context = false,
-		native_lsp = {
-			enabled = true,
-			virtual_text = {
-				errors = { "italic" },
-				hints = { "italic" },
-				warnings = { "italic" },
-				information = { "italic" },
-			},
-			underlines = {
-				errors = { "underline" },
-				hints = { "underline" },
-				warnings = { "underline" },
-				information = { "underline" },
-			},
-		},
-	},
+  flavour = "mocha",
+  integrations = {
+    harpoon = true,
+    mason = true,
+    notify = true,
+    which_key = true,
+    treesitter_context = false,
+    native_lsp = {
+      enabled = true,
+      virtual_text = {
+        errors = { "italic" },
+        hints = { "italic" },
+        warnings = { "italic" },
+        information = { "italic" },
+      },
+      underlines = {
+        errors = { "underline" },
+        hints = { "underline" },
+        warnings = { "underline" },
+        information = { "underline" },
+      },
+    },
+  },
+  highlight_overrides = {
+    mocha = function(c)
+      return {
+        CursorLineNr = { fg = c.lavender }
+      }
+    end,
+  }
 })
 vim.cmd.colorscheme("catppuccin")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
