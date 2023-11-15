@@ -1,3 +1,4 @@
-## Lazar's nvim config
+# 💤 LazyVim
 
-Based on [ThePrimeagen's config](https://github.com/ThePrimeagen/init.lua), with some additional plugins and small modifications.
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
