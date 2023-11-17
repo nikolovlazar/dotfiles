@@ -17,6 +17,11 @@ vim.keymap.set("n", "<C-/>", function()
   Util.terminal(nil, { border = "rounded" })
 end, { desc = "Term with border" })
 
+-- Bordered lazygit
+vim.keymap.set("n", "<leader>gg", function()
+  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "rounded" })
+end, { desc = "Lazygit (root dir)" })
+
 -- Moving lines with S-j and S-k when in visual mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
