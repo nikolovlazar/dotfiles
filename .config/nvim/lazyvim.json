@@ -1,6 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.editor.navic",
     "lazyvim.plugins.extras.editor.symbols-outline",
     "lazyvim.plugins.extras.formatting.prettier",
@@ -18,3 +17,4 @@
   },
   "version": 2
 }
+
