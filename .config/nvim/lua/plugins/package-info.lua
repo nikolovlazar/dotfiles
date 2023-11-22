@@ -1,6 +1,8 @@
 return {
   {
     "vuki656/package-info.nvim",
+    ft = "json",
+    dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
       local colors = require("catppuccin.palettes").get_palette("mocha")
 
@@ -12,6 +14,5 @@ return {
         hide_up_to_date = true,
       })
     end,
-    dependencies = { "MunifTanjim/nui.nvim" },
   },
 }

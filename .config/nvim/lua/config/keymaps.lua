@@ -40,7 +40,7 @@ keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 -- package-info keymaps
 set_keymap(
   "n",
-  "<leader>cpv",
+  "<leader>cpt",
   "<cmd>lua require('package-info').toggle()<cr>",
   { silent = true, noremap = true, desc = "Toggle" }
 )
