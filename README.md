@@ -4,12 +4,29 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 
 ## Screenshots
 
-![Screenshot](https://i.imgur.com/O2Pp3Rj.png)
-![Screenshot](https://i.imgur.com/7a7mBsX.png)
-![Screenshot](https://i.imgur.com/YrpOc4U.png)
-![Screenshot](https://i.imgur.com/kUVQwCo.png)
-![Screenshot](https://i.imgur.com/KCChDi8.png)
-![Screenshot](https://i.imgur.com/bU9hGqO.png)
+| ![Debugging a Nuxt.js app](https://i.imgur.com/O2Pp3Rj.png) |
+| :---------------------------------------------------------: |
+|                  _Debugging a Nuxt.js app_                  |
+
+| ![NeoTree on the right](https://i.imgur.com/7a7mBsX.png) |
+| :------------------------------------------------------: |
+|                  _NeoTree on the right_                  |
+
+| ![Tmux pane on the right + intellisense](https://i.imgur.com/YrpOc4U.png) |
+| :-----------------------------------------------------------------------: |
+|                  _Tmux pane on the right + intellisense_                  |
+
+| ![lazygit UI](https://i.imgur.com/kUVQwCo.png) |
+| :--------------------------------------------: |
+|                  _lazygit UI_                  |
+
+| ![File finder (git tracked)](https://i.imgur.com/KCChDi8.png) |
+| :-----------------------------------------------------------: |
+|                  _File finder (git tracked)_                  |
+
+| ![Code Symbols pane on the right](https://i.imgur.com/bU9hGqO.png) |
+| :----------------------------------------------------------------: |
+|                  _Code Symbols pane on the right_                  |
 
 ## Neovim Plugins
 
