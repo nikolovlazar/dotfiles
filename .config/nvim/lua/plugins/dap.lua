@@ -1,4 +1,10 @@
-local js_based_languages = { "typescript", "javascript", "typescriptreact", "javascriptreact", "vue" }
+local js_based_languages = {
+  "typescript",
+  "javascript",
+  "typescriptreact",
+  "javascriptreact",
+  "vue",
+}
 
 return {
   {
@@ -105,15 +111,22 @@ return {
       },
     },
     dependencies = {
+      -- Install the vscode-js-debug adapter
+      {
+        "microsoft/vscode-js-debug",
+        -- After install, build it and rename the dist directory to out
+        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+      },
       {
         "mxsdev/nvim-dap-vscode-js",
         config = function()
+          ---@diagnostic disable-next-line: missing-fields
           require("dap-vscode-js").setup({
             -- Path of node executable. Defaults to $NODE_PATH, and then "node"
             -- node_path = "node",
 
             -- Path to vscode-js-debug installation.
-            debugger_path = vim.fn.resolve(vim.fn.stdpath("config") .. "/../" .. "vscode-js-debug"),
+            debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
 
             -- Command to use to launch the debug server. Takes precedence over "node_path" and "debugger_path"
             -- debugger_cmd = { "js-debug-adapter" },

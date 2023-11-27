@@ -1,8 +1,8 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
+    opts = {
+      ensure_installed = {
         "gopls",
         "docker-compose-language-service",
         "dockerfile-language-server",
@@ -24,8 +24,7 @@ return {
         "yaml-language-server",
         "css-lsp",
         "delve",
-        "js-debug-adapter",
-      })
-    end,
+      },
+    },
   },
 }
