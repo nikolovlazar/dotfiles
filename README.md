@@ -2,7 +2,14 @@
 
 This repository contains my ever-evolving dotfiles. Check them out! If you find something useful, feel free to add it to your own dotfiles.
 
+## Screenshots
+
 ![Screenshot](https://i.imgur.com/Ur1rEKy.png)
+![Screenshot](https://i.imgur.com/zn5zEN7.png)
+![Screenshot](https://i.imgur.com/BunhoEP.png)
+![Screenshot](https://i.imgur.com/wU9IoPl.png)
+![Screenshot](https://i.imgur.com/RnosPKj.png)
+![Screenshot](https://i.imgur.com/L0491Rw.png)
 
 ## Neovim Plugins
 
