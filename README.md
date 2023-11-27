@@ -4,12 +4,12 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 
 ## Screenshots
 
-![Screenshot](https://i.imgur.com/Ur1rEKy.png)
-![Screenshot](https://i.imgur.com/zn5zEN7.png)
-![Screenshot](https://i.imgur.com/BunhoEP.png)
-![Screenshot](https://i.imgur.com/wU9IoPl.png)
-![Screenshot](https://i.imgur.com/RnosPKj.png)
-![Screenshot](https://i.imgur.com/L0491Rw.png)
+![Screenshot](https://i.imgur.com/O2Pp3Rj.png)
+![Screenshot](https://i.imgur.com/7a7mBsX.png)
+![Screenshot](https://i.imgur.com/YrpOc4U.png)
+![Screenshot](https://i.imgur.com/kUVQwCo.png)
+![Screenshot](https://i.imgur.com/KCChDi8.png)
+![Screenshot](https://i.imgur.com/bU9hGqO.png)
 
 ## Neovim Plugins
 
