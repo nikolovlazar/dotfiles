@@ -49,7 +49,11 @@ return {
                   prompt = "Enter URL: ",
                   default = "http://localhost:3000",
                 }, function(url)
-                  coroutine.resume(co, url)
+                  if url == nil or url == "" then
+                    return
+                  else
+                    coroutine.resume(co, url)
+                  end
                 end)
               end)
             end,
