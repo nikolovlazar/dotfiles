@@ -23,6 +23,8 @@ return {
         "typescript-language-server",
         "yaml-language-server",
         "css-lsp",
+        "delve",
+        "js-debug-adapter",
       })
     end,
   },
