@@ -31,7 +31,7 @@ return {
             request = "launch",
             name = "Launch file",
             program = "${file}",
-            cwd = "${workspaceFolder}",
+            cwd = vim.fn.getcwd(),
             sourceMaps = true,
           },
           -- Debug nodejs processes (make sure to add --inspect when you run the process)
@@ -40,7 +40,7 @@ return {
             request = "attach",
             name = "Attach",
             processId = require("dap.utils").pick_process,
-            cwd = "${workspaceFolder}",
+            cwd = vim.fn.getcwd(),
             sourceMaps = true,
           },
           -- Debug web applications (client side)
@@ -63,8 +63,7 @@ return {
                 end)
               end)
             end,
-            webRoot = "${workspaceFolder}",
-            skipFiles = { "<node_internals>/**/*.js" },
+            webRoot = vim.fn.getcwd(),
             protocol = "inspector",
             sourceMaps = true,
             userDataDir = false,
