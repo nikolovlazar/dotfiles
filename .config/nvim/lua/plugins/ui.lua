@@ -1,17 +1,39 @@
 return {
   {
     "folke/noice.nvim",
-    opts = function(_, opts)
-      table.insert(opts.routes, {
-        filter = {
-          event = "notify",
-          find = "No information available",
+    opts = {
+      presets = {
+        lsp_doc_border = true,
+      },
+      notify = {
+        view = "mini",
+      },
+      lsp = {
+        message = {
+          view = "mini",
         },
-        opts = { skip = true },
-      })
-
-      opts.presets.lsp_doc_border = true
-    end,
+      },
+      routes = {
+        {
+          filter = {
+            event = "notify",
+            find = "No information available",
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = "msg_show",
+            any = {
+              { find = "%d+L, %d+B" },
+              { find = "; after #%d+" },
+              { find = "; before #%d+" },
+            },
+          },
+          view = "mini",
+        },
+      },
+    },
   },
   -- filename
   {

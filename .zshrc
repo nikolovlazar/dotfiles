@@ -123,3 +123,10 @@ export PATH="$PNPM_HOME:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# bun completions
+[ -s "/Users/lazarnikolov/.bun/_bun" ] && source "/Users/lazarnikolov/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
