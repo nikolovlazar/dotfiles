@@ -5,5 +5,6 @@
 local opt = vim.opt
 
 opt.conceallevel = 0
+opt.colorcolumn = "80"
 
 vim.g.root_spec = { "cwd" }
