@@ -8,3 +8,4 @@ opt.conceallevel = 0
 opt.colorcolumn = "80"
 
 vim.g.root_spec = { "cwd" }
+vim.g.omni_sql_no_default_maps = 1

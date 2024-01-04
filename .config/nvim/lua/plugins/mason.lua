@@ -24,6 +24,7 @@ return {
         "yaml-language-server",
         "css-lsp",
         "delve",
+        "sql-formatter",
       },
     },
   },
