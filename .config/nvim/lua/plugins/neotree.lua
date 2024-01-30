@@ -9,6 +9,9 @@ return {
   opts = {
     window = {
       position = "right",
+      mappings = {
+        ["Y"] = "none",
+      },
     },
   },
 }
