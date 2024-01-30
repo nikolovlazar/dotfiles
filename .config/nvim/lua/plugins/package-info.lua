@@ -4,13 +4,13 @@ return {
     ft = "json",
     dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
-      local colors = require("catppuccin.palettes").get_palette("mocha")
+      local colors = require("tokyonight.colors").setup()
 
       require("package-info").setup({
         autostart = false,
         package_manager = "pnpm",
         colors = {
-          outdated = colors.peach,
+          outdated = colors.red1,
         },
         hide_up_to_date = true,
       })

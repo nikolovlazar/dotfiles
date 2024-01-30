@@ -1,22 +1,14 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = true,
-    config = function()
-      require("catppuccin").setup({
-        custom_highlights = function(colors)
-          return {
-            PackageInfoOutdatedVersion = { fg = colors.peach },
-          }
-        end,
-      })
-    end,
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      colorscheme = "tokyonight-night",
     },
   },
 }
