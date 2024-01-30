@@ -57,12 +57,11 @@ return {
     event = "BufReadPre",
     priority = 1200,
     config = function()
-      local colors = require("tokyonight.colors").setup()
       require("incline").setup({
         highlight = {
           groups = {
-            InclineNormal = { guibg = colors.blue7, guifg = colors.fg_dark },
-            InclineNormalNC = { guibg = colors.none, guifg = colors.fg_dark },
+            InclineNormal = { guibg = "#303270", guifg = "#a9b1d6" },
+            InclineNormalNC = { guibg = "none", guifg = "#a9b1d6" },
           },
         },
         window = { margin = { vertical = 0, horizontal = 1 } },
