@@ -14,12 +14,12 @@ keymap.set("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { silent =
 
 -- Bordered terminal
 vim.keymap.set("n", "<C-/>", function()
-  Util.terminal(nil, { border = "rounded" })
+  Util.terminal(nil, { border = "none" })
 end, { desc = "Term with border" })
 
 -- Bordered lazygit
 vim.keymap.set("n", "<leader>gg", function()
-  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "rounded" })
+  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { desc = "Lazygit (root dir)" })
 
 -- Moving lines with S-j and S-k when in visual mode
