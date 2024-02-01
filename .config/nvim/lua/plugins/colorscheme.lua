@@ -8,6 +8,10 @@ return {
 
       local oxocarbon = require("oxocarbon").oxocarbon
 
+      -- changing terminal_color_4 fixes the contrast issue for LazyGit
+      vim.g["terminal_color_4"] = oxocarbon.base03
+
+      -- nvim-cmp color overrides
       vim.api.nvim_set_hl(0, "CmpItemKindInterface", { bg = oxocarbon.base01, fg = oxocarbon.base08 })
       vim.api.nvim_set_hl(0, "CmpItemKindColor", { bg = oxocarbon.base01, fg = oxocarbon.base08 })
       vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { bg = oxocarbon.base01, fg = oxocarbon.base08 })
@@ -33,6 +37,12 @@ return {
       vim.api.nvim_set_hl(0, "CmpItemKindMethod", { bg = oxocarbon.base01, fg = oxocarbon.base15 })
       vim.api.nvim_set_hl(0, "CmpItemKindValue", { bg = oxocarbon.base01, fg = oxocarbon.base15 })
       vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { bg = oxocarbon.base01, fg = oxocarbon.base15 })
+
+      -- telescope color overrides
+      vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = oxocarbon.blend, bg = oxocarbon.blend })
+      vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
+      vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = oxocarbon.base05, bg = oxocarbon.blend })
+      vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = oxocarbon.base08, bg = oxocarbon.blend })
     end,
   },
 
