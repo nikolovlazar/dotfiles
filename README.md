@@ -4,34 +4,34 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 
 ## Screenshots
 
-| ![Debugging a Nuxt.js app](https://i.imgur.com/hJ9IzAd.png) |
+| ![Debugging a Nuxt.js app](https://i.imgur.com/CQA1Co4.png) |
 | :---------------------------------------------------------: |
 |                  _Debugging a Nuxt.js app_                  |
 
-| ![NeoTree on the right](https://i.imgur.com/QxmoqNj.png) |
+| ![NeoTree on the right](https://i.imgur.com/gczVtru.png) |
 | :------------------------------------------------------: |
 |                  _NeoTree on the right_                  |
 
-| ![Tmux pane on the right + intellisense](https://i.imgur.com/PTh07J4.png) |
+| ![Tmux pane on the right + intellisense](https://i.imgur.com/41xewSj.png) |
 | :-----------------------------------------------------------------------: |
 |                  _Tmux pane on the right + intellisense_                  |
 
-| ![lazygit UI](https://i.imgur.com/UzMTHTo.png) |
+| ![lazygit UI](https://i.imgur.com/jP0bJbg.png) |
 | :--------------------------------------------: |
 |                  _lazygit UI_                  |
 
-| ![File finder (git tracked)](https://i.imgur.com/Vl1vdcp.png) |
+| ![File finder (git tracked)](https://i.imgur.com/wysEE3V.png) |
 | :-----------------------------------------------------------: |
 |                  _File finder (git tracked)_                  |
 
-| ![Code Symbols pane on the right](https://i.imgur.com/Q9i8Qs1.png) |
+| ![Code Symbols pane on the right](https://i.imgur.com/LXRNBTc.png) |
 | :----------------------------------------------------------------: |
 |                  _Code Symbols pane on the right_                  |
 
 ## Neovim Plugins
 
 - [LazyVim](https://lazyvim.org) (base configuration)
-- [Tokyonight Night](https://github.com/folke/tokyonight.nvim) (colorscheme)
+- [Oxocarbon](https://github.com/nyoom-engineering/oxocarbon.nvim) (colorscheme)
 - [Tokyonight Tmux](https://github.com/janoamaral/tokyo-night-tmux) (tmux theme integration)
 - [aserowy/tmux.nvim](https://github.com/aserowy/tmux.nvim) (tmux + neovim integration)
 
