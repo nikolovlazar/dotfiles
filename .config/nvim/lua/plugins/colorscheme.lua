@@ -4,6 +4,8 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      vim.cmd("colorscheme oxocarbon")
+
       local oxocarbon = require("oxocarbon").oxocarbon
 
       vim.api.nvim_set_hl(0, "CmpItemKindInterface", { bg = oxocarbon.base01, fg = oxocarbon.base08 })
@@ -32,12 +34,6 @@ return {
       vim.api.nvim_set_hl(0, "CmpItemKindValue", { bg = oxocarbon.base01, fg = oxocarbon.base15 })
       vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { bg = oxocarbon.base01, fg = oxocarbon.base15 })
     end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "oxocarbon",
-    },
   },
 
   -- modicator (auto color line number based on vim mode)
