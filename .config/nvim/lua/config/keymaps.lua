@@ -26,12 +26,19 @@ end, { desc = "Lazygit (root dir)" })
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Tmux resize panes
+keymap.del({ "n", "i", "v" }, "<A-j>")
+keymap.del({ "n", "i", "v" }, "<A-k>")
+keymap.del("n", "<C-Left>")
+keymap.del("n", "<C-Down>")
+keymap.del("n", "<C-Up>")
+keymap.del("n", "<C-Right>")
+
+keymap.set("n", "<M-h>", '<Cmd>lua require("tmux").resize_left()<CR>', { silent = true })
+keymap.set("n", "<M-j>", '<Cmd>lua require("tmux").resize_bottom()<CR>', { silent = true })
+keymap.set("n", "<M-k>", '<Cmd>lua require("tmux").resize_top()<CR>', { silent = true })
+keymap.set("n", "<M-l>", '<Cmd>lua require("tmux").resize_right()<CR>', { silent = true })
+
 local set_keymap = vim.api.nvim_set_keymap
-set_keymap("n", "<M-h>", "<cmd>lua require('tmux').resize_left()<cr>", {})
-set_keymap("n", "<M-j>", "<cmd>lua require('tmux').resize_down()<cr>", {})
-set_keymap("n", "<M-k>", "<cmd>lua require('tmux').resize_up()<cr>", {})
-set_keymap("n", "<M-l>", "<cmd>lua require('tmux').resize_right()<cr>", {})
 
 -- Split windows
 keymap.set("n", "ss", ":split<Return>", opts)
