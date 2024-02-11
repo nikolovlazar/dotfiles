@@ -1,1 +1,3 @@
-.dotfiles
+.config/tmux/plugins
+.config/tmux/*.log
+**/.DS_Store
