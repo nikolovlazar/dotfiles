@@ -23,7 +23,7 @@ return {
         function()
           local builtin = require("telescope.builtin")
           builtin.find_files({
-            no_ignore = false,
+            no_ignore = true,
             hidden = true,
           })
         end,
@@ -123,6 +123,12 @@ return {
             preview_cutoff = 9999,
           },
         },
+        live_grep = {
+          additional_args = function()
+            return { "--hidden" }
+          end,
+        },
+        find_files = {},
       }
       opts.extensions = {
         file_browser = {
