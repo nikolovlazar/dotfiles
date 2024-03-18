@@ -7,6 +7,7 @@ local js_based_languages = {
 }
 
 return {
+  { "nvim-neotest/nvim-nio" },
   {
     "mfussenegger/nvim-dap",
     config = function()
