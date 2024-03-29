@@ -2,6 +2,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/flutter/bin
 export PATH=~/tools/nvim-macos/bin:$PATH
 export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=~/go/bin:$PATH
+export TERM=xterm-color
 
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
@@ -50,3 +51,6 @@ export PATH="$HOME/.local/share/sentry-devenv/bin:$PATH"
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# sst
+export PATH=/Users/lazarnikolov/.sst/bin:$PATH
