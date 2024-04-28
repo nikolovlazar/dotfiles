@@ -10,7 +10,15 @@
       "space c a": "editor::ToggleCodeActions",
       "space c f": "editor::Format",
       "space c r": "editor::Rename",
-      "space c d": "editor::GoToDiagnostic"
+      "space c d": "editor::GoToDiagnostic",
+      "space space": "file_finder::Toggle",
+      "space ,": "tab_switcher::Toggle",
+      "space e": "workspace::ToggleLeftDock",
+      "space c s": "outline::Toggle",
+      "space s s": "project_symbols::Toggle",
+      "space b d": "pane::CloseActiveItem",
+      "space g d": "editor::GoToDefinition",
+      "space g r": "editor::FindAllReferences"
     }
   }
 ]
