@@ -24,7 +24,7 @@ findandkill() {
 alias kill_port=findandkill
 
 change_kitty_profile() {
-  sh ~/.config/kitty/change-profile.sh
+  sh ~/dotfiles/.config/kitty/change-profile.sh
 }
 
 export NVM_DIR="$HOME/.nvm"
