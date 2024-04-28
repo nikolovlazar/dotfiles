@@ -1,0 +1,16 @@
+[
+  {
+    "bindings": {
+      "shift-k": "editor::Hover"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "space c a": "editor::ToggleCodeActions",
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+      "space c d": "editor::GoToDiagnostic"
+    }
+  }
+]
