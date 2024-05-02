@@ -15,7 +15,7 @@ return {
         "markdownlint",
         "marksman",
         "prettier",
-        "prisma-lanuage-server",
+        "prisma-language-server",
         "shfmt",
         "stylua",
         "selene",
