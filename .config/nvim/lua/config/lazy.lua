@@ -63,3 +63,5 @@ require("lazy").setup({
     },
   },
 })
+
+vim.cmd("highlight ColorColumn ctermbg=0 guibg=#2F334D")
