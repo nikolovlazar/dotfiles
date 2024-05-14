@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "project_panel": {
+    "dock": "right"
+  },
   "ui_font_size": 18,
   "buffer_font_size": 18,
   "vim_mode": true,
@@ -14,5 +17,8 @@
   "ui_font_family": "DankMono Nerd Font",
   "theme": "Catppuccin Mocha",
   "cursor_blink": false,
-  "auto_update": true
+  "auto_update": true,
+  "scrollbar": {
+    "show": "never"
+  }
 }

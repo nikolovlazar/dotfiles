@@ -1,24 +1,60 @@
 [
   {
     "bindings": {
-      "shift-k": "editor::Hover"
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
     }
   },
   {
-    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "context": "not_editing || (Editor && vim_mode == normal)",
     "bindings": {
+      "space ,": "tab_switcher::Toggle",
+      "space space": "file_finder::Toggle",
+      "space e": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "shift-k": "editor::Hover",
       "space c a": "editor::ToggleCodeActions",
       "space c f": "editor::Format",
       "space c r": "editor::Rename",
       "space c d": "editor::GoToDiagnostic",
-      "space space": "file_finder::Toggle",
-      "space ,": "tab_switcher::Toggle",
-      "space e": "workspace::ToggleLeftDock",
       "space c s": "outline::Toggle",
       "space s s": "project_symbols::Toggle",
       "space b d": "pane::CloseActiveItem",
       "space g d": "editor::GoToDefinition",
-      "space g r": "editor::FindAllReferences"
+      "space g r": "editor::FindAllReferences",
+      "space s g": "pane::DeploySearch",
+      "ctrl-n": "editor::SelectNext",
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePrevItem"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "x": "project_panel::Cut",
+      "s": [
+        "workspace::SendKeystrokes",
+        "ctrl-h cmd-k right right ctrl-l enter right right right right alt-cmd-t"
+      ]
     }
   }
 ]
