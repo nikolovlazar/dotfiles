@@ -27,6 +27,10 @@ change_kitty_profile() {
   sh ~/dotfiles/.config/kitty/change-profile.sh
 }
 
+toggle_kitty_transparency() {
+  sh ~/dotfiles/.config/kitty/toggle-transparency.sh
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
