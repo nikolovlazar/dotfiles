@@ -1,3 +1,4 @@
 .config/tmux/plugins
 .config/tmux/*.log
 **/.DS_Store
+.config/**/.tmp*
