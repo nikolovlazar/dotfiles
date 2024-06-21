@@ -1,5 +1,13 @@
 return {
   {
+    "lukas-reineke/virt-column.nvim",
+    opts = {
+      char = { "┆" },
+      virtcolumn = "80",
+      highlight = { "SpecialKey" },
+    }
+  },
+  {
     "folke/noice.nvim",
     enabled = false,
   },
