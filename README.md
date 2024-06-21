@@ -5,7 +5,7 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 ## Neovim Plugins
 
 - [LazyVim](https://lazyvim.org) (base configuration)
-- [Tokyo Night](https://github.com/folke/tokyonight.nvim) (colorscheme)
+- [Cyberdream](https://github.com/scottmckendry/cyberdream.nvim) (colorscheme)
 - [Tokyonight Tmux](https://github.com/janoamaral/tokyo-night-tmux) (tmux theme integration)
 - [aserowy/tmux.nvim](https://github.com/aserowy/tmux.nvim) (tmux + neovim integration)
 
@@ -13,4 +13,3 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 
 - [A Nerd Font](https://www.nerdfonts.com/font-downloads) (it's for the icons)
 - [kitty](https://sw.kovidgoyal.net/kitty/) (a fast GPU based terminal emulator)
-- [vscode-js-debug](https://github.com/microsoft/vscode-js-debug) (debugger adapter. Place in `.config/vscode-js-debug`)

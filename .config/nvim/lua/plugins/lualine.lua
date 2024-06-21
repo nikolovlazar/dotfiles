@@ -23,7 +23,7 @@ return {
 
     return {
       options = {
-        theme = "tokyonight",
+        theme = "auto",
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
@@ -42,7 +42,7 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+          { "filetype",                icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { Util.lualine.pretty_path() },
           {
             require("package-info").get_status,
@@ -73,7 +73,7 @@ return {
           -- stylua: ignore
           {
             function() return "  " .. require("dap").status() end,
-            cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
+            cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
             color = Util.ui.fg("Debug"),
           },
           {
