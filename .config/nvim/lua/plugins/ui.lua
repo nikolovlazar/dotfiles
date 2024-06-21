@@ -4,7 +4,7 @@ return {
     opts = {
       char = { "┆" },
       virtcolumn = "80",
-      highlight = { "SpecialKey" },
+      highlight = { "NonText" },
     }
   },
   {
