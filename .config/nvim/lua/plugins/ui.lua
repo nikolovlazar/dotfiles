@@ -8,7 +8,8 @@ return {
     opts = {
       notification = {
         window = {
-          relative = "win",
+          winblend = 0,
+          border = "rounded",
         },
       },
     },
