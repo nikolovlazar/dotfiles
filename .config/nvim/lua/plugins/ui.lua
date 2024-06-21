@@ -5,7 +5,13 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    opts = {},
+    opts = {
+      notification = {
+        window = {
+          relative = "win",
+        },
+      },
+    },
   },
   {
     "rcarriga/nvim-notify",
