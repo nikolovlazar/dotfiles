@@ -17,6 +17,7 @@ return {
             { "│", "Comment" },
           },
           scrollbar = false,
+          winblend = 0,
         },
         documentation = {
           border = {
@@ -30,6 +31,7 @@ return {
             { "│", "Comment" },
           },
           scrollbar = false,
+          winblend = 0,
         },
       }
     end,
