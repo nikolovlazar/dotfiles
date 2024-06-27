@@ -11,8 +11,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="headline"
 export XDG_CONFIG_HOME=$HOME/.config
 
-plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
 alias vim=nvim
