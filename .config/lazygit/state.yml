@@ -2,6 +2,7 @@ lastupdatecheck: 0
 recentrepos:
 - /Users/lazarnikolov/dotfiles
 startuppopupversion: 5
-customcommandshistory: []
+customcommandshistory:
+- git rm --cached .config/lazyvim/state.yml
 hidecommandlog: false
 ignorewhitespaceindiffview: false
