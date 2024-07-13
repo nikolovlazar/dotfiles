@@ -6,7 +6,7 @@ return {
     config = function()
       require("package-info").setup({
         autostart = false,
-        package_manager = "pnpm",
+        package_manager = "npm",
         colors = {
           outdated = "#db4b4b",
         },
