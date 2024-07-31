@@ -12,12 +12,12 @@ keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { silent = true })
 keymap.set("n", "<C-\\>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { silent = true })
 keymap.set("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { silent = true })
 
--- Bordered terminal
+-- Borderless terminal
 vim.keymap.set("n", "<C-/>", function()
   Util.terminal(nil, { border = "none" })
 end, { desc = "Term with border" })
 
--- Bordered lazygit
+-- Borderless lazygit
 vim.keymap.set("n", "<leader>gg", function()
   Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { desc = "Lazygit (root dir)" })
