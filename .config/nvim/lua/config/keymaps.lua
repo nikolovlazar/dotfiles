@@ -37,7 +37,7 @@ keymap.set("n", "<M-l>", '<Cmd>lua require("tmux").resize_right()<CR>', { silent
 local set_keymap = vim.api.nvim_set_keymap
 
 -- Split windows
-keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sh", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- Tabs
