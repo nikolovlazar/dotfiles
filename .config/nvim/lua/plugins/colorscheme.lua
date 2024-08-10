@@ -6,6 +6,7 @@ return {
     opts = function(_, opts)
       opts.transparent = true
       opts.italic_comments = true
+      opts.borderless_telescope = false
     end,
   },
   {
