@@ -14,6 +14,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 source $ZSH/oh-my-zsh.sh
 
 alias vim=nvim
+alias python=~/.pyenv/versions/3.12.5/bin/python
+alias pip=~/.pyenv/versions/3.12.5/bin/pip
 
 findandkill() {
   $(lsof -ti:3000 | xargs kill)
