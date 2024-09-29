@@ -74,7 +74,7 @@ IS_SSH=$? # 0=true, 1=false
 
 # Info sources (enclose in single quotes as these will be eval'd, use empty string to hide segment)
 HEADLINE_USER_CMD='echo $USER'
-HEADLINE_HOST_CMD='hostname -s' # consider 'basename "$VIRTUAL_ENV"' to replace host with environment
+HEADLINE_HOST_CMD='$( [ -n "$VIRTUAL_ENV" ] && echo "basename $VIRTUAL_ENV" || echo "" )'
 # HEADLINE_PATH_CMD='print -rP "%~"'
 HEADLINE_PATH_CMD='echo "${PWD##*/}"'
 HEADLINE_GIT_BRANCH_CMD='headline_git_branch'
@@ -431,12 +431,12 @@ headline_precmd() {
   fi
 
   # Host
-  # if (( ${#host_str} )); then
-  #   if (( ${#_HEADLINE_INFO_LEFT} )); then
-  #     _headline_part JOINT "$HEADLINE_USER_TO_HOST" left
-  #   fi
-  #   _headline_part HOST "$HEADLINE_HOST_PREFIX$host_str" left
-  # fi
+  if (( ${#host_str} )); then
+    if (( ${#_HEADLINE_INFO_LEFT} )); then
+      _headline_part JOINT "$HEADLINE_USER_TO_HOST" left
+    fi
+    _headline_part HOST "$HEADLINE_HOST_PREFIX$host_str" left
+  fi
 
   # Path
   if (( ${#path_str} )); then
