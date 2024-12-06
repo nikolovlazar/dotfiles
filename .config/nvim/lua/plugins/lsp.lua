@@ -60,6 +60,15 @@ return {
             },
           },
         },
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                django = true,
+              },
+            },
+          },
+        },
       },
     },
   },
