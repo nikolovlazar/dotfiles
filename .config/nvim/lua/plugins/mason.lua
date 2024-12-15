@@ -30,7 +30,7 @@ return {
         "markdownlint",
         "markdownlint-cli2",
         "marksman",
-        "neocmakelspf",
+        "neocmakelsp",
         "prettier",
         "prettierd",
         "prisma-language-server",
