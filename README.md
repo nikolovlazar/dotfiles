@@ -12,4 +12,4 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 ## Requirements
 
 - [A Nerd Font](https://www.nerdfonts.com/font-downloads) (it's for the icons)
-- [kitty](https://sw.kovidgoyal.net/kitty/) (a fast GPU based terminal emulator)
+- [Wezterm](https://wezfurlong.org/wezterm/) (a powerful cross-platform terminal emulator and multiplexer written in Rust)
