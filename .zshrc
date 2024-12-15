@@ -25,14 +25,6 @@ findandkill() {
 
 alias kill_port=findandkill
 
-change_kitty_profile() {
-  sh ~/dotfiles/.config/kitty/change-profile.sh
-}
-
-toggle_kitty_transparency() {
-  sh ~/dotfiles/.config/kitty/toggle-transparency.sh
-}
-
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
