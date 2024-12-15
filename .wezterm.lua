@@ -28,4 +28,25 @@ config.window_padding = {
 config.max_fps = 120
 config.prefer_egl = true
 
+-- Custom commands
+wezterm.on("augment-command-palette", function(window, pane)
+	return {
+		{
+			brief = "Toggle terminal transparency",
+			icon = "md_circle_opacity",
+			action = wezterm.action_callback(function(window)
+				local overrides = window:get_config_overrides() or {}
+
+				if not overrides.window_background_opacity or overrides.window_background_opacity == 1 then
+					overrides.window_background_opacity = 0.9
+				else
+					overrides.window_background_opacity = 1
+				end
+
+				window:set_config_overrides(overrides)
+			end),
+		},
+	}
+end)
+
 return config
