@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local commands = require("commands")
+local constants = require("constants")
 
 local config = wezterm.config_builder()
 
@@ -15,8 +16,8 @@ config.colors = {
 
 -- Appearance
 config.window_decorations = "RESIZE"
-config.window_background_image = wezterm.home_dir .. "/dotfiles/.config/wezterm/assets/bg-blurred-darker.png"
-config.macos_window_background_blur = 30
+config.window_background_image = constants.bg_image
+config.macos_window_background_blur = 40
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
 	left = 0,
