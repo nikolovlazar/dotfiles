@@ -5,6 +5,7 @@
 local opt = vim.opt
 
 opt.conceallevel = 0
+opt.laststatus = 3
 opt.cmdheight = 0
 
 vim.g.root_spec = { "cwd" }
