@@ -1,3 +1,8 @@
+-- disable custom config
+if true then
+  return {}
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
@@ -42,11 +47,11 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { "filetype",                icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { Util.lualine.pretty_path() },
           {
             require("package-info").get_status,
-            color = Util.ui.fg("Statement"),
+            -- color = Snacks.util.color("Statement"),
           },
           {
             function()
@@ -62,24 +67,24 @@ return {
           {
             function() return require("noice").api.status.command.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = Util.ui.fg("Statement"),
+            -- color = Snacks.util.color("Statement"),
           },
           -- stylua: ignore
           {
             function() return require("noice").api.status.mode.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = Util.ui.fg("Constant"),
+            -- color = Snacks.util.color("Constant"),
           },
           -- stylua: ignore
           {
             function() return "  " .. require("dap").status() end,
             cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = Util.ui.fg("Debug"),
+            -- color = Snacks.util.color("Debug"),
           },
           {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
-            color = Util.ui.fg("Special"),
+            -- color = Snacks.util.color("Special"),
           },
           {
             "diff",

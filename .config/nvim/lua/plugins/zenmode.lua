@@ -13,9 +13,6 @@ return {
           enabled = false,
         },
       },
-      on_open = function()
-        require("package-info").hide()
-      end,
     },
   },
 }
