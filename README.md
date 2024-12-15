@@ -6,7 +6,7 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 
 - [LazyVim](https://lazyvim.org) (base configuration)
 - [Cyberdream](https://github.com/scottmckendry/cyberdream.nvim) (colorscheme)
-- [Tokyonight Tmux](https://github.com/janoamaral/tokyo-night-tmux) (tmux theme integration)
+- [Tokyonight Tmux](https://github.com/nikolovlazar/tokyo-night-tmux) (tmux theme integration)
 - [aserowy/tmux.nvim](https://github.com/aserowy/tmux.nvim) (tmux + neovim integration)
 
 ## Requirements
