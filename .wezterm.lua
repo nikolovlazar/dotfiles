@@ -24,4 +24,8 @@ config.window_padding = {
 	bottom = 0,
 }
 
+-- Miscellaneous settings
+config.max_fps = 120
+config.prefer_egl = true
+
 return config
