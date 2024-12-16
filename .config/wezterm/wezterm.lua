@@ -12,6 +12,7 @@ config.line_height = 1.2
 -- Colors
 config.colors = {
 	cursor_bg = "white",
+	cursor_border = "white",
 }
 
 -- Appearance
