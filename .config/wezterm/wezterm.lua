@@ -16,8 +16,6 @@ config.colors = {
 	indexed = { [239] = "lightslategrey" },
 }
 
-print(wezterm.color.get_default_colors())
-
 -- Appearance
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
