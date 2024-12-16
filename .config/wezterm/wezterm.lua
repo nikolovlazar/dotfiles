@@ -16,8 +16,6 @@ config.colors = {
 
 -- Appearance
 config.window_decorations = "RESIZE"
-config.window_background_image = constants.bg_image
-config.macos_window_background_blur = 40
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
 	left = 0,
@@ -25,6 +23,8 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
+config.window_background_image = constants.bg_image
+config.macos_window_background_blur = 40
 
 -- Miscellaneous settings
 config.max_fps = 120
