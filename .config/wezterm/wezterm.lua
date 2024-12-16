@@ -13,7 +13,10 @@ config.line_height = 1.2
 config.colors = {
 	cursor_bg = "white",
 	cursor_border = "white",
+	indexed = { [239] = "lightslategrey" },
 }
+
+print(wezterm.color.get_default_colors())
 
 -- Appearance
 config.window_decorations = "RESIZE"
