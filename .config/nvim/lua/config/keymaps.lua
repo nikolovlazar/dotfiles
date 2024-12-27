@@ -4,6 +4,7 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 local Util = require("lazyvim.util")
+local Snacks = require("snacks")
 
 keymap.set("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { silent = true })
 keymap.set("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { silent = true })
@@ -14,12 +15,12 @@ keymap.set("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { silent =
 
 -- Borderless terminal
 vim.keymap.set("n", "<C-/>", function()
-  Util.terminal(nil, { border = "none" })
+  Snacks.terminal.get(nil, { border = "none" })
 end, { desc = "Term with border" })
 
 -- Borderless lazygit
 vim.keymap.set("n", "<leader>gg", function()
-  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
+  Snacks.terminal.get("lazygit", { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { desc = "Lazygit (root dir)" })
 
 keymap.del({ "n", "i", "v" }, "<A-j>")
