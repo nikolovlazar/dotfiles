@@ -8,6 +8,16 @@ local config = wezterm.config_builder()
 config.font_size = 19
 config.line_height = 1.2
 config.font = wezterm.font("DankMono Nerd Font")
+config.font_rules = {
+	{
+		italic = true,
+		intensity = "Bold",
+		font = wezterm.font("DankMono Nerd Font", {
+			italic = true,
+			weight = "Regular",
+		}),
+	},
+}
 
 -- Colors
 config.colors = {
