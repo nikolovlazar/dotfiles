@@ -217,7 +217,6 @@ return {
           port = '${port}',
           executable = {
             command = 'node',
-            -- 💀 Make sure to update this path to point to your installation
             args = {
               vim.env.MASON
                 .. '/packages/'
