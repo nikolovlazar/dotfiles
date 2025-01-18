@@ -4,7 +4,7 @@ This repository contains my ever-evolving dotfiles. Check them out! If you find 
 
 ## Neovim Plugins
 
-- [LazyVim](https://lazyvim.org) (base configuration)
+- [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) (base configuration)
 - [Cyberdream](https://github.com/scottmckendry/cyberdream.nvim) (colorscheme)
 - [Tokyonight Tmux](https://github.com/nikolovlazar/tokyo-night-tmux) (tmux theme integration)
 - [aserowy/tmux.nvim](https://github.com/aserowy/tmux.nvim) (tmux + neovim integration)
