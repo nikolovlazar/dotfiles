@@ -25,6 +25,7 @@ require('lazy').setup({
     { import = 'plugins.editor.indent-line' },
     { import = 'plugins.editor.lazygit' },
     { import = 'plugins.editor.leap' },
+    { import = 'plugins.editor.lualine' },
     { import = 'plugins.editor.mini' },
     { import = 'plugins.editor.neo-tree' },
     { import = 'plugins.editor.snacks' },
