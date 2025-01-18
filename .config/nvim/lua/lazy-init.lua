@@ -28,6 +28,7 @@ require('lazy').setup({
     { import = 'plugins.editor.snacks' },
     { import = 'plugins.editor.tmux' },
     { import = 'plugins.editor.which-key' },
+    { import = 'plugins.formatting.conform' },
     { import = 'plugins.formatting.prettier' },
     { import = 'plugins.languages.astro' },
     { import = 'plugins.languages.docker' },
