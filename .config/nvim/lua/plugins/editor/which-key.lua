@@ -40,12 +40,43 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = 'Code', mode = { 'n', 'x' }, icon = { icon = '', color = 'green' } },
-        { '<leader>d', group = 'Debug', icon = { icon = '', color = 'red' } },
-        { '<leader>s', group = 'Search', icon = { icon = '', color = 'yellow' } },
-        { '<leader>f', group = 'Find', icon = { icon = '󰈞', color = 'yellow' } },
-        { '<leader>t', group = 'Test', icon = { icon = "󰙨", color = "purple" } },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' }, icon = { icon = "󰊢", color = "orange" } },
+        {
+          '<leader>a',
+          group = 'AI',
+          icon = { icon = '󱚦', color = 'cyan' },
+        },
+        {
+          '<leader>c',
+          group = 'Code',
+          mode = { 'n', 'x' },
+          icon = { icon = '', color = 'green' },
+        },
+        {
+          '<leader>d',
+          group = 'Debug',
+          icon = { icon = '', color = 'red' },
+        },
+        {
+          '<leader>s',
+          group = 'Search',
+          icon = { icon = '', color = 'yellow' },
+        },
+        {
+          '<leader>f',
+          group = 'Find',
+          icon = { icon = '󰈞', color = 'yellow' },
+        },
+        {
+          '<leader>t',
+          group = 'Test',
+          icon = { icon = '󰙨', color = 'purple' },
+        },
+        {
+          '<leader>h',
+          group = 'Git [H]unk',
+          mode = { 'n', 'v' },
+          icon = { icon = '󰊢', color = 'orange' },
+        },
       },
     },
   },
