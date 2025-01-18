@@ -54,7 +54,7 @@ return {
             client.server_capabilities.hoverProvider = false
           end
           local name = ruff
-          vim.api.nvim_create_autocmd("LspAttach", {
+          vim.api.nvim_create_autocmd('LspAttach', {
             callback = function(args)
               local buffer = args.buf ---@type number
               local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -122,10 +122,7 @@ return {
           )
         else
           require('dap-python').setup(
-            vim.env.MASON
-              .. '/packages/'
-              .. 'debugpy'
-              .. '/venv/bin/python'
+            vim.env.MASON .. '/packages/' .. 'debugpy' .. '/venv/bin/python'
           )
         end
       end,
@@ -143,6 +140,7 @@ return {
   },
   {
     'linux-cultist/venv-selector.nvim',
+    branch = 'regexp',
     dependencies = {
       'neovim/nvim-lspconfig',
       'nvim-telescope/telescope.nvim',
