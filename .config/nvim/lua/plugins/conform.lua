@@ -7,7 +7,7 @@ return {
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format { async = true, lsp_fallback = true }
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -57,6 +57,7 @@ return {
         return {
           timeout_ms = 500,
           lsp_format = lsp_format_opt,
+          lsp_fallback = true,
         }
       end
     end,
