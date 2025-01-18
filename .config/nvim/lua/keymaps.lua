@@ -33,6 +33,11 @@ keymap.set('n', '<leader>gg', function()
   )
 end, { desc = 'Lazygit (root dir)' })
 
+-- Show notifications history
+keymap.set('n', '<leader>n', function()
+  Snacks.notifier.show_history()
+end, { desc = '[N]otifications' })
+
 -- Buffers
 keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })

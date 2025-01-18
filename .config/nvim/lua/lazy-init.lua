@@ -9,11 +9,39 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require('lazy').setup({
   spec = {
-    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-    { import = '/plugins' },
-    { import = '/plugins/languages' },
+    'tpope/vim-sleuth',
+    { import = 'plugins' },
+    { import = 'plugins.dap.core' },
+    { import = 'plugins.editor.aerial' },
+    { import = 'plugins.editor.fzf' },
+    { import = 'plugins.formatting.prettier' },
+    { import = 'plugins.languages.astro' },
+    { import = 'plugins.languages.docker' },
+    { import = 'plugins.languages.go' },
+    { import = 'plugins.languages.markdown' },
+    { import = 'plugins.languages.python' },
+    { import = 'plugins.languages.tailwind' },
+    { import = 'plugins.languages.typescript' },
+    { import = 'plugins.linting.eslint' },
+    { import = 'plugins.test.core' },
+    { import = 'plugins.ui.treesitter-context' },
+    { import = 'plugins.util.mini-hipatterns' },
   },
   defaults = {},
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        'gzip',
+        'tarPlugin',
+        'zipPlugin',
+        'netrwPlugin',
+        'matchit',
+        'matchparen',
+        'shada',
+        'spellfile',
+      },
+    },
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -35,5 +63,3 @@ require('lazy').setup({
     },
   },
 })
-
--- vim: ts=2 sts=2 sw=2 et

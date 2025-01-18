@@ -40,13 +40,12 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>c', group = 'Code', mode = { 'n', 'x' }, icon = { icon = '', color = 'green' } },
+        { '<leader>d', group = 'Debug', icon = { icon = '', color = 'red' } },
+        { '<leader>s', group = 'Search', icon = { icon = '', color = 'yellow' } },
+        { '<leader>f', group = 'Find', icon = { icon = '󰈞', color = 'yellow' } },
+        { '<leader>t', group = 'Test', icon = { icon = "󰙨", color = "purple" } },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' }, icon = { icon = "󰊢", color = "orange" } },
       },
     },
   },
