@@ -33,5 +33,5 @@ return {
     '#5ef1ff',
     '#ffffff',
   },
-  indexed = { [16] = '#ffbd5e', [17] = '#ff6e5e' },
+  indexed = { [16] = 'transparent', [17] = '#ff6e5e' },
 }

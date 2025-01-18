@@ -21,6 +21,7 @@ config.font_rules = {
 
 -- Colors
 config.colors = require 'cyberdream'
+
 -- Appearance
 config.cursor_blink_rate = 0
 config.window_decorations = 'RESIZE'
