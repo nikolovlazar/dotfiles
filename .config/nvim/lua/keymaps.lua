@@ -26,17 +26,17 @@ keymap.set('n', '<tab>', ':tabnext<Return>', opts)
 keymap.set('n', '<s-tab>', ':tabprev<Return>', opts)
 
 -- IncRename
-vim.keymap.set("n", "<leader>cr", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
-end, { desc = "LSP Rename", expr = true })
+vim.keymap.set('n', '<leader>cr', function()
+  return ':IncRename ' .. vim.fn.expand '<cword>'
+end, { desc = 'LSP Rename', expr = true })
 
 -- Borderless lazygit
-keymap.set('n', '<leader>gg', function()
-  Snacks.terminal.get(
-    'lazygit',
-    { esc_esc = false, ctrl_hjkl = false, border = 'none' }
-  )
-end, { desc = 'Lazygit (root dir)' })
+-- keymap.set('n', '<leader>gg', function()
+--   Snacks.terminal.get(
+--     'lazygit',
+--     { esc_esc = false, ctrl_hjkl = false, border = 'none' }
+--   )
+-- end, { desc = 'Lazygit (root dir)' })
 
 -- Show notifications history
 keymap.set('n', '<leader>n', function()
