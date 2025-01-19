@@ -1,31 +1,21 @@
 return {
-  recommended = true,
-  desc = 'Neotest support. Requires language specific adapters to be configured. (see lang extras)',
+  { 'nvim-neotest/neotest-plenary' },
   {
     'nvim-neotest/neotest',
-    dependencies = { 'nvim-neotest/nvim-nio' },
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-neotest/neotest-jest',
+      'marilari88/neotest-vitest',
+    },
     opts = {
-      -- Can be a list of adapters like what neotest expects,
-      -- or a list of adapter names,
-      -- or a table of adapter names, mapped to adapter configs.
-      -- The adapter will then be automatically loaded with the config.
-      adapters = {},
-      -- Example for loading neotest-golang with a custom config
-      -- adapters = {
-      --   ["neotest-golang"] = {
-      --     go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
-      --     dap_go_enabled = true,
-      --   },
-      -- },
+      adapters = {
+        'neotest-plenary',
+      },
       status = { virtual_text = true },
       output = { open_on_run = true },
       quickfix = {
         open = function()
-          if Utils.has 'trouble.nvim' then
-            require('trouble').open { mode = 'quickfix', focus = false }
-          else
-            vim.cmd 'copen'
-          end
+          require('trouble').open { mode = 'quickfix', focus = false }
         end,
       },
     },
@@ -34,7 +24,6 @@ return {
       vim.diagnostic.config({
         virtual_text = {
           format = function(diagnostic)
-            -- Replace newline and tab characters with space for more compact diagnostics
             local message = diagnostic.message
               :gsub('\n', ' ')
               :gsub('\t', ' ')
@@ -45,45 +34,43 @@ return {
         },
       }, neotest_ns)
 
-      if Utils.has 'trouble.nvim' then
-        opts.consumers = opts.consumers or {}
-        -- Refresh and auto close trouble after running tests
-        ---@type neotest.Consumer
-        opts.consumers.trouble = function(client)
-          client.listeners.results = function(adapter_id, results, partial)
-            if partial then
-              return
-            end
-            local tree =
-              assert(client:get_position(nil, { adapter = adapter_id }))
-
-            local failed = 0
-            for pos_id, result in pairs(results) do
-              if result.status == 'failed' and tree:get_key(pos_id) then
-                failed = failed + 1
-              end
-            end
-            vim.schedule(function()
-              local trouble = require 'trouble'
-              if trouble.is_open() then
-                trouble.refresh()
-                if failed == 0 then
-                  trouble.close()
-                end
-              end
-            end)
-            return {}
+      opts.consumers = opts.consumers or {}
+      -- Refresh and auto close trouble after running tests
+      ---@type neotest.Consumer
+      opts.consumers.trouble = function(client)
+        client.listeners.results = function(adapter_id, results, partial)
+          if partial then
+            return
           end
+          local tree =
+            assert(client:get_position(nil, { adapter = adapter_id }))
+
+          local failed = 0
+          for pos_id, result in pairs(results) do
+            if result.status == 'failed' and tree:get_key(pos_id) then
+              failed = failed + 1
+            end
+          end
+          vim.schedule(function()
+            local trouble = require 'trouble'
+            if trouble.is_open() then
+              trouble.refresh()
+              if failed == 0 then
+                trouble.close()
+              end
+            end
+          end)
         end
+        return {}
       end
 
-      if Utils.has 'overseer' then
-        opts.consumers = opts.consumers or {}
-        opts.consumers.overseer = require 'neotest.consumers.overseer'
-      end
+      opts.consumers.overseer = require 'neotest.consumers.overseer'
 
       if opts.adapters then
-        local adapters = {}
+        local adapters = {
+          require 'neotest-jest',
+          require 'neotest-vitest',
+        }
         for name, config in pairs(opts.adapters or {}) do
           if type(name) == 'number' then
             if type(config) == 'string' then
@@ -115,7 +102,6 @@ return {
     end,
     -- stylua: ignore
     keys = {
-      {"<leader>t", "", desc = "+test"},
       { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File (Neotest)" },
       { "<leader>tT", function() require("neotest").run.run(vim.uv.cwd()) end, desc = "Run All Test Files (Neotest)" },
       { "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest (Neotest)" },
