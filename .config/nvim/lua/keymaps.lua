@@ -2,11 +2,7 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
--- Exit terminal mode in the builtin terminal with a shortcut
-keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Split windows
 keymap.set('n', 'ss', ':vsplit<Return>', opts)
@@ -16,6 +12,7 @@ keymap.set('n', 'sv', ':split<Return>', opts)
 keymap.set('n', 'te', ':tabedit', opts)
 keymap.set('n', '<tab>', ':tabnext<Return>', opts)
 keymap.set('n', '<s-tab>', ':tabprev<Return>', opts)
+keymap.set('n', '<leader><tab>d', ':tabclose<Return>', opts)
 
 -- IncRename
 vim.keymap.set('n', '<leader>cr', function()
@@ -32,18 +29,6 @@ keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
-keymap.set(
-  'n',
-  '<leader>bb',
-  '<cmd>e #<cr>',
-  { desc = 'Switch to Other Buffer' }
-)
-keymap.set(
-  'n',
-  '<leader>`',
-  '<cmd>e #<cr>',
-  { desc = 'Switch to Other Buffer' }
-)
 keymap.set('n', '<leader>bd', function()
   Snacks.bufdelete()
 end, { desc = 'Delete Buffer' })
