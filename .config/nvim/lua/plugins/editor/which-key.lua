@@ -63,25 +63,39 @@ return {
           icon = { icon = '', color = 'red' },
         },
         {
-          '<leader>s',
-          group = 'Search',
-          icon = { icon = '', color = 'yellow' },
-        },
-        {
           '<leader>f',
           group = 'Find',
           icon = { icon = '󰈞', color = 'yellow' },
         },
         {
+          '<leader>g',
+          group = 'Git',
+          icon = { icon = '󰊢', color = 'orange' },
+        },
+        {
+          '<leader>gb',
+          group = 'Buff/Blame',
+          icon = { icon = '󰊢', color = 'orange' },
+        },
+        {
+          '<leader>gd',
+          group = 'Diff/Deleted',
+          icon = { icon = '󰊢', color = 'orange' },
+        },
+        {
+          '<leader>gh',
+          group = 'Hunks',
+          icon = { icon = '󰊢', color = 'orange' },
+        },
+        {
+          '<leader>s',
+          group = 'Search',
+          icon = { icon = '', color = 'yellow' },
+        },
+        {
           '<leader>t',
           group = 'Test',
           icon = { icon = '󰙨', color = 'purple' },
-        },
-        {
-          '<leader>h',
-          group = 'Git [H]unk',
-          mode = { 'n', 'v' },
-          icon = { icon = '󰊢', color = 'orange' },
         },
         {
           'gz',

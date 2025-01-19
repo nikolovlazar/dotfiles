@@ -5,14 +5,6 @@ local opts = { noremap = true, silent = true }
 --  See `:help hlsearch`
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
-keymap.set(
-  'n',
-  '<leader>q',
-  vim.diagnostic.setloclist,
-  { desc = 'Open diagnostic [Q]uickfix list' }
-)
-
 -- Exit terminal mode in the builtin terminal with a shortcut
 keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
@@ -30,18 +22,10 @@ vim.keymap.set('n', '<leader>cr', function()
   return ':IncRename ' .. vim.fn.expand '<cword>'
 end, { desc = 'LSP Rename', expr = true })
 
--- Borderless lazygit
--- keymap.set('n', '<leader>gg', function()
---   Snacks.terminal.get(
---     'lazygit',
---     { esc_esc = false, ctrl_hjkl = false, border = 'none' }
---   )
--- end, { desc = 'Lazygit (root dir)' })
-
 -- Show notifications history
 keymap.set('n', '<leader>n', function()
   Snacks.notifier.show_history()
-end, { desc = '[N]otifications' })
+end, { desc = 'Notifications' })
 
 -- Buffers
 keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
