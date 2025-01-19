@@ -3,6 +3,7 @@ return {
     'folke/which-key.nvim',
     event = 'VimEnter',
     opts = {
+      preset = 'helix',
       delay = 0,
       icons = {
         mappings = vim.g.have_nerd_font,
@@ -76,6 +77,12 @@ return {
           group = 'Git [H]unk',
           mode = { 'n', 'v' },
           icon = { icon = '󰊢', color = 'orange' },
+        },
+        {
+          'gz',
+          group = 'Surround',
+          mode = { 'n', 'v' },
+          icon = { icon = '', color = 'red' },
         },
       },
     },
