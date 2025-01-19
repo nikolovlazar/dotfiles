@@ -47,6 +47,11 @@ return {
           icon = { icon = '󱚦', color = 'cyan' },
         },
         {
+          '<leader>b',
+          group = 'Buffers',
+          icon = { icon = '', color = 'yellow' },
+        },
+        {
           '<leader>c',
           group = 'Code',
           mode = { 'n', 'x' },
