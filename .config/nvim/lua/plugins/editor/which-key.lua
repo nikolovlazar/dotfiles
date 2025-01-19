@@ -88,6 +88,11 @@ return {
           icon = { icon = '󰊢', color = 'orange' },
         },
         {
+          '<leader>o',
+          group = 'Overseer',
+          icon = { icon = '', color = 'red' },
+        },
+        {
           '<leader>s',
           group = 'Search',
           icon = { icon = '', color = 'yellow' },

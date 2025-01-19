@@ -77,6 +77,11 @@ return {
         end
       end
 
+      if Utils.has 'overseer' then
+        opts.consumers = opts.consumers or {}
+        opts.consumers.overseer = require 'neotest.consumers.overseer'
+      end
+
       if opts.adapters then
         local adapters = {}
         for name, config in pairs(opts.adapters or {}) do
