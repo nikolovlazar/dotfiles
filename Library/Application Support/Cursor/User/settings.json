@@ -1,0 +1,182 @@
+{
+  "editor.fontFamily": "DankMono Nerd Font, Input Mono, SF Mono, monospace",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.tabSize": 2,
+  "editor.quickSuggestions": {
+    "comments": "on",
+    "strings": "on",
+    "other": "on"
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.fontSize": 18,
+  "editor.lineHeight": 32,
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabCompletion": "on",
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.arrowParens": "always",
+  "javascript.validate.enable": false,
+  "editor.linkedEditing": true,
+  "editor.links": true,
+  "editor.minimap.renderCharacters": false,
+  "explorer.openEditors.visible": 1,
+  "editor.wordBasedSuggestions": "off",
+  "editor.quickSuggestionsDelay": 1000000,
+  "editor.parameterHints.enabled": true,
+  "workbench.iconTheme": "vscode-icons",
+  "files.trimTrailingWhitespace": true,
+  "editor.fontWeight": "300",
+  "editor.cursorWidth": 5,
+  "git.confirmSync": false,
+  "terminal.external.osxExec": "Warp.app",
+  "git.enableSmartCommit": true,
+  "terminal.integrated.fontFamily": "DankMono Nerd Font, Input Mono, SF Mono, monospace",
+  "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.env.osx": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "explorer.confirmDelete": false,
+  "editor.matchBrackets": "always",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "git.autofetch": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.suggestSelection": "first",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "liveshare.presence": true,
+  "css.validate": false,
+  "editor.largeFileOptimizations": false,
+  "editor.letterSpacing": 0.3,
+  "editor.renderWhitespace": "none",
+  "extensions.ignoreRecommendations": true,
+  "emmet.excludeLanguages": ["markdown"],
+  "emmet.showExpandedAbbreviation": "never",
+  "markdown.extension.list.indentationSize": "inherit",
+  "prettier.jsxSingleQuote": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.showExitAlert": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "line-thin",
+  "terminal.integrated.cursorStyle": "line",
+  "editor.rulers": [80],
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+  "dart.openDevTools": "flutter",
+  "markdown.extension.toc.levels": "2..6",
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "screencastMode.fontSize": 32,
+  "screencastMode.mouseIndicatorSize": 40,
+  "screencastMode.verticalOffset": 10,
+  "screencastMode.mouseIndicatorColor": "#805AD5",
+  "zenMode.centerLayout": false,
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "workbench.preferredDarkColorTheme": "Aura Dark",
+  "workbench.preferredHighContrastColorTheme": "Aura Dark",
+  "window.autoDetectHighContrast": false,
+  "search.defaultViewMode": "tree",
+  "editor.guides.bracketPairs": "active",
+  "git.openRepositoryInParentFolders": "never",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vim.leader": "<space>",
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "editor.lineNumbers": "on",
+  "editor.accessibilitySupport": "off",
+  "application.shellEnvironmentResolutionTimeout": 30,
+  "workbench.colorTheme": "Aura Dark",
+  "redhat.telemetry.enabled": true,
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "window.zoomLevel": 1,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.editor.empty.hint": "hidden",
+  "git.ignoreRebaseWarning": true,
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  "terminal.integrated.enableVisualBell": true,
+  "workbench.editor.customLabels.patterns": {
+    "**/{layout,page}.tsx": "${dirname} ${filename}"
+  },
+  "editor.minimap.enabled": false,
+  "vim.easymotion": true,
+  "terminal.integrated.fontSize": 14,
+  "vim.enableNeovim": false,
+  "vim.foldfix": true,
+  "vim.neovimPath": "/opt/homebrew/bin/nvim",
+  "vim.neovimUseConfigFile": true,
+  "vim.neovimConfigPath": "~/dotfiles/.config/nvim/init.lua",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "prisma.showPrismaDataPlatformNotification": false,
+  "vim.smartRelativeLine": true,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "cursor.cpp.disabledLanguages": ["yaml", "plaintext", "markdown"],
+  "workbench.activityBar.orientation": "vertical",
+  "cursor.chat.alwaysSearchWeb": true,
+  "glassit.alpha": 200,
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000"
+  },
+  "workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
+  "vscode_vibrancy.opacity": 0.3,
+  "vscode_vibrancy.enableAutoTheme": true,
+  "vscode_vibrancy.refreshInterval": 150,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "zenMode.showTabs": "none",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "breadcrumbs.enabled": false,
+  "workbench.sideBar.location": "right"
+}
