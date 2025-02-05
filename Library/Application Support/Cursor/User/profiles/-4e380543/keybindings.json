@@ -206,8 +206,8 @@
   // Debug
   {
     "key": "space d a",
-    "command": "workbench.action.debug.start",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && debuggersAvailable && debugState == 'inactive'"
+    "command": "workbench.action.debug.selectandstart",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && debuggersAvailable"
   },
   {
     "key": "space d t",
@@ -217,7 +217,7 @@
   {
     "key": "space d o",
     "command": "workbench.action.debug.stepOver",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && debugState == 'stopped'"
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && inDebugMode && debugState == 'stopped'"
   },
   {
     "key": "space d b",
@@ -228,5 +228,10 @@
     "key": "space d e",
     "command": "editor.debug.action.showDebugHover",
     "when": "vim.mode == 'Normal' && editorTextFocus && inDebugMode && debugState == 'stopped'"
+  },
+  {
+    "key": "space d c",
+    "command": "workbench.action.debug.continue",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && inDebugMode && debugState == 'stopped'"
   }
 ]
