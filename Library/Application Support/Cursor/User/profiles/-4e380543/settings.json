@@ -8,8 +8,8 @@
     "other": "on"
   },
   "editor.suggestOnTriggerCharacters": true,
-  "editor.fontSize": 18,
-  "editor.lineHeight": 32,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 24,
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -165,7 +165,6 @@
   "window.commandCenter": false,
   "breadcrumbs.enabled": false,
   "editor.stickyScroll.enabled": false,
-  "workbench.editor.showTabs": "none",
   "vim.cursorStylePerMode.insert": "line-thin",
   "vim.cursorStylePerMode.normal": "block",
   "vim.cursorStylePerMode.replace": "block-outline",
@@ -177,5 +176,6 @@
     "<C-s>": false,
     "<C-z>": false
   },
-  "workbench.iconTheme": "vscode-icons"
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.editor.showTabs": "none"
 }
