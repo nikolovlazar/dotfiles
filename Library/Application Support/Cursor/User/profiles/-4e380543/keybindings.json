@@ -103,7 +103,7 @@
   {
     "key": "space b d",
     "command": "workbench.action.closeActiveEditor",
-    "when": "vim.mode == 'Normal'"
+    "when": "(vim.mode == 'Normal' && editorTextFocus) || !inputFocus"
   },
   {
     "key": "space space",
@@ -201,5 +201,22 @@
     "key": "enter",
     "command": "list.toggleExpand",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && explorerResourceIsFolder && !inputFocus"
+  },
+
+  // Debug
+  {
+    "key": "space d a",
+    "command": "workbench.action.debug.start",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && debuggersAvailable && debugState == 'inactive'"
+  },
+  {
+    "key": "space d o",
+    "command": "workbench.action.debug.stepOver",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && debugState == 'stopped'"
+  },
+  {
+    "key": "space d b",
+    "command": "editor.debug.action.toggleBreakpoint",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
   }
 ]
