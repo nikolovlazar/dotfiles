@@ -15,6 +15,7 @@ return {
         'markdown',
         'markdown_inline',
         'query',
+        'typescript',
         'vim',
         'vimdoc',
         'ninja',

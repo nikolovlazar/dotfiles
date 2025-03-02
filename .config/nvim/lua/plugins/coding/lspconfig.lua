@@ -183,6 +183,12 @@ return {
         require('cmp_nvim_lsp').default_capabilities()
       )
 
+      -- Folding capabilities required by ufo.nvim
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --

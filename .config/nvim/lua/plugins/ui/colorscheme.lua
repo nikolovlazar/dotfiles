@@ -5,6 +5,7 @@ return {
     priority = 1000,
     config = function()
       vim.cmd [[colorscheme nightwolf]]
+      vim.api.nvim_set_hl(0, 'FoldColumn', { fg = '#9696ff' })
     end,
   },
   -- {
