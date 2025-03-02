@@ -6,7 +6,7 @@ return {
       { 'kevinhwang91/promise-async' },
       {
         'luukvbaal/statuscol.nvim',
-        config = function()
+        config = function(opts)
           local builtin = require 'statuscol.builtin'
           require('statuscol').setup {
             -- foldfunc = 'builtin',
@@ -23,7 +23,7 @@ return {
     },
     config = function()
       -- Fold options
-      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
       vim.o.foldcolumn = '1' -- '0' is not bad
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
