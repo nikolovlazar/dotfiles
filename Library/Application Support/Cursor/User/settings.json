@@ -98,7 +98,7 @@
   "css.validate": false,
   "editor.largeFileOptimizations": false,
   "editor.letterSpacing": 0.3,
-  "editor.renderWhitespace": "boundary",
+  "editor.renderWhitespace": "none",
   "extensions.ignoreRecommendations": true,
   "emmet.excludeLanguages": ["markdown"],
   "emmet.showExpandedAbbreviation": "never",
@@ -156,12 +156,7 @@
   "cursor.cpp.disabledLanguages": ["yaml", "plaintext", "markdown"],
   "workbench.activityBar.orientation": "vertical",
   "cursor.chat.alwaysSearchWeb": true,
-  "workbench.activityBar.location": "hidden",
   "workbench.editor.editorActionsLocation": "hidden",
-  "workbench.layoutControl.enabled": false,
-  "window.commandCenter": false,
-  "breadcrumbs.enabled": false,
-  "editor.stickyScroll.enabled": false,
   "vim.cursorStylePerMode.insert": "line-thin",
   "vim.cursorStylePerMode.normal": "block",
   "vim.cursorStylePerMode.replace": "block-outline",
@@ -174,7 +169,16 @@
     "<C-z>": false
   },
   "workbench.iconTheme": "vscode-icons",
-  "workbench.editor.showTabs": "none",
   "vsicons.dontShowNewVersionMessage": true,
-  "window.newWindowProfile": "Default"
+  "window.newWindowProfile": "Default",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "workbench.statusBar.visible": false,
+  "workbench.activityBar.location": "top",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "breadcrumbs.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.stickyScroll.enabled": false
 }
