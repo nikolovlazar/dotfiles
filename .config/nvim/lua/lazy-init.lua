@@ -22,7 +22,6 @@ require('lazy').setup({
     { import = 'plugins.editor.fzf' },
     { import = 'plugins.editor.gitsigns' },
     { import = 'plugins.editor.grug-far' },
-    { import = 'plugins.editor.indent-line' },
     { import = 'plugins.editor.lazygit' },
     { import = 'plugins.editor.leap' },
     { import = 'plugins.editor.mini' },

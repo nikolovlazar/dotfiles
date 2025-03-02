@@ -1,6 +1,5 @@
 local wezterm = require 'wezterm'
 local commands = require 'commands'
-local constants = require 'constants'
 
 local config = wezterm.config_builder()
 
@@ -20,7 +19,7 @@ config.font_rules = {
 }
 
 -- Colors
-config.colors = require 'cyberdream'
+config.colors = require 'nightwolf'
 
 -- Appearance
 config.cursor_blink_rate = 0
@@ -32,7 +31,6 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
-config.window_background_image = constants.bg_image
 config.macos_window_background_blur = 40
 
 -- Miscellaneous settings
