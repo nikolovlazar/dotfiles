@@ -1,7 +1,7 @@
 -- cyberdream theme for wezterm
 return {
   foreground = '#ffffff',
-  background = '#16181a',
+  background = '#000000',
 
   cursor_bg = '#ffffff',
   cursor_fg = '#16181a',

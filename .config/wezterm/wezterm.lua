@@ -19,7 +19,7 @@ config.font_rules = {
 }
 
 -- Colors
-config.colors = require 'nightwolf'
+config.colors = require 'cyberdream'
 
 -- Appearance
 config.cursor_blink_rate = 0
