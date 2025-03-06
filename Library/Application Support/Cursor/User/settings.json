@@ -145,9 +145,6 @@
     "sound": "on"
   },
   "terminal.integrated.enableVisualBell": true,
-  "workbench.editor.customLabels.patterns": {
-    "**/{layout,page}.tsx": "${dirname} ${filename}"
-  },
   "editor.minimap.enabled": false,
   "terminal.integrated.fontSize": 14,
   "extensions.experimental.affinity": {
@@ -157,6 +154,9 @@
   "workbench.activityBar.orientation": "vertical",
   "cursor.chat.alwaysSearchWeb": true,
   "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "editor.stickyScroll.enabled": false,
   "vim.cursorStylePerMode.insert": "line-thin",
   "vim.cursorStylePerMode.normal": "block",
   "vim.cursorStylePerMode.replace": "block-outline",
@@ -171,14 +171,7 @@
   "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
   "window.newWindowProfile": "Default",
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
-  "workbench.statusBar.visible": false,
+  "cursor.aipreview.enabled": true,
   "workbench.activityBar.location": "top",
-  "workbench.layoutControl.enabled": false,
-  "window.commandCenter": false,
-  "breadcrumbs.enabled": false,
-  "editor.renderControlCharacters": false,
-  "editor.stickyScroll.enabled": false
+  "workbench.editor.editorActionsLocation": "hidden"
 }

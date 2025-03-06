@@ -103,7 +103,7 @@
   {
     "key": "space space",
     "command": "workbench.action.quickOpen",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' && editorTextFocus) || !inputFocus"
   },
   {
     "key": "space g d",
