@@ -57,3 +57,8 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 PATH=~/.console-ninja/.bin:$PATH
+export PATH="$HOME/.local/share/sentry-devenv/bin:$PATH"
+
+
+eval "$(direnv hook zsh)"
+
