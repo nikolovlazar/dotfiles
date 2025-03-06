@@ -6,14 +6,27 @@ local config = wezterm.config_builder()
 -- Font settings
 config.font_size = 19
 config.line_height = 1.2
-config.font = wezterm.font 'DankMono Nerd Font'
+config.font = wezterm.font {
+  family = 'Monaspace Neon',
+  harfbuzz_features = {
+    'calt',
+    'ss01',
+    'ss02',
+    'ss03',
+    'ss04',
+    'ss05',
+    'ss06',
+    'ss07',
+    'ss08',
+    'ss09',
+    'liga',
+  },
+}
 config.font_rules = {
   {
     italic = true,
-    intensity = 'Bold',
-    font = wezterm.font('DankMono Nerd Font', {
+    font = wezterm.font('Monaspace Radon', {
       italic = true,
-      weight = 'Regular',
     }),
   },
 }
