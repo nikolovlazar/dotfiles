@@ -3,8 +3,12 @@ vim.opt.cmdheight = 0
 
 -- Make line numbers default
 vim.opt.number = true
+
 -- Relative numbers
 vim.opt.relativenumber = true
+
+-- Disable wrap
+vim.wo.wrap = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
