@@ -172,6 +172,9 @@
   "vsicons.dontShowNewVersionMessage": true,
   "window.newWindowProfile": "Default",
   "cursor.aipreview.enabled": true,
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
   "workbench.activityBar.location": "top",
   "workbench.editor.editorActionsLocation": "hidden"
 }
