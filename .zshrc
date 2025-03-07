@@ -57,8 +57,10 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 PATH=~/.console-ninja/.bin:$PATH
-export PATH="$HOME/.local/share/sentry-devenv/bin:$PATH"
 
-
-eval "$(direnv hook zsh)"
+# check if direnv exists before executing it
+if command -v direnv &> /dev/null; then
+  export PATH="$HOME/.local/share/sentry-devenv/bin:$PATH"
+  eval "$(direnv hook zsh)"
+fi
 
