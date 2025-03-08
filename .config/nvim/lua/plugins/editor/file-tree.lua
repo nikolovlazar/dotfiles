@@ -59,6 +59,40 @@ return {
     config = function(_, opts)
       local nvimtree = require 'nvim-tree'
 
+      local function keybindings(bufnr)
+        local api = require 'nvim-tree.api'
+
+        local function ops(desc)
+          return {
+            desc = 'nvim-tree: ' .. desc,
+            buffer = bufnr,
+            noremap = true,
+            silent = true,
+            nowait = true,
+          }
+        end
+
+        -- default mappings
+        api.config.mappings.default_on_attach(bufnr)
+
+        -- custom mappings
+        vim.keymap.set('n', 'p', api.node.open.preview, ops 'Preview')
+        vim.keymap.set(
+          'n',
+          's',
+          api.node.open.vertical_no_picker,
+          ops 'Open Horizontal'
+        )
+        vim.keymap.set(
+          'n',
+          'v',
+          api.node.open.horizontal_no_picker,
+          ops 'Open Vertical'
+        )
+      end
+
+      opts.on_attach = keybindings
+
       nvimtree.setup(opts)
 
       local function open_tree_on_setup(args)
