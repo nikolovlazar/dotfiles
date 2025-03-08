@@ -66,8 +66,11 @@ return {
     -- optional for icon support
     dependencies = { 'echasnovski/mini.icons' },
     opts = {
+      files = {
+        fd_opts = '--color=never --type f --hidden --no-ignore --follow --exclude .git --exclude node_modules',
+      },
       grep = {
-        rg_opts = "--column --line-number --hidden --glob '!.git/*' --glob '!node_modules/*'",
+        rg_opts = "--column --line-number --hidden --no-ignore --glob '!.git/*' --glob '!node_modules/*'",
       },
     },
     keys = {
