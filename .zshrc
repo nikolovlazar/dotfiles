@@ -53,6 +53,9 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # sst
 export PATH=/Users/lazarnikolov/.sst/bin:$PATH
 
+# asdf shims
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
