@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 config.font_size = 19
 config.line_height = 1.2
 config.font = wezterm.font {
-  family = 'Monaspace Neon',
+  family = 'Monaspace Neon Var',
   harfbuzz_features = {
     'calt',
     'ss01',
@@ -25,7 +25,7 @@ config.font = wezterm.font {
 config.font_rules = {
   {
     italic = true,
-    font = wezterm.font('Monaspace Radon', {
+    font = wezterm.font('Monaspace Radon Var', {
       italic = true,
     }),
   },
