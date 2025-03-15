@@ -4,7 +4,7 @@ return {
     'nvim-neotest/neotest',
     dependencies = {
       'nvim-neotest/nvim-nio',
-      'nvim-neotest/neotest-jest',
+      -- 'nvim-neotest/neotest-jest',
       'marilari88/neotest-vitest',
     },
     opts = {
@@ -68,7 +68,7 @@ return {
 
       if opts.adapters then
         local adapters = {
-          require 'neotest-jest',
+          -- require 'neotest-jest',
           require 'neotest-vitest',
         }
         for name, config in pairs(opts.adapters or {}) do
