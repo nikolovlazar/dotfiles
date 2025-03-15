@@ -76,7 +76,7 @@ return {
         api.config.mappings.default_on_attach(bufnr)
 
         -- custom mappings
-        vim.keymap.set('n', 'p', api.node.open.preview, ops 'Preview')
+        vim.keymap.set('n', 'P', api.node.open.preview, ops 'Preview')
         vim.keymap.set(
           'n',
           's',
@@ -85,7 +85,7 @@ return {
         )
         vim.keymap.set(
           'n',
-          'v',
+          'S',
           api.node.open.horizontal_no_picker,
           ops 'Open Vertical'
         )
