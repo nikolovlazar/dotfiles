@@ -36,12 +36,15 @@ local kind_filter = {
 local get_kind_filter = function(buf)
   buf = (buf == nil or buf == 0) and vim.api.nvim_get_current_buf() or buf
   local ft = vim.bo[buf].filetype
+
   if kind_filter[ft] == false then
     return
   end
+
   if type(kind_filter[ft]) == 'table' then
     return kind_filter[ft]
   end
+
   ---@diagnostic disable-next-line: return-type-mismatch
   return type(kind_filter) == 'table'
       and type(kind_filter.default) == 'table'
