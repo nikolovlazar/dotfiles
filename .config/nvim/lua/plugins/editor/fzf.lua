@@ -16,7 +16,6 @@ local kind_filter = {
   },
   markdown = false,
   help = false,
-  -- you can specify a different filter for each filetype
   lua = {
     'Class',
     'Constructor',
@@ -63,7 +62,6 @@ end
 return {
   {
     'ibhagwan/fzf-lua',
-    -- optional for icon support
     dependencies = { 'echasnovski/mini.icons' },
     opts = {
       files = {
