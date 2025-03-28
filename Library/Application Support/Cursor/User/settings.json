@@ -153,9 +153,6 @@
   "cursor.cpp.disabledLanguages": ["yaml", "plaintext", "markdown"],
   "workbench.activityBar.orientation": "vertical",
   "cursor.chat.alwaysSearchWeb": true,
-  "workbench.editor.editorActionsLocation": "hidden",
-  "workbench.layoutControl.enabled": false,
-  "window.commandCenter": false,
   "editor.stickyScroll.enabled": false,
   "vim.cursorStylePerMode.insert": "line-thin",
   "vim.cursorStylePerMode.normal": "block",
@@ -175,6 +172,7 @@
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
-  "workbench.activityBar.location": "top",
-  "workbench.editor.editorActionsLocation": "hidden"
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.navigationControl.enabled": false,
+  "workbench.layoutControl.enabled": false
 }
