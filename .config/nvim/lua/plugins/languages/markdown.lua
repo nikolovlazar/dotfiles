@@ -58,6 +58,9 @@ return {
       checkbox = {
         enabled = false,
       },
+      latex = {
+        enabled = false,
+      },
     },
     ft = { 'markdown', 'norg', 'rmd', 'org', 'markdown.mdx' },
     config = function(_, opts)

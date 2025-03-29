@@ -147,13 +147,13 @@ return {
     'neovim/nvim-lspconfig',
     opts = function()
       -- stylua: ignore
-      vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions     jump_to_single_result=true ignore_current_line=true<cr>', { desc = "Goto Definition" })
+      vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions     jump_to_single_result=true silent=true ignore_current_line=true<cr>', { desc = "Goto Definition" })
       -- stylua: ignore
-      vim.keymap.set('n', 'gr', '<cmd>FzfLua lsp_references      jump_to_single_result=true ignore_current_line=true<cr>', { desc = "References", nowait = true })
+      vim.keymap.set('n', 'gr', '<cmd>FzfLua lsp_references      jump_to_single_result=true silent=true ignore_current_line=true<cr>', { desc = "References", nowait = true })
       -- stylua: ignore
-      vim.keymap.set('n', 'gI', '<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>', { desc = "Goto Implementation" })
+      vim.keymap.set('n', 'gI', '<cmd>FzfLua lsp_implementations jump_to_single_result=true silent=true ignore_current_line=true<cr>', { desc = "Goto Implementation" })
       -- stylua: ignore
-      vim.keymap.set('n', 'gy', '<cmd>FzfLua lsp_typedefs        jump_to_single_result=true ignore_current_line=true<cr>', { desc = "Goto Type Definitions" })
+      vim.keymap.set('n', 'gy', '<cmd>FzfLua lsp_typedefs        jump_to_single_result=true silent=true ignore_current_line=true<cr>', { desc = "Goto Type Definitions" })
     end,
   },
 }
