@@ -19,22 +19,30 @@ vim.keymap.set('n', '<leader>cr', function()
   return ':IncRename ' .. vim.fn.expand '<cword>'
 end, { desc = 'LSP Rename', expr = true })
 
--- Show notifications history
-keymap.set('n', '<leader>n', function()
-  Snacks.notifier.show_history()
-end, { desc = 'Notifications' })
+-- Buffer functions
+local function delete_other_buffers()
+  local current_buf = vim.api.nvim_get_current_buf()
+  local buffers = vim.api.nvim_list_bufs()
+
+  for _, buf in ipairs(buffers) do
+    if buf ~= current_buf and vim.api.nvim_buf_is_loaded(buf) then
+      vim.api.nvim_buf_delete(buf, {})
+    end
+  end
+end
 
 -- Buffers
 keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
-keymap.set('n', '<leader>bd', function()
-  Snacks.bufdelete()
-end, { desc = 'Delete Buffer' })
-keymap.set('n', '<leader>bo', function()
-  Snacks.bufdelete.other()
-end, { desc = 'Delete Other Buffers' })
+keymap.set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Delete Buffer' })
+keymap.set(
+  'n',
+  '<leader>bo',
+  delete_other_buffers,
+  { desc = 'Delete Other Buffers' }
+)
 keymap.set(
   'n',
   '<leader>bD',

@@ -27,7 +27,6 @@ require('lazy').setup({
     { import = 'plugins.editor.mini' },
     { import = 'plugins.editor.file-tree' },
     { import = 'plugins.editor.overseer' },
-    { import = 'plugins.editor.snacks' },
     { import = 'plugins.editor.tmux' },
     { import = 'plugins.editor.ufo' },
     { import = 'plugins.editor.which-key' },
