@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm'
-local constants = require 'constants'
+-- local constants = require 'constants'
 
 local command = {
   brief = 'Toggle terminal transparency',
@@ -12,10 +12,10 @@ local command = {
       or overrides.window_background_opacity == 1
     then
       overrides.window_background_opacity = 0.8
-      overrides.window_background_image = ''
+      -- overrides.window_background_image = ''
     else
       overrides.window_background_opacity = 1
-      overrides.window_background_image = constants.bg_image
+      -- overrides.window_background_image = constants.bg_image
     end
 
     window:set_config_overrides(overrides)
