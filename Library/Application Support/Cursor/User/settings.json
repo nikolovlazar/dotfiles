@@ -71,6 +71,7 @@
   "explorer.confirmDelete": false,
   "editor.matchBrackets": "always",
   "workbench.editor.highlightModifiedTabs": true,
+  "workbench.hover.delay": null,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "git.autofetch": true,
   "[json]": {
