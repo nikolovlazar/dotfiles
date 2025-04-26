@@ -14,10 +14,10 @@ keymap.set('n', '<tab>', ':tabnext<Return>', opts)
 keymap.set('n', '<s-tab>', ':tabprev<Return>', opts)
 keymap.set('n', '<leader><tab>d', ':tabclose<Return>', opts)
 
--- IncRename
+-- LSP Rename
 vim.keymap.set('n', '<leader>cr', function()
-  return ':IncRename ' .. vim.fn.expand '<cword>'
-end, { desc = 'LSP Rename', expr = true })
+  vim.lsp.buf.rename()
+end, { expr = true, desc = 'LSP Rename' })
 
 -- Buffer functions
 local function delete_other_buffers()

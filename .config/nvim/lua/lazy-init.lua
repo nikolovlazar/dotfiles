@@ -13,7 +13,6 @@ require('lazy').setup({
     { import = 'plugins.coding.ai' },
     { import = 'plugins.coding.autopairs' },
     { import = 'plugins.coding.cmp' },
-    { import = 'plugins.coding.inc-rename' },
     { import = 'plugins.coding.lspconfig' },
     { import = 'plugins.coding.todo-comments' },
     { import = 'plugins.coding.treesitter' },
