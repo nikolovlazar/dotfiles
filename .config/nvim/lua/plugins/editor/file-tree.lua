@@ -50,10 +50,18 @@ return {
           enable = false,
         },
         root_folder_label = ':t',
+        highlight_git = true,
       },
       filters = {
-        dotfiles = true,
+        dotfiles = false,
         git_ignored = false,
+        git_clean = false,
+        no_buffer = false,
+      },
+      git = {
+        enable = true,
+        ignore = false,
+        timeout = 400,
       },
     },
     config = function(_, opts)
