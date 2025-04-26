@@ -6,6 +6,7 @@ return {
       'nvim-neotest/nvim-nio',
       -- 'nvim-neotest/neotest-jest',
       'marilari88/neotest-vitest',
+      'V13Axel/neotest-pest',
     },
     opts = {
       adapters = {
@@ -70,6 +71,7 @@ return {
         local adapters = {
           -- require 'neotest-jest',
           require 'neotest-vitest',
+          require 'neotest-pest',
         }
         for name, config in pairs(opts.adapters or {}) do
           if type(name) == 'number' then
