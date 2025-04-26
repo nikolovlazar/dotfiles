@@ -27,8 +27,6 @@ return {
         "json-lsp",
         "lua-language-server",
         "markdown-toc",
-        "markdownlint",
-        "markdownlint-cli2",
         "marksman",
         "neocmakelsp",
         "prettier",
