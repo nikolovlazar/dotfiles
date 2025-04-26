@@ -20,7 +20,7 @@ function route_info_provider:boot(app)
         {
           { indent .. '  ', '@comment' },
           { table.concat(route.methods, '|'), 'RouteInfoMethod' },
-          { ' /', '@string' },
+          { ' /', 'RouteInfoPath' },
           { route.uri, 'RouteInfoPath' },
           { ', Middleware: [', 'comment' },
           {
