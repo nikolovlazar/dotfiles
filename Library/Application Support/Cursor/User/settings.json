@@ -175,5 +175,8 @@
   },
   "workbench.editor.editorActionsLocation": "hidden",
   "workbench.navigationControl.enabled": false,
-  "workbench.layoutControl.enabled": false
+  "workbench.layoutControl.enabled": false,
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  }
 }
