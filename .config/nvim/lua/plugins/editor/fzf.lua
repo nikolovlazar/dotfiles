@@ -68,7 +68,7 @@ return {
     dependencies = { 'echasnovski/mini.icons' },
     opts = {
       files = {
-        fd_opts = '--color=never --type f --hidden --follow --glob "**/.env*"',
+        fd_opts = '--color=never --type f --hidden --follow',
       },
       grep = {
         rg_opts = '--column --line-number --hidden',
