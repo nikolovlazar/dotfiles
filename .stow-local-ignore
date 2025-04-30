@@ -2,3 +2,4 @@ README.md
 .git
 .gitignore
 Library/Application\ Support/Cursor/User/profiles/*+/globalStorage
+.config/old-lazy-nvim-conf

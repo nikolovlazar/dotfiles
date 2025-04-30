@@ -1,0 +1,185 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# : Manager {{{
+
+[manager]
+cwd = { fg = "#7aa2f7" }  # Blue
+
+# Hovered
+hovered         = { reversed = true }
+preview_hovered = { underline = true }
+
+# Find
+find_keyword  = { fg = "#f7768e", bold = true, italic = true, underline = true }  # Red
+find_position = { fg = "#bb9af7", bg = "reset", bold = true, italic = true }  # Magenta
+
+# Marker
+marker_copied   = { fg = "#9ece6a", bg = "#9ece6a" }  # Green
+marker_cut      = { fg = "#e0af68", bg = "#f7768e" }  # Red
+marker_marked   = { fg = "#7aa2f7", bg = "#7dcfff" }  # Cyan
+marker_selected = { fg = "#e0af68", bg = "#e0af68" }  # Yellow
+
+# Tab
+tab_active = { bg = "#282C34", fg = "#7aa2f7" }  # Darkened background, Blue text
+tab_inactive = {}
+tab_width    = 1
+
+# Count
+count_copied   = { fg = "#414868", bg = "#9ece6a" }  # Darkened black on Green
+count_cut      = { fg = "#414868", bg = "#e0af68" }  # Darkened black on Yellow
+count_selected = { fg = "#414868", bg = "#7aa2f7" }  # Darkened black on Blue
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#414868" }  # Darkened black
+
+# : }}}
+
+
+# : Mode {{{
+
+[mode]
+
+normal_main = { fg = "#414868", bg = "#7aa2f7", bold = true }  # Darkened black on Blue
+normal_alt  = { fg = "#7aa2f7", bg = "#414868" }  # Blue on Darkened black
+
+# Select mode
+select_main = { fg = "#414868", bg = "#9ece6a", bold = true }  # Darkened black on Green
+select_alt  = { fg = "#7aa2f7", bg = "#414868" }  # Blue on Darkened black
+
+# Unset mode
+unset_main = { fg = "#414868", bg = "#bb9af7", bold = true }  # Darkened black on Magenta
+unset_alt  = { fg = "#7aa2f7", bg = "#414868" }  # Blue on Darkened black
+
+# : }}}
+
+
+# : Status bar {{{
+
+[status]
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+separator_style = { fg = "#414868", bg = "#414868" }  # Blue on Darkened black
+
+
+# Progress
+progress_label  = { fg = "#a9b1d6", bold = true }  # White
+progress_normal = { fg = "#7aa2f7", bg = "#414868" }  # Blue on Darkened black
+progress_error  = { fg = "#f7768e", bg = "#414868" }  # Red on Darkened black
+
+# Permissions
+perm_sep   = { fg = "#7aa2f7" }  # Blue
+perm_type  = { fg = "#9ece6a" }  # Green
+perm_read  = { fg = "#e0af68" }  # Yellow
+perm_write = { fg = "#f7768e" }  # Red
+perm_exec  = { fg = "#bb9af7" }  # Magenta
+
+
+# : }}}
+
+# : Pick {{{
+
+[pick]
+border = { fg = "#7aa2f7" }  # Blue
+active = { fg = "#bb9af7", bold = true }  # Magenta
+inactive = {}
+
+# : }}}
+
+
+# : Input {{{
+
+[input]
+border   = { fg = "#7aa2f7" }  # Blue
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+# : }}}
+
+
+# : Completion {{{
+
+[cmp]
+border = { fg = "#7aa2f7" }  # Blue
+
+# : }}}
+
+
+# : Tasks {{{
+
+[tasks]
+border  = { fg = "#7aa2f7" }  # Blue
+title   = {}
+hovered = { fg = "#bb9af7", underline = true }  # Magenta
+
+# : }}}
+
+
+# : Which {{{
+
+[which]
+mask            = { bg = "#414868" }  # Darkened black
+cand            = { fg = "#9ece6a" }  # Green
+rest            = { fg = "#a9b1d6" }  # White
+desc            = { fg = "#bb9af7" }  # Magenta
+separator       = "  "
+separator_style = { fg = "#626880" }  # Darkened gray
+
+# : }}}
+
+
+# : Help {{{
+
+[help]
+on      = { fg = "#9ece6a" }  # Green
+run     = { fg = "#bb9af7" }  # Magenta
+hovered = { reversed = true, bold = true }
+footer  = { fg = "#a9b1d6", bg = "#c6d0f5" }  # White on Light gray
+
+# : }}}
+
+
+# : Notify {{{
+
+[notify]
+title_info  = { fg = "#9ece6a" }  # Green
+title_warn  = { fg = "#f7768e" }  # Red
+title_error = { fg = "#e0af68" }  # Yellow
+
+# : }}}
+
+
+# : File-specific styles {{{
+
+[filetype]
+
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#e0af68" },  # Yellow
+
+	# Media
+	{ mime = "video/*", fg = "#f7768e" },  # Red
+	{ mime = "audio/*", fg = "#f7768e" },  # Red
+
+	# Archives
+	{ mime = "application/zip",             fg = "#bb9af7" },  # Magenta
+	{ mime = "application/x-tar",           fg = "#bb9af7" },  # Magenta
+	{ mime = "application/x-bzip*",         fg = "#bb9af7" },  # Magenta
+	{ mime = "application/x-bzip2",         fg = "#bb9af7" },  # Magenta
+	{ mime = "application/x-7z-compressed", fg = "#bb9af7" },  # Magenta
+	{ mime = "application/x-rar",           fg = "#bb9af7" },  # Magenta
+	{ mime = "application/x-xz",            fg = "#bb9af7" },  # Magenta
+
+	# Documents
+	{ mime = "application/doc",   fg = "#9ece6a" },  # Green
+	{ mime = "application/pdf",   fg = "#9ece6a" },  # Green
+	{ mime = "application/rtf",   fg = "#9ece6a" },  # Green
+	{ mime = "application/vnd.*", fg = "#9ece6a" },  # Green
+
+	# Fallback
+	{ name = "*", fg = "#c6d0f5" },  # Light gray
+	{ name = "*/", fg = "#7aa2f7" }  # Blue
+]
+
+# : }}}
