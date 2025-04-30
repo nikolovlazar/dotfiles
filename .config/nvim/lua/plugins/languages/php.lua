@@ -1,6 +1,6 @@
-vim.g.lazyvim_php_lsp = 'phpactor'
+vim.g.lazyvim_php_lsp = 'intelephense'
 
-local lsp = vim.g.lazyvim_php_lsp or 'phpactor'
+local lsp = vim.g.lazyvim_php_lsp or 'intelephense'
 
 return {
   {
@@ -15,8 +15,8 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        phpactor = {
-          enabled = lsp == 'phpactor',
+        intelephense = {
+          enabled = lsp == 'intelephense',
         },
         [lsp] = {
           enabled = true,

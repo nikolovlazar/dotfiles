@@ -15,7 +15,7 @@ return {
     },
     event = { 'VeryLazy' },
     opts = {
-      lsp_server = 'phpactor',
+      lsp_server = 'intelephense',
       user_providers = {
         require 'plugins.languages.laravel.providers.route-info-provider',
         require 'plugins.languages.laravel.providers.model-info-provider',
