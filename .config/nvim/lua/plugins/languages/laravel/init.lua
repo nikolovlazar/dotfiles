@@ -21,5 +21,6 @@ return {
         require 'plugins.languages.laravel.providers.model-info-provider',
       },
     },
+    config = true,
   },
 }

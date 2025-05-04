@@ -28,8 +28,12 @@ return {
     'williamboman/mason.nvim',
     opts = {
       ensure_installed = {
-        'phpcs',
+        'blade-formatter',
         'php-cs-fixer',
+        'php-debug-adapter',
+        'phpcs',
+        'phpstan',
+        'pint',
       },
     },
   },
