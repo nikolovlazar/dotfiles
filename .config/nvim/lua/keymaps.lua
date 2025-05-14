@@ -5,7 +5,7 @@ local opts = { noremap = true, silent = true }
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Split windows
-keymap.set('n', 'ss', ':vsplit<Return>', opts)
+keymap.set('n', 'sh', ':vsplit<Return>', opts)
 keymap.set('n', 'sv', ':split<Return>', opts)
 
 -- Tabs
