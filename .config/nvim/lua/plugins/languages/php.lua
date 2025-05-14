@@ -17,6 +17,16 @@ return {
       servers = {
         intelephense = {
           enabled = lsp == 'intelephense',
+          filetypes = { 'php', 'blade', 'php_only' },
+          settings = {
+            intelephense = {
+              filetypes = { 'php', 'blade', 'php_only' },
+              files = {
+                associations = { '*.php', '*.blade.php' },
+                maxSize = 5000000,
+              },
+            },
+          },
         },
         [lsp] = {
           enabled = true,
@@ -50,6 +60,25 @@ return {
         command = 'node',
         args = { path .. '/extension/out/phpDebug.js' },
       }
+
+      if not dap.configurations['php'] then
+        dap.configurations['php'] = {
+          {
+            type = 'php',
+            request = 'launch',
+            name = 'Listen for XDebug',
+            stopOnEntry = true,
+            port = 9003,
+            pathMappings = (function()
+              local cwd = vim.fn.getcwd()
+              local real_cwd = vim.loop.fs_realpath(cwd)
+              return {
+                [real_cwd] = real_cwd,
+              }
+            end)(),
+          },
+        }
+      end
     end,
   },
   {
