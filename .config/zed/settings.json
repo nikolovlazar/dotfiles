@@ -7,6 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "agent": {
+    "model_parameters": [],
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "version": "2"
+  },
+  "icon_theme": "Catppuccin Mocha",
   "project_panel": {
     "dock": "right"
   },
@@ -15,10 +27,15 @@
   "vim_mode": true,
   "buffer_font_family": "DankMono Nerd Font",
   "ui_font_family": "DankMono Nerd Font",
-  "theme": "Catppuccin Mocha",
+  "theme": "Modest Dark",
   "cursor_blink": false,
   "relative_line_numbers": true,
   "scrollbar": {
     "show": "never"
+  },
+  "languages": {
+    "PHP": {
+      "language_servers": ["intelephense", "..."]
+    }
   }
 }
