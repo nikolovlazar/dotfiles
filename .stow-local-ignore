@@ -3,3 +3,6 @@ README.md
 .gitignore
 Library/Application\ Support/Cursor/User/profiles/*+/globalStorage
 .config/old-lazy-nvim-conf
+.config/zed/*
+!.config/zed/keymap.json
+!.config/zed/settings.json
