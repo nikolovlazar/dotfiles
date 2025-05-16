@@ -55,30 +55,12 @@ return {
       local path = require('mason-registry')
         .get_package('php-debug-adapter')
         :get_install_path()
+
       dap.adapters.php = {
         type = 'executable',
         command = 'node',
         args = { path .. '/extension/out/phpDebug.js' },
       }
-
-      if not dap.configurations['php'] then
-        dap.configurations['php'] = {
-          {
-            type = 'php',
-            request = 'launch',
-            name = 'Listen for XDebug',
-            stopOnEntry = true,
-            port = 9003,
-            pathMappings = (function()
-              local cwd = vim.fn.getcwd()
-              local real_cwd = vim.loop.fs_realpath(cwd)
-              return {
-                [real_cwd] = real_cwd,
-              }
-            end)(),
-          },
-        }
-      end
     end,
   },
   {
