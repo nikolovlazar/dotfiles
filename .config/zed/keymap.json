@@ -1,10 +1,10 @@
 [
   {
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
     }
   },
   {
@@ -29,9 +29,7 @@
       "space g d": "editor::GoToDefinition",
       "space g r": "editor::FindAllReferences",
       "space s g": "pane::DeploySearch",
-      "ctrl-n": "editor::SelectNext",
-      "tab": "pane::ActivateNextItem",
-      "shift-tab": "pane::ActivatePrevItem"
+      "ctrl-n": "editor::SelectNext"
     }
   },
   {
