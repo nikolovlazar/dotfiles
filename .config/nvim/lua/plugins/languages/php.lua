@@ -52,9 +52,7 @@ return {
     optional = true,
     opts = function()
       local dap = require 'dap'
-      local mason_registry = require 'mason-registry'
-      local php_debug_adapter_package =
-        mason_registry.get_package 'php-debug-adapter'
+      local path = vim.fn.expand '$MASON/packages/php-debug-adapter/'
 
       if php_debug_adapter_package == nil then
         vim.notify(
