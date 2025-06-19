@@ -75,4 +75,7 @@ return {
       },
     },
   },
+  {
+    'fredrikaverpil/neotest-golang',
+  },
 }
