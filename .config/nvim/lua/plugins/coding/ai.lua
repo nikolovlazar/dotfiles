@@ -5,9 +5,11 @@ return {
     version = '*', -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       provider = 'copilot',
+      cursor_applying_provider = 'copilot',
       auto_suggestions_provider = 'copilot',
       behaviour = {
         auto_suggestions = true,
+        enable_cursor_planning_mode = true,
       },
     },
     build = 'make',
