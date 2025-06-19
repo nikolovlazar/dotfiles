@@ -38,14 +38,23 @@ return {
     optional = true,
     opts = function()
       local dap = require 'dap'
-      local path = require('mason-registry')
-        .get_package('php-debug-adapter')
-        :get_install_path()
-      dap.adapters.php = {
-        type = 'executable',
-        command = 'node',
-        args = { path .. '/extension/out/phpDebug.js' },
-      }
+      local mason_registry = require 'mason-registry'
+      local php_debug_adapter_package =
+        mason_registry.get_package 'php-debug-adapter'
+
+      if php_debug_adapter_package == nil then
+        vim.notify(
+          'Error: php-debug-adapter package not found in Mason registry',
+          vim.log.levels.ERROR
+        )
+      else
+        local path = vim.fn.expand '$MASON/packages/php-debug-adapter'
+        dap.adapters.php = {
+          type = 'executable',
+          command = 'node',
+          args = { path .. '/extension/out/phpDebug.js' },
+        }
+      end
     end,
   },
   {
