@@ -1,5 +1,5 @@
 {
-  "editor.fontFamily": "DankMono Nerd Font, Input Mono, SF Mono, monospace",
+  "editor.fontFamily": "Dank Mono, Input Mono, SF Mono, monospace",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.tabSize": 2,
   "editor.quickSuggestions": {
@@ -10,6 +10,7 @@
   "editor.suggestOnTriggerCharacters": true,
   "editor.fontSize": 16,
   "editor.lineHeight": 24,
+  "editor.fontWeight": "bold",
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -59,7 +60,6 @@
   "editor.quickSuggestionsDelay": 1000000,
   "editor.parameterHints.enabled": true,
   "files.trimTrailingWhitespace": true,
-  "editor.fontWeight": "300",
   "editor.cursorWidth": 5,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -137,8 +137,7 @@
   },
   "editor.lineNumbers": "relative",
   "editor.accessibilitySupport": "off",
-  "workbench.colorTheme": "Night Wolf (black)",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "explorer.confirmDragAndDrop": false,
   "workbench.editor.empty.hint": "hidden",
   "git.ignoreRebaseWarning": true,
@@ -166,7 +165,6 @@
     "<C-s>": false,
     "<C-z>": false
   },
-  "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
   "window.newWindowProfile": "Default",
   "cursor.aipreview.enabled": true,
@@ -178,5 +176,17 @@
   "workbench.layoutControl.enabled": false,
   "[go]": {
     "editor.defaultFormatter": "golang.go"
-  }
+  },
+  "intelephense.files.associations": ["*.php", "*.phtml"],
+  "files.associations": {
+    "*.module": "php"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "workbench.iconTheme": "bearded-icons",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
+  "workbench.preferredLightColorTheme": "Atom One Light"
 }
