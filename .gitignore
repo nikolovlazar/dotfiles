@@ -1,4 +1,5 @@
-.config/tmux/plugins
+.config/tmux/plugins/*
+!.config/tmux/plugins/catppuccin
 .config/tmux/*.log
 **/.DS_Store
 .config/**/.tmp*
