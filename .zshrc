@@ -18,7 +18,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 source $ZSH/oh-my-zsh.sh
 
-export NVIM_LISTEN_ADDRESS=/tmp/nvim-nikolovlazar.sock
+export NVIM_LISTEN_ADDRESS=/tmp/nvim-nikolovlazar-$$.sock
 alias vim=nvim
 
 findandkill() {

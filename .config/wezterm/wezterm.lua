@@ -36,8 +36,8 @@ config.font_rules = {
 
 -- Colors
 config.color_schemes = {
-  ['cyberdream'] = require 'cyberdream',
-  ['cyberdream-light'] = require 'cyberdream-light',
+  ['dark'] = require 'cyberdream',
+  ['light'] = require 'cyberdream-light',
 }
 config.color_scheme = 'cyberdream'
 
