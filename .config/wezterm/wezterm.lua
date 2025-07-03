@@ -4,7 +4,7 @@ local commands = require 'commands'
 local config = wezterm.config_builder()
 
 -- Font settings
-config.font_size = 19
+config.font_size = 16
 config.line_height = 1.2
 config.font = wezterm.font_with_fallback {
   {
