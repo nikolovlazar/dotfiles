@@ -35,7 +35,11 @@ config.font_rules = {
 }
 
 -- Colors
-config.colors = require 'cyberdream'
+config.color_schemes = {
+  ['cyberdream'] = require 'cyberdream',
+  ['cyberdream-light'] = require 'cyberdream-light',
+}
+config.color_scheme = 'cyberdream'
 
 -- Appearance
 config.cursor_blink_rate = 0
