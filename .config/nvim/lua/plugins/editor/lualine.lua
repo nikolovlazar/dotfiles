@@ -130,10 +130,9 @@ return {
         end,
       }
 
-      ins_left {
-        -- Lsp server name .
+      ins_right {
         function()
-          local msg = 'No Active Lsp'
+          local msg = ''
           local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
           local clients = vim.lsp.get_clients()
           if next(clients) == nil then
@@ -147,7 +146,7 @@ return {
           end
           return msg
         end,
-        icon = ' LSP:',
+        icon = '󰧑 ',
         color = 'LualineLsp',
       }
 
@@ -162,7 +161,6 @@ return {
 
       ins_right {
         'diff',
-        -- Is it me or the symbol for modified us really weird
         symbols = { added = ' ', modified = ' ', removed = ' ' },
         diff_color = {
           added = 'LualineDiffAdded',
@@ -172,7 +170,6 @@ return {
         cond = conditions.hide_in_width,
       }
 
-      -- Now don't forget to initialize lualine
       lualine.setup(config)
     end,
   },
