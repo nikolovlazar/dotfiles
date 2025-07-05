@@ -35,11 +35,31 @@ config.font_rules = {
 }
 
 -- Colors
+local function scheme_for_appearance(appearance)
+  if appearance:find 'Dark' then
+    return 'custom-mocha'
+  else
+    return 'custom-latte'
+  end
+end
+
+local custom_mocha = wezterm.color.get_builtin_schemes()['Catppuccin Mocha']
+custom_mocha.background = '#000000'
+
+local custom_latte = wezterm.color.get_builtin_schemes()['Catppuccin Latte']
+custom_latte.background = '#FFFFFF'
+
 config.color_schemes = {
-  ['dark'] = require 'cyberdream',
-  ['light'] = require 'cyberdream-light',
+  ['custom-mocha'] = custom_mocha,
+  ['custom-latte'] = custom_latte,
 }
-config.color_scheme = 'cyberdream'
+config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+
+-- Invoke toggle-theme command when config reloads, which happens when the system color mode changes
+local toggle_theme_command = require 'commands.toggle-theme'
+wezterm.on('window-config-reloaded', function(window, pane)
+  window:perform_action(toggle_theme_command.action, pane)
+end)
 
 -- Appearance
 config.cursor_blink_rate = 0

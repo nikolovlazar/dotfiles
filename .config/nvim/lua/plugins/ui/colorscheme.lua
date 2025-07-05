@@ -1,17 +1,18 @@
 return {
   {
-    'eliseshaffer/darklight.nvim',
-    config = function()
-      require('darklight').setup {
-        mode = 'custom',
-        light_mode_callback = function()
-          vim.o.background = 'light'
-        end,
-        dark_mode_callback = function()
-          vim.o.background = 'dark'
-        end,
-      }
-    end,
+    'f-person/auto-dark-mode.nvim',
+    opts = {
+      update_interval = 3000,
+      fallback = 'dark',
+      set_dark_mode = function()
+        vim.api.nvim_set_option_value('background', 'dark', {})
+        require('plugins.editor.lualine-theme').apply_highlights()
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option_value('background', 'light', {})
+        require('plugins.editor.lualine-theme').apply_highlights()
+      end,
+    },
   },
   {
     'catppuccin/nvim',
@@ -19,29 +20,16 @@ return {
     priority = 1000,
     config = function()
       require('catppuccin').setup {
-        flavour = 'mocha',
+        flavour = 'auto',
         background = {
           light = 'latte',
           dark = 'mocha',
         },
         transparent_background = true,
+        term_colors = true,
       }
 
       vim.cmd [[colorscheme catppuccin]]
     end,
   },
-  -- {
-  --   'scottmckendry/cyberdream.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('cyberdream').setup {
-  --       variant = 'auto',
-  --       transparent = true,
-  --       italic_comments = true,
-  --       borderless_telescope = false,
-  --     }
-  --     vim.cmd [[colorscheme cyberdream]]
-  --   end,
-  -- },
 }
