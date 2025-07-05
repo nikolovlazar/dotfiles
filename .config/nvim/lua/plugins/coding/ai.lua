@@ -7,10 +7,24 @@ return {
       provider = 'copilot',
       cursor_applying_provider = 'copilot',
       auto_suggestions_provider = 'copilot',
+      providers = {
+        copilot = {
+          model = 'gpt-4.1-2025-04-14',
+        },
+      },
       behaviour = {
         auto_suggestions = true,
         enable_cursor_planning_mode = true,
       },
+      system_prompt = function()
+        local hub = require('mcphub').get_hub_instance()
+        return hub and hub:get_active_servers_prompt() or ''
+      end,
+      custom_tools = function()
+        return {
+          require('mcphub.extensions.avante').mcp_tool(),
+        }
+      end,
     },
     build = 'make',
     dependencies = {
@@ -42,14 +56,30 @@ return {
           },
         },
       },
-      -- {
-      --   -- Make sure to set this up properly if you have lazy=true
-      --   'MeanderingProgrammer/render-markdown.nvim',
-      --   opts = {
-      --     file_types = { 'markdown', 'Avante' },
-      --   },
-      --   ft = { 'markdown', 'Avante' },
-      -- },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { 'markdown', 'Avante' },
+        },
+        ft = { 'markdown', 'Avante' },
+      },
     },
+  },
+  {
+    'ravitemer/mcphub.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    build = 'npm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
+    config = function()
+      require('mcphub').setup {
+        extensions = {
+          avante = {
+            make_slash_commands = true,
+          },
+        },
+      }
+    end,
   },
 }

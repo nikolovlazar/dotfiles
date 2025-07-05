@@ -1,0 +1,19 @@
+{
+  "nativeMCPServers": [
+    
+  ],
+  "mcpServers": {
+    "github.com/upstash/context7-mcp": {
+      "disabled": false,
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "command": "npx"
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp",
+      "disabled": false
+    }
+  }
+}
