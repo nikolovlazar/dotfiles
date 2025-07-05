@@ -1,6 +1,9 @@
-return {
+local function get_cwd()
+  return vim.fn.getcwd()
+end
 
-  { -- Linting
+return {
+  {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
@@ -8,7 +11,35 @@ return {
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
-      -- lint.linters_by_ft = lint.linters_by_ft or {}
+      lint.linters_by_ft = lint.linters_by_ft or {}
+      lint.linters_by_ft['php'] = { 'phpcs', 'phpstan' }
+
+      lint.linters = lint.linters or {}
+      lint.linters.phpstan = {
+        name = 'phpstan',
+        cmd = './vendor/bin/phpstan',
+        stdin = false,
+        append_fname = true,
+        args = {
+          '--memory-limit=2G',
+          'analyse',
+          '--error-format=raw',
+          '--no-progress',
+        },
+        stream = 'both',
+        ignore_exitcode = true,
+        cwd = get_cwd(),
+        parser = require('lint.parser').from_pattern(
+          '^.+:(%d+):(.+)$',
+          { 'lnum', 'message' },
+          nil,
+          {
+            source = 'phpstan',
+            severity = vim.diagnostic.severity.WARN,
+          }
+        ),
+      }
+
       -- lint.linters_by_ft['markdown'] = { 'markdownlint' }
       --
       -- However, note that this will enable a set of default linters,

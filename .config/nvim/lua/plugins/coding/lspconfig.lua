@@ -252,6 +252,7 @@ return {
         'php-cs-fixer',
         'php-debug-adapter',
         'phpcs',
+        'phpstan',
         'pint',
         'prettier',
         'prettierd',
