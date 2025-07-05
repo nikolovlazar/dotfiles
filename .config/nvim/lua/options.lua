@@ -1,5 +1,5 @@
 -- Disable command line
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 
 -- Make line numbers default
 vim.opt.number = true

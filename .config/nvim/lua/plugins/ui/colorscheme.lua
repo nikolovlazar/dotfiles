@@ -14,17 +14,34 @@ return {
     end,
   },
   {
-    'scottmckendry/cyberdream.nvim',
+    'catppuccin/nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      require('cyberdream').setup {
-        variant = 'auto',
-        transparent = true,
-        italic_comments = true,
-        borderless_telescope = false,
+      require('catppuccin').setup {
+        flavour = 'mocha',
+        background = {
+          light = 'latte',
+          dark = 'mocha',
+        },
+        transparent_background = true,
       }
-      vim.cmd [[colorscheme cyberdream]]
+
+      vim.cmd [[colorscheme catppuccin]]
     end,
   },
+  -- {
+  --   'scottmckendry/cyberdream.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('cyberdream').setup {
+  --       variant = 'auto',
+  --       transparent = true,
+  --       italic_comments = true,
+  --       borderless_telescope = false,
+  --     }
+  --     vim.cmd [[colorscheme cyberdream]]
+  --   end,
+  -- },
 }
