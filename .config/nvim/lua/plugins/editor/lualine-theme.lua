@@ -30,8 +30,6 @@ function M.apply_highlights()
   vim.api.nvim_set_hl(0, 'LualineNormalC', { fg = c.fg, bg = c.bg })
   vim.api.nvim_set_hl(0, 'LualineInactiveC', { fg = c.fg, bg = c.bg })
 
-  vim.api.nvim_set_hl(0, 'LualineFilename', { fg = c.magenta, bold = true })
-  vim.api.nvim_set_hl(0, 'LualineProgress', { fg = c.fg, bold = true })
   vim.api.nvim_set_hl(0, 'LualineDiagnosticsError', { fg = c.red })
   vim.api.nvim_set_hl(0, 'LualineDiagnosticsWarn', { fg = c.yellow })
   vim.api.nvim_set_hl(0, 'LualineDiagnosticsInfo', { fg = c.cyan })
