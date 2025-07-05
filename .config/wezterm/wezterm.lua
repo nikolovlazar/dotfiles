@@ -4,8 +4,8 @@ local commands = require 'commands'
 local config = wezterm.config_builder()
 
 -- Font settings
-config.font_size = 20
-config.line_height = 1.5
+config.font_size = 16
+config.line_height = 1.4
 config.font = wezterm.font_with_fallback {
   {
     family = 'Dank Mono',
@@ -26,6 +26,11 @@ config.font = wezterm.font_with_fallback {
   { family = 'Symbols Nerd Font Mono' },
 }
 config.font_rules = {
+  {
+    font = wezterm.font('Dank Mono', {
+      bold = true,
+    }),
+  },
   {
     italic = true,
     font = wezterm.font('Dank Mono', {
