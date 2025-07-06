@@ -188,5 +188,6 @@
   "workbench.colorTheme": "One Dark Pro Night Flat",
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
-  "workbench.preferredLightColorTheme": "Atom One Light"
+  "workbench.preferredLightColorTheme": "Atom One Light",
+  "laravel-pint.enable": true
 }

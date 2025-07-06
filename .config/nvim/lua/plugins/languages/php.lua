@@ -38,9 +38,7 @@ return {
     opts = {
       ensure_installed = {
         'blade-formatter',
-        'php-cs-fixer',
         'php-debug-adapter',
-        'phpcs',
         'phpstan',
         'pint',
       },
@@ -58,14 +56,5 @@ return {
         args = { path .. '/extension/out/phpDebug.js' },
       }
     end,
-  },
-  {
-    'stevearc/conform.nvim',
-    optional = true,
-    opts = {
-      formatters_by_ft = {
-        php = { 'pint', 'php_cs_fixer' },
-      },
-    },
   },
 }

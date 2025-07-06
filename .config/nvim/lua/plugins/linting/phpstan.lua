@@ -1,5 +1,13 @@
 local function get_cwd()
-  return vim.fn.getcwd()
+  local current_file = vim.fn.expand '%:p'
+  if current_file == '' then
+    return vim.fn.getcwd()
+  end
+  local root = vim.fs.find({ 'phpstan.neon', 'composer.json', 'vendor' }, {
+    path = current_file,
+    upward = true,
+  })[1]
+  return root and vim.fs.dirname(root) or vim.fn.getcwd()
 end
 
 return {
@@ -17,8 +25,8 @@ return {
   ignore_exitcode = true,
   cwd = get_cwd(),
   parser = require('lint.parser').from_pattern(
-    '^.+:(%d+):(.+)$',
-    { 'lnum', 'message' },
+    '^(.+):(%d+):(.+)$',
+    { 'file', 'lnum', 'message' },
     nil,
     {
       source = 'phpstan',

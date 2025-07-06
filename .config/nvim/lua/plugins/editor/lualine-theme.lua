@@ -17,6 +17,7 @@ local function get_palette()
     magenta = palette.mauve,
     blue = palette.blue,
     red = palette.red,
+    pink = palette.pink,
   }
 end
 
@@ -33,7 +34,7 @@ function M.apply_highlights()
   vim.api.nvim_set_hl(0, 'LualineDiagnosticsError', { fg = c.red })
   vim.api.nvim_set_hl(0, 'LualineDiagnosticsWarn', { fg = c.yellow })
   vim.api.nvim_set_hl(0, 'LualineDiagnosticsInfo', { fg = c.cyan })
-  vim.api.nvim_set_hl(0, 'LualineLsp', { fg = c.fg })
+  vim.api.nvim_set_hl(0, 'LualineLsp', { fg = c.pink })
   vim.api.nvim_set_hl(0, 'LualineBranch', { fg = c.violet, bold = true })
   vim.api.nvim_set_hl(0, 'LualineDiffAdded', { fg = c.green, bold = true })
   vim.api.nvim_set_hl(0, 'LualineDiffModified', { fg = c.orange, bold = true })

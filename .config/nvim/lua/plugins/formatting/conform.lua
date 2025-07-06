@@ -4,8 +4,15 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        php = { 'php_cs_fixer' },
+        php = { 'pint' },
         blade = { 'blade-formatter' },
+      },
+      formatters = {
+        pint = {
+          command = 'vendor/bin/pint',
+          args = { '$FILENAME' },
+          stdin = false,
+        },
       },
     },
   },
