@@ -69,4 +69,6 @@ if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-source ~/dotfiles/environment.sh
+if [ -f "$HOME/dotfiles/environment.sh" ]; then
+  source ~/dotfiles/environment.sh
+fi
