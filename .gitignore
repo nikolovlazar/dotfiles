@@ -7,3 +7,11 @@
 !.config/zed/keymap.json
 !.config/zed/settings.json
 environment.sh
+.claude/backups
+.claude/logs
+.claude/projects
+.claude/shell-snapshots
+.claude/statsig
+.claude/todos
+.claude/.superclaude-metadata.json
+
