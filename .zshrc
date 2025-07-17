@@ -16,7 +16,10 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="headline"
 export XDG_CONFIG_HOME=$HOME/.config
 
-source $ZSH/oh-my-zsh.sh
+if [[ -z "$ZSH_VERSION_LOADED" ]]; then
+  export ZSH_VERSION_LOADED=1
+  source $ZSH/oh-my-zsh.sh
+fi
 
 export NVIM_LISTEN_ADDRESS=/tmp/nvim-nikolovlazar-$$.sock
 alias vim=nvim
@@ -57,9 +60,6 @@ export PATH=/Users/lazarnikolov/.sst/bin:$PATH
 
 # asdf shims
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 PATH=~/.console-ninja/.bin:$PATH
 
