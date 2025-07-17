@@ -31,6 +31,7 @@ require('lazy').setup({
     { import = 'plugins.editor.which-key' },
     { import = 'plugins.formatting.conform' },
     { import = 'plugins.formatting.prettier' },
+    { import = 'plugins.formatting.biome' },
     { import = 'plugins.languages.astro' },
     { import = 'plugins.languages.docker' },
     { import = 'plugins.languages.go' },
