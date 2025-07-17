@@ -4,7 +4,7 @@ cursor-text = #000000
 
 # Font settings
 font-family = "Monaspace Neon Var"
-font-feature = "calt,cv02,cv10,cv11,cv31"
+font-feature = "calt,cv02,cv10,cv11,cv31,ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10,dlig"
 font-size = 16
 
 # Theme
