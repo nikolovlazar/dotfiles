@@ -1,3 +1,7 @@
+# General appearance settings
+cursor-color = #89DCEB
+cursor-text = #000000
+
 # Font settings
 font-family = "Monaspace Neon Var"
 font-feature = "calt,cv02,cv10,cv11,cv31"
