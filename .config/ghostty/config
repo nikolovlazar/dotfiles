@@ -1,8 +1,9 @@
+# Font settings
 font-family = "Monaspace Neon"
-font-family-italic = "Monaspace Radon"
-font-family-bold = "Monaspace Neon"
-font-family-bold-italic = "Monaspace Radon"
-
 font-feature = "cv02,cv10,cv11,cv31,fina"
-
 font-size = 16
+
+# Theme
+theme = "catppuccin-mocha"
+
+
