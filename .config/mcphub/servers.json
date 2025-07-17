@@ -1,19 +1,20 @@
 {
-  "nativeMCPServers": [
-    
-  ],
   "mcpServers": {
-    "github.com/upstash/context7-mcp": {
+    "sentry": {
       "disabled": false,
-      "args": [
-        "-y",
-        "@upstash/context7-mcp"
-      ],
+      "url": "https://mcp.sentry.dev/mcp"
+    },
+    "github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking": {
+      "disabled": false,
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
       "command": "npx"
     },
-    "sentry": {
-      "url": "https://mcp.sentry.dev/mcp",
-      "disabled": false
+    "github.com/upstash/context7-mcp": {
+      "disabled": false,
+      "args": ["-y", "@upstash/context7-mcp"],
+      "command": "npx"
     }
-  }
+  },
+  "nativeMCPServers": []
 }
+
