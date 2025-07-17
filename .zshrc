@@ -72,3 +72,6 @@ fi
 if [ -f "$HOME/dotfiles/environment.sh" ]; then
   source ~/dotfiles/environment.sh
 fi
+
+# uv
+. "$HOME/.local/bin/env"
