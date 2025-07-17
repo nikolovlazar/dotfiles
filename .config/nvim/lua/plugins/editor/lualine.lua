@@ -100,7 +100,7 @@ return {
             ['!'] = dynamic_colors.red,
             t = dynamic_colors.red,
           }
-          return { fg = mode_color[vim.fn.mode()] }
+          return { bg = dynamic_colors.bg, fg = mode_color[vim.fn.mode()] }
         end,
         padding = { right = 1 },
       }
