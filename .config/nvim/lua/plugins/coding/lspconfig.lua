@@ -243,7 +243,6 @@ return {
         'delve',
         'docker-compose-language-service',
         'dockerfile-language-server',
-        'eslint-lsp',
         'hadolint',
         'intelephense',
         'js-debug-adapter',
