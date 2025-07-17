@@ -55,7 +55,7 @@ return {
     config = function()
       vim.filetype.add {
         pattern = {
-          ['config'] = 'conf',
+          ['config'] = 'dosini', -- better syntax highlighting for config files
         },
       }
     end,
