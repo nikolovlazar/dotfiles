@@ -6,6 +6,7 @@
 .config/zed/*
 !.config/zed/keymap.json
 !.config/zed/settings.json
+.config/raycast/extensions
 environment.sh
 .claude/backups
 .claude/logs
