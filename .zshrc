@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/flutter/bin:$HOME/.local/bin/:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin/:$PATH
 export PATH=~/tools/nvim-macos/bin:$PATH
 export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=~/go/bin:$PATH
@@ -16,10 +16,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="headline"
 export XDG_CONFIG_HOME=$HOME/.config
 
-if [[ -z "$ZSH_VERSION_LOADED" ]]; then
-  export ZSH_VERSION_LOADED=1
-  source $ZSH/oh-my-zsh.sh
-fi
+source $ZSH/oh-my-zsh.sh
 
 export NVIM_LISTEN_ADDRESS=/tmp/nvim-nikolovlazar-$$.sock
 alias vim=nvim
