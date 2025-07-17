@@ -1,12 +1,10 @@
 local M = {}
 
 local function get_palette()
-  local palette = require('catppuccin.palettes').get_palette(
-    vim.o.background == 'light' and 'latte' or 'mocha'
-  )
+  local palette = require('catppuccin.palettes').get_palette 'mocha'
 
   return {
-    bg = nil,
+    bg = palette.base,
     fg = palette.text,
     yellow = palette.yellow,
     cyan = palette.teal,
