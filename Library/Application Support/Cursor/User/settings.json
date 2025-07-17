@@ -111,7 +111,7 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "line-thin",
   "terminal.integrated.cursorStyle": "line",
-  "editor.rulers": [80],
+  "editor.rulers": [],
   "markdown.extension.toc.levels": "2..6",
   "workbench.sideBar.location": "right",
   "screencastMode.fontSize": 32,
