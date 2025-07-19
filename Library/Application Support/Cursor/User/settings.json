@@ -1,5 +1,6 @@
 {
-  "editor.fontFamily": "Dank Mono, Input Mono, SF Mono, monospace",
+  "editor.fontFamily": "Monaspace Neon Var, Input Mono, SF Mono, monospace",
+  "editor.fontLigatures": "'calt', 'cv02', 'cv10', 'cv11', 'cv31', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'ss10', 'dlig'",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.tabSize": 2,
   "editor.quickSuggestions": {
@@ -10,8 +11,7 @@
   "editor.suggestOnTriggerCharacters": true,
   "editor.fontSize": 16,
   "editor.lineHeight": 24,
-  "editor.fontWeight": "bold",
-  "editor.fontLigatures": true,
+  "editor.fontWeight": "normal",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.tabCompletion": "on",
@@ -63,7 +63,9 @@
   "editor.cursorWidth": 5,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-  "terminal.integrated.fontFamily": "DankMono Nerd Font, Input Mono, SF Mono, monospace",
+  "terminal.integrated.fontFamily": "Monaspace Neon Var, DankMono Nerd Font, Input Mono, SF Mono, monospace",
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.fontLigatures.featureSettings": "'calt', 'cv02', 'cv10', 'cv11', 'cv31', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'ss10', 'dlig'",
   "terminal.integrated.lineHeight": 1,
   "terminal.integrated.env.osx": {
     "PYTHONPATH": "${workspaceFolder}"
@@ -188,6 +190,6 @@
   "workbench.colorTheme": "One Dark Pro Night Flat",
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
-  "workbench.preferredLightColorTheme": "Atom One Light",
+  "workbench.preferredLightColorTheme": "Catppuccin Mocha",
   "laravel-pint.enable": true
 }
