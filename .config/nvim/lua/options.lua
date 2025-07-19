@@ -64,3 +64,6 @@ vim.opt.scrolloff = 10
 
 -- Enable 24-bit colors
 vim.opt.termguicolors = true
+
+-- Set statusline to be global
+vim.opt.laststatus = 3
