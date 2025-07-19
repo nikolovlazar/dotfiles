@@ -4,12 +4,11 @@ return {
     event = 'VeryLazy',
     version = '*', -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
-      provider = 'copilot',
-      cursor_applying_provider = 'copilot',
-      auto_suggestions_provider = 'copilot',
+      provider = 'claude',
+      cursor_applying_provider = 'claude',
       providers = {
-        copilot = {
-          model = 'gpt-4.1-2025-04-14',
+        claude = {
+          model = 'claude-sonnet-4-20250514',
         },
       },
       behaviour = {
