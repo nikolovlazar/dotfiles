@@ -204,7 +204,30 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        eslint = {
+          settings = {
+            workingDirectory = { mode = 'auto' }, -- auto-detects project root
+          },
+          on_attach = function(client, bufnr)
+            -- Optional: disable formatting if you use something else (e.g. conform)
+            client.server_capabilities.documentFormattingProvider = false
 
+            -- Optional: command to apply all ESLint fixes
+            vim.api.nvim_buf_create_user_command(
+              bufnr,
+              'EslintFixAll',
+              function()
+                vim.lsp.buf.execute_command {
+                  command = 'eslint.applyAllFixes',
+                  arguments = { { uri = vim.uri_from_bufnr(0) } },
+                }
+              end,
+              { desc = 'ESLint: Fix all autofixable problems' }
+            )
+
+            vim.notify('ESLint LSP attached', vim.log.levels.INFO)
+          end,
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -237,12 +260,12 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'astro-language-server',
-        'biome',
         'css-lsp',
         'debugpy',
         'delve',
         'docker-compose-language-service',
         'dockerfile-language-server',
+        'eslint',
         'hadolint',
         'intelephense',
         'js-debug-adapter',
@@ -264,12 +287,21 @@ return {
       }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {
+          'astro',
+          'cssls',
+          'eslint',
+          'lua_ls',
+          'neocmake',
+          'intelephense',
+          'pyright',
+          'tailwindcss',
+          'vtsls',
+        },
+        automatic_installation = false,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend(
               'force',
               {},
