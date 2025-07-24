@@ -151,8 +151,6 @@ return {
       }
 
       -- Add components to right sections
-      ins_right { require 'mcphub.extensions.lualine' }
-
       ins_right {
         'branch',
         icon = '',
