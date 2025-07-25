@@ -24,7 +24,6 @@ require('lazy').setup({
     { import = 'plugins.editor.lazygit' },
     { import = 'plugins.editor.lualine' },
     { import = 'plugins.editor.mini' },
-    { import = 'plugins.editor.nvim-notify' },
     { import = 'plugins.editor.file-tree' },
     { import = 'plugins.editor.overseer' },
     { import = 'plugins.editor.tmux' },
