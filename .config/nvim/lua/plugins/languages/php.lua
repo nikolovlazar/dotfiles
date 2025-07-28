@@ -34,17 +34,6 @@ return {
     },
   },
   {
-    'williamboman/mason.nvim',
-    opts = {
-      ensure_installed = {
-        'blade-formatter',
-        'php-debug-adapter',
-        'phpstan',
-        'pint',
-      },
-    },
-  },
-  {
     'mfussenegger/nvim-dap',
     optional = true,
     opts = function()
