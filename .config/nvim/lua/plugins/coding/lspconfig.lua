@@ -259,6 +259,7 @@ return {
         -- Core Language Servers
         'astro-language-server',
         'css-lsp',
+        'html-lsp',
         'neocmakelsp',
         'tailwindcss-language-server',
 
@@ -302,6 +303,7 @@ return {
           'astro',
           'cssls',
           'eslint',
+          'html',
           'lua_ls',
           'neocmake',
           'intelephense',
