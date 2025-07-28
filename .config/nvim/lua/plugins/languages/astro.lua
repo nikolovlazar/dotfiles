@@ -1,8 +1,4 @@
 return {
-  {
-    'nvim-treesitter/nvim-treesitter',
-    opts = { ensure_installed = { 'astro', 'css' } },
-  },
 
   {
     'neovim/nvim-lspconfig',

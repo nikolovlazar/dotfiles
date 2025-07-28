@@ -4,14 +4,6 @@ local lsp = vim.g.lazyvim_php_lsp or 'intelephense'
 
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
-    opts = {
-      ensure_installed = {
-        'php',
-      },
-    },
-  },
-  {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {

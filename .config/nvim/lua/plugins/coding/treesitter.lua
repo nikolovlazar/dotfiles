@@ -6,34 +6,52 @@ return {
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = {
-        'astro',
+        -- Core/General
         'bash',
-        'blade',
         'c',
-        'caddy',
-        'css',
         'diff',
-        'dockerfile',
         'editorconfig',
         'gitignore',
+        'html',
+        'json',
+        'sql',
+        'vim',
+        'vimdoc',
+
+        -- Astro
+        'astro',
+        'css',
+
+        -- Docker
+        'dockerfile',
+
+        -- Go
         'go',
         'gomod',
         'gosum',
-        'html',
-        'javascript',
-        'json',
+        'gowork',
+
+        -- Lua
         'lua',
         'luadoc',
+
+        -- Nginx/Caddy
+        'caddy',
         'nginx',
+
+        -- PHP
+        'blade',
         'php',
         'php_only',
-        'python',
-        'sql',
-        'typescript',
-        'vim',
-        'vimdoc',
+
+        -- Python
         'ninja',
+        'python',
         'rst',
+
+        -- TypeScript/JavaScript
+        'javascript',
+        'typescript',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
