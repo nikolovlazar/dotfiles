@@ -27,6 +27,8 @@ findandkill() {
 
 alias kill_port=findandkill
 
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 
