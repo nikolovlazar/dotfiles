@@ -16,7 +16,7 @@ date=$(date "+%Y%m%d")
 mkdir ~/Movies/${date}-${1//}
 cd ~/Movies/${date}-${1//}
 
-folders=("FOOTAGE" "AUDIO" "MUSIC" "GRAPHICS" "AE" "SEQUENCES" "EXPORTS")
+folders=("FOOTAGE" "AUDIO" "MUSIC" "GRAPHICS" "PREMIERE" "AE" "SEQUENCES" "EXPORTS")
 
 for ((i = 0; i < ${#folders[@]}; i++)); do
 	index=$((i+1))
