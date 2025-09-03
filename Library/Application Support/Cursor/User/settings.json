@@ -190,6 +190,6 @@
   "workbench.colorTheme": "One Dark Pro Night Flat",
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
-  "workbench.preferredLightColorTheme": "Catppuccin Mocha",
+  "workbench.preferredLightColorTheme": "Gruvbox Dark Hard",
   "laravel-pint.enable": true
 }
