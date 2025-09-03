@@ -132,6 +132,24 @@ return {
 
       ins_right {
         function()
+          local ok, laravel_version = pcall(function()
+            return Laravel.app('status'):get 'laravel'
+          end)
+          if ok then
+            return laravel_version
+          end
+        end,
+        icon = { '', color = { fg = '#F55247' } },
+        cond = function()
+          local ok, has_laravel_versions = pcall(function()
+            return Laravel.app('status'):has 'laravel'
+          end)
+          return ok and has_laravel_versions
+        end,
+      }
+
+      ins_right {
+        function()
           local msg = ''
           local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
           local clients = vim.lsp.get_clients()
@@ -146,7 +164,7 @@ return {
           end
           return msg
         end,
-        icon = '󰧑 ',
+        icon = '󰧑',
         color = 'LualineLsp',
       }
 
