@@ -186,6 +186,14 @@ return {
         cond = conditions.hide_in_width,
       }
 
+      ins_right {
+        function()
+          return os.date '%H:%M'
+        end,
+        icon = '',
+        color = 'LualineDiagnosticsWarn',
+      }
+
       lualine.setup(config)
     end,
   },
