@@ -8,7 +8,7 @@ font-feature = "calt,cv02,cv10,cv11,cv31,ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08
 font-size = 16
 
 # Theme
-theme = "catppuccin-mocha"
+theme = "Catppuccin Mocha"
 
 # Keybindings
 ## Go to tmux window by cmd+number
