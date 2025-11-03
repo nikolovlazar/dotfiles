@@ -62,3 +62,6 @@ fi
 # defaults write NSGlobalDomain KeyRepeat -int 1
 # defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Activate mise environment
+eval "$(mise activate zsh)"
