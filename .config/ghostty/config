@@ -10,6 +10,10 @@ font-size = 16
 # Theme
 theme = "Catppuccin Mocha"
 
+# URL handling while running tmux
+link-url = true
+mouse-shift-capture = never
+
 # Keybindings
 ## Go to tmux window by cmd+number
 keybind = super+digit_1=text:\x02\x31
@@ -24,4 +28,3 @@ keybind = super+digit_9=text:\x02\x39
 
 # Misc
 macos-option-as-alt = true
-
