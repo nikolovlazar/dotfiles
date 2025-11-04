@@ -1,0 +1,571 @@
+[DEBUG] Watching for changes in setting files /Users/lazarnikolov/.claude/settings.json, /Users/lazarnikolov/projects/nikolovlazar/socioton/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 17 allow rule(s) to destination 'localSettings': ["mcp__sequential-thinking__sequentialthinking","mcp__Context7__get-library-docs","mcp__sentry__find_organizations","mcp__sentry__find_projects","mcp__sentry__get_issue_details","Bash(vendor/bin/pint:*)","Bash(vendor/bin/phpstan analyse:*)","Bash(php artisan test:*)","Bash(find:*)","Bash(php -l:*)","Bash(vendor/bin/phpstan:*)","Bash(php artisan help:*)","WebFetch(domain:docs.sentry.io)","WebFetch(domain:develop.sentry.dev)","mcp__laravel-boost__tinker","mcp__spotlight__spotlight_traces_search","mcp__spotlight__spotlight_traces_get"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Total LSP servers loaded: 0
+[DEBUG] LSP manager initialized with 0 servers
+[DEBUG] LSP server manager initialized successfully
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/lazarnikolov/.claude/skills, project=/Users/lazarnikolov/projects/nikolovlazar/socioton/.claude/skills
+[DEBUG] >>>>> getPluginSkills CALLED <<<<<
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/lazarnikolov/.zshrc
+[DEBUG] Snapshots directory: /Users/lazarnikolov/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/lazarnikolov/.claude/shell-snapshots/snapshot-zsh-1762038859562-amnk7n.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude/todos/84e9cc4a-9054-4b0b-bf7e-751fb29b051a-agent-84e9cc4a-9054-4b0b-bf7e-751fb29b051a.json.tmp.48612.1762038859563
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/lazarnikolov/.claude/todos/84e9cc4a-9054-4b0b-bf7e-751fb29b051a-agent-84e9cc4a-9054-4b0b-bf7e-751fb29b051a.json.tmp.48612.1762038859563 to /Users/lazarnikolov/.claude/todos/84e9cc4a-9054-4b0b-bf7e-751fb29b051a-agent-84e9cc4a-9054-4b0b-bf7e-751fb29b051a.json
+[DEBUG] File /Users/lazarnikolov/.claude/todos/84e9cc4a-9054-4b0b-bf7e-751fb29b051a-agent-84e9cc4a-9054-4b0b-bf7e-751fb29b051a.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038859581
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038859581 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] getPluginSkills: Processing 0 enabled plugins
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+[DEBUG] getSkillsIfEnabled returning: 0 skill dir commands, 0 plugin skills
+[DEBUG] Summarizing all 3 messages (~0 tokens)
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038859691
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038859691 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038859701
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038859701 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038859709
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038859709 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/lazarnikolov/.local/share/mise/installs/node/24.9.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] MCP server "laravel-boost": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "spotlight": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "@21st-dev/magic": Starting connection with timeout of 30000ms
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038860244
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038860244 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038860431
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42443 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038860431 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038860440
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42443 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038860440 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called
+[DEBUG] Starting background plugin installations
+[DEBUG] performBackgroundPluginInstallations called
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038860859
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42443 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038860859 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038860868
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038860868 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] Stream started - received first chunk
+[DEBUG] Shell snapshot created successfully (1920 bytes)
+[DEBUG] MCP server "laravel-boost": Successfully connected to undefined server in 698ms
+[DEBUG] MCP server "laravel-boost": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":true,"serverVersion":{"name":"Laravel Boost","version":"0.0.1"}}
+[DEBUG] Summarizing last 5 of 17 messages (~101604 tokens)
+[DEBUG] MCP server "@21st-dev/magic": Successfully connected to undefined server in 1318ms
+[DEBUG] MCP server "@21st-dev/magic": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"21st-magic","version":"0.0.46"}}
+[DEBUG] Stream started - received first chunk
+[ERROR] MCP server "spotlight" Server stderr: 🔎 [Spotlight] Spotlight by Sentry - v{unknown}
+[ERROR] MCP server "spotlight" Server stderr: 🔎 [Spotlight] Connecting to existing MCP instance with stdio proxy...
+[ERROR] MCP server "spotlight" Server stderr: 🔎 [Spotlight] Connected to existing MCP instance on port 8969
+[DEBUG] MCP server "spotlight": Successfully connected to undefined server in 1596ms
+[DEBUG] MCP server "spotlight": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"spotlight-mcp","version":"undefined"}}
+[DEBUG] MCP server "sequential-thinking": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "Context7": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "puppeteer": Starting connection with timeout of 30000ms
+[DEBUG] Stream started - received first chunk
+[ERROR] MCP server "sequential-thinking" Server stderr: Sequential Thinking MCP Server running on stdio
+[DEBUG] MCP server "sequential-thinking": Successfully connected to undefined server in 1042ms
+[DEBUG] MCP server "sequential-thinking": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"sequential-thinking-server","version":"0.2.0"}}
+[ERROR] MCP server "Context7" Server stderr: Context7 Documentation MCP Server running on stdio
+[DEBUG] MCP server "Context7": Successfully connected to undefined server in 1102ms
+[DEBUG] MCP server "Context7": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Context7","version":"1.0.26"}}
+[DEBUG] MCP server "puppeteer": Successfully connected to undefined server in 1124ms
+[DEBUG] MCP server "puppeteer": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"example-servers/puppeteer","version":"0.1.0"}}
+[DEBUG] MCP server "sentry": Initializing HTTP transport to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Node version: v24.9.0, Platform: darwin
+[DEBUG] MCP server "sentry": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+[DEBUG] MCP server "sentry": MTLS options: default
+[DEBUG] MCP server "sentry": HTTP transport options: {"url":"https://mcp.sentry.dev/mcp","headers":{"User-Agent":"claude-code/2.0.31"},"hasAuthProvider":true,"timeoutMs":60000}
+[DEBUG] MCP server "sentry": HTTP transport created successfully
+[DEBUG] MCP server "sentry": Client created, setting up request handler
+[DEBUG] MCP server "sentry": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "sentry": Testing basic HTTP connectivity to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Parsed URL: host=mcp.sentry.dev, port=default, protocol=https:
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2587136s
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2587136s
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2587136s
+[DEBUG] MCP server "sentry": Successfully connected to http server in 182ms
+[DEBUG] MCP server "sentry": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Sentry MCP","version":"0.20.0"}}
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2587136s
+[DEBUG] Skills and commands included in Skill tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] FileHistory: Added snapshot for 9ea4bfde-3c91-48d5-bbbf-d0cae454da5d, tracking 0 files
+[DEBUG] Skills and commands included in Skill tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__spotlight__spotlight_traces_search
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__spotlight__spotlight_traces_search
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__spotlight__spotlight_traces_search" (0 before deduplication)
+[DEBUG] MCP server "spotlight": Calling MCP tool: spotlight.traces.search
+[DEBUG] MCP server "spotlight": Tool 'spotlight.traces.search' completed successfully in 12ms
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__spotlight__spotlight_traces_search
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__spotlight__spotlight_traces_search" (0 before deduplication)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Skills and commands included in Skill tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__spotlight__spotlight_traces_get
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__spotlight__spotlight_traces_get
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__spotlight__spotlight_traces_get" (0 before deduplication)
+[DEBUG] MCP server "spotlight": Calling MCP tool: spotlight.traces.get
+[DEBUG] MCP server "spotlight": Tool 'spotlight.traces.get' completed successfully in 9ms
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__spotlight__spotlight_traces_get
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__spotlight__spotlight_traces_get" (0 before deduplication)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Skills and commands included in Skill tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Skills and commands included in Skill tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038921605
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038921605 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Streaming aborted by user: Request was aborted.
+[ERROR] Error in non-streaming fallback: Request was aborted.
+[ERROR] Error: Error: Request was aborted.
+    at Ck.makeRequest (file:///Users/lazarnikolov/.local/share/mise/installs/node/24.9.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:359:3850)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at process.processTimers (node:internal/timers:540:9)
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762038921625
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762038921625 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Metrics opt-out API response: enabled=true
+[DEBUG] BigQuery metrics exported successfully
+[DEBUG] API Response: {
+  "accepted_count": 13,
+  "rejected_count": 0
+}
+[DEBUG] MCP server "sentry": HTTP connection dropped after 2795s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2584340s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 3777s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2583357s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 5794s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2581340s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 6839s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2580296s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 12512s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2574623s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 17998s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2569136s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 19245s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2567889s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 24870s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2562265s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 28174s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2558961s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 33792s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2553342s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 34812s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2552322s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 39504s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2547631s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 41739s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2545396s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 42783s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2544352s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 48261s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2538873s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 54355s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2532780s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 60390s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2526745s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 65112s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2522022s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 69978s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2517156s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 71137s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2515997s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 76812s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2510323s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 77853s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2509282s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 82473s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2504662s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 85072s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2502062s
+[DEBUG] MCP server "sentry": HTTP connection dropped after 86132s uptime
+[DEBUG] MCP server "sentry": Connection error: SSE stream disconnected: TypeError: terminated
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2501002s
+[DEBUG] npm view failed with code 1
+[DEBUG] npm stderr: (empty)
+[DEBUG] npm stdout: 2.0.31
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762213743848
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762213743848 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762215562085
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762215562085 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762217436861
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762217436861 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762219947099
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762219947099 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762221702324
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762221702324 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762223502110
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762223502110 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762225302274
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762225302274 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762227102103
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762227102103 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762229982971
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762229982971 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762231857287
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762231857287 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762233881712
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762233881712 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762236288440
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762236288440 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] npm view failed with code 1
+[DEBUG] npm stderr: (empty)
+[DEBUG] npm stdout: 2.0.32
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762240192821
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762240192821 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762243100012
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762243100012 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[ERROR] jnA: jnA: Failed to install new version of claude:  
+    at kDA (file:///Users/lazarnikolov/.local/share/mise/installs/node/24.9.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1877:389)
+    at async Object.current (file:///Users/lazarnikolov/.local/share/mise/installs/node/24.9.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2859:32581)
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762248442028
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762248442028 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762252159484
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762252159484 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762255082075
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762255082075 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdater: Detected installation type: npm-global
+[DEBUG] AutoUpdater: Using global update method
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762257539161
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762257539161 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Getting matching hook commands for SessionEnd with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Cleaned up session snapshot: /Users/lazarnikolov/.claude/shell-snapshots/snapshot-zsh-1762038859562-amnk7n.sh
+[DEBUG] MCP server "sentry": HTTP transport closed/disconnected, attempting automatic reconnection
+[DEBUG] LSP server manager shut down successfully
+[DEBUG] MCP server "sentry": Initializing HTTP transport to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Node version: v24.9.0, Platform: darwin
+[DEBUG] MCP server "sentry": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+[DEBUG] MCP server "sentry": MTLS options: default
+[DEBUG] MCP server "sentry": HTTP transport options: {"url":"https://mcp.sentry.dev/mcp","headers":{"User-Agent":"claude-code/2.0.31"},"hasAuthProvider":true,"timeoutMs":60000}
+[DEBUG] MCP server "sentry": HTTP transport created successfully
+[DEBUG] MCP server "sentry": Client created, setting up request handler
+[DEBUG] MCP server "sentry": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "sentry": Testing basic HTTP connectivity to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Parsed URL: host=mcp.sentry.dev, port=default, protocol=https:
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 2367039s
+[DEBUG] BigQuery metrics exporter flush complete
+[DEBUG] BigQuery metrics exporter flush complete
+[DEBUG] BigQuery metrics exporter shutdown complete
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.48612.1762258960242
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42947 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.48612.1762258960242 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically

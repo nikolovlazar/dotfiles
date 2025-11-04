@@ -1,0 +1,7 @@
+[DEBUG] Watching for changes in setting files /Users/lazarnikolov/.claude/settings.json, /Users/lazarnikolov/projects/nikolovlazar/socioton/.claude/settings.local.json...
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.28730.1762033658085
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 212765 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.28730.1762033658085 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically

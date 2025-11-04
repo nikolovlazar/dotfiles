@@ -1,0 +1,50 @@
+[DEBUG] Watching for changes in setting files /Users/lazarnikolov/.claude/settings.json, /Users/lazarnikolov/projects/nikolovlazar/socioton/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 17 allow rule(s) to destination 'localSettings': ["mcp__sequential-thinking__sequentialthinking","mcp__Context7__get-library-docs","mcp__sentry__find_organizations","mcp__sentry__find_projects","mcp__sentry__get_issue_details","Bash(vendor/bin/pint:*)","Bash(vendor/bin/phpstan analyse:*)","Bash(php artisan test:*)","Bash(find:*)","Bash(php -l:*)","Bash(vendor/bin/phpstan:*)","Bash(php artisan help:*)","WebFetch(domain:docs.sentry.io)","WebFetch(domain:develop.sentry.dev)","mcp__laravel-boost__tinker","mcp__spotlight__spotlight_traces_search","mcp__spotlight__spotlight_traces_get"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Total LSP servers loaded: 0
+[DEBUG] LSP manager initialized with 0 servers
+[DEBUG] LSP server manager initialized successfully
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/lazarnikolov/.claude/skills, project=/Users/lazarnikolov/projects/nikolovlazar/socioton/.claude/skills
+[DEBUG] >>>>> getPluginSkills CALLED <<<<<
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/lazarnikolov/.zshrc
+[DEBUG] Snapshots directory: /Users/lazarnikolov/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/lazarnikolov/.claude/shell-snapshots/snapshot-zsh-1762038481921-2weegt.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude/todos/84a33201-54f1-46e9-a6ea-4e0c012baa03-agent-84a33201-54f1-46e9-a6ea-4e0c012baa03.json.tmp.24323.1762038481922
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/lazarnikolov/.claude/todos/84a33201-54f1-46e9-a6ea-4e0c012baa03-agent-84a33201-54f1-46e9-a6ea-4e0c012baa03.json.tmp.24323.1762038481922 to /Users/lazarnikolov/.claude/todos/84a33201-54f1-46e9-a6ea-4e0c012baa03-agent-84a33201-54f1-46e9-a6ea-4e0c012baa03.json
+[DEBUG] File /Users/lazarnikolov/.claude/todos/84a33201-54f1-46e9-a6ea-4e0c012baa03-agent-84a33201-54f1-46e9-a6ea-4e0c012baa03.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.24323.1762038481939
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.24323.1762038481939 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] getPluginSkills: Processing 0 enabled plugins
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+[DEBUG] getSkillsIfEnabled returning: 0 skill dir commands, 0 plugin skills
+[DEBUG] Summarizing last 4 of 17 messages (~118602 tokens)
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.24323.1762038482047
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.24323.1762038482047 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.24323.1762038482056
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.24323.1762038482056 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.24323.1762038482063
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42548 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.24323.1762038482063 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Ripgrep first use test: FAILED (mode=builtin, path=/Users/lazarnikolov/.local/share/mise/installs/node/24.9.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)

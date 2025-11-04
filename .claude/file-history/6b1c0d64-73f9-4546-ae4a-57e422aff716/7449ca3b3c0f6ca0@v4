@@ -1,0 +1,89 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Traits\HandlesCompositeProfileIds;
+use App\Http\Controllers\Traits\LoadsInboxConversations;
+use App\Models\BrandProfile;
+use App\Models\Conversation;
+use App\Models\InfluencerProfile;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
+
+class ConversationsController extends Controller
+{
+    use HandlesCompositeProfileIds;
+    use LoadsInboxConversations;
+
+    public function show(Request $request, string $conversation): Response
+    {
+        $selectedProfileId = $request->cookie('selected_profile_id');
+        $profile = $this->getSelectedProfile($request, $selectedProfileId);
+
+        if (! $profile) {
+            return Inertia::render('inbox/index', [
+                'conversations' => [],
+                'messages' => [],
+                'selectedConversationId' => $conversation,
+            ]);
+        }
+
+        $conversations = $this->getAllConversations($profile);
+
+        // Find the selected conversation and load its messages
+        $selectedConversation = Conversation::with([
+            'messages' => fn ($query) => $query->orderBy('sent_at', 'asc')->with(['senderUser', 'senderProfile']),
+            'brandProfile',
+            'influencerProfile',
+        ])->find($conversation);
+
+        if (! $selectedConversation) {
+            abort(404, 'Conversation not found');
+        }
+
+        // Verify the profile has access to this conversation
+        $profileType = $profile instanceof InfluencerProfile ? 'influencer' : 'brand';
+        $profileIdColumn = $profileType === 'influencer' ? 'influencer_profile_id' : 'brand_profile_id';
+
+        if ($selectedConversation->{$profileIdColumn} !== $profile->id) {
+            abort(403, 'You do not have access to this conversation');
+        }
+
+        // Format messages for the frontend
+        $messages = $selectedConversation->messages->map(function ($message) use ($profile, $profileType) {
+            $senderProfile = $message->senderProfile;
+            $senderUser = $message->senderUser;
+
+            $isSentByCurrentProfile = $message->sender_profile_id === $profile->id
+                && $message->sender_profile_type === ($profileType === 'influencer' ? InfluencerProfile::class : BrandProfile::class);
+
+            // Get profile avatar (brand logo or influencer avatar)
+            $profileAvatar = null;
+            if ($senderProfile) {
+                $profileAvatar = $senderProfile instanceof BrandProfile
+                    ? $senderProfile->logo
+                    : $senderProfile->avatar;
+            }
+
+            return [
+                'id' => $message->id,
+                'senderName' => $senderUser?->name ?? 'Unknown',
+                'senderAvatar' => $profileAvatar,
+                'senderProfileType' => $message->sender_profile_type === BrandProfile::class ? 'brand' : 'influencer',
+                'senderProfileName' => $senderProfile?->name ?? 'Unknown',
+                'body' => $message->content,
+                'sentAt' => $message->sent_at->toISOString(),
+                'direction' => $isSentByCurrentProfile ? 'sent' : 'received',
+            ];
+        });
+
+        return Inertia::render('inbox/index', [
+            'conversations' => $conversations,
+            'messages' => $messages,
+            'selectedConversationId' => $conversation,
+        ]);
+    }
+}

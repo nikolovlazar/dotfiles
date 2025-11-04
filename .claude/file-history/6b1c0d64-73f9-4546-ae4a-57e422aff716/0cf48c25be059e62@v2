@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Message extends Model
+{
+    protected $fillable = [
+        'conversation_id',
+        'sender_profile_id',
+        'sender_profile_type',
+        'sender_user_id',
+        'content',
+        'sent_at',
+    ];
+
+    protected $casts = [
+        'sent_at' => 'datetime',
+    ];
+
+    public function conversation()
+    {
+        return $this->belongsTo(Conversation::class);
+    }
+
+    public function senderProfile()
+    {
+        return $this->morphTo();
+    }
+}

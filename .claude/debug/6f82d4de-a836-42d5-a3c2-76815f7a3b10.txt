@@ -1,0 +1,297 @@
+[DEBUG] Watching for changes in setting files /Users/lazarnikolov/projects/nikolovlazar/socioton/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 15 allow rule(s) to destination 'localSettings': ["mcp__sequential-thinking__sequentialthinking","mcp__Context7__get-library-docs","mcp__sentry__find_organizations","mcp__sentry__find_projects","mcp__sentry__get_issue_details","Bash(vendor/bin/pint:*)","Bash(vendor/bin/phpstan analyse:*)","Bash(php artisan test:*)","Bash(find:*)","Bash(php -l:*)","Bash(vendor/bin/phpstan:*)","Bash(php artisan help:*)","WebFetch(domain:docs.sentry.io)","WebFetch(domain:develop.sentry.dev)","mcp__laravel-boost__tinker"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/lazarnikolov/.zshrc
+[DEBUG] Snapshots directory: /Users/lazarnikolov/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/lazarnikolov/.claude/shell-snapshots/snapshot-zsh-1759886872951-og6tn0.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude/todos/6f82d4de-a836-42d5-a3c2-76815f7a3b10-agent-6f82d4de-a836-42d5-a3c2-76815f7a3b10.json.tmp.15829.1759886872953
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/lazarnikolov/.claude/todos/6f82d4de-a836-42d5-a3c2-76815f7a3b10-agent-6f82d4de-a836-42d5-a3c2-76815f7a3b10.json.tmp.15829.1759886872953 to /Users/lazarnikolov/.claude/todos/6f82d4de-a836-42d5-a3c2-76815f7a3b10-agent-6f82d4de-a836-42d5-a3c2-76815f7a3b10.json
+[DEBUG] File /Users/lazarnikolov/.claude/todos/6f82d4de-a836-42d5-a3c2-76815f7a3b10-agent-6f82d4de-a836-42d5-a3c2-76815f7a3b10.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886872978
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211315 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886872978 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/lazarnikolov/.claude/skills, project=/Users/lazarnikolov/projects/nikolovlazar/socioton/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Summarizing last 6 of 20 messages (~125487 tokens)
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886873035
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211315 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886873035 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886873086
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211315 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886873086 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886873107
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211315 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886873107 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/lazarnikolov/.asdf/installs/nodejs/24.4.1/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] MCP server "laravel-boost": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "@21st-dev/magic": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "sequential-thinking": Starting connection with timeout of 30000ms
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886873619
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211315 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886873619 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886873805
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211315 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886873805 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886873815
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211316 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886873815 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called, ENABLE_PLUGINS=undefined
+[DEBUG] Skipping plugin installations - ENABLE_PLUGINS not set
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886874190
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211421 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886874190 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Shell snapshot created successfully (1845 bytes)
+[DEBUG] MCP server "laravel-boost": Successfully connected to undefined server in 629ms
+[DEBUG] MCP server "laravel-boost": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":true,"serverVersion":{"name":"Laravel Boost","version":"0.0.1"}}
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886874228
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211421 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886874228 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[ERROR] MCP server "sequential-thinking" Server stderr: Sequential Thinking MCP Server running on stdio
+[DEBUG] MCP server "sequential-thinking": Successfully connected to undefined server in 1087ms
+[DEBUG] MCP server "sequential-thinking": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"sequential-thinking-server","version":"0.2.0"}}
+[DEBUG] MCP server "@21st-dev/magic": Successfully connected to undefined server in 1124ms
+[DEBUG] MCP server "@21st-dev/magic": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"21st-magic","version":"0.0.46"}}
+[DEBUG] MCP server "Context7": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "puppeteer": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "sentry": Initializing HTTP transport to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Node version: v24.4.1, Platform: darwin
+[DEBUG] MCP server "sentry": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+[DEBUG] MCP server "sentry": MTLS options: default
+[DEBUG] MCP server "sentry": HTTP transport options: {"url":"https://mcp.sentry.dev/mcp","headers":{"User-Agent":"claude-code/2.0.10"},"hasAuthProvider":true,"timeoutMs":60000}
+[DEBUG] MCP server "sentry": HTTP transport created successfully
+[DEBUG] MCP server "sentry": Client created, setting up request handler
+[DEBUG] MCP server "sentry": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "sentry": Testing basic HTTP connectivity to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Parsed URL: host=mcp.sentry.dev, port=default, protocol=https:
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 853787s
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 853786s
+[ERROR] MCP server "Context7" Server stderr: Context7 Documentation MCP Server running on stdio
+[DEBUG] MCP server "Context7": Successfully connected to undefined server in 967ms
+[DEBUG] MCP server "Context7": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"Context7","version":"1.0.21"}}
+[DEBUG] MCP server "puppeteer": Successfully connected to undefined server in 988ms
+[DEBUG] MCP server "puppeteer": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"example-servers/puppeteer","version":"0.1.0"}}
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 853786s
+[DEBUG] MCP server "sentry": Successfully connected to http server in 1048ms
+[DEBUG] MCP server "sentry": Connection established with capabilities: {"hasTools":true,"hasPrompts":true,"hasResources":true,"serverVersion":{"name":"Sentry MCP","version":"0.18.0"}}
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 853786s
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 853786s
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 853786s
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Added snapshot for f5ad3e42-56ec-42e4-abf8-6647f29afc18, tracking 0 files
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886909760
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211191 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886909760 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886919945
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211191 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886919945 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886919969
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211191 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886919969 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 460e724e-46d8-4cc3-b7c8-9f3e9318e3a1
+[DEBUG] FileHistory: Added snapshot for 460e724e-46d8-4cc3-b7c8-9f3e9318e3a1, tracking 0 files
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886973148
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211015 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886973148 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Edit
+[DEBUG] Executing hooks for PreToolUse:Edit
+[DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Permission suggestions for Edit: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] FileHistory: Tracked file modification for /Users/lazarnikolov/projects/nikolovlazar/socioton/.github/workflows/deploy.yml
+[DEBUG] Writing to temp file: /Users/lazarnikolov/projects/nikolovlazar/socioton/.github/workflows/deploy.yml.tmp.15829.1759886986845
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 2396 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/projects/nikolovlazar/socioton/.github/workflows/deploy.yml.tmp.15829.1759886986845 to /Users/lazarnikolov/projects/nikolovlazar/socioton/.github/workflows/deploy.yml
+[DEBUG] File /Users/lazarnikolov/projects/nikolovlazar/socioton/.github/workflows/deploy.yml written atomically
+[DEBUG] Executing hooks for PostToolUse:Edit
+[DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886990889
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211015 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886990889 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759886990911
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211015 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759886990911 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically
+[DEBUG] Metrics opt-out API response: enabled=true
+[DEBUG] BigQuery metrics exported successfully
+[DEBUG] API Response: {
+  "accepted_count": 16,
+  "rejected_count": 0
+}
+[DEBUG] Getting matching hook commands for SessionEnd with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Cleaned up session snapshot: /Users/lazarnikolov/.claude/shell-snapshots/snapshot-zsh-1759886872951-og6tn0.sh
+[DEBUG] MCP server "sentry": HTTP transport closed/disconnected, attempting automatic reconnection
+[DEBUG] MCP server "sentry": Initializing HTTP transport to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Node version: v24.4.1, Platform: darwin
+[DEBUG] MCP server "sentry": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+[DEBUG] MCP server "sentry": MTLS options: default
+[DEBUG] MCP server "sentry": HTTP transport options: {"url":"https://mcp.sentry.dev/mcp","headers":{"User-Agent":"claude-code/2.0.10"},"hasAuthProvider":true,"timeoutMs":60000}
+[DEBUG] MCP server "sentry": HTTP transport created successfully
+[DEBUG] MCP server "sentry": Client created, setting up request handler
+[DEBUG] MCP server "sentry": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "sentry": Testing basic HTTP connectivity to https://mcp.sentry.dev/mcp
+[DEBUG] MCP server "sentry": Parsed URL: host=mcp.sentry.dev, port=default, protocol=https:
+[DEBUG] MCP server "sentry": Returning tokens
+[DEBUG] MCP server "sentry": Token length: 57
+[DEBUG] MCP server "sentry": Has refresh token: true
+[DEBUG] MCP server "sentry": Expires in: 848113s
+[DEBUG] BigQuery metrics exporter flush complete
+[DEBUG] BigQuery metrics exporter flush complete
+[DEBUG] BigQuery metrics exporter shutdown complete
+[DEBUG] Writing to temp file: /Users/lazarnikolov/.claude.json.tmp.15829.1759892549324
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 211425 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/lazarnikolov/.claude.json.tmp.15829.1759892549324 to /Users/lazarnikolov/.claude.json
+[DEBUG] File /Users/lazarnikolov/.claude.json written atomically

@@ -1,0 +1,198 @@
+import { LucideIcon } from 'lucide-react';
+import type { Config } from 'ziggy-js';
+
+export interface Auth {
+    user: User;
+}
+
+export interface BreadcrumbItem {
+    title: string;
+    href: string;
+}
+
+export interface NavGroup {
+    title: string;
+    items: NavItem[];
+}
+
+export interface NavItem {
+    title: string;
+    href: string;
+    icon?: LucideIcon | null;
+    isActive?: boolean;
+    badge?: number;
+}
+
+export interface InfluencerProfile {
+    id: number;
+    name: string;
+    avatar: string | null;
+    bio: string;
+    location: string | null;
+    website: string;
+    stripe_customer_id: string | null;
+    stripe_connect_account_id: string | null;
+    social_media_accounts: SocialMediaAccount[];
+    created_at: string;
+    updated_at: string;
+    // Added by the backend for distinguishing profiles with same IDs
+    profile_type?: 'influencer';
+    composite_id?: string;
+}
+
+export interface BrandProfile {
+    id: number;
+    company_name: string;
+    name: string; // Accessor that returns company_name for consistency with InfluencerProfile
+    logo: string | null;
+    company_description: string | null;
+    industry: string;
+    website: string | null;
+    social_media_links: string[];
+    stripe_customer_id?: string | null;
+    created_at: string;
+    updated_at: string;
+    // Added by the backend for distinguishing profiles with same IDs
+    profile_type?: 'brand';
+    composite_id?: string;
+}
+
+export interface SocialMediaAccount {
+    id: number;
+    influencer_profile_id: number;
+    platform_type: 'youtube' | 'instagram' | 'tiktok' | 'twitter' | 'bsky' | 'facebook';
+    platform_account_id: string;
+    platform_username: string;
+    title: string;
+    last_synced_at: string | null;
+    latest_stats?: SocialMediaAccountStats;
+    avatar?: string | null;
+    content_stats?: ContentAggregatedStats;
+    recent_content?: ContentItem[];
+    top_content?: ContentItem[];
+    state: 'ok' | 'reauth_required' | 'unknown';
+}
+
+export interface SocialMediaAccountStats {
+    id: number;
+    social_media_account_id: number;
+    subscriber_count: number | null;
+    follower_count: number | null;
+    video_count: number | null;
+    total_views_cumulative: number | null;
+    total_likes_cumulative: number | null;
+    total_comments_cumulative: number | null;
+    watch_time_hours: number | null;
+    engagement_rate_snapshot: number | null;
+    demographics: Record<string, Record<string, number>> | null;
+    country_stats: Record<string, { views: number; watchTimeMinutes: number }> | null;
+    device_stats: Record<string, number> | null;
+    recent_views_30d: number | null;
+    recent_subscriber_growth_30d: number | null;
+    average_view_duration_30d: number | null;
+    average_view_duration_total: number | null;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface ContentStats {
+    views: number;
+    likes: number;
+    comments: number;
+    shares: number;
+    saves: number;
+    engagement: number;
+    interaction_rate: number;
+    watch_time_minutes: number;
+    average_view_duration_seconds: number;
+}
+
+export interface ContentAggregatedStats {
+    avg_engagement_rate: number; // Decimal percentage (e.g., 5.25 for 5.25%)
+    avg_interaction_rate: number; // Decimal percentage (e.g., 3.15 for 3.15%)
+}
+
+export interface ContentItem {
+    id: number;
+    title: string;
+    url: string;
+    published_at: string;
+    thumbnail_url: string | null;
+    stats: ContentStats | null;
+}
+
+export interface Flash {
+    message?: string;
+    success?: string;
+    error?: string;
+}
+
+export interface SharedData {
+    name: string;
+    auth: Auth;
+    ziggy: Config & { location: string };
+    sidebarOpen: boolean;
+    profiles: (InfluencerProfile | BrandProfile)[];
+    selected_profile: InfluencerProfile | BrandProfile | null;
+    unread_notifications_count: number;
+    flash?: Flash;
+    [key: string]: unknown;
+}
+
+export interface User {
+    id: number;
+    name: string;
+    email: string;
+    avatar?: string;
+    email_verified_at: string | null;
+    created_at: string;
+    updated_at: string;
+    [key: string]: unknown; // This allows for additional properties...
+}
+
+export interface ProfileMember {
+    id: number;
+    name?: string;
+    email: string;
+    user_id: number;
+    profile_id: number;
+    invited_by_user: number;
+    profile_type: string;
+    role: string;
+    invited_at: string;
+    joined_at: string | null;
+    invitation_status: 'pending' | 'accepted' | 'rejected';
+    invitation_expires_at: string;
+}
+
+export type InboxFilter = 'all' | 'unread' | 'archived';
+
+export interface ConversationListItem {
+    id: string;
+    title: string; // Counterparty profile name
+    subtitle: string; // "User Name: Last message preview"
+    lastActivityAt: string; // relative time (client-side placeholder)
+    unreadCount: number;
+    archived: boolean;
+}
+
+export interface SystemNotification {
+    id: string;
+    type: string;
+    content: string;
+    data: object;
+    sent_at: string;
+    read_at: string;
+    is_system_message: boolean;
+}
+
+export interface MessageItem {
+    id: string;
+    senderName: string;
+    senderAvatar?: string | null;
+    senderProfileType: 'brand' | 'influencer' | 'system';
+    senderProfileName?: string; // profile display name (brand company or influencer name)
+    body: string;
+    sentAt: string; // relative for placeholder
+    direction: 'sent' | 'received';
+}

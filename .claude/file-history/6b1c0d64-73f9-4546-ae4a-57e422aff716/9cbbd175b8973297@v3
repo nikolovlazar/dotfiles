@@ -1,0 +1,82 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Traits\HandlesCompositeProfileIds;
+use App\Http\Controllers\Traits\LoadsInboxConversations;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
+
+class InboxController extends Controller
+{
+    use HandlesCompositeProfileIds;
+    use LoadsInboxConversations;
+
+    public function index(Request $request): Response
+    {
+        $selectedProfileId = $request->cookie('selected_profile_id');
+        $profile = $this->getSelectedProfile($request, $selectedProfileId);
+
+        if (! $profile) {
+            return Inertia::render('inbox/list', [
+                'conversations' => [],
+            ]);
+        }
+
+        $conversations = $this->getAllConversations($profile);
+
+        return Inertia::render('inbox/list', [
+            'conversations' => $conversations,
+        ]);
+    }
+
+    public function system(Request $request): Response
+    {
+        $selectedProfileId = $request->cookie('selected_profile_id');
+        $profile = $this->getSelectedProfile($request, $selectedProfileId);
+
+        if (! $profile) {
+            return Inertia::render('inbox/index', [
+                'conversations' => [],
+                'notifications' => [],
+                'selectedConversationId' => 'system',
+            ]);
+        }
+
+        $conversations = $this->getAllConversations($profile);
+
+        $notifications = $profile->notifications()
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(function ($notification) {
+                return [
+                    'id' => $notification->id,
+                    'type' => $notification->data['type'] ?? 'notification',
+                    'content' => $notification->data['message'],
+                    'data' => $notification->data,
+                    'sent_at' => $notification->created_at,
+                    'read_at' => $notification->read_at,
+                    'is_system_message' => true,
+                ];
+            });
+
+        dispatch(function () use ($profile) {
+            // Only mark system-related notifications as read
+            $profile->unreadNotifications()
+                ->whereIn('type', [
+                    \App\Notifications\ReauthenticationRequired::class,
+                ])
+                ->get()
+                ->markAsRead();
+        })->afterResponse();
+
+        return Inertia::render('inbox/index', [
+            'conversations' => $conversations,
+            'notifications' => $notifications,
+            'selectedConversationId' => 'system',
+        ]);
+    }
+}

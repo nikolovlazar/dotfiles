@@ -1,0 +1,96 @@
+import type { MessageItem } from '@/types';
+import { format, isToday, isYesterday } from 'date-fns';
+import { Bell } from 'lucide-react';
+import { useEffect, useMemo, useRef } from 'react';
+import MessageBubble from './MessageBubble';
+
+interface MessageGroup {
+    date: string;
+    displayDate: string;
+    messages: MessageItem[];
+}
+
+export function MessageThread({ messages }: { messages: MessageItem[] }) {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const messageGroups = useMemo(() => {
+        const groups: Record<string, MessageGroup> = {};
+
+        messages.forEach((message) => {
+            const messageDate = new Date(message.sentAt);
+            const dateKey = format(messageDate, 'yyyy-MM-dd');
+
+            if (!groups[dateKey]) {
+                let displayDate: string;
+                if (isToday(messageDate)) {
+                    displayDate = 'Today';
+                } else if (isYesterday(messageDate)) {
+                    displayDate = 'Yesterday';
+                } else {
+                    displayDate = format(messageDate, 'MMMM d, yyyy');
+                }
+
+                groups[dateKey] = {
+                    date: dateKey,
+                    displayDate,
+                    messages: [],
+                };
+            }
+
+            groups[dateKey].messages.push(message);
+        });
+
+        return Object.values(groups);
+    }, [messages]);
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
+    if (messages.length === 0) {
+        return (
+            <div className="flex h-full items-center justify-center">
+                <div className="text-center">
+                    <Bell className="text-muted-foreground mx-auto mb-4 h-12 w-12" />
+                    <p className="text-muted-foreground text-lg font-medium">No notifications yet</p>
+                    <p className="text-muted-foreground text-sm">We'll notify you when something important happens</p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div ref={scrollRef} className="h-full overflow-y-auto">
+            <div className="space-y-6 p-4">
+                {messageGroups.map((group) => (
+                    <div key={group.date} className="space-y-4">
+                        {/* Date header - full width */}
+                        <div className="flex items-center justify-center">
+                            <div className="flex w-full items-center">
+                                <div className="bg-border h-px flex-1"></div>
+                                <div className="bg-muted text-muted-foreground rounded-full border-1 px-3 py-1 text-xs font-medium">
+                                    {group.displayDate}
+                                </div>
+                                <div className="bg-border h-px flex-1"></div>
+                            </div>
+                        </div>
+
+                        {/* Messages for this day - max width */}
+                        <div className="mx-auto w-full max-w-[768px]">
+                            <div className="space-y-4">
+                                {group.messages.map((message) => (
+                                    <MessageBubble key={message.id} msg={message} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                {/* Invisible element to scroll to */}
+                <div ref={messagesEndRef} />
+            </div>
+        </div>
+    );
+}
+
+export default MessageThread;

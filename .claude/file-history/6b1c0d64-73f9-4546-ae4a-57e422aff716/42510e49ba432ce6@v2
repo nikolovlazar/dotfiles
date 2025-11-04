@@ -1,0 +1,182 @@
+import InboxList from '@/components/inbox/InboxList';
+import MessageComposer from '@/components/inbox/MessageComposer';
+import MessageRightSidebar from '@/components/inbox/MessageRightSidebar';
+import MessageThread from '@/components/inbox/MessageThread';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import { SidebarProvider, SidebarRightTrigger } from '@/components/ui/sidebar';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import InboxLayout from '@/layouts/inbox-layout';
+import type { ConversationListItem, InboxFilter, MessageItem, SharedData, SystemNotification } from '@/types';
+import { Head, Link, usePage } from '@inertiajs/react';
+import { Archive, ChevronLeft, Computer } from 'lucide-react';
+import { useMemo, useState } from 'react';
+
+interface PageProps extends SharedData {
+    selectedConversationId: string;
+    conversations: ConversationListItem[];
+    notifications?: SystemNotification[];
+    messages?: MessageItem[];
+}
+
+export default function ConversationPage() {
+    const page = usePage<PageProps>();
+    const { selectedConversationId } = page.props;
+    const isListOnly = false; // This page always shows conversation
+    const [filter, setFilter] = useState<InboxFilter>('all');
+    const [selectedId, setSelectedId] = useState<string>(selectedConversationId);
+
+    const [conversations] = useState<ConversationListItem[]>(page.props.conversations ?? []);
+
+    const filtered = useMemo(() => {
+        const systemConversation = conversations.find((c) => c.id === 'system')!;
+
+        const filteredConversations = conversations.filter((c) => {
+            if (c.id === 'system') return false;
+            if (filter === 'all') return !c.archived;
+            if (filter === 'unread') return !c.archived && c.unreadCount > 0;
+            if (filter === 'archived') return c.archived;
+            return true;
+        });
+
+        return [systemConversation, ...filteredConversations];
+    }, [conversations, filter]);
+
+    const currentIsSystem = selectedId === 'system';
+    const [messages, setMessages] = useState<MessageItem[]>(
+        (page.props.notifications ?? []).map((notification) => ({
+            id: notification.id,
+            senderName: page.props.name,
+            senderAvatar: 'logo.svg',
+            senderProfileType: 'system',
+            body: notification.content,
+            sentAt: notification.sent_at,
+            direction: 'received',
+        })),
+    );
+
+    return (
+        <InboxLayout>
+            <Head title="Inbox" />
+            <div className="absolute inset-0 grid grid-cols-1 overflow-hidden md:grid-cols-[280px_1fr] lg:grid-cols-[300px_1fr]">
+                {/* Left column: list + filters */}
+                <div className={isListOnly ? 'block' : 'hidden md:block'}>
+                    <InboxList
+                        items={filtered}
+                        filter={filter}
+                        onFilterChange={setFilter}
+                        selectedId={selectedId}
+                        onSelect={(id) => setSelectedId(id)}
+                        onToggleArchive={(id) => {
+                            if (id === 'system') return;
+                            const target = filtered.find((f) => f.id === id);
+                            if (target) target.archived = !target.archived;
+                            setSelectedId((curr) => (curr === id ? 'system' : curr));
+                        }}
+                    />
+                </div>
+
+                <SidebarProvider name="inbox-right" breakpoint="lg" className="min-h-0">
+                    {/* Middle section: header + messages + composer + embedded right sidebar */}
+                    <div className={`${isListOnly ? 'hidden md:flex' : 'flex'} h-full min-h-0 w-full flex-col`}>
+                        <div className="flex items-center justify-between border-b p-3">
+                            <div className="flex items-center gap-2">
+                                {/* Small screens: back to list and toggle sidebar */}
+                                <div className="flex items-center gap-1 md:hidden">
+                                    <Link href="/inbox" aria-label="Back to list" className="hover:text-foreground text-muted-foreground">
+                                        <ChevronLeft className="h-5 w-5" />
+                                    </Link>
+                                </div>
+                                {currentIsSystem ? (
+                                    <Computer className="m-1.5 h-5 w-5" />
+                                ) : (
+                                    <Avatar className="h-8 w-8">
+                                        <AvatarFallback>
+                                            {(filtered.find((f) => f.id === selectedId)?.title || 'IN').slice(0, 2).toUpperCase()}
+                                        </AvatarFallback>
+                                    </Avatar>
+                                )}
+                                <div className="min-w-0">
+                                    <div className="truncate text-sm font-semibold">
+                                        {currentIsSystem ? 'System' : (filtered.find((f) => f.id === selectedId)?.title ?? '')}
+                                    </div>
+                                    <div className="text-muted-foreground text-xs">{currentIsSystem ? 'Notifications' : 'Conversation'}</div>
+                                </div>
+                            </div>
+                            {!currentIsSystem && (
+                                <div className="flex items-center gap-1">
+                                    <SidebarRightTrigger name="inbox-right" className="lg:hidden" />
+                                    <TooltipProvider>
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <Button variant="ghost" size="icon" aria-label="Archive conversation">
+                                                    <Archive className="h-4 w-4" />
+                                                </Button>
+                                            </TooltipTrigger>
+                                            <TooltipContent>Archive conversation</TooltipContent>
+                                        </Tooltip>
+                                    </TooltipProvider>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="flex h-full min-h-0 flex-1 flex-row overflow-hidden">
+                            <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+                                {/* Thread - scrollable area with fixed height */}
+                                <div className="min-h-0 flex-1">
+                                    <MessageThread
+                                        messages={messages}
+                                        threadAvatarInitials={(filtered.find((f) => f.id === selectedId)?.title || 'IN').slice(0, 2).toUpperCase()}
+                                    />
+                                </div>
+
+                                {/* Composer - fixed at bottom */}
+                                {!currentIsSystem && (
+                                    <div className="bg-background flex-shrink-0 border-t p-4">
+                                        <div className="mx-auto w-full max-w-xl">
+                                            <MessageComposer
+                                                onSend={(body) => {
+                                                    setMessages((prev) => [
+                                                        ...prev,
+                                                        {
+                                                            id: String(prev.length + 1),
+                                                            senderName: 'You',
+                                                            senderAvatar: null,
+                                                            senderProfileType: 'brand',
+                                                            senderProfileName: filtered.find((f) => f.id === selectedId)?.title || 'Me',
+                                                            body,
+                                                            sentAt: 'now',
+                                                            direction: 'sent',
+                                                        },
+                                                    ]);
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {!currentIsSystem && (
+                                <MessageRightSidebar
+                                    oppositeProfile={{
+                                        kind: 'influencer',
+                                        name: 'Jane Influencer',
+                                        bio: 'Lifestyle and tech creator sharing honest reviews and behind-the-scenes workflows. Available for brand collaborations and product launches.',
+                                        socialLinks: [
+                                            { platform: 'youtube', url: 'https://youtube.com/@jane' },
+                                            { platform: 'instagram', url: 'https://instagram.com/jane' },
+                                        ],
+                                    }}
+                                    collaborations={[
+                                        { title: 'Launch Campaign', status: 'In progress', dates: 'Aug 1 — Aug 30' },
+                                        { title: 'Unboxing Video', status: 'Completed', dates: 'Jun 2024' },
+                                    ]}
+                                />
+                            )}
+                        </div>
+                    </div>
+                </SidebarProvider>
+            </div>
+        </InboxLayout>
+    );
+}

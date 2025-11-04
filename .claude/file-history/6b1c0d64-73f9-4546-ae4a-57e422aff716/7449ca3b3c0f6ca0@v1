@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use Inertia\Inertia;
+use Inertia\Response;
+
+class ConversationsController extends Controller
+{
+    public function show(string $conversation): Response
+    {
+        return Inertia::render('inbox/index', [
+            'selectedConversationId' => $conversation,
+        ]);
+    }
+}

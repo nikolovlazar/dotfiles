@@ -1,0 +1,39 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { cn } from '@/lib/utils';
+import type { MessageItem } from '@/types';
+import { format } from 'date-fns';
+import { CheckCheck } from 'lucide-react';
+
+export function MessageBubble({ msg, threadAvatarInitials }: { msg: MessageItem; threadAvatarInitials: string }) {
+    const isSent = msg.direction === 'sent';
+    const senderInitials = msg.senderProfileName?.slice(0, 2).toUpperCase() || msg.senderName.slice(0, 2).toUpperCase();
+
+    return (
+        <div className="space-y-1">
+            {/* Header row: avatar, sender name, time, delivered/read */}
+            <div className="flex items-center gap-2">
+                <Avatar className="h-6 w-6">
+                    {msg.senderAvatar && <AvatarImage src={msg.senderAvatar} alt={msg.senderName} />}
+                    <AvatarFallback>{senderInitials}</AvatarFallback>
+                </Avatar>
+                <div className="text-xs font-semibold">{msg.senderName}</div>
+                <div className="text-muted-foreground text-xs">{format(msg.sentAt, 'HH:mm bb')}</div>
+                {isSent && <CheckCheck className="text-muted-foreground h-3.5 w-3.5" />}
+            </div>
+
+            {/* Message row with indent and subtle bordered bubble */}
+            <div className={`flex pl-8`}>
+                <div
+                    className={cn('inline-block max-w-xl rounded-xl border p-2 text-sm', {
+                        'border-primary/20 bg-primary/95 text-primary-foreground': isSent,
+                        'border-border/60 bg-muted': !isSent,
+                    })}
+                >
+                    <div className="whitespace-pre-wrap">{msg.body}</div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default MessageBubble;
