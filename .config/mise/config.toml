@@ -1,0 +1,6 @@
+[tools]
+node = "24.4.1"
+"npm:@anthropic-ai/claude-code" = "latest"
+
+[settings]
+lockfile = true
