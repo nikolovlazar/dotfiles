@@ -19,7 +19,6 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 export PATH="$HOME/.local/share/sentry-devenv/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # uv (only if present; quiet)
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env" >/dev/null 2>&1
@@ -58,6 +57,9 @@ fi
 
 # Private/local environment
 [ -f "$HOME/dotfiles/environment.sh" ] && source "$HOME/dotfiles/environment.sh"
+
+# Activate mise
+eval "$(mise activate zsh)"
 
 # ❗If you want macOS key‑repeat tweaks, run once manually (don’t keep in .zshrc):
 # defaults write NSGlobalDomain KeyRepeat -int 1
