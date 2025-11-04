@@ -44,6 +44,7 @@ alias kill_port='findandkill'
 
 # Apps
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias codex="codex --sandbox danger-full-access -m gpt-5-codex -c model_reasoning_effort=\"high\" --enable web_search_request"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
