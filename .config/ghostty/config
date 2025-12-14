@@ -18,10 +18,10 @@ mouse-shift-capture = never
 keybind = ctrl+b>v=new_split:down
 keybind = ctrl+b>h=new_split:right
 
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:down
-keybind = ctrl+k=goto_split:up
-keybind = ctrl+l=goto_split:right
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+alt+j=goto_split:down
+keybind = ctrl+alt+k=goto_split:up
+keybind = ctrl+alt+l=goto_split:right
 
 keybind = alt+h=resize_split:left,10
 keybind = alt+j=resize_split:down,10
