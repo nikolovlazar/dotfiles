@@ -15,16 +15,20 @@ link-url = true
 mouse-shift-capture = never
 
 # Keybindings
-## Go to tmux window by cmd+number
-# keybind = super+digit_1=text:\x02\x31
-# keybind = super+digit_2=text:\x02\x32
-# keybind = super+digit_3=text:\x02\x33
-# keybind = super+digit_4=text:\x02\x34
-# keybind = super+digit_5=text:\x02\x35
-# keybind = super+digit_6=text:\x02\x36
-# keybind = super+digit_7=text:\x02\x37
-# keybind = super+digit_8=text:\x02\x38
-# keybind = super+digit_9=text:\x02\x39
+keybind = ctrl+b>v=new_split:down
+keybind = ctrl+b>h=new_split:right
+
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:down
+keybind = ctrl+k=goto_split:up
+keybind = ctrl+l=goto_split:right
+
+keybind = alt+h=resize_split:left,10
+keybind = alt+j=resize_split:down,10
+keybind = alt+k=resize_split:up,10
+keybind = alt+l=resize_split:right,10
+
+keybind = ctrl+b>z=toggle_split_zoom
 
 # Misc
 macos-option-as-alt = true
