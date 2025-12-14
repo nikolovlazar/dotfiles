@@ -23,10 +23,10 @@ keybind = ctrl+alt+j=goto_split:down
 keybind = ctrl+alt+k=goto_split:up
 keybind = ctrl+alt+l=goto_split:right
 
-keybind = alt+h=resize_split:left,10
-keybind = alt+j=resize_split:down,10
-keybind = alt+k=resize_split:up,10
-keybind = alt+l=resize_split:right,10
+keybind = super+alt+h=resize_split:left,10
+keybind = super+alt+j=resize_split:down,10
+keybind = super+alt+k=resize_split:up,10
+keybind = super+alt+l=resize_split:right,10
 
 keybind = ctrl+b>z=toggle_split_zoom
 
