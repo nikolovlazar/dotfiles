@@ -15,4 +15,6 @@ environment.sh
 .claude/statsig
 .claude/todos
 .claude/.superclaude-metadata.json
-
+.claude/debug
+.claude/history.jsonl
+.claude/file-history
