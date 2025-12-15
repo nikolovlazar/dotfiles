@@ -30,5 +30,7 @@ keybind = super+alt+l=resize_split:right,10
 
 keybind = ctrl+b>z=toggle_split_zoom
 
+keybind = ctrl+b>,=prompt_surface_title
+
 # Misc
 macos-option-as-alt = true
