@@ -6,3 +6,4 @@ Library/Application\ Support/Cursor/User/profiles/*+/globalStorage
 .config/zed/*
 !.config/zed/keymap.json
 !.config/zed/settings.json
+.config/uv
