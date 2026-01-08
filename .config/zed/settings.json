@@ -7,6 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "buffer_line_height": "comfortable",
+  "context_servers": {
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote@latest", "https://mcp.sentry.dev/mcp"]
+    }
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -15,21 +22,20 @@
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "gpt-4.1"
-    },
-    "version": "2"
+    }
   },
   "icon_theme": "Catppuccin Mocha",
   "project_panel": {
     "dock": "right"
   },
-  "ui_font_size": 20,
-  "buffer_font_size": 20,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
   "vim_mode": true,
-  "buffer_font_family": "DankMono Nerd Font",
-  "ui_font_family": "DankMono Nerd Font",
+  "buffer_font_family": "Monaspace Neon Var",
+  "ui_font_family": "Monaspace Neon Var",
   "theme": "Modest Dark",
   "cursor_blink": false,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "scrollbar": {
     "show": "never"
   },

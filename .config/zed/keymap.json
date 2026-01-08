@@ -4,16 +4,16 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "not_editing || (Editor && vim_mode == normal)",
     "bindings": {
       "space ,": "tab_switcher::Toggle",
       "space space": "file_finder::Toggle",
-      "space e": "workspace::ToggleRightDock"
-    }
+      "space e": "workspace::ToggleRightDock",
+    },
   },
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
@@ -29,15 +29,16 @@
       "space g d": "editor::GoToDefinition",
       "space g r": "editor::FindAllReferences",
       "space s g": "pane::DeploySearch",
-      "ctrl-n": "editor::SelectNext"
-    }
+      "space g g": ["task::Spawn", { "task_name": "Run lazygit" }],
+      "ctrl-n": "editor::SelectNext",
+    },
   },
   {
     "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
     "bindings": {
       "shift-j": "editor::MoveLineDown",
-      "shift-k": "editor::MoveLineUp"
-    }
+      "shift-k": "editor::MoveLineUp",
+    },
   },
   {
     "context": "ProjectPanel && not_editing",
@@ -51,8 +52,8 @@
       "x": "project_panel::Cut",
       "s": [
         "workspace::SendKeystrokes",
-        "ctrl-h cmd-k right right ctrl-l enter right right right right alt-cmd-t"
-      ]
-    }
-  }
+        "ctrl-h cmd-k right right ctrl-l enter right right right right alt-cmd-t",
+      ],
+    },
+  },
 ]
