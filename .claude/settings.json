@@ -1,4 +1,16 @@
 {
-  "alwaysThinkingEnabled": false,
-  "model": "opusplan"
+  "model": "opusplan",
+  "enabledPlugins": {
+    "serena@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "sentry@claude-plugins-official": true
+  }
 }
