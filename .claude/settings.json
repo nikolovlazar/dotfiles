@@ -12,5 +12,8 @@
     "playwright@claude-plugins-official": true,
     "explanatory-output-style@claude-plugins-official": true,
     "sentry@claude-plugins-official": true
+  },
+  "env": {
+    "ENABLE_TOOL_SEARCH": true
   }
 }
