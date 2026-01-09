@@ -43,7 +43,7 @@ alias kill_port='findandkill'
 
 # Apps
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias codex="codex --sandbox danger-full-access -m gpt-5-codex -c model_reasoning_effort=\"high\" --enable web_search_request"
+alias codex_super="codex --sandbox danger-full-access -m gpt-5-codex -c model_reasoning_effort=\"high\" --enable web_search_request"
 
 # Serena
 alias serena="uvx --from git+https://github.com/oraios/serena serena"
@@ -71,3 +71,6 @@ eval "$(mise activate zsh)"
 
 # Activate mise environment
 eval "$(mise activate zsh)"
+
+# Added by Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
