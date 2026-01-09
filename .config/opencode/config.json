@@ -6,16 +6,12 @@
   "mcp": {
     "sentry": {
       "enabled": true,
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-remote@latest",
-        "https://mcp.sentry.dev/mcp"
-      ]
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "oauth": {}
     },
     "spotlight": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": [
         "npx",
@@ -32,8 +28,24 @@
     },
     "neon": {
       "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.neon.tech/mcp"
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@neondatabase/mcp-server-neon",
+        "start",
+        "{env:NEON_API_KEY}"
+      ]
+    },
+    "@21st-dev/magic": {
+      "enabled": false,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@21st-dev/magic@latest",
+        "API_KEY={env:MAGIC_API_KEY}"
+      ]
     }
   }
 }
