@@ -2,6 +2,10 @@
   "env": {
     "ENABLE_TOOL_SEARCH": "true"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y @owloops/claude-powerline@latest --config=~/.claude/claude-powerline.json"
+  },
   "model": "opusplan",
   "statusLine": {
     "type": "command",

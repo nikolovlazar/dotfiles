@@ -1,0 +1,111 @@
+{
+  "theme": "custom",
+  "display": {
+    "padding": 1,
+    "style": "capsule",
+    "charset": "unicode",
+    "colorCompatibility": "auto",
+    "autoWrap": true,
+    "lines": [
+      {
+        "segments": {
+          "directory": {
+            "enabled": true,
+            "style": "fish"
+          },
+          "git": {
+            "enabled": true,
+            "showSha": false,
+            "showWorkingTree": true
+          },
+          "model": {
+            "enabled": true
+          },
+          "context": {
+            "enabled": true,
+            "showPercentageOnly": true
+          },
+          "session": {
+            "enabled": true,
+            "type": "cost",
+            "costSource": "calculated"
+          },
+          "today": {
+            "enabled": true,
+            "type": "cost"
+          }
+        }
+      }
+    ]
+  },
+  "colors": {
+    "custom": {
+      "directory": {
+        "bg": "#313244",
+        "fg": "#89b4fa"
+      },
+      "git": {
+        "bg": "#45475a",
+        "fg": "#94e2d5"
+      },
+      "model": {
+        "bg": "#181825",
+        "fg": "#cba6f7"
+      },
+      "session": {
+        "bg": "#1e1e2e",
+        "fg": "#fab387"
+      },
+      "block": {
+        "bg": "#313244",
+        "fg": "#b4befe"
+      },
+      "today": {
+        "bg": "#181825",
+        "fg": "#89dceb"
+      },
+      "tmux": {
+        "bg": "#6c7086",
+        "fg": "#cdd6f4"
+      },
+      "context": {
+        "bg": "#45475a",
+        "fg": "#a6e3a1"
+      },
+      "contextWarning": {
+        "bg": "#181825",
+        "fg": "#f9e2af"
+      },
+      "contextCritical": {
+        "bg": "#1e1e2e",
+        "fg": "#f38ba8"
+      },
+      "metrics": {
+        "bg": "#313244",
+        "fg": "#f5c2e7"
+      },
+      "version": {
+        "bg": "#585b70",
+        "fg": "#74c7ec"
+      }
+    }
+  },
+  "budget": {
+    "session": {
+      "warningThreshold": 80
+    },
+    "today": {
+      "amount": 5.0,
+      "warningThreshold": 80
+    },
+    "block": {
+      "amount": 20000000,
+      "type": "tokens",
+      "warningThreshold": 80
+    }
+  },
+  "modelContextLimits": {
+    "sonnet": 120000,
+    "opus": 120000
+  }
+}
