@@ -95,7 +95,7 @@
       "warningThreshold": 80
     },
     "today": {
-      "amount": 5.0,
+      "amount": 80.0,
       "warningThreshold": 80
     },
     "block": {
