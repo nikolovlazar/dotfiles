@@ -2,7 +2,7 @@
   "env": {
     "ENABLE_TOOL_SEARCH": "true"
   },
-  "model": "opusplan",
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "input=$(cat); model=$(echo \"$input\" | jq -r '.model.display_name'); model_id=$(echo \"$input\" | jq -r '.model.id'); total_in=$(echo \"$input\" | jq -r '.context_window.total_input_tokens // 0'); total_out=$(echo \"$input\" | jq -r '.context_window.total_output_tokens // 0'); case \"$model_id\" in *opus-4*) ip=15; op=75;; *sonnet-4*) ip=3; op=15;; *haiku*) ip=0.8; op=4;; *opus*) ip=15; op=75;; *) ip=3; op=15;; esac; cost=$(echo \"$total_in $total_out $ip $op\" | awk '{printf \"$%.2f\", ($1*$3+$2*$4)/1000000}'); usage=$(echo \"$input\" | jq '.context_window.current_usage'); if [ \"$usage\" != \"null\" ]; then current=$(echo \"$usage\" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens'); size=$(echo \"$input\" | jq '.context_window.context_window_size'); pct=$((current * 100 / size)); tokens=$(printf %.0f \"$current\" | sed -e :a -e 's/\\(.*[0-9]\\)\\([0-9]\\{3\\}\\)/\\1,\\2/;ta'); if [ $pct -ge 60 ]; then printf '\\033[38;5;246m%s · Context: \\033[97m%s\\033[38;5;246m spent, \\033[33m%d%% used (compact soon!)\\033[38;5;246m, \\033[97m%s\\033[38;5;246m tokens\\033[0m' \"$model\" \"$cost\" \"$pct\" \"$tokens\"; else printf '\\033[38;5;246m%s · Context: \\033[97m%s\\033[38;5;246m spent, \\033[97m%d%%\\033[38;5;246m used, \\033[97m%s\\033[38;5;246m tokens\\033[0m' \"$model\" \"$cost\" \"$pct\" \"$tokens\"; fi; else printf '\\033[38;5;246m%s · Context: \\033[97m%s\\033[38;5;246m spent, no tokens used yet\\033[0m' \"$model\" \"$cost\"; fi"
