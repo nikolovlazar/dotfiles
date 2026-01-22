@@ -21,6 +21,11 @@ environment.sh
 .claude/todos
 .claude/history.jsonl
 .claude/file-history
+.claude/paste-cache
+.claude/plans
+.claude/session-env
+.claude/transcripts
+.claude/powerline
 .claude/stats-cache.json
 .claude/plugins
 .serena/language_servers
