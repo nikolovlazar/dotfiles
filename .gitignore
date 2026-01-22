@@ -9,6 +9,7 @@
 !.config/zed/tasks.json
 .config/raycast/extensions
 .config/uv
+.config/neonctl
 environment.sh
 .claude/cache
 .claude/debug
