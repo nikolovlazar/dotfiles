@@ -77,3 +77,10 @@ export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # opencode
 export PATH=/Users/lazarnikolov/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/Users/nikolovlazar/.bun/_bun" ] && source "/Users/nikolovlazar/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
