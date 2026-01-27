@@ -1,0 +1,37 @@
+# --- Emacs State & Temporary Files ---
+*~
+\#*\#
+/.emacs.d/auto-save-list/
+/.emacs.d/backups/
+/.emacs.d/auto-save/
+/bookmarks
+/history
+/projects.el
+/recentf
+
+# --- Package Management ---
+/elpa/
+/straight/
+/quelpa/
+
+# --- Plugin Specific Data ---
+/.emacs.d/transient/
+/.emacs.d/org-roam.db
+/.emacs.d/org-roam.db-journal
+/.emacs.d/network-security.data
+/url/
+/shadows/
+/games/
+
+# --- Built-in Extras ---
+/tutorial/
+
+# Ignore the Org-Roam database and temporary journal
+org-roam.db
+org-roam.db-journal
+
+# Ignore the ID cache
+.org-id-locations
+
+# Ignore transient state
+transient/
