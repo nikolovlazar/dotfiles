@@ -30,6 +30,14 @@
       '(("gtd.org" :maxlevel . 3)      ;; Allow refiling to gtd.org up to 3 levels deep
         ("someday.org" :level . 1)))   ;; Allow refiling to top level of someday.org
 
+;; Custom keywords
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "IN-PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")))
+
+(setq org-todo-keyword-faces
+      '(("IN-PROGRESS" . (:foreground "orange" :weight bold))
+        ("CANCELLED" . (:foreground "red" :weight bold))))
+
 ;; This helps you find targets with just a few keystrokes
 (setq org-outline-path-complete-in-steps nil)         ; Refile in one go
 (setq org-refile-use-outline-path 'file)              ; Show file name in the path
@@ -58,12 +66,12 @@
 (setq org-capture-templates
       '(("t" "Todo [Inbox]" entry
          (file "inbox.org")
-         "* TODO %?\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n  %i\n  %a")))
+         "** TODO %?\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n  %i\n  %a")))
 
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?"
-         :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                            ":PROPERTIES:\n:ID: %(shell-command-to-string \"uuidgen\" | tr -d '\\n')\n:END:\n#+title: ${title}\n#+last_modified: %U\n\nContext: %a\n\n* Brainstorming\n")
+         :target (file+head "projects/${slug}.org"
+                            ":PROPERTIES:\n:ID: %(org-id-new)\n:END:\n#+title: ${title}\n#+last_modified: %U\n\nContext: %a\n\n")
          :unnarrowed t)))
 
 ;; Org Agenda
@@ -89,10 +97,37 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(org-roam)))
+ '(package-selected-packages '(magit org-roam)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Fix for spaces in Org-Roam node creation
+(with-eval-after-load 'vertico
+  (define-key vertico-map (kbd "SPC") #'self-insert-command))
+
+;; Generic fallback if you aren't using Vertico
+(define-key minibuffer-local-completion-map (kbd "SPC") #'self-insert-command)
+
+;; Derive headline title
+(defun my/org-roam-node-from-todo ()
+  "Get the current headline title (minus TODO) and search/create it in Org-roam."
+  (interactive)
+  (let* ((title (nth 4 (org-heading-components))))
+    (if title
+        (org-roam-node-find nil title)
+      (message "Not on a headline!"))))
+
+;; Bind it to a key (or replace your standard find key)
+(global-set-key (kbd "C-c n p") #'my/org-roam-node-from-todo)
+
+;; Hide deadline warning
+(setq org-agenda-skip-deadline-if-scheduled t)
+
+;; Magit
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
