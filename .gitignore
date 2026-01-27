@@ -29,5 +29,3 @@ environment.sh
 .claude/powerline
 .claude/stats-cache.json
 .claude/plugins
-.serena/language_servers
-.serena/logs
