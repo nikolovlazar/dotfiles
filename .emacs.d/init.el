@@ -10,6 +10,8 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(cua-mode 1)
+
 ;; Org mode
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
@@ -132,10 +134,21 @@
   :ensure t)
 
 (defun my/pop-lazygit ()
-  "Open lazygit in a vterm buffer."
+  "Open lazygit in a vterm buffer and kill the buffer on exit."
   (interactive)
-  (vterm-other-window "*lazygit*")
-  (vterm-send-string "lazygit && exit")
-  (vterm-send-return))
+  (let ((buffer (vterm-other-window "*lazygit*")))
+    (with-current-buffer buffer
+      ;; This hook kills the buffer as soon as the process (lazygit) exits
+      (set-process-sentinel (get-buffer-process buffer)
+                            (lambda (proc event)
+                              (when (string-match-p "finished" event)
+                                (let ((buf (process-buffer proc)))
+                                  (when (buffer-live-p buf)
+                                    (kill-buffer buf)
+                                    ;; Optionally delete the window too
+                                    (delete-window))))))
+      ;; Send the command
+      (vterm-send-string "lazygit && exit")
+      (vterm-send-return))))
 
 (global-set-key (kbd "C-c g") #'my/pop-lazygit)
