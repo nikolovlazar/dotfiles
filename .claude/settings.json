@@ -19,6 +19,7 @@
     "explanatory-output-style@claude-plugins-official": true,
     "sentry@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
-    "sentry-skills@sentry-skills": true
+    "sentry-skills@sentry-skills": true,
+    "gopls-lsp@claude-plugins-official": true
   }
 }
