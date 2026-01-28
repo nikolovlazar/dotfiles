@@ -1,0 +1,3 @@
+;; Code formatting
+
+(provide 'formatting)
