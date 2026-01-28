@@ -13,4 +13,11 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
 
+(defun my/install-treesit-grammars ()
+  "Install all tree-sitter language grammars."
+  (interactive)
+  (dolist (lang '(javascript typescript tsx python))
+    (unless (treesit-language-available-p lang)
+      (treesit-install-language-grammar lang))))
+
 (provide 'treesitter)

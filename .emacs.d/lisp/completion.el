@@ -24,7 +24,6 @@
   :ensure t
   :bind (("C-x b" . consult-buffer)
 	 ("C-x C-r" . consult-recent-file)
-	 ("C-c f" . project-find-file)
-	 ("C-c g" . consult-ripgrep)))
+	 ("C-c f" . project-find-file)))
 
 (provide 'completion)
