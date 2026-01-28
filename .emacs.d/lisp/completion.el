@@ -43,6 +43,9 @@
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
+  :config
+  ;; Disable in minibuffer (interferes with :w, :wq, etc.)
+  (add-hook 'minibuffer-setup-hook (lambda () (corfu-mode -1)))
   :custom-face
   (corfu-border ((t (:background "#555555")))))
 
