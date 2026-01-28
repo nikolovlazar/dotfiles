@@ -15,6 +15,9 @@
 ;; Virtual indentation (looks nested without adding spaces)
 (add-hook 'org-mode-hook #'org-indent-mode)
 
+;; Enable auto-fill mode for automatic line wrapping
+(add-hook 'org-mode-hook #'auto-fill-mode)
+
 ;; Org refile
 (setq org-refile-targets 
       '(("gsd.org" :maxlevel . 3)      ;; Allow refiling to gsd.org up to 3 levels deep

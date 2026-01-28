@@ -9,6 +9,15 @@
 ;; ex, C-x and then multiple times { to make the window narrower
 (repeat-mode 1)
 
+;; Which-key mode
+(which-key-mode 1)
+(setq which-key-idle-delay 0)
+(setq which-key-separator " → ")           ;; Clear separator between key and description
+(setq which-key-prefix-prefix "◉ ")        ;; Prefix indicator
+(setq which-key-max-description-length 35)  ;; Prevent overly long descriptions
+(setq which-key-add-column-padding 4)       ;; Add padding between columns
+(setq which-key-sort-order 'which-key-key-order-alpha)  ;; Sort alphabetically
+
 ;; Performance optimizations
 (setq jit-lock-defer-time 0.05) ;; Wait 50ms of idle time before recoloring
 (setq-default bidi-display-reordering nil)
