@@ -1,6 +1,36 @@
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x nil)) ;; 'nil added for terminal/daemon support
+    (exec-path-from-shell-initialize)))
+
+(unless (display-graphic-p)
+  (menu-bar-mode -1)
+  (xterm-mouse-mode 1))     ;; Enables mouse clicking/scrolling in Ghostty!
+
+(setq jit-lock-defer-time 0.05) ;; Wait 50ms of idle time before recoloring
+(setq-default bidi-display-reordering nil)
+(setq bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t) ;; Disable the Bidirectional Parentheses Algorithm
+(setq gc-cons-threshold 100000000) ;; 100MB
+(setq read-process-output-max (* 1024 1024)) ;; 1mb; helps with lsp/terminal data
+
+;; Use macOS pbcopy to bridge the terminal clipboard gap
+  (defun my/copy-to-osx (text &optional push)
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "pbcopy" nil "pbcopy")))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+(setq interprogram-cut-function 'my/copy-to-osx)
+
+;; Pre-calculate line number width
+(setq-default display-line-numbers-width 3)
+(setq-default display-line-numbers-grow-only t)
 
 ;; Install use-package if you don't have it
 (unless (package-installed-p 'use-package)
@@ -99,7 +129,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(magit org-roam vterm)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -152,3 +182,37 @@
       (vterm-send-return))))
 
 (global-set-key (kbd "C-c g") #'my/pop-lazygit)
+
+;; Clippety
+(use-package clipetty
+  :ensure t
+  :hook (after-init . global-clipetty-mode))
+
+;; Catppuccin theme
+(use-package catppuccin-theme
+  :ensure t
+  :config
+  (setq catppuccin-flavor 'mocha) ;; Choose 'latte, 'frappe, 'macchiato, or 'mocha
+  (load-theme 'catppuccin t))
+
+(defun my/set-transparent-background ()
+  "Remove background colors for terminal compatibility."
+  (unless (display-graphic-p)
+    (set-face-background 'default "none")
+    (set-face-background 'line-number "none")
+    (set-face-background 'line-number-current-line "none")
+    ;; The Mode Line fixes
+    (set-face-background 'mode-line "none")
+    (set-face-background 'mode-line-inactive "none")
+    ))
+
+(add-hook 'after-init-hook #'my/set-transparent-background)
+
+(use-package eglot
+  :ensure t
+  :hook ((js-ts-mode . eglot-ensure)
+         (typescript-ts-mode . eglot-ensure))
+  :config
+  ;; This makes the hover "pop" faster
+  (setq company-idle-delay 0.1) 
+  (setq company-minimum-prefix-length 1))
