@@ -52,7 +52,7 @@
 
 ;; Capture templates
 (setq org-capture-templates
-      '(("t" "Todo [Inbox]" entry
+      '(("i" "Inbox entry" entry
          (file "inbox.org")
          "** TODO %?\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n  %i\n  %a")))
 

@@ -11,7 +11,4 @@
 (global-set-key (kbd "C-c n l") #'org-roam-buffer-toggle)
 (global-set-key (kbd "C-c n p") #'my/org-roam-node-from-todo)
 
-;; Git
-(global-set-key (kbd "C-c g") #'my/pop-lazygit)
-
 (provide 'keybindings)

@@ -14,8 +14,17 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb; helps with lsp/terminal data
 
 ;; Line numbers
-(setq-default display-line-numbers-width 3)
-(setq-default display-line-numbers-grow-only t)
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
+;; Disable line numbers in specific modes
+(dolist (mode '(org-mode-hook
+                org-agenda-mode-hook
+                magit-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Use macOS pbcopy to bridge the terminal clipboard gap
   (defun my/copy-to-osx (text &optional push)
