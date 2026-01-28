@@ -45,8 +45,8 @@ alias kill_port='findandkill'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias codex_super="codex --sandbox danger-full-access -m gpt-5-codex -c model_reasoning_effort=\"high\" --enable web_search_request"
 
-# Serena
-alias serena="uvx --from git+https://github.com/oraios/serena serena"
+# Emacs
+alias em="TERM=xterm-256color emacsclient -nw"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
