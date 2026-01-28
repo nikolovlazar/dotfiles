@@ -34,3 +34,4 @@ keybind = ctrl+b>,=prompt_surface_title
 
 # Misc
 macos-option-as-alt = true
+clipboard-write = allow
