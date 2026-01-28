@@ -10,8 +10,10 @@
 ;; Org appearance
 (setq org-descriptive-links t)
 (setq org-log-done 'time)
-(setq org-adapt-indentation t)   ; Tells Org to indent properties/logs to the headline level
-(setq org-indent-mode t)        ; Turns on virtual indentation (makes it look nested without adding spaces)
+(setq org-adapt-indentation t)   ; Indent properties/logs to headline level
+
+;; Virtual indentation (looks nested without adding spaces)
+(add-hook 'org-mode-hook #'org-indent-mode)
 
 ;; Org refile
 (setq org-refile-targets 
@@ -62,6 +64,10 @@
 (setq org-agenda-hide-tags-regexp ".")
 (setq org-agenda-skip-deadline-if-scheduled t)
 
+;; Agenda performance
+(setq org-agenda-inhibit-startup t)      ; Don't apply startup visibility
+(setq org-agenda-dim-blocked-tasks nil)  ; Faster rendering
+
 ;; Org Roam
 (use-package org-roam
   :ensure t
@@ -96,5 +102,16 @@
     (if title
         (org-roam-node-find nil title)
       (message "Not on a headline!"))))
+
+;;; Dictionary support for writing
+
+(defun my/org-mode-completion-setup ()
+  "Add dictionary completion with definitions for org-mode."
+  (setq-local completion-at-point-functions
+              (list #'my/cape-dict-with-definitions #'cape-dabbrev #'cape-file))
+  ;; Slower completion delay for prose writing
+  (setq-local corfu-auto-delay 0.4))
+
+(add-hook 'org-mode-hook #'my/org-mode-completion-setup)
 
 (provide 'org-config)

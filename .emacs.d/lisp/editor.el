@@ -5,6 +5,10 @@
   (menu-bar-mode -1)
   (xterm-mouse-mode 1))     ;; Enables mouse clicking/scrolling in Ghostty!
 
+;; Repeat mode allows you to hit C-x or C-c once and the next key multiple times
+;; ex, C-x and then multiple times { to make the window narrower
+(repeat-mode 1)
+
 ;; Performance optimizations
 (setq jit-lock-defer-time 0.05) ;; Wait 50ms of idle time before recoloring
 (setq-default bidi-display-reordering nil)

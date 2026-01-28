@@ -1,5 +1,11 @@
 ;;; init.el --- Emacs config entrypoint -*- lexical-binding: t; -*-
 
+;; Performance: increase GC threshold during startup
+(setq gc-cons-threshold (* 50 1024 1024))  ; 50MB during init
+
+;; Silence native-comp warnings (functions defined at runtime via macros)
+(setq native-comp-async-report-warnings-errors 'silent)
+
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; Package management
@@ -45,5 +51,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Performance: lower GC threshold after init (but keep it reasonable)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 8 1024 1024))))  ; 8MB after init
 
 ;; ===== END ======
