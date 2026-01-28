@@ -42,4 +42,8 @@
   :ensure t
   :hook (after-init . global-clipetty-mode))
 
+;; Recent files tracking
+(recentf-mode 1)
+(setq recentf-max-saved-items 100)
+
 (provide 'editor)

@@ -28,6 +28,7 @@
 (load "keybindings")
 (load "evil-config")
 (load "search")
+(load "completion")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -36,10 +37,10 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org"))
  '(package-selected-packages
-   '(all-the-icons catppuccin-theme clipetty doom-modeline evil
+   '(all-the-icons catppuccin-theme clipetty consult doom-modeline evil
 		   evil-collection evil-org
 		   evil-terminal-cursor-changer exec-path-from-shell
-		   magit org-roam rg)))
+		   magit marginalia orderless org-roam rg vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
