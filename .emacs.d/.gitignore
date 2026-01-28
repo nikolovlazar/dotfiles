@@ -36,3 +36,5 @@ org-roam.db-journal
 # Ignore transient state
 transient/
 tree-sitter
+
+eln-cache
