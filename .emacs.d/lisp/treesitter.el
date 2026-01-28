@@ -1,4 +1,4 @@
-;; Tree-sitter configuration
+;;; treesitter.el --- Tree-sitter configuration -*- lexical-binding: t; -*-
 
 (setq treesit-language-source-alist
       '((javascript "https://github.com/tree-sitter/tree-sitter-javascript")

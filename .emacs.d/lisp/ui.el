@@ -1,4 +1,4 @@
-;; UI and theme configuration
+;;; ui.el --- UI and theme configuration -*- lexical-binding: t; -*-
 
 ;; Catppuccin theme
 (use-package catppuccin-theme

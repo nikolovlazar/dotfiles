@@ -1,3 +1,5 @@
+;;; init.el --- Emacs config entrypoint -*- lexical-binding: t; -*-
+
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; Package management
@@ -35,12 +37,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org"))
- '(package-selected-packages
-   '(all-the-icons catppuccin-theme clipetty consult doom-modeline evil
-		   evil-collection evil-org
-		   evil-terminal-cursor-changer exec-path-from-shell
-		   magit marginalia orderless org-roam rg vertico)))
+ '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org") t)
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

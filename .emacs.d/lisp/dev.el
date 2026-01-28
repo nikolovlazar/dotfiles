@@ -1,4 +1,4 @@
-;; Development environment loader
+;;; dev.el --- Development environment loader -*- lexical-binding: t; -*-
 
 (load "lsp")
 (load "git")

@@ -1,4 +1,4 @@
-;; Basic editor setings and performance tweaks
+;;; editor.el --- Basic editor setings and performance tweaks -*- lexical-binding: t; -*-
 
 ;; Terminal support
 (unless (display-graphic-p)

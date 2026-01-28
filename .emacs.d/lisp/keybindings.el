@@ -1,4 +1,7 @@
-;; All custom keybindings in one place
+;;; keybindings.el --- All custom keybindings in one place -*- lexical-binding: t; -*-
+
+;; Search
+(global-set-key (kbd "C-c g") #'consult-ripgrep) ;; Grep with live preview
 
 ;; Org mode
 (global-set-key (kbd "C-c l") #'org-store-link)

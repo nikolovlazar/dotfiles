@@ -1,4 +1,5 @@
-;; Evil mode
+;;; evil-config.el --- Evil mode -*- lexical-binding: t; -*-
+
 (use-package evil
   :ensure t
   :init
@@ -17,7 +18,9 @@
   (evil-mode 1)
   ;; Use visual line motions
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  ;; C-SPC triggers completion in insert mode
+  (define-key evil-insert-state-map (kbd "C-SPC") #'completion-at-point))
 
 (use-package evil-terminal-cursor-changer
   :ensure t

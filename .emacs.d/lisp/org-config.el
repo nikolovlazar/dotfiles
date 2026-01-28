@@ -1,4 +1,4 @@
-;; Org-mode and Org-roam configuration
+;;; org-config.el --- Org-mode and Org-roam configuration -*- lexical-binding: t; -*-
 
 ;; Basic org settings
 (setq org-directory "~/org")

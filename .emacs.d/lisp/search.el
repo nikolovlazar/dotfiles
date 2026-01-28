@@ -1,4 +1,4 @@
-;; Search and navigation tools
+;;; search.el --- Search and navigation tools -*- lexical-binding: t; -*-
 
 (use-package rg
   :ensure t
