@@ -12,7 +12,7 @@
   (setq evil-insert-state-cursor 'bar)
   (setq evil-visual-state-cursor 'box)
   (setq evil-replace-state-cursor 'hollow)
-  (setq evil-emacs-state-cursor 'hbar)
+  (setq evil-emacs-state-cursor 'box)
   :config
   (evil-mode 1)
   ;; Use visual line motions

@@ -69,6 +69,7 @@
   (setq org-roam-v2-ack t) ;; Silence v2 upgrade warning
   :custom
   (org-roam-directory (file-truename "~/org"))
+  (org-roam-db-location (file-truename "~/org/org-roam.db"))
   :bind (("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n l" . org-roam-buffer-toggle))
