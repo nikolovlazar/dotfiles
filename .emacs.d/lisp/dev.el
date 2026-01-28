@@ -2,7 +2,6 @@
 
 (load "lsp")
 (load "git")
-(load "terminal")
 (load "formatting")
 (load "treesitter")
 
