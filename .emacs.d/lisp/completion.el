@@ -50,7 +50,7 @@
 (use-package cape
   :ensure t
   :init
-  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  ;; Only add file completion globally; dabbrev conflicts with LSP
   (add-hook 'completion-at-point-functions #'cape-file))
 
 ;; Icons in completion popup

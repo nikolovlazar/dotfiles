@@ -19,8 +19,8 @@
   ;; Use visual line motions
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  ;; C-SPC triggers completion in insert mode
-  (define-key evil-insert-state-map (kbd "C-SPC") #'completion-at-point))
+  ;; C-SPC triggers completion in insert mode (C-@ is the terminal representation)
+  (define-key evil-insert-state-map (kbd "C-@") #'completion-at-point))
 
 (use-package evil-terminal-cursor-changer
   :ensure t
