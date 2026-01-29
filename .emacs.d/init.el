@@ -10,6 +10,9 @@
 ;; Must be set before dired loads
 (setq dired-use-ls-dired nil)
 
+;; "C-x p p" opens dired directly
+(setq project-switch-commands 'project-dired)
+
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; Package management
