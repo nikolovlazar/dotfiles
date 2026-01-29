@@ -112,6 +112,26 @@
 (setq org-agenda-inhibit-startup t)      ; Don't apply startup visibility
 (setq org-agenda-dim-blocked-tasks nil)  ; Faster rendering
 
+;; Git auto-commit for org directory
+(use-package git-auto-commit-mode
+  :ensure t
+  :config
+  ;; Wait 60 seconds after last change before committing
+  (setq gac-debounce-interval 60)
+  ;; Commit message format: "sync [timestamp]"
+  (setq gac-default-message "sync")
+
+  ;; Enable git-auto-commit-mode only for files in ~/org directory
+  (defun my/enable-git-auto-commit-in-org ()
+    "Enable git-auto-commit-mode with auto-push for files in ~/org."
+    (when (and buffer-file-name
+               (string-prefix-p (expand-file-name "~/org/")
+                                (file-truename buffer-file-name)))
+      (setq-local gac-automatically-push-p t)
+      (git-auto-commit-mode 1)))
+
+  (add-hook 'org-mode-hook #'my/enable-git-auto-commit-in-org))
+
 ;; Org Roam
 (use-package org-roam
   :ensure t
@@ -120,11 +140,18 @@
   :custom
   (org-roam-directory (file-truename "~/org"))
   (org-roam-db-location (file-truename "~/org/org-roam.db"))
-  :bind (("C-c n f" . org-roam-node-find)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
          ("C-c n i" . org-roam-node-insert)
-         ("C-c n l" . org-roam-buffer-toggle))
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
   :config
-  (org-roam-db-autosync-mode))
+
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode)
+ )
 
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?"
