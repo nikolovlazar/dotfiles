@@ -1,5 +1,9 @@
 ;;; files.el --- File management with dirvish -*- lexical-binding: t; -*-
 
+;; Install dirvish
+(use-package dirvish
+  :ensure t)
+
 ;; Load dirvish
 (require 'dirvish)
 
