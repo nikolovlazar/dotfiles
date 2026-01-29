@@ -7,16 +7,57 @@
 			 "~/org/someday.org"))
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
 
+;; Fix for org-element-cache warnings (common in Emacs 31 dev builds)
+(setq org-element-use-cache t)
+(setq org-element-cache-persistent nil)  ; Don't persist cache to disk
+
 ;; Org appearance
 (setq org-descriptive-links t)
 (setq org-log-done 'time)
 (setq org-adapt-indentation t)   ; Indent properties/logs to headline level
+
+;; Clean, modern styling
+(setq org-hide-emphasis-markers t)      ; Hide markup characters (*bold*, /italic/, etc.)
+(setq org-pretty-entities t)            ; Render \alpha, \beta, etc. as symbols
+(setq org-ellipsis "…")                 ; Nicer ellipsis for folded content
+(setq org-auto-align-tags nil)          ; Don't auto-align tags (faster)
+(setq org-tags-column 0)                ; Tags right after heading
+(setq org-catch-invisible-edits 'show-and-error)  ; Prevent editing hidden text
+(setq org-special-ctrl-a/e t)           ; Smart home/end keys
+(setq org-insert-heading-respect-content t)  ; New headings go after content
 
 ;; Virtual indentation (looks nested without adding spaces)
 (add-hook 'org-mode-hook #'org-indent-mode)
 
 ;; Enable auto-fill mode for automatic line wrapping
 (add-hook 'org-mode-hook #'auto-fill-mode)
+
+;; Modern, clean org-mode appearance
+(use-package org-modern
+  :ensure t
+  :init
+  (global-org-modern-mode)  ; Enable in all org buffers
+  :config
+  ;; Heading bullets
+  (setq org-modern-star '("◉" "○" "●" "○" "●" "○" "●"))
+  ;; Better checkboxes
+  (setq org-modern-checkbox '((?X . "☑")
+                              (?- . "◐")
+                              (?\s . "☐")))
+  ;; Keep classic rendering for some elements
+  (setq org-modern-table nil)     ; Keep classic table rendering
+  (setq org-modern-keyword nil)   ; Keep classic #+keyword style
+  (setq org-modern-timestamp t)   ; Style timestamps
+  (setq org-modern-priority t))   ; Style priorities
+
+;; Scale heading sizes for visual hierarchy (like rendered markdown)
+(custom-set-faces
+ '(org-level-1 ((t (:height 1.4 :weight bold))))
+ '(org-level-2 ((t (:height 1.3 :weight semi-bold))))
+ '(org-level-3 ((t (:height 1.2 :weight semi-bold))))
+ '(org-level-4 ((t (:height 1.1))))
+ '(org-level-5 ((t (:height 1.0))))
+ '(org-document-title ((t (:height 1.6 :weight bold)))))
 
 ;; Org refile
 (setq org-refile-targets 

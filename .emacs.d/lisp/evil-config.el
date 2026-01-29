@@ -5,7 +5,7 @@
   :init
   (setq evil-want-keybinding nil) ;; Required for evil-collection
   (setq evil-want-C-u-scroll t) ;; C-u scrolls up (Vim behaviour)
-  (setq evil-want-C-i-jump t) ;; C-i for jump forward
+  (setq evil-want-C-i-jump nil) ;; Disabled: conflicts with TAB in terminals (Ghostty)
   (setq evil-undo-system 'undo-redo) ;; Use emacs 28+ undo system
   (setq evil-echo-state nil)
   ;; Cursor configuration
@@ -19,6 +19,8 @@
   ;; Use visual line motions
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  ;; File manager jump (like vinegar.vim)
+  (evil-global-set-key 'normal "-" 'dirvish-dwim)
   ;; C-SPC triggers completion in insert mode (C-@ is the terminal representation)
   (define-key evil-insert-state-map (kbd "C-@") #'completion-at-point))
 

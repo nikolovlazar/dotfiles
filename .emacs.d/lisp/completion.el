@@ -48,6 +48,9 @@
   ;; Slower completion in minibuffer (avoid hijacking :wq RET)
   (add-hook 'minibuffer-setup-hook
             (lambda () (setq-local corfu-auto-delay 0.5)))
+  ;; Disable Corfu in Dirvish to preserve standard keybindings (d, x, etc.)
+  (add-hook 'dirvish-mode-hook
+            (lambda () (corfu-mode -1)))
   :custom-face
   (corfu-border ((t (:background "#555555")))))
 

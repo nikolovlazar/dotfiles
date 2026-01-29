@@ -6,6 +6,10 @@
 ;; Silence native-comp warnings (functions defined at runtime via macros)
 (setq native-comp-async-report-warnings-errors 'silent)
 
+;; Fix for macOS BSD ls (doesn't support GNU --dired flag)
+;; Must be set before dired loads
+(setq dired-use-ls-dired nil)
+
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; Package management
@@ -37,20 +41,32 @@
 (load "evil-config")
 (load "search")
 (load "completion")
+(load "files")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org") t)
- '(package-selected-packages nil))
+ '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org"))
+ '(package-selected-packages
+   '(ace-window all-the-icons cape catppuccin-theme clipetty consult
+		corfu dirvish doom-modeline eldoc-box embark
+		evil-collection evil-org evil-terminal-cursor-changer
+		exec-path-from-shell magit marginalia nerd-icons-corfu
+		orderless org-modern org-roam osx-dictionary rg
+		vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-document-title ((t (:height 1.6 :weight bold))))
+ '(org-level-1 ((t (:height 1.4 :weight bold))))
+ '(org-level-2 ((t (:height 1.3 :weight semi-bold))))
+ '(org-level-3 ((t (:height 1.2 :weight semi-bold))))
+ '(org-level-4 ((t (:height 1.1))))
+ '(org-level-5 ((t (:height 1.0)))))
 
 ;; Performance: lower GC threshold after init (but keep it reasonable)
 (add-hook 'emacs-startup-hook
