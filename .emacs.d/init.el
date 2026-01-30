@@ -45,6 +45,7 @@
 (load "search")
 (load "completion")
 (load "files")
+(load "feed")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -54,7 +55,7 @@
  '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org"))
  '(package-selected-packages
    '(ace-window all-the-icons cape catppuccin-theme clipetty consult
-		corfu dirvish doom-modeline eldoc-box embark
+		corfu dirvish doom-modeline eldoc-box elfeed embark
 		evil-collection evil-org evil-terminal-cursor-changer
 		exec-path-from-shell git-auto-commit-mode magit
 		marginalia nerd-icons-corfu orderless org-journal
