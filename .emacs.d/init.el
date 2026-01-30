@@ -57,8 +57,8 @@
 		corfu dirvish doom-modeline eldoc-box embark
 		evil-collection evil-org evil-terminal-cursor-changer
 		exec-path-from-shell git-auto-commit-mode magit
-		marginalia nerd-icons-corfu orderless org-modern
-		org-roam osx-dictionary rg vertico)))
+		marginalia nerd-icons-corfu orderless org-journal
+		org-modern org-roam osx-dictionary rg vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

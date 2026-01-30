@@ -17,6 +17,7 @@
 (setq which-key-max-description-length 35)  ;; Prevent overly long descriptions
 (setq which-key-add-column-padding 4)       ;; Add padding between columns
 (setq which-key-sort-order 'which-key-key-order-alpha)  ;; Sort alphabetically
+(global-set-key (kbd "C-c w k") 'which-key-show-top-level)
 
 ;; Performance optimizations
 (setq jit-lock-defer-time 0.05) ;; Wait 50ms of idle time before recoloring

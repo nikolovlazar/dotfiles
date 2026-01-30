@@ -185,4 +185,12 @@
 
 (add-hook 'org-mode-hook #'my/org-mode-completion-setup)
 
+;; org-diary
+(use-package org-journal
+  :ensure t
+  :bind (("C-c j n" . org-journal-new-entry))
+  :config
+  (setq org-journal-dir "~/org/journal")
+  )
+
 (provide 'org-config)
