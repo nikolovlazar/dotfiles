@@ -190,7 +190,8 @@
   :ensure t
   :bind (("C-c j n" . org-journal-new-entry))
   :config
-  (setq org-journal-dir "~/org/journal")
+  (setq org-journal-dir "~/org/journal"
+	org-journal-file-format "%Y%m%d.org")
   )
 
 (provide 'org-config)
