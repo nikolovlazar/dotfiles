@@ -60,4 +60,20 @@
 (recentf-mode 1)
 (setq recentf-max-saved-items 100)
 
+;; Compilation
+
+;; ANSI colors
+(require 'ansi-color)
+
+(defun colorize-compilation-buffer ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+;; Follow compile output
+(with-eval-after-load 'compile
+  ;; set cursor to follow compilation output
+  (setq compilation-scroll-output t))
+
 (provide 'editor)
