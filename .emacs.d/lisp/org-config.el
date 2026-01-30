@@ -16,6 +16,9 @@
 (setq org-log-done 'time)
 (setq org-adapt-indentation t)   ; Indent properties/logs to headline level
 
+;; Formatting
+(setq org-use-sub-superscripts nil)
+
 ;; Clean, modern styling
 (setq org-hide-emphasis-markers t)      ; Hide markup characters (*bold*, /italic/, etc.)
 (setq org-pretty-entities t)            ; Render \alpha, \beta, etc. as symbols
