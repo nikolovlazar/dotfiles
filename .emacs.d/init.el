@@ -40,8 +40,9 @@
 (load "ui")
 (load "org-config")
 (load "dev")
-(load "keybindings")
-(load "evil-config")
+(load "evil-config")   ; Evil must load before leader (general.el needs evil states)
+(load "leader")
+(load "keybindings")   ; C-c fallback bindings
 (load "search")
 (load "completion")
 (load "files")
@@ -53,13 +54,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org"))
- '(package-selected-packages
-   '(ace-window all-the-icons cape catppuccin-theme clipetty consult
-		corfu dirvish doom-modeline eldoc-box elfeed embark
-		evil-collection evil-org evil-terminal-cursor-changer
-		exec-path-from-shell git-auto-commit-mode magit
-		marginalia nerd-icons-corfu orderless org-journal
-		org-modern org-roam osx-dictionary rg vertico)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
