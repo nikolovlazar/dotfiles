@@ -11,7 +11,7 @@
 
 ;; Which-key mode
 (which-key-mode 1)
-(setq which-key-idle-delay 0)
+(setq which-key-idle-delay 0.01)
 (setq which-key-separator " → ")           ;; Clear separator between key and description
 (setq which-key-prefix-prefix "◉ ")        ;; Prefix indicator
 (setq which-key-max-description-length 35)  ;; Prevent overly long descriptions
