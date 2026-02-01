@@ -54,7 +54,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org"))
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(ace-window all-the-icons cape catppuccin-theme clipetty consult
+		corfu diredfl dirvish doom-modeline eldoc-box elfeed
+		embark evil-collection evil-org
+		evil-terminal-cursor-changer exec-path-from-shell
+		general git-auto-commit-mode magit marginalia
+		nerd-icons-corfu orderless org-journal org-modern
+		org-roam osx-dictionary request rg vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

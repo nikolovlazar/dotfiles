@@ -28,7 +28,8 @@
     "," '(consult-buffer :which-key "Switch buffer")
     ":" '(eval-expression :which-key "Eval")
     ";" '(comment-dwim :which-key "Comment")
-    "u" '(universal-argument :which-key "Universal arg"))
+    "u" '(universal-argument :which-key "Universal arg")
+    "e" '(dirvish-side :which-key "Toggle file sidebar"))
 
   ;; === FILES (f) ===
   (my/leader-keys

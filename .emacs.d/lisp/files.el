@@ -2,7 +2,10 @@
 
 ;; Install dirvish
 (use-package dirvish
-  :ensure t)
+  :ensure t
+  :config
+  (setq dirvish-attributes '(vc-state file-size subtree-state))
+  (dirvish-side-follow-mode 1))
 
 ;; Load dirvish
 (require 'dirvish)
@@ -11,10 +14,33 @@
 (dirvish-override-dired-mode 1)
 
 ;; Configuration
+(setq dirvish-default-layout '(0 0 0.5))
+(setq dirvish-side-display-alist '((side . right) (slot . -1)))
 (setq dirvish-attributes '(file-size collapse subtree-state vc-state git-msg))
 (setq dirvish-mode-line-format
       '(:left (sort file-time " " file-size symlink)
         :right (omit yank index)))
+(setq insert-directory-program "gls")
+(setq dired-listing-switches "-agho --group-directories-first")
+
+;; Git status coloring
+(setq dirvish-attributes '(vc-state all-the-icons file-size collapse subtree-state))
+
+;; Force vc-state to apply in the main pane
+(setq dirvish-vc-state-face-alist
+      '((up-to-date       . nil)
+        (edited           . dirvish-vc-edited-face)
+        (added            . dirvish-vc-added-face)
+        (removed          . dirvish-vc-removed-face)
+        (missing          . dirvish-vc-missing-face)
+        (conflict         . dirvish-vc-conflict-face)
+        (ignored          . dirvish-vc-ignored-face)
+        (unregistered     . dirvish-vc-unregistered-face)))
+
+(setq dirvish-attributes '(vc-state file-size collapse subtree-state))
+
+(add-hook 'dirvish-setup-hook
+          (lambda () (revert-buffer)))
 
 ;; C-x d opens dirvish immediately at project root (or current dir)
 (defun my/dirvish-here ()
