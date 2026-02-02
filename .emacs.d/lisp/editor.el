@@ -1,79 +1,40 @@
-;;; editor.el --- Basic editor setings and performance tweaks -*- lexical-binding: t; -*-
+;;; editor.el --- Basic editor settings -*- lexical-binding: t; -*-
 
-;; Terminal support
-(unless (display-graphic-p)
-  (menu-bar-mode -1)
-  (xterm-mouse-mode 1))     ;; Enables mouse clicking/scrolling in Ghostty!
+;; Clean UI
+(menu-bar-mode -1)
+(when (display-graphic-p)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1))
 
-;; Repeat mode allows you to hit C-x or C-c once and the next key multiple times
-;; ex, C-x and then multiple times { to make the window narrower
-(repeat-mode 1)
-
-;; Which-key mode
+;; Which-key for discoverability
 (which-key-mode 1)
-(setq which-key-idle-delay 0.01)
-(setq which-key-separator " → ")           ;; Clear separator between key and description
-(setq which-key-prefix-prefix "◉ ")        ;; Prefix indicator
-(setq which-key-max-description-length 35)  ;; Prevent overly long descriptions
-(setq which-key-add-column-padding 4)       ;; Add padding between columns
-(setq which-key-sort-order 'which-key-key-order-alpha)  ;; Sort alphabetically
-(global-set-key (kbd "C-c w k") 'which-key-show-top-level)
+(setq which-key-idle-delay 0.3)
 
-;; Performance optimizations
-(setq jit-lock-defer-time 0.05) ;; Wait 50ms of idle time before recoloring
-(setq-default bidi-display-reordering nil)
-(setq bidi-paragraph-direction 'left-to-right)
-(setq bidi-inhibit-bpa t) ;; Disable the Bidirectional Parentheses Algorithm
-(setq gc-cons-threshold 100000000) ;; 100MB
-(setq read-process-output-max (* 1024 1024)) ;; 1mb; helps with lsp/terminal data
-
-;; Line numbers
-(global-display-line-numbers-mode)
-(setq display-line-numbers-type 'relative)
-
-;; Disable line numbers in specific modes
-(dolist (mode '(org-mode-hook
-                org-agenda-mode-hook
-                magit-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-;; Use macOS pbcopy to bridge the terminal clipboard gap
-  (defun my/copy-to-osx (text &optional push)
-    (let ((process-connection-type nil))
-      (let ((proc (start-process "pbcopy" nil "pbcopy")))
-        (process-send-string proc text)
-        (process-send-eof proc))))
-(setq interprogram-cut-function 'my/copy-to-osx)
-
-;; CUA mode
-(cua-mode 1)
-
-;; Clippety
-(use-package clipetty
-  :ensure t
-  :hook (after-init . global-clipetty-mode))
-
-;; Recent files tracking
+;; Recent files
 (recentf-mode 1)
-(setq recentf-max-saved-items 100)
+(setq recentf-max-saved-items 50)
 
-;; Compilation
+;; Save place in files
+(save-place-mode 1)
 
-;; ANSI colors
-(require 'ansi-color)
+;; Auto-revert files when changed on disk
+(global-auto-revert-mode 1)
 
-(defun colorize-compilation-buffer ()
-  (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region (point-min) (point-max))))
+;; UTF-8 everywhere
+(set-default-coding-systems 'utf-8)
 
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+;; Smoother scrolling
+(setq scroll-margin 3)
+(setq scroll-conservatively 101)
 
-;; Follow compile output
-(with-eval-after-load 'compile
-  ;; set cursor to follow compilation output
-  (setq compilation-scroll-output t))
+;; No backup files cluttering directories
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+;; y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Show matching parens
+(show-paren-mode 1)
 
 (provide 'editor)
