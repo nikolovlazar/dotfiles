@@ -19,6 +19,8 @@ environment.sh
 .claude/logs
 .claude/projects
 .claude/shell-snapshots
+.claude/sessions
+.claude/tasks
 .claude/statsig
 .claude/todos
 .claude/history.jsonl
