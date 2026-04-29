@@ -87,3 +87,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Obsidian
 export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+# sentry
+fpath=("/Users/nikolovlazar/.local/share/zsh/site-functions" $fpath)

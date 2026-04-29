@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage TODOs"
+  short_description: "Create, list, and update Markdown TODOs."
+  default_prompt: "Help me manage this repository's TODOs."
