@@ -10,6 +10,7 @@
 .config/raycast/extensions
 .config/uv
 .config/neonctl
+.config/zed/prompts
 environment.sh
 .claude/cache
 .claude/debug

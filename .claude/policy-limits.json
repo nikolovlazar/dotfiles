@@ -1,0 +1,10 @@
+{
+  "restrictions": {
+    "allow_quick_web_setup": {
+      "allowed": false
+    },
+    "enforce_web_search_mcp_isolation": {
+      "allowed": false
+    }
+  }
+}
