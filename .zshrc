@@ -69,9 +69,6 @@ eval "$(mise activate zsh)"
 # defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Activate mise environment
-eval "$(mise activate zsh)"
-
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
