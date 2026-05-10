@@ -36,7 +36,7 @@ require('lazy').setup({
     { import = 'plugins.languages.astro' },
     { import = 'plugins.languages.docker' },
     { import = 'plugins.languages.go' },
-    { import = 'plugins.languages.laravel' },
+    -- { import = 'plugins.languages.laravel' },
     { import = 'plugins.languages.php' },
     { import = 'plugins.languages.python' },
     { import = 'plugins.languages.tailwind' },
