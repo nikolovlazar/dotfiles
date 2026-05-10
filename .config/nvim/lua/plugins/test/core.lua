@@ -8,6 +8,7 @@ return {
       'marilari88/neotest-vitest',
       'V13Axel/neotest-pest',
       'fredrikaverpil/neotest-golang',
+      'nvim-neotest/neotest-python',
     },
     opts = {
       adapters = {
@@ -74,6 +75,7 @@ return {
           require 'neotest-vitest',
           require 'neotest-pest',
           require 'neotest-golang',
+          require 'neotest-python',
         }
         for name, config in pairs(opts.adapters or {}) do
           if type(name) == 'number' then
