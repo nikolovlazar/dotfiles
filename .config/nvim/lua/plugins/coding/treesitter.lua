@@ -52,12 +52,14 @@ return {
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    config = function()
+    config = function(_, opts)
       vim.filetype.add {
         pattern = {
           ['config'] = 'dosini', -- better syntax highlighting for config files
         },
       }
+
+      require('nvim-treesitter.configs').setup(opts)
     end,
   },
 }
