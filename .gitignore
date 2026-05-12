@@ -4,6 +4,7 @@
 .config/**/.tmp*
 .config/lazygit/state.yml
 .config/zed/*
+.config/zed/prompts/*
 !.config/zed/keymap.json
 !.config/zed/settings.json
 !.config/zed/tasks.json
