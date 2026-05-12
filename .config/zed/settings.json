@@ -7,41 +7,94 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "buffer_line_height": "comfortable",
+  "ui_font_weight": 200.0,
+  "buffer_font_weight": 200.0,
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "buffer_line_height": "standard",
   "context_servers": {
     "sentry": {
       "command": "npx",
-      "args": ["-y", "mcp-remote@latest", "https://mcp.sentry.dev/mcp"]
-    }
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
+      "args": ["-y", "mcp-remote@latest", "https://mcp.sentry.dev/mcp"],
+    },
   },
   "agent": {
+    "dock": "right",
     "model_parameters": [],
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1"
-    }
+      "model": "gpt-4.1",
+    },
   },
-  "icon_theme": "Catppuccin Mocha",
+  "icon_theme": "JetBrains New UI Icons (Dark)",
   "project_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "vim_mode": true,
   "buffer_font_family": "Monaspace Neon Var",
+  "buffer_font_features": {
+    "calt": true,
+    "cv02": true,
+    "cv10": true,
+    "cv11": true,
+    "cv31": true,
+    "ss01": true,
+    "ss02": true,
+    "ss03": true,
+    "ss04": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+    "ss09": true,
+    "ss10": true,
+    "dlig": true,
+  },
+  "terminal": {
+    "font_weight": 200.0,
+    "font_features": {
+      "calt": true,
+      "cv02": true,
+      "cv10": true,
+      "cv11": true,
+      "cv31": true,
+      "ss01": true,
+      "ss02": true,
+      "ss03": true,
+      "ss04": true,
+      "ss05": true,
+      "ss06": true,
+      "ss07": true,
+      "ss08": true,
+      "ss09": true,
+      "ss10": true,
+      "dlig": true,
+    },
+  },
   "ui_font_family": "Monaspace Neon Var",
-  "theme": "Modest Dark",
+  "theme": "Snazzy Theme - blurred",
   "cursor_blink": false,
   "relative_line_numbers": "enabled",
   "scrollbar": {
-    "show": "never"
+    "show": "never",
   },
   "languages": {
     "PHP": {
-      "language_servers": ["intelephense", "..."]
-    }
-  }
+      "language_servers": ["intelephense", "..."],
+    },
+  },
 }
