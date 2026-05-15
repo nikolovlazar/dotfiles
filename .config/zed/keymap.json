@@ -104,7 +104,7 @@
       "a": "project_panel::NewFile",
       "shift-a": "project_panel::NewDirectory",
       "r": "project_panel::Rename",
-      "d": "project_panel::Delete",
+      "d": "project_panel::Trash",
       "y": "project_panel::Copy",
       "p": "project_panel::Paste",
       "x": "project_panel::Cut",
