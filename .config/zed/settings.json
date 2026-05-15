@@ -20,8 +20,16 @@
     "cursor_position_button": true,
     "active_language_button": true,
   },
-  "theme": "Snazzy Theme - blurred",
-  "icon_theme": "JetBrains New UI Icons (Dark)",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Snazzy Theme - blurred",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "JetBrains New UI Icons (Dark)",
+    "dark": "JetBrains New UI Icons (Dark)",
+  },
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "ui_font_weight": 200.0,
@@ -188,9 +196,9 @@
   // ══════════════════════════════════════════════════════════════════════════════
   "agent": {
     "dock": "left",
-    "sidebar_side": "right",
+    "sidebar_side": "left",
+    "button": true,
     "max_content_width": 1200,
-    "button": false,
     "single_file_review": false,
     "message_editor_min_lines": 3,
     "inline_assistant_model": {

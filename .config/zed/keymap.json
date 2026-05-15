@@ -46,6 +46,9 @@
       "space space": "file_finder::Toggle",
       "space e": "workspace::ToggleRightDock",
 
+      // === AI ===
+      "space a a": "agent::Toggle",
+
       // === Buffers ===
       "space b d": "pane::CloseActiveItem",
       "space b o": "pane::CloseOtherItems",
@@ -105,10 +108,7 @@
       "y": "project_panel::Copy",
       "p": "project_panel::Paste",
       "x": "project_panel::Cut",
-      "s": [
-        "workspace::SendKeystrokes",
-        "ctrl-h cmd-k right right ctrl-l enter right right right right alt-cmd-t",
-      ],
+      "s": ["workspace::SendKeystrokes", "ctrl-h cmd-k right right ctrl-l enter right right right right alt-cmd-t"],
       "q": "workspace::ToggleRightDock",
     },
   },
