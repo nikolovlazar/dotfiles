@@ -197,7 +197,7 @@
   "agent": {
     "dock": "left",
     "sidebar_side": "left",
-    "button": true,
+    "button": false,
     "max_content_width": 1200,
     "single_file_review": false,
     "message_editor_min_lines": 3,
