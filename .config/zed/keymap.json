@@ -1,36 +1,91 @@
 [
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GLOBAL: UI Font Scaling (without persist)
+  // ═══════════════════════════════════════════════════════════════════════════════
   {
+    "use_key_equivalents": true,
     "bindings": {
+      "cmd-+": ["zed::IncreaseUiFontSize", { "persist": false }],
+      "cmd-_": ["zed::DecreaseUiFontSize", { "persist": false }],
+      "cmd-)": ["zed::ResetUiFontSize", { "persist": false }],
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PANE NAVIGATION & SPLITTING
+  // Works across: Editor, Terminal, Panels, etc.
+  // - ctrl-h/j/k/l: move between panes (vim-style)
+  // - alt-h/j/k/l: resize panes
+  // ═══════════════════════════════════════════════════════════════════════════════
+  {
+    "context": "Dock || Terminal || Editor || ProjectPanel || AssistantPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView || Diagnostics",
+    "bindings": {
+      "cmd-d": "pane::SplitRight",
+
+      // Navigate between panes (vim-style)
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
+
+      // Resize panes
+      "alt-l": "vim::ResizePaneRight",
+      "alt-h": "vim::ResizePaneLeft",
+      "alt-j": "vim::ResizePaneDown",
+      "alt-k": "vim::ResizePaneUp",
     },
   },
   {
-    "context": "not_editing || (Editor && vim_mode == normal)",
-    "bindings": {
-      "space ,": "tab_switcher::Toggle",
-      "space space": "file_finder::Toggle",
-      "space e": "workspace::ToggleRightDock",
-    },
-  },
-  {
-    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "context": "ProjectPanel || EmptyPane || (Editor && VimControl && !VimWaiting && !menu)",
     "bindings": {
       "shift-k": "editor::Hover",
+      "g d": "editor::GoToDefinition",
+      "g r": "editor::FindAllReferences",
+      "ctrl-n": "editor::SelectNext",
+      "space ,": "tab_switcher::OpenInActivePane",
+      "space space": "file_finder::Toggle",
+      "space e": "workspace::ToggleRightDock",
+
+      // === Buffers ===
+      "space b d": "pane::CloseActiveItem",
+      "space b o": "pane::CloseOtherItems",
+
+      // === Code ===
       "space c a": "editor::ToggleCodeActions",
       "space c f": "editor::Format",
       "space c r": "editor::Rename",
-      "space c d": "editor::GoToDiagnostic",
+      "space c d": "diagnostics::Deploy",
       "space c s": "outline::Toggle",
-      "space s s": "project_symbols::Toggle",
-      "space b d": "pane::CloseActiveItem",
-      "space g d": "editor::GoToDefinition",
-      "space g r": "editor::FindAllReferences",
-      "space s g": "pane::DeploySearch",
+
+      // === Git ===
       "space g g": ["task::Spawn", { "task_name": "Run lazygit" }],
-      "ctrl-n": "editor::SelectNext",
+      "space g h d": "editor::ExpandAllDiffHunks",
+      "space g h D": "git::Diff",
+      "space g h r": "git::Restore",
+      "space g h R": "git::RestoreFile",
+
+      // === Markdown ===
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide",
+
+      // === Symbols ===
+      "space s s": "project_symbols::Toggle",
+
+      // === Search ===
+      "space s g": "pane::DeploySearch",
+      "space s r": ["pane::DeploySearch", { "replace_enabled": true }],
+
+      // === UI Toggles ===
+      "space u z": "workspace::ToggleCenteredLayout",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // === Surround ===
+      "g s a": ["vim::PushAddSurrounds", {}],
+      "g s r": ["vim::PushChangeSurrounds", {}],
+      "g s d": "vim::PushDeleteSurrounds",
     },
   },
   {
@@ -44,16 +99,63 @@
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "a": "project_panel::NewFile",
-      "A": "project_panel::NewDirectory",
+      "shift-a": "project_panel::NewDirectory",
       "r": "project_panel::Rename",
       "d": "project_panel::Delete",
-      "c": "project_panel::Copy",
+      "y": "project_panel::Copy",
       "p": "project_panel::Paste",
       "x": "project_panel::Cut",
       "s": [
         "workspace::SendKeystrokes",
         "ctrl-h cmd-k right right ctrl-l enter right right right right alt-cmd-t",
       ],
+      "q": "workspace::ToggleRightDock",
+    },
+  },
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PANE: Splits & Tab switching by number
+  // ═══════════════════════════════════════════════════════════════════════════════
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-w s": "pane::SplitDown",
+      "cmd-shift-d": "pane::SplitDown",
+      "ctrl-w v": "pane::SplitRight",
+      "cmd-d": "pane::SplitRight",
+      // Tab by number
+      "cmd-1": ["pane::ActivateItem", 0],
+      "cmd-2": ["pane::ActivateItem", 1],
+      "cmd-3": ["pane::ActivateItem", 2],
+      "cmd-4": ["pane::ActivateItem", 3],
+      "cmd-5": ["pane::ActivateItem", 4],
+      "cmd-6": ["pane::ActivateItem", 5],
+      "cmd-7": ["pane::ActivateItem", 6],
+      "cmd-8": ["pane::ActivateItem", 7],
+      "cmd-9": ["pane::ActivateItem", 8],
+      "cmd-0": "pane::ActivateLastItem",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VIM TEXT OBJECTS: mini.ai style
+  // - Q: any quote type
+  // - B: any bracket type
+  // ═══════════════════════════════════════════════════════════════════════════════
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "Q": "vim::MiniQuotes",
+      "B": "vim::MiniBrackets",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VIM VISUAL: Exchange (swap two selections)
+  // ═══════════════════════════════════════════════════════════════════════════════
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-x": "vim::Exchange",
     },
   },
 ]

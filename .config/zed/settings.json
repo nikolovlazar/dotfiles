@@ -1,50 +1,32 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
-  "ui_font_weight": 200.0,
-  "buffer_font_weight": 200.0,
-  "agent_servers": {
-    "codex-acp": {
-      "type": "registry",
-    },
+  // ══════════════════════════════════════════════════════════════════════════════
+  // APPEARANCE
+  // ══════════════════════════════════════════════════════════════════════════════
+  "debugger": {
+    "button": false,
   },
-  "outline_panel": {
-    "dock": "left",
+  "search": {
+    "button": false,
   },
-  "collaboration_panel": {
-    "dock": "left",
+  "toolbar": {
+    "code_actions": false,
+    "agent_review": true,
+    "selections_menu": true,
+    "quick_actions": false,
+    "breadcrumbs": true,
   },
-  "git_panel": {
-    "dock": "left",
+  "status_bar": {
+    "show_active_file": false,
+    "cursor_position_button": true,
+    "active_language_button": true,
   },
-  "buffer_line_height": "standard",
-  "context_servers": {
-    "sentry": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote@latest", "https://mcp.sentry.dev/mcp"],
-    },
-  },
-  "agent": {
-    "dock": "right",
-    "model_parameters": [],
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4.1",
-    },
-  },
+  "theme": "Snazzy Theme - blurred",
   "icon_theme": "JetBrains New UI Icons (Dark)",
-  "project_panel": {
-    "dock": "right",
-  },
   "ui_font_size": 16,
   "buffer_font_size": 16,
-  "vim_mode": true,
+  "ui_font_weight": 200.0,
+  "buffer_font_weight": 200.0,
+  "ui_font_family": "Monaspace Neon Var",
   "buffer_font_family": "Monaspace Neon Var",
   "buffer_font_features": {
     "calt": true,
@@ -64,7 +46,200 @@
     "ss10": true,
     "dlig": true,
   },
+  "cursor_blink": false,
+  "document_symbols": "on",
+  "diff_view_style": "split",
+  "buffer_line_height": "standard",
+  "relative_line_numbers": "enabled",
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // EDITOR BEHAVIOR
+  // ══════════════════════════════════════════════════════════════════════════════
+  "vim_mode": true,
+  "scroll_beyond_last_line": "off",
+  "vertical_scroll_margin": 0,
+  "preferred_line_length": 140,
+  "double_click_in_multibuffer": "open",
+  "close_on_file_delete": true,
+  "use_smartcase_search": true,
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // VIM SETTINGS
+  // ══════════════════════════════════════════════════════════════════════════════
+  "vim": {
+    "use_system_clipboard": "never",
+    "use_smartcase_find": true,
+    "highlight_on_yank_duration": 500,
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // WHICH-KEY (shows keybinding hints after delay)
+  // ══════════════════════════════════════════════════════════════════════════════
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 400,
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // SEARCH
+  // ══════════════════════════════════════════════════════════════════════════════
+  "seed_search_query_from_cursor": "selection", // only use selected text
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // WINDOW & LAYOUT
+  // ══════════════════════════════════════════════════════════════════════════════
+  "use_system_window_tabs": true,
+  "restore_on_startup": "launchpad",
+  "bottom_dock_layout": "right_aligned",
+  "active_pane_modifiers": {
+    "border_size": 0.5,
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // TITLE BAR
+  // ══════════════════════════════════════════════════════════════════════════════
+  "title_bar": {
+    "show_branch_status_icon": true,
+    "show_user_picture": false,
+    "show_onboarding_banner": true,
+    "show_project_items": true,
+    "show_branch_name": true,
+    "show_user_menu": true,
+    "show_menus": true,
+    "show_sign_in": false,
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // TAB BAR & TABS
+  // ══════════════════════════════════════════════════════════════════════════════
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": false,
+    "show": true,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false,
+  },
+  "tabs": {
+    "show_diagnostics": "errors",
+    "git_status": true,
+    "file_icons": true,
+    "activate_on_close": "neighbour",
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // SCROLLBAR
+  // ══════════════════════════════════════════════════════════════════════════════
+  "scrollbar": {
+    "show": "system",
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // PANELS
+  // ══════════════════════════════════════════════════════════════════════════════
+  "project_panel": {
+    "dock": "right",
+    "button": false,
+    "default_width": 300,
+    "auto_fold_dirs": false,
+    "auto_reveal_entries": false,
+    "entry_spacing": "standard",
+    "diagnostic_badges": true,
+    "git_status_indicator": true,
+  },
+  "outline_panel": {
+    "dock": "right",
+    "button": false,
+  },
+  "collaboration_panel": {
+    "dock": "left",
+    "button": false,
+    "default_width": 300,
+  },
+  "git_panel": {
+    "dock": "right",
+    "button": false,
+    "tree_view": true,
+    "sort_by_path": true,
+    "default_width": 300,
+    "show_count_badge": true,
+    "file_icons": true,
+    "status_style": "icon",
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // FILE FINDER
+  // ══════════════════════════════════════════════════════════════════════════════
+  "file_finder": {
+    "modal_max_width": "medium",
+    "include_ignored": "all",
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // DIAGNOSTICS
+  // ══════════════════════════════════════════════════════════════════════════════
+  "diagnostics": {
+    "button": false,
+    "inline": {
+      "enabled": true,
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // AGENT (AI Assistant)
+  // ══════════════════════════════════════════════════════════════════════════════
+  "agent": {
+    "dock": "left",
+    "sidebar_side": "right",
+    "max_content_width": 1200,
+    "button": false,
+    "single_file_review": false,
+    "message_editor_min_lines": 3,
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+    },
+    "use_modifier_to_send": false,
+    "play_sound_when_agent_done": "never",
+    "show_turn_stats": true,
+    "commit_message_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.4-mini",
+    },
+    "enable_feedback": false,
+    "thinking_display": "preview",
+    "default_model": {
+      "effort": "medium",
+      "enable_thinking": true,
+      "provider": "openai",
+      "model": "gpt-5.5",
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // AGENT SERVERS (external AI agents)
+  // ══════════════════════════════════════════════════════════════════════════════
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+  },
+  "context_servers": {
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote@latest", "https://mcp.sentry.dev/mcp"],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // TERMINAL
+  // ══════════════════════════════════════════════════════════════════════════════
   "terminal": {
+    "button": false,
+    "scrollbar": {
+      "show": "never",
+    },
+    "max_scroll_history_lines": 50000,
+    "blinking": "off",
+    "font_family": "Monaspace Neon Var",
     "font_weight": 200.0,
     "font_features": {
       "calt": true,
@@ -84,14 +259,57 @@
       "ss10": true,
       "dlig": true,
     },
+    "detect_venv": {
+      "on": {
+        "activate_script": "fish",
+      },
+    },
+    "env": {
+      "GIT_EDITOR": "zed --wait",
+      "EDITOR": "zed",
+    },
+    "minimum_contrast": 0,
+    "keep_selection_on_copy": false,
   },
-  "ui_font_family": "Monaspace Neon Var",
-  "theme": "Snazzy Theme - blurred",
-  "cursor_blink": false,
-  "relative_line_numbers": "enabled",
-  "scrollbar": {
-    "show": "never",
-  },
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // DIRENV
+  // ══════════════════════════════════════════════════════════════════════════════
+  "load_direnv": "shell_hook",
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // READ-ONLY FILES (prevent accidental edits)
+  // ══════════════════════════════════════════════════════════════════════════════
+  "read_only_files": ["**/*.lock", "**/vendor/**", "**/node_modules/**"],
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // FILE SCAN EXCLUSIONS (performance)
+  // ══════════════════════════════════════════════════════════════════════════════
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/.vscode",
+    "**/.idea",
+    "**/.serverless",
+    "**/build",
+    "**/dist",
+    "**/coverage",
+    "**/.venv",
+    "**/__pycache__",
+    "**/.ropeproject",
+    "**/.pytest_cache",
+    "**/.ruff_cache",
+  ],
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // LANGUAGE-SPECIFIC SETTINGS
+  // ══════════════════════════════════════════════════════════════════════════════
   "languages": {
     "PHP": {
       "language_servers": ["intelephense", "..."],
