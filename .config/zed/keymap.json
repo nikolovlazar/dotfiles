@@ -29,10 +29,10 @@
       "ctrl-j": "workspace::ActivatePaneDown",
 
       // Resize panes
-      "alt-l": "vim::ResizePaneRight",
       "alt-h": "vim::ResizePaneLeft",
       "alt-j": "vim::ResizePaneDown",
       "alt-k": "vim::ResizePaneUp",
+      "alt-l": "vim::ResizePaneRight",
     },
   },
   {

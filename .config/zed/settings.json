@@ -27,7 +27,7 @@
   },
   "icon_theme": {
     "mode": "dark",
-    "light": "JetBrains New UI Icons (Dark)",
+    "light": "Light Charmed Icons",
     "dark": "Base Charmed Icons",
   },
   "ui_font_size": 16,
@@ -247,7 +247,7 @@
     },
     "max_scroll_history_lines": 50000,
     "blinking": "off",
-    "font_family": "Monaspace Neon Var",
+    "font_family": "MonaspiceNe Nerd Font",
     "font_weight": 200.0,
     "font_features": {
       "calt": true,
