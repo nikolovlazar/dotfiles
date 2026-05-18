@@ -1,4 +1,4 @@
 return {
   -- Disable auto opening (){}[]
-  { "echasnovski/mini.pairs", enabled = false },
+  { "nvim-mini/mini.pairs", enabled = false },
 }
