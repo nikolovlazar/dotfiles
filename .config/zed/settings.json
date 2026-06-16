@@ -75,7 +75,7 @@
   // VIM SETTINGS
   // ══════════════════════════════════════════════════════════════════════════════
   "vim": {
-    "use_system_clipboard": "never",
+    "use_system_clipboard": "always",
     "use_smartcase_find": true,
     "highlight_on_yank_duration": 500,
   },
