@@ -32,7 +32,8 @@
   ],
   "flexMode": "full-minus-40",
   "compactThreshold": 60,
-  "colorLevel": 2,
+  "colorLevel": 3,
+  "defaultPadding": " ",
   "inheritSeparatorColors": false,
   "globalBold": false,
   "gitCacheTtlSeconds": 5,
@@ -47,13 +48,12 @@
     ],
     "startCaps": [],
     "endCaps": [],
+    "theme": "nord-aurora",
     "autoAlign": true,
-    "continueThemeAcrossLines": true,
-    "theme": "nord-aurora"
+    "continueThemeAcrossLines": true
   },
   "installation": {
     "method": "pinned",
     "installedVersion": "2.2.22"
-  },
-  "defaultPadding": " "
+  }
 }
