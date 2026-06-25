@@ -9,19 +9,31 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     opts = function(_, opts)
       opts.signs = {
-        add = { text = '󰾗 ' },
-        change = { text = '󰯔 ' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = '▌' },
+        change = { text = '▌' },
+        delete = { text = '▁' },
+        topdelete = { text = '▔' },
+        changedelete = { text = '▌' },
       }
       opts.signs_staged = {
-        add = { text = '󱔲 ' },
-        change = { text = '󱔲 ' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = '▌' },
+        change = { text = '▌' },
+        delete = { text = '▁' },
+        topdelete = { text = '▔' },
+        changedelete = { text = '▌' },
       }
+      -- Higher-contrast gutter colors (GitHub-dark diff palette), kept
+      -- applied across colorscheme reloads so Catppuccin can't pastel them.
+      local function gitsigns_hl()
+        local add, change, delete = '#56d364', '#e3b341', '#f85149'
+        vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = add })
+        vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = change })
+        vim.api.nvim_set_hl(0, 'GitSignsDelete', { fg = delete })
+        vim.api.nvim_set_hl(0, 'GitSignsTopdelete', { fg = delete })
+        vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { fg = change })
+      end
+      gitsigns_hl()
+      vim.api.nvim_create_autocmd('ColorScheme', { callback = gitsigns_hl })
       opts.on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
