@@ -42,11 +42,6 @@ return {
       -- Document existing key chains
       spec = {
         {
-          '<leader>a',
-          group = 'AI',
-          icon = { icon = '󱚦', color = 'cyan' },
-        },
-        {
           '<leader>b',
           group = 'Buffers',
           icon = { icon = '', color = 'yellow' },
@@ -56,11 +51,6 @@ return {
           group = 'Code',
           mode = { 'n', 'x' },
           icon = { icon = '', color = 'green' },
-        },
-        {
-          '<leader>d',
-          group = 'Debug',
-          icon = { icon = '', color = 'red' },
         },
         {
           '<leader>f',
@@ -86,11 +76,6 @@ return {
           '<leader>gh',
           group = 'Hunks',
           icon = { icon = '󰊢', color = 'orange' },
-        },
-        {
-          '<leader>o',
-          group = 'Overseer',
-          icon = { icon = '', color = 'red' },
         },
         {
           '<leader>s',

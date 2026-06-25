@@ -10,17 +10,39 @@ return {
 
       require('plugins.editor.lualine-theme').apply_highlights()
 
+      -- Build the palette + mode→color map ONCE, not on every statusline
+      -- redraw. (The mode color component runs on every cursor move / mode
+      -- change, so anything computed inside it is a hot path.)
+      local colors = require('plugins.editor.lualine-theme').build_theme()
+      local mode_color = {
+        n = colors.red,
+        i = colors.green,
+        v = colors.blue,
+        [''] = colors.blue,
+        V = colors.blue,
+        c = colors.magenta,
+        no = colors.red,
+        s = colors.orange,
+        S = colors.orange,
+        [''] = colors.orange,
+        ic = colors.yellow,
+        R = colors.violet,
+        Rv = colors.violet,
+        cv = colors.red,
+        ce = colors.red,
+        r = colors.cyan,
+        rm = colors.cyan,
+        ['r?'] = colors.cyan,
+        ['!'] = colors.red,
+        t = colors.red,
+      }
+
       local conditions = {
         buffer_not_empty = function()
           return vim.fn.empty(vim.fn.expand '%:t') ~= 1
         end,
         hide_in_width = function()
           return vim.fn.winwidth(0) > 80
-        end,
-        check_git_workspace = function()
-          local filepath = vim.fn.expand '%:p:h'
-          local gitdir = vim.fn.finddir('.git', filepath .. ';')
-          return gitdir and #gitdir > 0 and #gitdir < #filepath
         end,
       }
 
@@ -75,32 +97,8 @@ return {
           return ''
         end,
         color = function()
-          local dynamic_colors =
-            require('plugins.editor.lualine-theme').build_theme()
-          -- auto change color according to neovims mode
-          local mode_color = {
-            n = dynamic_colors.red,
-            i = dynamic_colors.green,
-            v = dynamic_colors.blue,
-            [''] = dynamic_colors.blue,
-            V = dynamic_colors.blue,
-            c = dynamic_colors.magenta,
-            no = dynamic_colors.red,
-            s = dynamic_colors.orange,
-            S = dynamic_colors.orange,
-            [''] = dynamic_colors.orange,
-            ic = dynamic_colors.yellow,
-            R = dynamic_colors.violet,
-            Rv = dynamic_colors.violet,
-            cv = dynamic_colors.red,
-            ce = dynamic_colors.red,
-            r = dynamic_colors.cyan,
-            rm = dynamic_colors.cyan,
-            ['r?'] = dynamic_colors.cyan,
-            ['!'] = dynamic_colors.red,
-            t = dynamic_colors.red,
-          }
-          return { bg = dynamic_colors.bg, fg = mode_color[vim.fn.mode()] }
+          -- Cheap per-redraw: a table lookup against the precomputed map.
+          return { bg = colors.bg, fg = mode_color[vim.fn.mode()] }
         end,
         padding = { right = 1 },
       }
@@ -127,24 +125,6 @@ return {
       ins_left {
         function()
           return '%='
-        end,
-      }
-
-      ins_right {
-        function()
-          local ok, laravel_version = pcall(function()
-            return Laravel.app('status'):get 'laravel'
-          end)
-          if ok then
-            return laravel_version
-          end
-        end,
-        icon = { '', color = { fg = '#F55247' } },
-        cond = function()
-          local ok, has_laravel_versions = pcall(function()
-            return Laravel.app('status'):has 'laravel'
-          end)
-          return ok and has_laravel_versions
         end,
       }
 

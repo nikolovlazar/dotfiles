@@ -58,7 +58,7 @@ return {
       git = {
         enable = true,
         ignore = false,
-        timeout = 400,
+        timeout = 1000,
       },
     },
     config = function(_, opts)

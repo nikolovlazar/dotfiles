@@ -1,3 +1,8 @@
+-- fzf-lua: the single picker for find / grep / symbols / diagnostics.
+-- LSP navigation keymaps (gd, gy, grr, gri) live in the LspAttach handler in
+-- plugins/coding/lspconfig.lua. This file only owns the picker itself.
+
+-- Limit document/workspace symbol pickers to meaningful kinds.
 local kind_filter = {
   default = {
     'Class',
@@ -26,7 +31,7 @@ local kind_filter = {
     'Method',
     'Module',
     'Namespace',
-    -- "Package", -- remove package since luals uses it for control flow structures
+    -- "Package", -- luals uses it for control-flow structures
     'Property',
     'Struct',
     'Trait',
@@ -40,16 +45,10 @@ local get_kind_filter = function(buf)
   if kind_filter[ft] == false then
     return
   end
-
   if type(kind_filter[ft]) == 'table' then
     return kind_filter[ft]
   end
-
-  ---@diagnostic disable-next-line: return-type-mismatch
-  return type(kind_filter) == 'table'
-      and type(kind_filter.default) == 'table'
-      and kind_filter.default
-    or nil
+  return type(kind_filter.default) == 'table' and kind_filter.default or nil
 end
 
 local symbols_filter = function(entry, ctx)
@@ -65,6 +64,7 @@ end
 return {
   {
     'ibhagwan/fzf-lua',
+    cmd = 'FzfLua',
     dependencies = { 'echasnovski/mini.icons' },
     opts = {
       files = {
@@ -74,6 +74,12 @@ return {
         rg_opts = '--column --line-number --hidden',
       },
     },
+    config = function(_, opts)
+      local fzf = require 'fzf-lua'
+      fzf.setup(opts)
+      -- Route vim.ui.select (e.g. LSP code actions) through fzf-lua.
+      fzf.register_ui_select()
+    end,
     keys = {
       { '<c-j>', '<c-j>', ft = 'fzf', mode = 't', nowait = true },
       { '<c-k>', '<c-k>', ft = 'fzf', mode = 't', nowait = true },
@@ -142,37 +148,5 @@ return {
         desc = 'Symbol (Workspace)',
       },
     },
-  },
-  {
-    'neovim/nvim-lspconfig',
-    opts = function()
-      vim.keymap.set('n', 'gd', function()
-        require('fzf-lua').lsp_definitions {
-          jump_to_single_result = true,
-          ignore_current_line = true,
-        }
-      end, { desc = 'Goto Definition' })
-
-      vim.keymap.set('n', 'gr', function()
-        require('fzf-lua').lsp_references {
-          jump_to_single_result = true,
-          ignore_current_line = true,
-        }
-      end, { desc = 'References', nowait = true })
-
-      vim.keymap.set('n', 'gI', function()
-        require('fzf-lua').lsp_implementations {
-          jump_to_single_result = true,
-          ignore_current_line = true,
-        }
-      end, { desc = 'Goto Implementation' })
-
-      vim.keymap.set('n', 'gy', function()
-        require('fzf-lua').lsp_typedefs {
-          jump_to_single_result = true,
-          ignore_current_line = true,
-        }
-      end, { desc = 'Goto Type Definitions' })
-    end,
   },
 }

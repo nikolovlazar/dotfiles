@@ -6,7 +6,6 @@ return {
       'nvim-neotest/nvim-nio',
       -- 'nvim-neotest/neotest-jest',
       'marilari88/neotest-vitest',
-      'V13Axel/neotest-pest',
       'fredrikaverpil/neotest-golang',
       'nvim-neotest/neotest-python',
     },
@@ -67,13 +66,10 @@ return {
         return {}
       end
 
-      opts.consumers.overseer = require 'neotest.consumers.overseer'
-
       if opts.adapters then
         local adapters = {
           -- require 'neotest-jest',
           require 'neotest-vitest',
-          require 'neotest-pest',
           require 'neotest-golang',
           require 'neotest-python',
         }
@@ -117,14 +113,6 @@ return {
       { "<leader>tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel (Neotest)" },
       { "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop (Neotest)" },
       { "<leader>tw", function() require("neotest").watch.toggle(vim.fn.expand("%")) end, desc = "Toggle Watch (Neotest)" },
-    },
-  },
-  {
-    'mfussenegger/nvim-dap',
-    optional = true,
-    -- stylua: ignore
-    keys = {
-      { "<leader>td", function() require("neotest").run.run({strategy = "dap"}) end, desc = "Debug Nearest (Neotest)" },
     },
   },
 }

@@ -1,12 +1,13 @@
 return {
   {
     'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
     opts = function()
       local opts = {
         formatters_by_ft = {
           lua = { 'stylua' },
-          php = { 'pint' },
-          blade = { 'blade-formatter' },
+          astro = { 'prettier', 'prettierd' },
           javascript = { 'biome', 'prettier', 'prettierd' },
           javascriptreact = { 'biome', 'prettier', 'prettierd' },
           typescript = { 'biome', 'prettier', 'prettierd' },
@@ -20,13 +21,6 @@ return {
           scss = { 'prettier', 'prettierd' },
           vue = { 'prettier', 'prettierd' },
           yaml = { 'prettier', 'prettierd' },
-        },
-        formatters = {
-          pint = {
-            command = 'vendor/bin/pint',
-            args = { '$FILENAME' },
-            stdin = false,
-          },
         },
       }
 
