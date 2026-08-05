@@ -1,11 +1,27 @@
 return {
-  { -- Highlight, edit, and navigate code
+  { -- Treesitter parsers and queries.
+    --
+    -- On the `main` branch this plugin only installs parsers/queries; the
+    -- features themselves come from Neovim, so highlighting and indentation
+    -- are opted into per buffer in the FileType autocommand below. Folding is
+    -- deliberately left alone -- nvim-ufo owns it (see plugins/editor/ufo).
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false, -- `main` does not support lazy-loading
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    opts = {
-      ensure_installed = {
+    config = function()
+      vim.filetype.add {
+        pattern = {
+          ['config'] = 'dosini', -- better syntax highlighting for config files
+        },
+      }
+
+      local ts = require 'nvim-treesitter'
+
+      -- Parsers and queries land in `stdpath('data')/site` by default.
+      ts.setup()
+
+      local ensure_installed = {
         'astro',
         'bash',
         'c',
@@ -32,32 +48,38 @@ return {
         'vim',
         'vimdoc',
         'yaml',
-      },
-      -- Install only the parsers listed above; no surprise background installs.
-      auto_install = false,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
-    -- There are additional nvim-treesitter modules that you can use to interact
-    -- with nvim-treesitter. You should go explore a few and see what interests you:
-    --
-    --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-    --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    config = function(_, opts)
-      vim.filetype.add {
-        pattern = {
-          ['config'] = 'dosini', -- better syntax highlighting for config files
-        },
       }
 
-      require('nvim-treesitter.configs').setup(opts)
+      -- Install only what's listed above; no surprise background installs.
+      local installed = ts.get_installed 'parsers'
+      local missing = vim.tbl_filter(function(lang)
+        return not vim.tbl_contains(installed, lang)
+      end, ensure_installed)
+      if #missing > 0 then
+        ts.install(missing)
+      end
+
+      local group =
+        vim.api.nvim_create_augroup('treesitter-start', { clear = true })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = group,
+        callback = function(ev)
+          local lang = vim.treesitter.language.get_lang(ev.match)
+          if not lang or not vim.treesitter.language.add(lang) then
+            return
+          end
+
+          vim.treesitter.start(ev.buf, lang)
+
+          -- Without an indents query `indentexpr()` returns 0 for every line,
+          -- so fall back to whatever the ftplugin set up.
+          if vim.treesitter.query.get(lang, 'indents') then
+            vim.bo[ev.buf].indentexpr =
+              "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
     end,
   },
 }
