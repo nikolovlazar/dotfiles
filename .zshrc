@@ -87,3 +87,6 @@ export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 
 # sentry
 fpath=("/Users/nikolovlazar/.local/share/zsh/site-functions" $fpath)
+
+# opencode
+export PATH=/Users/nikolovlazar/.opencode/bin:$PATH
