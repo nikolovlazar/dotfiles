@@ -259,6 +259,16 @@ Below is the hook, one full segment, and the recap/CTA. Apply the same AV table 
 | Cut to end screen — subscribe button and suggested video card. | **SFX:** end screen music fades in. |
 ```
 
+### Teleprompter Copy and Pause Cues
+
+Whenever generating or regenerating a teleprompter copy, **always include intentional `[PAUSE]` cues**. Treat this as part of writing the copy, not an optional finishing step.
+
+- Place cues within a paragraph where an extra beat helps the viewer anticipate a reveal or process a key finding, such as a hook, important number, contrast, or recap transition. Do not add `[PAUSE]` at a segment ending or immediately before or after a line or paragraph break: those boundaries already create natural pauses when reading from a teleprompter. Keep title-card holds and other boundary silence in the AV directions, not as teleprompter pause cues.
+- Use the literal marker `[PAUSE]` at the intended break. It is a silent delivery instruction, not spoken dialogue or caption text. Keep duration guidance in edit notes: roughly half a second for a short beat, longer for a significant finding.
+- Preserve valid internal cues when regenerating. Remove cues made redundant by line, paragraph, or segment breaks. Reassess placement when wording or visuals change, and retain any user-directed timing.
+- Keep the spoken wording identical to the AV narration; removing pause markers from the teleprompter copy should leave the same dialogue. Represent corresponding pauses in the AV AUDIO cells as explicit silent beats with approximate durations, following the AUDIO cell rules.
+- Exclude `[PAUSE]` and other delivery instructions from spoken word counts and captions. Include pause durations in the runtime estimate, counting each pause only once when it overlaps an existing silent beat or title card.
+
 ### Timing Validation
 
 After writing, count spoken narrator words and validate against targets. NARRATOR lines are always wrapped in double quotes after the `**NARRATOR:**` label, so extract them specifically:
