@@ -21,6 +21,7 @@ require('lazy').setup({
     { import = 'plugins.editor.grug-far' },
     { import = 'plugins.editor.lazygit' },
     { import = 'plugins.editor.lualine' },
+    { import = 'plugins.editor.markdown-preview' },
     { import = 'plugins.editor.mini' },
     { import = 'plugins.editor.file-tree' },
     { import = 'plugins.editor.tmux' },
