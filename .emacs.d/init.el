@@ -94,6 +94,7 @@
 ;; Wrap prose visually at 80 columns or the window width.
 (require 'my-org-prose)
 (require 'my-org-tables)
+(require 'my-org-agenda)
 
 (defun my/org-refresh-agenda-files ()
   "Discover current agenda files without scanning templates or backups."
