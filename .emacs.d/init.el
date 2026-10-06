@@ -1,55 +1,126 @@
-;;; init.el --- Minimal Emacs for org-mode -*- lexical-binding: t; -*-
+;;; init.el --- Emacs with Org and Org-roam -*- lexical-binding: t; -*-
 
-;; Performance: increase GC threshold during startup
-(setq gc-cons-threshold (* 50 1024 1024))
+;; Keep generated preferences and recovery files beside the configuration.
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file t t)
+(dolist (directory '("backups" "auto-save"))
+  (make-directory (expand-file-name directory user-emacs-directory) t))
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name "backups" user-emacs-directory)))
+      backup-by-copying t
+      auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "auto-save/" user-emacs-directory) t)))
 
-;; Silence native-comp warnings
-(setq native-comp-async-report-warnings-errors 'silent)
+;; Hide the menu bar in terminal frames, including Emacs Client frames.
+(defun my/hide-terminal-menu-bar (frame)
+  (unless (display-graphic-p frame)
+    (set-frame-parameter frame 'menu-bar-lines 0)))
+(add-hook 'after-make-frame-functions #'my/hide-terminal-menu-bar)
+(mapc #'my/hide-terminal-menu-bar (frame-list))
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+;; Built-in conveniences.
+(which-key-mode 1)
+(fido-vertical-mode 1)
+(savehist-mode 1)
+(save-place-mode 1)
+(recentf-mode 1)
+(show-paren-mode 1)
 
-;; Package management
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/"))
+      package-selected-packages '(org-roam catppuccin-theme magit))
 (package-initialize)
 
-;; Install use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; Catppuccin flavors and the built-in theme toggle.
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'my-theme)
 
-(require 'use-package)
-(setq use-package-always-ensure t)
+;; Existing notes stay in ~/org. Agenda sources exclude templates and backups.
+(require 'org)
+(require 'org-agenda)
 
-;; Load config modules
-(load "editor")
-(load "ui")
-(load "completion")
-(load "org-config")
+(setq org-directory (expand-file-name "~/org")
+      org-default-notes-file (expand-file-name "inbox.org" org-directory)
+      org-todo-keywords
+      '((sequence "TODO(t)" "PROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
+      org-log-done 'time
+      org-refile-targets '((org-agenda-files :maxlevel . 3))
+      org-refile-use-outline-path 'file
+      org-outline-path-complete-in-steps nil
+      org-capture-templates
+      `(("i" "Inbox task" entry
+         (file ,org-default-notes-file)
+         "* TODO %?\n")))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files '("~/org/inbox.org" "~/org/gsd.org" "~/org/someday.org"))
- '(package-selected-packages nil))
+;; Share daily journal files and templates with Neovim.
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'my-org-journal)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-document-title ((t (:height 1.6 :weight bold))))
- '(org-level-1 ((t (:height 1.4 :weight bold))))
- '(org-level-2 ((t (:height 1.3 :weight semi-bold))))
- '(org-level-3 ((t (:height 1.2 :weight semi-bold))))
- '(org-level-4 ((t (:height 1.1))))
- '(org-level-5 ((t (:height 1.0)))))
+;; Use native Org highlighting and folding without custom inline previews.
+;; Auto-fill prose at 80 columns without breaking table source.
+(require 'my-org-prose)
+(require 'my-org-tables)
 
-;; Performance: lower GC threshold after init
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (setq gc-cons-threshold (* 8 1024 1024))))
+(defun my/org-refresh-agenda-files ()
+  "Discover current agenda files without scanning templates or backups."
+  (setq org-agenda-files
+        (append (when (file-readable-p org-default-notes-file)
+                  (list org-default-notes-file))
+                (mapcan
+                 (lambda (name)
+                   (let ((directory (expand-file-name name org-directory)))
+                     (when (file-directory-p directory)
+                       (seq-filter
+                        (lambda (file)
+                          (and (file-regular-p file)
+                               (file-readable-p file)
+                               (not (string-prefix-p ".#" (file-name-nondirectory file)))
+                               (not (string-prefix-p "#" (file-name-nondirectory file)))))
+                        (directory-files-recursively directory "\\.org\\'")))))
+                 '("notes" "projects" "journal")))))
+
+(defun my/org-agenda ()
+  "Refresh the notes list and open the Org agenda dispatcher."
+  (interactive)
+  (my/org-refresh-agenda-files)
+  (call-interactively #'org-agenda))
+
+(my/org-refresh-agenda-files)
+(global-set-key (kbd "C-c a") #'my/org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+(global-set-key (kbd "C-c l") #'org-store-link)
+
+;; Index notes; keep the SQLite cache outside the notes repository.
+(setq org-roam-directory (file-truename org-directory)
+      org-roam-db-location (expand-file-name "org-roam.db" user-emacs-directory)
+      org-roam-file-exclude-regexp
+      '("\\(?:\\`\\|/\\)\\.[^/]+/" "\\`\\(?:templates\\|attachments\\)/")
+      org-roam-capture-templates
+      '(("d" "Note" plain "%?"
+         :target (file+head "notes/${slug}.org" "#+title: ${title}\n")
+         :unnarrowed t)))
+(require 'org-roam)
+(org-roam-db-autosync-mode 1)
+(global-set-key (kbd "C-c n f") #'org-roam-node-find)
+(global-set-key (kbd "C-c n i") #'org-roam-node-insert)
+(global-set-key (kbd "C-c n l") #'org-roam-buffer-toggle)
+(global-set-key (kbd "C-c n c") #'org-roam-capture)
+
+;; Review and sync notes through the existing Git repository.
+(autoload 'magit-status "magit" nil t)
+(global-set-key (kbd "C-x g") #'magit-status)
+(defun my/org-git-status ()
+  "Open Magit for all notes in `org-directory'."
+  (interactive)
+  (magit-status org-directory))
+(global-set-key (kbd "C-c n g") #'my/org-git-status)
+
+;; Emacs Client connects to this session.
+(require 'server)
+(unless (or noninteractive (daemonp) (server-running-p))
+  (server-start))
 
 ;;; init.el ends here
