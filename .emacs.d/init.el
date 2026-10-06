@@ -59,7 +59,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column))
 (package-initialize)
 
 ;; Built-in tinted Modus themes and the theme toggle.
@@ -91,7 +91,7 @@
 (setq org-default-notes-file (my/org-journal-file))
 
 ;; Use native Org highlighting and folding without custom inline previews.
-;; Auto-fill prose at 80 columns without breaking table source.
+;; Wrap prose visually at 80 columns or the window width.
 (require 'my-org-prose)
 (require 'my-org-tables)
 
