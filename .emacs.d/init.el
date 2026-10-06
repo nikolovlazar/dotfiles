@@ -106,6 +106,7 @@
          :target (file+head "notes/${slug}.org" "#+title: ${title}\n")
          :unnarrowed t)))
 (require 'org-roam)
+(require 'my-org-reflections)
 ;; Keep the full graph compact enough for Emacs to render.
 (setq org-roam-graph-executable "neato"
       org-roam-graph-extra-config
