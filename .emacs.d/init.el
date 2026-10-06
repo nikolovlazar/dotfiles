@@ -30,8 +30,11 @@
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/"))
-      package-selected-packages '(org-roam magit))
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("melpa" . "https://melpa.org/packages/"))
+      package-archive-priorities
+      '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
+      package-selected-packages '(org-roam org-roam-ui magit))
 (package-initialize)
 
 ;; Built-in tinted Modus themes and the theme toggle.
@@ -43,7 +46,6 @@
 (require 'org-agenda)
 
 (setq org-directory (expand-file-name "~/org")
-      org-default-notes-file (expand-file-name "inbox.org" org-directory)
       org-todo-keywords
       '((sequence "TODO(t)" "PROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
       org-log-done 'time
@@ -51,13 +53,14 @@
       org-refile-use-outline-path 'file
       org-outline-path-complete-in-steps nil
       org-capture-templates
-      `(("i" "Inbox task" entry
-         (file ,org-default-notes-file)
+      '(("i" "Daily task" entry
+         (file+headline my/org-journal-ensure-file "✅ Tasks")
          "* TODO %?\n")))
 
 ;; Share daily journal files and templates with Neovim.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'my-org-journal)
+(setq org-default-notes-file (my/org-journal-file))
 
 ;; Use native Org highlighting and folding without custom inline previews.
 ;; Auto-fill prose at 80 columns without breaking table source.
@@ -103,11 +106,25 @@
          :target (file+head "notes/${slug}.org" "#+title: ${title}\n")
          :unnarrowed t)))
 (require 'org-roam)
+;; Keep the full graph compact enough for Emacs to render.
+(setq org-roam-graph-executable "neato"
+      org-roam-graph-extra-config
+      '(("overlap" . "false")
+        ("pack" . "true")
+        ("size" . "\"18,18\"")))
 (org-roam-db-autosync-mode 1)
 (global-set-key (kbd "C-c n f") #'org-roam-node-find)
 (global-set-key (kbd "C-c n i") #'org-roam-node-insert)
 (global-set-key (kbd "C-c n l") #'org-roam-buffer-toggle)
 (global-set-key (kbd "C-c n c") #'org-roam-capture)
+
+;; Open the live browser graph on demand.
+(autoload 'org-roam-ui-open "org-roam-ui" nil t)
+(setq org-roam-ui-sync-theme t
+      org-roam-ui-follow t
+      org-roam-ui-update-on-save t
+      org-roam-ui-open-on-start t)
+(global-set-key (kbd "C-c n g") #'org-roam-ui-open)
 
 ;; Review and sync notes through the existing Git repository.
 (autoload 'magit-status "magit" nil t)
