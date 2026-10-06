@@ -19,8 +19,7 @@
 (mapc #'my/hide-terminal-menu-bar (frame-list))
 
 ;; Match Ghostty's font in graphical frames; terminal fonts come from the terminal.
-(defvar my/gui-font
-  (font-spec :family "Monaspace Neon Var" :size 14 :weight 'ultra-light))
+(setq my/gui-font "Monaspace Neon Var-14:weight=ultralight")
 (add-to-list 'default-frame-alist (cons 'font my/gui-font))
 (defun my/set-gui-font (frame)
   "Apply the desktop font to graphical FRAME."
