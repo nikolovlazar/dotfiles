@@ -1,0 +1,274 @@
+#+title: markdown-table-wrap
+#+author: Daniel Nouri
+
+#+html: <a href="https://melpa.org/#/markdown-table-wrap"><img alt="MELPA" src="https://melpa.org/packages/markdown-table-wrap-badge.svg"/></a>
+#+html: <a href="https://github.com/dnouri/markdown-table-wrap/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/dnouri/markdown-table-wrap/actions/workflows/test.yml/badge.svg"/></a>
+#+html: <a href="https://github.com/dnouri/markdown-table-wrap/actions/workflows/melpazoid.yml"><img alt="melpazoid" src="https://github.com/dnouri/markdown-table-wrap/actions/workflows/melpazoid.yml/badge.svg"/></a>
+
+Word-wrap GFM (GitHub Flavored Markdown) pipe tables to fit a
+given character width.  Inline markup survives wrapping.
+
+This repository also ships an OPTIONAL display companion,
+=markdown-table-wrap-pretty= (documented below), which renders tables
+as a wrapped, box-drawing view on top of the canonical raw text (like
+=org-latex-preview= for tables) and toggles between that view and the
+editable source.  It is a separate package and changes nothing unless
+you load it.
+
+#+begin_example
+| Feature   | Status | Notes                         |
+|-----------|--------|-------------------------------|
+| **Auth**  | Done   | OAuth2 with `refresh tokens`  |
+| **DB**    | WIP    | PostgreSQL *connection pool*  |
+#+end_example
+
+=(markdown-table-wrap table-string 36)= rewrites this as:
+
+#+begin_example
+| Feature  | Status | Notes        |
+| -------- | ------ | ------------ |
+| **Auth** | Done   | OAuth2 with  |
+|          |        | `refresh`    |
+|          |        | `tokens`     |
+|          |        |              |
+| **DB**   | WIP    | PostgreSQL   |
+|          |        | *connection* |
+|          |        | *pool*       |
+#+end_example
+
+The wrapped text is meant for readable source editing and
+round-tripping with =markdown-table-wrap-unwrap=.  It is not a
+semantic no-op for Markdown renderers: wrapped headers are no
+longer valid GFM tables, and wrapped body continuation lines and
+automatic spacer rows are parsed as additional rows.  Bold,
+italic, code, links, images, and strikethrough markers are
+duplicated on each continuation line.  In buffers where
+=markdown-hide-markup= conceals syntax characters, column widths
+can be measured from visible text so that hidden markers do not
+waste space.
+
+* Installation
+
+Install from [[https://melpa.org/#/markdown-table-wrap][MELPA]]:
+
+#+begin_src
+M-x package-install RET markdown-table-wrap RET
+#+end_src
+
+If MELPA is not configured yet, add this to your init file, restart
+Emacs, and run =M-x package-refresh-contents= once:
+
+#+begin_src elisp
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+#+end_src
+
+If you use the library from your own code, load it with:
+
+#+begin_src elisp
+(require 'markdown-table-wrap)
+#+end_src
+
+If you prefer =use-package=:
+
+#+begin_src elisp
+(use-package markdown-table-wrap
+  :ensure t)
+#+end_src
+
+** Manual installation
+
+If you prefer a plain checkout, add the repository to your =load-path=
+and require the library:
+
+#+begin_src elisp
+(add-to-list 'load-path "/path/to/markdown-table-wrap")
+(require 'markdown-table-wrap)
+#+end_src
+
+* Usage
+
+#+begin_src elisp
+(markdown-table-wrap table-text 60)
+#+end_src
+
+Optional arguments:
+
+#+begin_src elisp
+;; Cap cell height at 3 lines (truncated cells end with "…")
+(markdown-table-wrap table-text 60 3)
+
+;; Measure widths from visible text only (for markdown-hide-markup)
+(markdown-table-wrap table-text 60 nil t)
+
+;; Suppress automatic empty rows between wrapped data rows
+(markdown-table-wrap table-text 60 nil nil t)
+#+end_src
+
+** Unwrapping and re-wrapping
+
+Wrapped output is optimized for readable source, not for preserving
+exact GFM table semantics in Markdown-to-HTML renderers.
+
+#+begin_src elisp
+(markdown-table-wrap
+ (markdown-table-wrap-unwrap previously-wrapped) new-width)
+#+end_src
+
+** Batch rendering
+
+Parse and measure once, render at each width:
+
+#+begin_src elisp
+(markdown-table-wrap-batch table-text '(40 60 80 120))
+#+end_src
+
+** Integration example
+
+#+begin_src elisp
+(defun my-wrap-table-at-point ()
+  "Wrap the pipe table at point to fit the window."
+  (interactive)
+  (save-excursion
+    (let* ((beg (progn (re-search-backward "^|" nil t)
+                       (line-beginning-position)))
+           (end (progn (re-search-forward "^[^|]" nil t)
+                       (line-beginning-position)))
+           (text (buffer-substring-no-properties beg (1- end)))
+           (wrapped (markdown-table-wrap
+                     text (window-width)
+                     nil                     ; max cell height
+                     markdown-hide-markup))) ; t when markup hidden
+      (unless (equal wrapped text)
+        (delete-region beg (1- end))
+        (goto-char beg)
+        (insert wrapped)))))
+#+end_src
+
+* Features
+
+- Markup-aware: bold, italic, links, code, images, strikethrough
+- Graceful degradation when columns are too narrow for markup
+- Proportional column-width allocation
+- Alignment preservation (=:---:=, =---:=, =:---=)
+- Cell height cap with ellipsis
+- Unwrap/re-wrap for resizing; batch rendering
+- Code fence awareness
+- Unicode-aware (CJK, combining marks, VS16 emoji)
+- Pure Elisp, no dependencies
+
+* Optional: pretty display of pipe tables
+
+=markdown-table-wrap-pretty= is a separate, opt-in package shipped in
+this repository.  It renders markdown and org pipe tables as a wrapped,
+Unicode box-drawing "pretty" view ON TOP OF the canonical raw table
+text, and toggles between that view and the raw source in place — the
+table analogue of =org-latex-preview= or inline image previews.
+
+** Why display-only
+
+The buffer text is always the canonical raw pipe table; nothing is
+rewritten.  =markdown-table-wrap= wraps a long cell into multiple
+=| ... |= rows, but pipe-table syntax has no row-spanning, so a real
+renderer (cmark-gfm, pandoc, GitHub, org HTML export) would see those
+as independent data rows.  Mutating the buffer looks right in Emacs but
+is semantically broken the moment the text leaves Emacs.
+=markdown-table-wrap-pretty= keeps the buffer canonical — export,
+copy, share, and push always see a real table — and makes the pretty
+rendering a disposable display layer.
+
+** Commands
+
+| Command | Action |
+|---|---|
+| =markdown-table-wrap-pretty-toggle= | Point-aware toggle: on a table toggles it; off-table toggles all; a region toggles tables in it; a prefix arg forces pretty or raw. |
+| =markdown-table-wrap-pretty-buffer= | Force pretty on every table in the buffer. |
+| =markdown-table-wrap-pretty-region= | Force pretty on every table in the region. |
+| =markdown-table-wrap-pretty-mode= | Buffer-local minor mode: wires the resize re-render hook and optional default-pretty per major mode. |
+
+Editing a pretty table auto-reveals the raw source (via
+=modification-hooks=, the =org-latex-preview= pattern — not
+=read-only=, which would break =undo=), and toggling back re-renders
+fresh from the canonical source.
+
+** Customization
+
+| Option | Default | Meaning |
+|---|---|---|
+| =markdown-table-wrap-pretty-prettify= | =t= | Unicode box-drawing borders; =nil= uses plain ASCII pipes. |
+| =markdown-table-wrap-pretty-auto-rewrap-on-resize= | =t= | Re-render pretty tables on window resize (lossless). |
+| =markdown-table-wrap-pretty-rewrap-idle-delay= | =0.3= | Seconds to debounce resize re-render (=0= is immediate). |
+| =markdown-table-wrap-pretty-default-on-major-modes= | =nil= | Modes where tables start pretty when the minor mode is on. |
+
+** Installation and keys
+
+Load the package (it depends on =markdown-table-wrap=):
+
+#+begin_src elisp
+(require 'markdown-table-wrap-pretty)
+#+end_src
+
+The package ships no default key.  A consistent cross-mode choice is
+=C-c C-x C-k=:
+
+#+begin_src elisp
+(define-key markdown-mode-map (kbd "C-c C-x C-k")
+            #'markdown-table-wrap-pretty-toggle)
+(define-key org-mode-map (kbd "C-c C-x C-k")
+            #'markdown-table-wrap-pretty-toggle)
+#+end_src
+
+Or, with =use-package=, turn it on per major mode:
+
+#+begin_src elisp
+(use-package markdown-table-wrap-pretty
+  :after (markdown-mode org)
+  :hook (markdown-mode . markdown-table-wrap-pretty-mode)
+  :hook (org-mode      . markdown-table-wrap-pretty-mode))
+#+end_src
+
+Detection is universal and line-based, code-fence guarded, with no
+tree-sitter dependency, so it works in =markdown-mode=, =gfm-mode=,
+=md-ts-mode=, and =org-mode=.  Org =|---+---|= separators and width
+cookies are normalized for rendering only; the raw buffer keeps them.
+=#+TBLFM:= formula lines stay visible and untouched while pretty.
+
+* API
+
+** Primary functions
+
+- ~(markdown-table-wrap TEXT WIDTH &optional MAX-CELL-HEIGHT STRIP-MARKUP COMPACT)~
+
+  Rewrite a pipe table to fit WIDTH.  Returns pipe-table-shaped text
+  for readable source editing and round-tripping with
+  =markdown-table-wrap-unwrap=, or TEXT unchanged when it already
+  fits.  Wrapped headers are no longer valid GFM tables, and wrapped
+  body continuation lines and automatic spacer rows are parsed as
+  additional rows by Markdown renderers.  STRIP-MARKUP measures
+  widths from visible text (for =markdown-hide-markup=).  COMPACT
+  suppresses automatic empty rows between wrapped data rows.
+
+- ~(markdown-table-wrap-batch TEXT WIDTHS &optional MAX-CELL-HEIGHT STRIP-MARKUP COMPACT)~
+
+  Render at each width in WIDTHS.  Parses once.
+
+- ~(markdown-table-wrap-unwrap TEXT)~
+
+  Merge continuation rows back into logical rows when their
+  boundaries remain detectable.  Best suited for text known to be
+  produced by =markdown-table-wrap=.
+
+The package also exposes =markdown-table-wrap-parse=,
+=markdown-table-wrap-cell=, =markdown-table-wrap-compute-widths=,
+=markdown-table-wrap-strip-markup=, =markdown-table-wrap-visible-width=,
+and =markdown-table-wrap-inside-code-fence-p=.  See their docstrings
+for details.
+
+For the =markdown-table-wrap= engine, all public functions are pure
+(except =inside-code-fence-p=).  No =defcustom= is defined;
+configuration is passed as arguments.  (The optional
+=markdown-table-wrap-pretty= display layer is a separate package with
+its own =defcustom=s; see above.)
+
+* License
+
+GPL-3.0-or-later
