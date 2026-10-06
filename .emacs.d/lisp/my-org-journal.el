@@ -2,17 +2,18 @@
 (require 'org)
 (require 'org-id)
 (require 'org-capture)
+(require 'my-org-paths)
 
 (defun my/org-journal-file (&optional time)
   "Return the daily journal path for TIME, or today."
-  (expand-file-name (format-time-string "journal/daily/%Y/%Y-%m-%d.org" time)
+  (expand-file-name (format-time-string my/org-journal-file-format time)
                     org-directory))
 
 (defun my/org-journal-quote ()
-  "Choose a quote from the shared Quotes.org collection."
+  "Choose a quote from the configured collection."
   (let (quotes)
     (with-temp-buffer
-      (insert-file-contents (expand-file-name "notes/Quotes.org" org-directory))
+      (insert-file-contents (expand-file-name my/org-journal-quote-file org-directory))
       (org-mode)
       (org-element-map (org-element-parse-buffer) 'item
         (lambda (item)
@@ -27,7 +28,7 @@
                              (org-element-property :contents-end paragraph))))
                           (org-element-property :raw-value heading))
                     quotes))))))
-    (unless quotes (user-error "No quotes found in notes/Quotes.org"))
+    (unless quotes (user-error "No quotes found in %s" my/org-journal-quote-file))
     (let ((quote (nth (random (length quotes)) quotes)))
       (with-temp-buffer
         (insert (car quote))
@@ -45,7 +46,7 @@
       (let ((template
              (with-temp-buffer
                (insert-file-contents
-                (expand-file-name "templates/journal-daily.org" org-directory))
+                (expand-file-name my/org-journal-template-file org-directory))
                (buffer-string)))
             quote)
         (setq template

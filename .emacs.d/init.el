@@ -41,12 +41,15 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'my-theme)
 
-;; Existing notes stay in ~/org. Agenda sources exclude templates and backups.
+;; Personal paths belong in the ignored local configuration.
+(require 'my-org-paths)
+(load (expand-file-name "local.el" user-emacs-directory) t t)
+
+;; Agenda sources exclude configured support directories and hidden files.
 (require 'org)
 (require 'org-agenda)
 
-(setq org-directory (expand-file-name "~/org")
-      org-todo-keywords
+(setq org-todo-keywords
       '((sequence "TODO(t)" "PROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
       org-log-done 'time
       org-refile-targets '((org-agenda-files :maxlevel . 3))
@@ -70,20 +73,15 @@
 (defun my/org-refresh-agenda-files ()
   "Discover current agenda files without scanning templates or backups."
   (setq org-agenda-files
-        (append (when (file-readable-p org-default-notes-file)
-                  (list org-default-notes-file))
-                (mapcan
-                 (lambda (name)
-                   (let ((directory (expand-file-name name org-directory)))
-                     (when (file-directory-p directory)
-                       (seq-filter
-                        (lambda (file)
-                          (and (file-regular-p file)
-                               (file-readable-p file)
-                               (not (string-prefix-p ".#" (file-name-nondirectory file)))
-                               (not (string-prefix-p "#" (file-name-nondirectory file)))))
-                        (directory-files-recursively directory "\\.org\\'")))))
-                 '("notes" "projects" "journal")))))
+        (when (file-directory-p org-directory)
+          (seq-filter
+           (lambda (file)
+             (and (file-regular-p file)
+                  (file-readable-p file)
+                  (not (my/org-excluded-path-p file))))
+           (directory-files-recursively
+            org-directory "\\.org\\'" nil
+            (lambda (directory) (not (my/org-excluded-path-p directory))))))))
 
 (defun my/org-agenda ()
   "Refresh the notes list and open the Org agenda dispatcher."
@@ -100,10 +98,12 @@
 (setq org-roam-directory (file-truename org-directory)
       org-roam-db-location (expand-file-name "org-roam.db" user-emacs-directory)
       org-roam-file-exclude-regexp
-      '("\\(?:\\`\\|/\\)\\.[^/]+/" "\\`\\(?:templates\\|attachments\\)/")
+      (list (concat "\\(?:\\`\\|/\\)\\.[^/]+/"
+                    (when my/org-excluded-directories
+                      (concat "\\|\\`" (regexp-opt my/org-excluded-directories t) "/"))))
       org-roam-capture-templates
-      '(("d" "Note" plain "%?"
-         :target (file+head "notes/${slug}.org" "#+title: ${title}\n")
+      `(("d" "Note" plain "%?"
+         :target (file+head ,my/org-note-file-format "#+title: ${title}\n")
          :unnarrowed t)))
 (require 'org-roam)
 (require 'my-org-reflections)

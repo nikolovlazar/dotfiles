@@ -18,3 +18,7 @@
 places.eld
 *~
 \#*\#
+
+# Private paths and generated bookmark state.
+/local.el
+/bookmarks.eld

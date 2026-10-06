@@ -1,12 +1,13 @@
 ;;; my-org-reflections.el --- Shared reflection capture -*- lexical-binding: t; -*-
 (require 'org-roam)
+(require 'my-org-paths)
 
 (defun my/org-reflection-prompts ()
   "Read emotions, areas and lenses from the shared prompt library."
   (let (section current library)
     (with-temp-buffer
       (insert-file-contents
-       (expand-file-name "notes/Reflection Prompts.org" org-directory))
+       (expand-file-name my/org-reflection-prompts-file org-directory))
       (dolist (line (split-string (buffer-string) "\n"))
         (cond
          ((string-match "^\\* \\(.+\\)$" line)
@@ -48,14 +49,14 @@
                      ("prompt" . ,prompt) ("cursor" . "%?")))
            (template (with-temp-buffer
                        (insert-file-contents
-                        (expand-file-name "templates/reflection.org" org-directory))
+                        (expand-file-name my/org-reflection-template-file org-directory))
                        (buffer-string)))
            (slug (string-trim
                   (replace-regexp-in-string "[^a-z0-9]+" "-"
                                             (downcase (concat emotion "-" area)))
                   "-" "-"))
-           (stem (format "journal/reflections/%s-%s"
-                         (format-time-string "%Y-%m-%d" time) slug))
+           (stem (concat (file-name-as-directory my/org-reflection-directory)
+                         (format "%s-%s" (format-time-string "%Y-%m-%d" time) slug)))
            (path (concat stem ".org"))
            (suffix 1))
       (setq template
@@ -74,7 +75,7 @@
                  (get-file-buffer (expand-file-name path org-directory)))
         (setq suffix (1+ suffix)
               path (format "%s-%d.org" stem suffix)))
-      (make-directory (expand-file-name "journal/reflections" org-directory) t)
+      (make-directory (file-name-directory (expand-file-name path org-directory)) t)
       (org-roam-capture-
        :node (org-roam-node-create :title prompt)
        :templates `(("r" "Reflection" plain ,template
