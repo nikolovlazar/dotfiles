@@ -31,10 +31,10 @@
       '(("gnu" . "https://elpa.gnu.org/packages/")
         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
         ("melpa-stable" . "https://stable.melpa.org/packages/"))
-      package-selected-packages '(org-roam catppuccin-theme magit))
+      package-selected-packages '(org-roam magit))
 (package-initialize)
 
-;; Catppuccin flavors and the built-in theme toggle.
+;; Built-in tinted Modus themes and the theme toggle.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'my-theme)
 
