@@ -125,7 +125,7 @@
       org-roam-ui-follow t
       org-roam-ui-update-on-save t
       org-roam-ui-open-on-start t)
-(global-set-key (kbd "C-c n g") #'org-roam-ui-open)
+(global-set-key (kbd "C-c n u") #'org-roam-ui-open)
 
 ;; Review and sync notes through the existing Git repository.
 (autoload 'magit-status "magit" nil t)
