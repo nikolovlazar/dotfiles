@@ -18,6 +18,31 @@
 (add-hook 'after-make-frame-functions #'my/hide-terminal-menu-bar)
 (mapc #'my/hide-terminal-menu-bar (frame-list))
 
+;; Match Ghostty's font in graphical frames; terminal fonts come from the terminal.
+(defvar my/gui-font
+  (font-spec :family "Monaspace Neon Var" :size 14 :weight 'ultra-light))
+(add-to-list 'default-frame-alist (cons 'font my/gui-font))
+(defun my/set-gui-font (frame)
+  "Apply the desktop font to graphical FRAME."
+  (when (display-graphic-p frame)
+    (with-selected-frame frame
+      (set-frame-font my/gui-font t))))
+(add-hook 'after-make-frame-functions #'my/set-gui-font)
+(mapc #'my/set-gui-font (frame-list))
+
+;; Move between windows with Shift + Arrow keys, avoiding macOS Ctrl + Arrow shortcuts.
+(require 'windmove)
+(global-set-key (kbd "S-<left>") #'windmove-left)
+(global-set-key (kbd "S-<right>") #'windmove-right)
+(global-set-key (kbd "S-<up>") #'windmove-up)
+(global-set-key (kbd "S-<down>") #'windmove-down)
+;; Let Org pass Shift + Arrow keys to Windmove when it has no contextual action.
+(with-eval-after-load 'org
+  (add-hook 'org-shiftup-final-hook #'windmove-up)
+  (add-hook 'org-shiftdown-final-hook #'windmove-down)
+  (add-hook 'org-shiftleft-final-hook #'windmove-left)
+  (add-hook 'org-shiftright-final-hook #'windmove-right))
+
 ;; Built-in conveniences.
 (which-key-mode 1)
 (fido-vertical-mode 1)
