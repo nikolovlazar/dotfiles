@@ -48,7 +48,11 @@
 (advice-add 'org-get-agenda-file-buffer :around #'my/org-agenda-file-buffer)
 (advice-add 'org-agenda-prepare-buffers :around #'my/org-agenda-prepare)
 (defface my/org-agenda-date
-  '((t (:inherit font-lock-constant-face)))
+  '((((class color) (background light))
+     (:foreground "#665080" :background "#eee6f4"))
+    (((class color) (background dark))
+     (:foreground "#c9b8df" :background "#393044"))
+    (t (:inherit font-lock-constant-face)))
   "Face for agenda scheduling and deadline information."
   :group 'org-agenda)
 
@@ -58,7 +62,7 @@
   :group 'org-agenda)
 
 (defun my/org-agenda-format-row (row)
-  "Put the task first, capped at 45 columns, then scheduling and its file."
+  "Put the task first, capped at 80 columns, then scheduling and its file."
   (let ((heading (get-text-property 0 'txt row)))
     (if (or (not (derived-mode-p 'org-mode))
             (not buffer-file-name)
@@ -67,7 +71,7 @@
       (let* ((task (string-trim
                     (replace-regexp-in-string
                      org-tag-group-re "" (org-link-display-format heading))))
-             (task (truncate-string-to-width task 45 nil nil "…"))
+             (task (truncate-string-to-width task 80 nil nil "…"))
              (date (string-trim
                     (concat (get-text-property 0 'time row) " "
                             (get-text-property 0 'extra row))))
