@@ -1,6 +1,7 @@
 # General appearance settings
 cursor-color = #89DCEB
 cursor-text = #000000
+adjust-cursor-thickness = 4
 
 # Font settings
 font-family = "Monaspace Neon Var"

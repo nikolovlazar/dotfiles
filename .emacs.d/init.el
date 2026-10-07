@@ -18,6 +18,26 @@
 (add-hook 'after-make-frame-functions #'my/hide-terminal-menu-bar)
 (mapc #'my/hide-terminal-menu-bar (frame-list))
 
+;; Use a thin vertical cursor.
+(setq-default cursor-type '(bar . 2))
+(add-to-list 'default-frame-alist '(cursor-type . (bar . 2)))
+
+;; Terminal cursors use the terminal's cursor-style escape sequence.
+(defun my/set-terminal-cursor (frame)
+  "Use a thin vertical cursor on terminal FRAME."
+  (when (and (not (display-graphic-p frame))
+             (not (equal (terminal-name (frame-terminal frame)) "initial_terminal")))
+    (let ((terminal (frame-terminal frame)))
+      (dolist (setting '((tty-mode-set-strings . "\e[6 q")
+                         (tty-mode-reset-strings . "\e[0 q")))
+        (let ((strings (terminal-parameter terminal (car setting))))
+          (unless (member (cdr setting) strings)
+            (set-terminal-parameter terminal (car setting)
+                                    (append strings (list (cdr setting)))))))
+      (send-string-to-terminal "\e[6 q" terminal))))
+(add-hook 'after-make-frame-functions #'my/set-terminal-cursor)
+(mapc #'my/set-terminal-cursor (frame-list))
+
 ;; Match Ghostty's font in graphical frames; terminal fonts come from the terminal.
 (setq my/gui-font "Monaspace Neon Var-14:weight=ultralight")
 (add-to-list 'default-frame-alist (cons 'font my/gui-font))
