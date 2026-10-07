@@ -1,77 +1,87 @@
-.config/tmux/plugins
-.config/tmux/*.log
+# Keep this public repository opt-in. To add another configuration, reopen its
+# parent directories and its selected files below; also update Stow's policy.
+/*
+!/.gitignore
+!/.stow-local-ignore
+!/.stowrc
+!/README.md
+!/.zshrc
+
+# Selected XDG configurations. Every new application is ignored by default.
+!/.config/
+/.config/*
+!/.config/btop/
+!/.config/btop/**
+!/.config/ghostty/
+!/.config/ghostty/**
+!/.config/kitty/
+!/.config/kitty/**
+!/.config/lazydocker/
+!/.config/lazydocker/**
+!/.config/lazygit/
+!/.config/lazygit/**
+!/.config/mise/
+!/.config/mise/**
+!/.config/nvim/
+!/.config/nvim/**
+!/.config/tmux/
+!/.config/tmux/**
+!/.config/wezterm/
+!/.config/wezterm/**
+
+# Raycast scripts only; its extensions, endpoints, and caches stay local.
+!/.config/raycast/
+/.config/raycast/*
+!/.config/raycast/scripts/
+!/.config/raycast/scripts/**
+
+# Zed settings only; keymaps, tasks, conversations, and databases stay local.
+!/.config/zed/
+/.config/zed/*
+!/.config/zed/settings.json
+
+# Authored agent skills and their installer lock, without Skill Studio state.
+!/.agents/
+/.agents/*
+!/.agents/.skill-lock.json
+!/.agents/skills/
+!/.agents/skills/**
+/.agents/skills/.skill-studio-quarantine/
+
+# Claude's portable settings only. Local settings, hooks, and skills stay local.
+!/.claude/
+/.claude/*
+!/.claude/settings.json
+
+# Emacs source is public; its nested .gitignore excludes private/runtime files.
+!/.emacs.d/
+!/.emacs.d/**
+
+# Oh My Zsh themes only.
+!/.oh-my-zsh/
+/.oh-my-zsh/*
+!/.oh-my-zsh/themes/
+!/.oh-my-zsh/themes/**
+
+# Cursor settings and keybindings only. Each ancestor must be reopened.
+!/Library/
+/Library/*
+!/Library/Application Support/
+/Library/Application Support/*
+!/Library/Application Support/Cursor/
+/Library/Application Support/Cursor/*
+!/Library/Application Support/Cursor/User/
+/Library/Application Support/Cursor/User/*
+!/Library/Application Support/Cursor/User/settings.json
+!/Library/Application Support/Cursor/User/keybindings.json
+
+# Generated files inside otherwise allowed configurations.
 **/.DS_Store
-.config/**/.tmp*
-.config/lazygit/state.yml
-.config/zed/*
-.config/zed/prompts/*
-!.config/zed/keymap.json
-!.config/zed/settings.json
-!.config/zed/tasks.json
-.config/raycast/extensions
-.config/uv
-.config/neonctl
-.config/zed/prompts
-environment.sh
-.claude/cache
-.claude/debug
-.claude/plugins/cache
-.claude/backups
-.claude/logs
-.claude/projects
-.claude/shell-snapshots
-.claude/sessions
-.claude/tasks
-.claude/statsig
-.claude/todos
-.claude/history.jsonl
-.claude/file-history
-.claude/paste-cache
-.claude/plans
-.claude/session-env
-.claude/transcripts
-.claude/powerline
-.claude/stats-cache.json
-.claude/plugins
-.codex/.tmp
-.codex/agents
-.codex/ambient-suggestions
-.codex/archived_sessions
-.codex/cache
-.codex/computer-use
-.codex/memories
-.codex/plugins/cache
-.codex/process_manager
-.codex/rules
-.codex/sessions
-.codex/shell_snapshots
-.codex/skills
-.codex/sqlite
-.codex/tmp/arg0
-.codex/vendor_imports
-.codex/.codex-global-state.json
-.codex/.codex-global-state.json.bak
-.codex/.personality_migration
-.codex/AGENTS.md
-.codex/auth.json
-.codex/config.toml
-.codex/goals_1.sqlite
-.codex/goals_1.sqlite-shm
-.codex/goals_1.sqlite-wal
-.codex/history.jsonl
-.codex/installation_id
-.codex/logs_2.sqlite
-.codex/logs_2.sqlite-shm
-.codex/logs_2.sqlite-wal
-.codex/memories_1.sqlite
-.codex/memories_1.sqlite-shm
-.codex/memories_1.sqlite-wal
-.codex/models_cache.json
-.codex/session_index.jsonl
-.codex/state_5.sqlite
-.codex/state_5.sqlite-shm
-.codex/state_5.sqlite-wal
-.codex/transcription-history.jsonl
-.codex/version.json
-.claude/security
-.claude/mcp-needs-auth-cache.json
+**/.git
+**/*~
+**/\#*\#
+**/.#*
+/.config/**/.tmp*
+/.config/tmux/plugins/
+/.config/**/*.log
+/.config/lazygit/state.yml
