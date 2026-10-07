@@ -1,6 +1,6 @@
 ---
 name: sentry-cli-release
-version: 0.38.0
+version: 0.45.0
 description: Work with Sentry releases
 requires:
   bins: ["sentry"]
@@ -98,6 +98,8 @@ Set commits for a release
 - `--local - Read commits from local git history`
 - `--clear - Clear all commits from the release`
 - `--commit <value> - Explicit commit as REPO@SHA or REPO@PREV..SHA (comma-separated)`
+- `--path <value> - Filter commits to these paths (comma-separated). Implies --local.`
+- `--from <value> - Read the local range <ref>..HEAD (e.g. previous release tag). Implies --local.`
 - `--initial-depth <value> - Number of commits to read with --local - (default: "20")`
 
 ### `sentry release propose-version`

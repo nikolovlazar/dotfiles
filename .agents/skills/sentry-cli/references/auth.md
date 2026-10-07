@@ -1,6 +1,6 @@
 ---
 name: sentry-cli-auth
-version: 0.38.0
+version: 0.45.0
 description: Authenticate with Sentry
 requires:
   bins: ["sentry"]
@@ -26,13 +26,19 @@ Authenticate with Sentry
 **Examples:**
 
 ```bash
-sentry auth login
+sentry auth
 
-sentry auth login --token YOUR_SENTRY_API_TOKEN
+sentry auth --token YOUR_SENTRY_API_TOKEN
 
-SENTRY_URL=https://sentry.example.com sentry auth login
+sentry auth --read-only
 
-SENTRY_URL=https://sentry.example.com sentry auth login --token YOUR_TOKEN
+sentry auth --scope project:read --scope org:read
+sentry auth --scope project:read,event:read
+
+sentry auth --url https://sentry.example.com
+SENTRY_URL=https://sentry.example.com sentry auth
+
+sentry auth --token YOUR_TOKEN --url https://sentry.example.com
 ```
 
 ### `sentry auth logout`
@@ -47,10 +53,10 @@ sentry auth logout
 
 ### `sentry auth refresh`
 
-Refresh your authentication token
+Refresh your OAuth access token
 
 **Flags:**
-- `--force - Force refresh even if token is still valid`
+- `--force - Force refresh even if the access token is still valid`
 - `--read-only - Re-authenticate with read-only OAuth scopes (project:read, org:read, event:read, member:read, team:read)`
 - `-s, --scope <value>... - Re-authenticate with specific OAuth scopes (repeatable, comma-separated). E.g. --scope project:read --scope org:read`
 
@@ -58,6 +64,12 @@ Refresh your authentication token
 
 ```bash
 sentry auth refresh
+
+# Refresh with read-only scopes
+sentry auth refresh --read-only
+
+# Refresh with specific scopes
+sentry auth refresh --scope project:read --scope org:read
 ```
 
 ### `sentry auth status`
