@@ -1,5 +1,6 @@
 ;;; my-org-reflections.el --- Shared reflection capture -*- lexical-binding: t; -*-
-(require 'org-roam)
+(require 'org-capture)
+(require 'org-id)
 (require 'my-org-paths)
 
 (defun my/org-reflection-prompts ()
@@ -28,9 +29,8 @@
          (cons name items)))
      '("emotions" "areas" "lenses"))))
 
-(defun my/org-reflection-capture ()
-  "Capture a new Org-roam reflection using the shared template and prompts."
-  (interactive)
+(defun my/org-reflection-template ()
+  "Expand the shared reflection template and choose a new capture file."
   (let* ((library (my/org-reflection-prompts))
          (pick (lambda (name)
                  (let ((items (cdr (assoc name library))))
@@ -76,24 +76,29 @@
         (setq suffix (1+ suffix)
               path (format "%s-%d.org" stem suffix)))
       (make-directory (file-name-directory (expand-file-name path org-directory)) t)
-      (org-roam-capture-
-       :node (org-roam-node-create :title prompt)
-       :templates `(("r" "Reflection" plain ,template
-                     :target (file+head ,path "") :unnarrowed t))))))
+      (org-capture-put :reflection-file (expand-file-name path org-directory))
+      (with-temp-buffer
+        (insert template)
+        (org-mode)
+        (goto-char (point-min))
+        (org-entry-put nil "ID" (org-id-new))
+        (buffer-string)))))
 
-(defun my/org-capture (&optional goto keys)
-  "Select a task, journal note, or reflection capture."
-  (interactive "P")
-  (if goto
-      (org-capture goto keys)
-    (let* ((org-capture-templates
-            (append org-capture-templates '(("r" "Reflection"))))
-           (key (or keys (car (org-capture-select-template)))))
-      (if (equal key "r")
-          (my/org-reflection-capture)
-        (org-capture nil key)))))
+(defun my/org-reflection-file ()
+  "Return the new file chosen while expanding the reflection template."
+  (org-capture-get :reflection-file))
 
-(global-set-key (kbd "C-c c") #'my/org-capture)
+(defun my/org-reflection-capture ()
+  "Capture a reflection using the standard Org capture template."
+  (interactive)
+  (org-capture nil "r"))
+
+(add-to-list 'org-capture-templates
+             '("r" "Reflection" plain
+               (file my/org-reflection-file)
+               (function my/org-reflection-template)
+               :unnarrowed t))
+(global-set-key (kbd "C-c c") #'org-capture)
 (global-set-key (kbd "C-c n r") #'my/org-reflection-capture)
 (provide 'my-org-reflections)
 ;;; my-org-reflections.el ends here
