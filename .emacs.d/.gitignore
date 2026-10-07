@@ -33,3 +33,6 @@ places.eld
 
 # Private project explorer workspace state.
 /treemacs/
+
+# Private perspective sessions and backups.
+/persp-confs/

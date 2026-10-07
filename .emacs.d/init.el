@@ -58,7 +58,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -85,6 +85,17 @@
     (package-refresh-contents))
   (package-install 'treemacs))
 (require 'my-treemacs)
+
+;; Persistent workspaces using persp-mode's standard commands.
+(unless (package-installed-p 'persp-mode)
+  (unless (assq 'persp-mode package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'persp-mode))
+(unless (package-installed-p 'treemacs-persp)
+  (unless (assq 'treemacs-persp package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'treemacs-persp))
+(require 'my-workspaces)
 
 ;; Built-in tinted Modus themes and the theme toggle.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
