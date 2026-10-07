@@ -81,6 +81,19 @@
        :templates `(("r" "Reflection" plain ,template
                      :target (file+head ,path "") :unnarrowed t))))))
 
+(defun my/org-capture (&optional goto keys)
+  "Select a task, journal note, or reflection capture."
+  (interactive "P")
+  (if goto
+      (org-capture goto keys)
+    (let* ((org-capture-templates
+            (append org-capture-templates '(("r" "Reflection"))))
+           (key (or keys (car (org-capture-select-template)))))
+      (if (equal key "r")
+          (my/org-reflection-capture)
+        (org-capture nil key)))))
+
+(global-set-key (kbd "C-c c") #'my/org-capture)
 (global-set-key (kbd "C-c n r") #'my/org-reflection-capture)
 (provide 'my-org-reflections)
 ;;; my-org-reflections.el ends here
