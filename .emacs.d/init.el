@@ -58,8 +58,18 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash))
 (package-initialize)
+
+;; Jump to visible text and show labels during incremental search.
+(unless (package-installed-p 'flash)
+  (unless (assq 'flash package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'flash))
+(require 'flash)
+(require 'flash-isearch)
+(global-set-key (kbd "C-c j") #'flash-jump)
+(flash-isearch-mode 1)
 
 ;; Built-in tinted Modus themes and the theme toggle.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
