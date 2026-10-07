@@ -47,6 +47,7 @@
 !/.agents/skills/
 !/.agents/skills/**
 /.agents/skills/.skill-studio-quarantine/
+/.agents/skills/sentry-content-research/
 
 # Claude's portable settings only. Local settings, hooks, and skills stay local.
 !/.claude/

@@ -6,6 +6,12 @@
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "ccstatusline",
+    "padding": 0,
+    "refreshInterval": 10
+  },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
@@ -18,16 +24,10 @@
     "explanatory-output-style@claude-plugins-official": true,
     "sentry@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
-    "sentry-skills@sentry-skills": true,
     "gopls-lsp@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true
   },
   "skipDangerousModePermissionPrompt": true,
   "skipAutoPermissionPrompt": true,
-  "statusLine": {
-    "type": "command",
-    "command": "ccstatusline",
-    "padding": 0,
-    "refreshInterval": 10
-  }
+  "hooks": {"SessionStart":[{"matcher":"*","hooks":[{"type":"command","command":"if [ -f \"$HOME/.claude/hooks/herdr-agent-state.sh\" ]; then bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session; fi","timeout":10}]}]}
 }

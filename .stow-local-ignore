@@ -12,6 +12,7 @@
 # Portable agent skills and their installation lock; Claude settings only.
 ^/\.agents/(?!skills(?:/|$)|\.skill-lock\.json$).*
 ^/\.agents/skills/\.skill-studio-quarantine(?:/.*)?
+^/\.agents/skills/sentry-content-research(?:/.*)?
 ^/\.claude/(?!settings\.json$).*
 
 # Keep the Oh My Zsh installation local; deploy only custom themes.

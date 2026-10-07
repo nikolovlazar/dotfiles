@@ -44,7 +44,7 @@ The approved `.config` directories are `btop`, `ghostty`, `kitty`, `lazydocker`,
 
 The other approved configuration is:
 
-- `.agents/skills` and `.agents/.skill-lock.json`, excluding skill-studio quarantine and generated agent state.
+- `.agents/skills` and `.agents/.skill-lock.json`, excluding explicitly private skills, skill-studio quarantine, and generated agent state. Private skills stay in the real home skills directory and are excluded by both allowlists.
 - `.claude/settings.json` only. Local settings, hooks, plugins, skills, credentials, and session state remain local.
 - `.emacs.d` source configuration, excluding private `local.el`, packages, databases, caches, and editor state.
 - `.oh-my-zsh/themes`.
