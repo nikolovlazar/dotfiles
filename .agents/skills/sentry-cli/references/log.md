@@ -1,6 +1,6 @@
 ---
 name: sentry-cli-log
-version: 0.38.0
+version: 0.45.0
 description: View Sentry logs
 requires:
   bins: ["sentry"]
@@ -17,9 +17,9 @@ List logs from a project
 
 **Flags:**
 - `-n, --limit <value> - Number of log entries (1-1000) - (default: "100")`
-- `-q, --query <value> - Filter query (e.g., "level:error", "project:backend", "project:[a,b]")`
+- `-q, --query <value> - Filter query (e.g., "severity:error", "project:backend", "project:[a,b]")`
 - `-f, --follow <value> - Stream logs (optionally specify poll interval in seconds)`
-- `-t, --period <value> - Time range: "7d", "2026-05-01..2026-06-01", ">=2026-05-01"`
+- `-t, --period <value> - Time range: "7d", "2026-08-01..2026-09-01", ">=2026-08-01"`
 - `-s, --sort <value> - Sort order: "newest" (default) or "oldest" - (default: "newest")`
 - `--fresh - Bypass cache, re-detect projects, and fetch fresh data`
 
@@ -41,7 +41,7 @@ List logs from a project
 sentry log list
 
 # Show only error logs
-sentry log list -q 'level:error'
+sentry log list -q 'severity:error'
 
 # Filter by message content
 sentry log list -q 'database'
@@ -56,7 +56,7 @@ sentry log list -f
 sentry log list -f 5
 
 # Stream error logs from a specific project
-sentry log list my-org/backend -f -q 'level:error'
+sentry log list my-org/backend -f -q 'severity:error'
 
 sentry log list --json | jq '.data[] | select(.severity == "error")'
 ```

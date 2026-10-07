@@ -90,3 +90,7 @@ fpath=("/Users/nikolovlazar/.local/share/zsh/site-functions" $fpath)
 
 # opencode
 export PATH=/Users/nikolovlazar/.opencode/bin:$PATH
+
+# >>> railway initialize >>>
+source "$HOME/.railway/env"
+# <<< railway initialize <<<

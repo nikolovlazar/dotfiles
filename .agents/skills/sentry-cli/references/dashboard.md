@@ -1,6 +1,6 @@
 ---
 name: sentry-cli-dashboard
-version: 0.38.0
+version: 0.45.0
 description: Manage Sentry dashboards
 requires:
   bins: ["sentry"]
@@ -42,7 +42,9 @@ View a dashboard
 - `-w, --web - Open in browser`
 - `-f, --fresh - Bypass cache, re-detect projects, and fetch fresh data`
 - `-r, --refresh <value> - Auto-refresh interval in seconds (default: 60, min: 10)`
-- `-t, --period <value> - Time range: "7d", "2026-05-01..2026-06-01", ">=2026-05-01"`
+- `-t, --period <value> - Time range: "7d", "2026-08-01..2026-09-01", ">=2026-08-01"`
+- `--renderer <value> - Graphics renderer (defaults to auto; falls back to auto when unavailable) - (default: "auto")`
+- `--no-graphics-cap - Use the terminal-native graphics width (may fall back to ASCII for very large dashboards)`
 
 **Examples:**
 
@@ -76,7 +78,7 @@ Add a widget to a dashboard
 
 **Flags:**
 - `-d, --display <value> - Display type (big_number, line, area, bar, table, stacked_area, top_n, text, categorical_bar, details, wheel, rage_and_dead_clicks, server_tree, agents_traces_table)`
-- `--dataset <value> - Widget dataset (default: spans). Accepts canonical names and API synonyms: spans, error-events/errors, transaction-like/transactions, tracemetrics/metrics, logs, issue, discover`
+- `--dataset <value> - Widget dataset (default: spans). Accepts canonical names and API synonyms: spans, error-events/errors, tracemetrics/metrics, logs, issue`
 - `-q, --query <value>... - Aggregate expression (e.g. count, p95:span.duration)`
 - `-w, --where <value> - Search conditions filter (e.g. is:unresolved)`
 - `-g, --group-by <value>... - Group-by column (repeatable)`
@@ -122,7 +124,7 @@ Edit a widget in a dashboard
 - `-t, --title <value> - Widget title to match`
 - `--new-title <value> - New widget title`
 - `-d, --display <value> - Display type (big_number, line, area, bar, table, stacked_area, top_n, text, categorical_bar, details, wheel, rage_and_dead_clicks, server_tree, agents_traces_table)`
-- `--dataset <value> - Widget dataset (default: spans). Accepts canonical names and API synonyms: spans, error-events/errors, transaction-like/transactions, tracemetrics/metrics, logs, issue, discover`
+- `--dataset <value> - Widget dataset (default: spans). Accepts canonical names and API synonyms: spans, error-events/errors, tracemetrics/metrics, logs, issue`
 - `-q, --query <value>... - Aggregate expression (e.g. count, p95:span.duration)`
 - `-w, --where <value> - Search conditions filter (e.g. is:unresolved)`
 - `-g, --group-by <value>... - Group-by column (repeatable)`

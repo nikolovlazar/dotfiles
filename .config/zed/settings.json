@@ -23,7 +23,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Snazzy Theme - blurred",
+    "dark": "Tokyo Night",
   },
   "icon_theme": {
     "mode": "dark",
@@ -166,7 +166,6 @@
     "dock": "right",
     "button": false,
     "tree_view": true,
-    "sort_by_path": true,
     "default_width": 300,
     "show_count_badge": true,
     "file_icons": true,
@@ -196,30 +195,15 @@
   // ══════════════════════════════════════════════════════════════════════════════
   "agent": {
     "dock": "left",
-    "sidebar_side": "left",
-    "button": false,
+    "button": true,
     "max_content_width": 1200,
     "single_file_review": false,
     "message_editor_min_lines": 3,
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
-    },
     "use_modifier_to_send": false,
     "play_sound_when_agent_done": "never",
     "show_turn_stats": true,
-    "commit_message_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5.4-mini",
-    },
     "enable_feedback": false,
     "thinking_display": "preview",
-    "default_model": {
-      "effort": "medium",
-      "enable_thinking": true,
-      "provider": "openai",
-      "model": "gpt-5.5",
-    },
   },
 
   // ══════════════════════════════════════════════════════════════════════════════
@@ -227,6 +211,9 @@
   // ══════════════════════════════════════════════════════════════════════════════
   "agent_servers": {
     "codex-acp": {
+      "default_config_options": {
+        "fast-mode": true
+      },
       "type": "registry",
     },
   },

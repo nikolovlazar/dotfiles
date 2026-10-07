@@ -1,9 +1,48 @@
-README.md
-.git
-.gitignore
-Library/Application\ Support/Cursor/User/profiles/*+/globalStorage
-.config/old-lazy-nvim-conf
-.config/zed/*
-!.config/zed/keymap.json
-!.config/zed/settings.json
-.config/uv
+# Stow uses Perl regular expressions, not Git ignore syntax.
+# These rules permit real ancestor directories but exclude unapproved children.
+
+# Only approved top-level roots may be deployed.
+^/(?!(?:\.agents|\.claude|\.config|\.emacs\.d|\.oh-my-zsh|Library)(?:/|$)|\.zshrc$).*
+
+# Approved application configs, with narrower Raycast and Zed boundaries.
+^/\.config/(?!(?:btop|ghostty|kitty|lazydocker|lazygit|mise|nvim|raycast|tmux|wezterm|zed)(?:/|$)).*
+^/\.config/raycast/(?!scripts(?:/|$)).*
+^/\.config/zed/(?!settings\.json$).*
+
+# Portable agent skills and their installation lock; Claude settings only.
+^/\.agents/(?!skills(?:/|$)|\.skill-lock\.json$).*
+^/\.agents/skills/\.skill-studio-quarantine(?:/.*)?
+^/\.agents/skills/sentry-content-research(?:/.*)?
+^/\.claude/(?!settings\.json$).*
+
+# Keep the Oh My Zsh installation local; deploy only custom themes.
+^/\.oh-my-zsh/(?!themes(?:/|$)).*
+
+# Cursor preferences only; caches, history, snippets, and storage stay local.
+^/Library/(?!Application Support(?:/|$)).*
+^/Library/Application Support/(?!Cursor(?:/|$)).*
+^/Library/Application Support/Cursor/(?!User(?:/|$)).*
+^/Library/Application Support/Cursor/User/(?!(?:settings|keybindings)\.json$).*
+
+# Repository metadata and generated temporary files are never deployed.
+^/(?:.*/)?\.git(?:/.*)?
+\.gitignore
+\.DS_Store
+\.\#.*
+.*~
+\#.*\#
+
+# Generated application state.
+^/\.config/(?:.*/)?\.tmp[^/]*
+^/\.config/(?:.*/)?[^/]*\.log
+^/\.config/tmux/plugins(?:/.*)?
+^/\.config/lazygit/state\.yml
+
+# Mirror the existing Neovim Git exclusions at every depth in its tree.
+^/\.config/nvim/(?:.*/)?(?:tags|test\.sh|\.luarc\.json|nvim|spell)(?:/.*)?
+
+# Mirror the existing Emacs Git exclusions, including private local config.
+^/\.emacs\.d/(?:elpa|eln-cache|backups|auto-save|auto-save-list|url|tutorial|transient)(?:/.*)?
+^/\.emacs\.d/(?:custom\.el|history|places|recentf|recentf\.eld|bookmarks|bookmarks\.eld|local\.el|\.org-id-locations|network-security\.data|tramp)
+^/\.emacs\.d/org-roam\.db[^/]*
+^/\.emacs\.d/(?:.*/)?places\.eld
