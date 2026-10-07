@@ -58,7 +58,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -70,6 +70,21 @@
 (require 'flash-isearch)
 (global-set-key (kbd "C-c j") #'flash-jump)
 (flash-isearch-mode 1)
+
+;; Completion menus work in both graphical and terminal frames.
+(unless (package-installed-p 'company)
+  (unless (assq 'company package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'company))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'my-coding)
+
+;; Project sidebar for terminal and graphical frames.
+(unless (package-installed-p 'treemacs)
+  (unless (assq 'treemacs package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'treemacs))
+(require 'my-treemacs)
 
 ;; Built-in tinted Modus themes and the theme toggle.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))

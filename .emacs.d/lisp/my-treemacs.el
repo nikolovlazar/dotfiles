@@ -1,0 +1,28 @@
+;;; my-treemacs.el --- Project sidebar -*- lexical-binding: t; -*-
+
+;; Workspace state contains local paths and belongs outside tracked config.
+(setq treemacs-persist-file
+      (expand-file-name "treemacs/persist" user-emacs-directory)
+      treemacs-last-error-persist-file
+      (expand-file-name "treemacs/persist-at-last-error" user-emacs-directory)
+      treemacs-position 'left
+      treemacs-width 32
+      treemacs-read-string-input 'from-minibuffer)
+(require 'treemacs)
+(treemacs-follow-mode 1)
+(treemacs-filewatch-mode 1)
+(when (executable-find "git")
+  (treemacs-git-mode 'simple))
+
+(defun my/treemacs-toggle ()
+  "Toggle the sidebar, adding the current project when opening it."
+  (interactive)
+  (if (eq (treemacs-current-visibility) 'visible)
+      (treemacs)
+    (treemacs-add-and-display-current-project)))
+
+(global-set-key (kbd "C-c b") #'my/treemacs-toggle)
+(global-set-key (kbd "C-c B") #'treemacs-find-file)
+
+(provide 'my-treemacs)
+;;; my-treemacs.el ends here
