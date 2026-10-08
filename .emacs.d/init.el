@@ -49,18 +49,12 @@
 (add-hook 'after-make-frame-functions #'my/set-gui-font)
 (mapc #'my/set-gui-font (frame-list))
 
-;; Move between windows with Shift + Arrow keys, avoiding macOS Ctrl + Arrow shortcuts.
+;; Move between windows without conflicting with selection or Org actions.
 (require 'windmove)
-(global-set-key (kbd "S-<left>") #'windmove-left)
-(global-set-key (kbd "S-<right>") #'windmove-right)
-(global-set-key (kbd "S-<up>") #'windmove-up)
-(global-set-key (kbd "S-<down>") #'windmove-down)
-;; Let Org pass Shift + Arrow keys to Windmove when it has no contextual action.
-(with-eval-after-load 'org
-  (add-hook 'org-shiftup-final-hook #'windmove-up)
-  (add-hook 'org-shiftdown-final-hook #'windmove-down)
-  (add-hook 'org-shiftleft-final-hook #'windmove-left)
-  (add-hook 'org-shiftright-final-hook #'windmove-right))
+(global-set-key (kbd "C-c w h") #'windmove-left)
+(global-set-key (kbd "C-c w j") #'windmove-down)
+(global-set-key (kbd "C-c w k") #'windmove-up)
+(global-set-key (kbd "C-c w l") #'windmove-right)
 
 ;; Built-in conveniences.
 (which-key-mode 1)
