@@ -9,6 +9,15 @@
       treemacs-width 32
       treemacs-read-string-input 'from-minibuffer)
 (require 'treemacs)
+
+;; Theme application can enable minor modes with a numeric argument.
+;; Treemacs expects a named indicator setting instead of prompting.
+(defun my/treemacs-fringe-mode-args (args)
+  (if (and (numberp (car args)) (> (car args) 0))
+      '(always)
+    args))
+(advice-add 'treemacs-fringe-indicator-mode :filter-args
+            #'my/treemacs-fringe-mode-args)
 (treemacs-follow-mode 1)
 (treemacs-filewatch-mode 1)
 (when (executable-find "git")

@@ -1,14 +1,14 @@
 ;;; my-theme.el --- Tinted Modus theme switching -*- lexical-binding: t; -*-
 
 (mapc #'disable-theme custom-enabled-themes)
-(load-theme 'modus-operandi-tinted t)
+(load-theme 'modus-operandi t)
 
 (defun toggle-themes ()
   "Toggle directly between the light and dark tinted Modus themes."
   (interactive)
-  (let ((next-theme (if (memq 'modus-operandi-tinted custom-enabled-themes)
+  (let ((next-theme (if (memq 'modus-operandi custom-enabled-themes)
                         'modus-vivendi-tinted
-                      'modus-operandi-tinted)))
+                      'modus-operandi)))
     (mapc #'disable-theme custom-enabled-themes)
     (load-theme next-theme t)))
 
