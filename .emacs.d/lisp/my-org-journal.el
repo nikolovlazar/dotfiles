@@ -33,9 +33,7 @@
       (with-temp-buffer
         (insert (car quote))
         (let ((fill-column 78)) (fill-region (point-min) (point-max)))
-        (concat "> [!QUOTE] A thought to carry\n> "
-                (replace-regexp-in-string "\n" "\n> " (buffer-string) t t)
-                "\n>\n> — " (cdr quote))))))
+        (concat (buffer-string) "\n— " (cdr quote))))))
 
 (defun my/org-journal-ensure-file (&optional time)
   "Create a missing daily journal from the shared template for TIME."
@@ -94,6 +92,61 @@
                "%U\n%?\n" :empty-lines 1))
 (global-set-key (kbd "C-c n j") #'my/org-journal-today)
 (global-set-key (kbd "C-c n J") #'my/org-journal-capture)
+
+
+(defface my/org-journal-quote-face
+  '((t (:inherit org-document-title :weight bold)))
+  "Face for the daily journal quote.")
+
+(defface my/org-journal-quote-muted-face
+  '((t (:inherit shadow)))
+  "Face for the quote author.")
+
+(defvar-local my/org-journal-quote-overlays nil)
+
+(defun my/org-journal-style-quote (&rest _)
+  "Style the native Org quote block before the first journal heading."
+  (mapc #'delete-overlay my/org-journal-quote-overlays)
+  (setq my/org-journal-quote-overlays nil)
+  (save-excursion
+    (goto-char (point-min))
+    (let ((case-fold-search t)
+          (limit (save-excursion
+                   (if (re-search-forward org-heading-regexp nil t)
+                       (line-beginning-position)
+                     (point-max)))))
+      (when (re-search-forward "^[ \t]*#\\+begin_quote[ \t]*$" limit t)
+        (beginning-of-line)
+        (let* ((block (org-element-at-point))
+               (start (org-element-property :contents-begin block))
+               (end (org-element-property :contents-end block)))
+          (when (and (eq (org-element-type block) 'quote-block)
+                     start end (<= end limit))
+            (let ((overlay (make-overlay start end)))
+              (overlay-put overlay 'face 'my/org-journal-quote-face)
+              (push overlay my/org-journal-quote-overlays))
+            (goto-char start)
+            (when (re-search-forward "^— .+$" end t)
+              (let ((overlay (make-overlay (line-beginning-position)
+                                           (line-end-position))))
+                (overlay-put overlay 'face 'my/org-journal-quote-muted-face)
+                (overlay-put overlay 'priority 1)
+                (push overlay my/org-journal-quote-overlays)))))))))
+
+(defun my/org-journal-enable-quote-style ()
+  "Enable quote overlays in daily journal files."
+  (when (and buffer-file-name
+             (file-in-directory-p
+              buffer-file-name
+              (expand-file-name (car (split-string my/org-journal-file-format "%"))
+                                org-directory))
+             (string-match-p "/[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\.org\\'"
+                             buffer-file-name))
+    (add-hook 'after-change-functions #'my/org-journal-style-quote nil t)
+    (add-hook 'after-revert-hook #'my/org-journal-style-quote nil t)
+    (my/org-journal-style-quote)))
+
+(add-hook 'org-mode-hook #'my/org-journal-enable-quote-style)
 
 (provide 'my-org-journal)
 ;;; my-org-journal.el ends here
