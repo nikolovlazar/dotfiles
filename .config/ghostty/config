@@ -1,7 +1,8 @@
 # General appearance settings
-cursor-color = #89DCEB
-cursor-text = #000000
-adjust-cursor-thickness = 4
+cursor-color = #A020B0
+cursor-text = #FFFFFF
+cursor-style = block
+cursor-style-blink = false
 
 # Font settings
 font-family = "Monaspace Neon Var"
