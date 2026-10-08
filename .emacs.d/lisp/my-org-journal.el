@@ -76,7 +76,7 @@
   (interactive)
   (find-file (my/org-journal-ensure-file))
   (goto-char (point-min))
-  (when (re-search-forward "^\\*+ ✍️ Notes[ \t]*$" nil t)
+  (when (re-search-forward "^\\*+ Notes[ \t]*$" nil t)
     (org-fold-show-context)
     (org-fold-show-entry)
     (forward-line 1)))
@@ -88,7 +88,7 @@
 
 (add-to-list 'org-capture-templates
              '("j" "Journal note" plain
-               (file+headline my/org-journal-ensure-file "✍️ Notes")
+               (file+headline my/org-journal-ensure-file "Notes")
                "%U\n%?\n" :empty-lines 1))
 (global-set-key (kbd "C-c n j") #'my/org-journal-today)
 (global-set-key (kbd "C-c n J") #'my/org-journal-capture)
@@ -108,30 +108,31 @@
   "Style the native Org quote block before the first journal heading."
   (mapc #'delete-overlay my/org-journal-quote-overlays)
   (setq my/org-journal-quote-overlays nil)
-  (save-excursion
-    (goto-char (point-min))
-    (let ((case-fold-search t)
-          (limit (save-excursion
-                   (if (re-search-forward org-heading-regexp nil t)
-                       (line-beginning-position)
-                     (point-max)))))
-      (when (re-search-forward "^[ \t]*#\\+begin_quote[ \t]*$" limit t)
-        (beginning-of-line)
-        (let* ((block (org-element-at-point))
-               (start (org-element-property :contents-begin block))
-               (end (org-element-property :contents-end block)))
-          (when (and (eq (org-element-type block) 'quote-block)
-                     start end (<= end limit))
-            (let ((overlay (make-overlay start end)))
-              (overlay-put overlay 'face 'my/org-journal-quote-face)
-              (push overlay my/org-journal-quote-overlays))
-            (goto-char start)
-            (when (re-search-forward "^— .+$" end t)
-              (let ((overlay (make-overlay (line-beginning-position)
-                                           (line-end-position))))
-                (overlay-put overlay 'face 'my/org-journal-quote-muted-face)
-                (overlay-put overlay 'priority 1)
-                (push overlay my/org-journal-quote-overlays)))))))))
+  (save-match-data
+    (save-excursion
+      (goto-char (point-min))
+      (let ((case-fold-search t)
+            (limit (save-excursion
+                     (if (re-search-forward org-heading-regexp nil t)
+                         (line-beginning-position)
+                       (point-max)))))
+        (when (re-search-forward "^[ \t]*#\\+begin_quote[ \t]*$" limit t)
+          (beginning-of-line)
+          (let* ((block (org-element-at-point))
+                 (start (org-element-property :contents-begin block))
+                 (end (org-element-property :contents-end block)))
+            (when (and (eq (org-element-type block) 'quote-block)
+                       start end (<= end limit))
+              (let ((overlay (make-overlay start end)))
+                (overlay-put overlay 'face 'my/org-journal-quote-face)
+                (push overlay my/org-journal-quote-overlays))
+              (goto-char start)
+              (when (re-search-forward "^— .+$" end t)
+                (let ((overlay (make-overlay (line-beginning-position)
+                                             (line-end-position))))
+                  (overlay-put overlay 'face 'my/org-journal-quote-muted-face)
+                  (overlay-put overlay 'priority 1)
+                  (push overlay my/org-journal-quote-overlays))))))))))
 
 (defun my/org-journal-enable-quote-style ()
   "Enable quote overlays in daily journal files."

@@ -133,7 +133,7 @@
       org-outline-path-complete-in-steps nil
       org-capture-templates
       '(("i" "Daily task" entry
-         (file+headline my/org-journal-ensure-file "✅ Tasks")
+         (file+headline my/org-journal-ensure-file "Tasks")
          "* TODO %?\n")))
 
 ;; Share daily journal files and templates with Neovim.
