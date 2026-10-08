@@ -53,7 +53,8 @@
 ;;   - Pretty = a view; editing reveals the raw source automatically via
 ;;     `modification-hooks' that remove the overlays on edit (the same
 ;;     pattern `org-latex-preview' uses, NOT `read-only', which would
-;;     break undo).  Toggle back to re-render from canonical.
+;;     break undo).  Moving out of the table restores its preview;
+;;     an explicit toggle can still keep the table raw.
 ;;   - State = overlay presence (no bookkeeping): "is this table
 ;;     pretty?" = "does it have `markdown-table-wrap-pretty-display'
 ;;     overlays?".
@@ -161,6 +162,9 @@ to match a surrounding `markdown-mode' buffer, inherit
 
 (defvar-local markdown-table-wrap-pretty--refresh-timer nil
   "Idle timer for debounced resize re-render in this buffer.")
+
+(defvar-local markdown-table-wrap-pretty--edited-tables nil
+  "Marker pairs for edited previews awaiting a move out of the table.")
 
 ;;;; Width
 
@@ -630,7 +634,42 @@ arguments are the standard modification-hook arguments and are ignored."
                 (me (marker-position (cdr markers))))
       ;; Drop the markers first so a re-entrant call is a no-op.
       (overlay-put ov 'markdown-table-wrap-pretty-markers nil)
+      (cl-pushnew markers markdown-table-wrap-pretty--edited-tables :test #'eq)
       (markdown-table-wrap-pretty--undecorate-table mb me))))
+
+(defun markdown-table-wrap-pretty--restore-edited-tables ()
+  "Restore edited previews after point leaves their table.
+Keep the source visible while editing.  Markers track changes without
+rewriting text or changing the buffer's modified state."
+  (setq markdown-table-wrap-pretty--edited-tables
+        (cl-delete-if
+         (lambda (markers)
+           (let ((beg (marker-position (car markers)))
+                 (end (marker-position (cdr markers))))
+             (when (or (not beg) (not end)
+                       (< (point) beg) (>= (point) end))
+               (when (and beg end)
+                 (save-excursion
+                   (when-let* ((bounds (markdown-table-wrap-pretty--table-bounds beg)))
+                     (markdown-table-wrap-pretty--decorate-table
+                      (car bounds) (cdr bounds)))))
+               (set-marker (car markers) nil)
+               (set-marker (cdr markers) nil)
+               t)))
+         markdown-table-wrap-pretty--edited-tables)))
+
+(defun markdown-table-wrap-pretty--forget-edited-tables (beg end)
+  "Forget pending previews overlapping BEG..END after an explicit toggle."
+  (setq markdown-table-wrap-pretty--edited-tables
+        (cl-delete-if
+         (lambda (markers)
+           (when (and (marker-position (car markers))
+                      (< (marker-position (car markers)) end)
+                      (> (marker-position (cdr markers)) beg))
+             (set-marker (car markers) nil)
+             (set-marker (cdr markers) nil)
+             t))
+         markdown-table-wrap-pretty--edited-tables)))
 
 (defun markdown-table-wrap-pretty--decorate-table (beg end &optional width)
   "Create per-line display overlays for the raw table BEG..END.
@@ -761,7 +800,8 @@ re-renders pretty tables losslessly when
 start raw unless the major mode is in
 `markdown-table-wrap-pretty-default-on-major-modes'.  Editing a pretty
 table auto-reveals the raw source via `modification-hooks' (the
-`org-latex-preview' pattern; not `read-only', which would break undo)."
+`org-latex-preview' pattern; not `read-only', which would break undo).
+Moving out of an edited table restores its preview."
   :lighter " TblPretty"
   :group 'markdown-table-wrap-pretty
   (if markdown-table-wrap-pretty-mode
@@ -775,9 +815,14 @@ table auto-reveals the raw source via `modification-hooks' (the
         ;; is global, so a buffer-local registration is unreliable.
         (add-hook 'window-configuration-change-hook
                   #'markdown-table-wrap-pretty--schedule-refresh nil t)
+        (add-hook 'post-command-hook
+                  #'markdown-table-wrap-pretty--restore-edited-tables nil t)
         (markdown-table-wrap-pretty--maybe-default-pretty))
     (remove-hook 'window-configuration-change-hook
                  #'markdown-table-wrap-pretty--schedule-refresh t)
+    (remove-hook 'post-command-hook
+                 #'markdown-table-wrap-pretty--restore-edited-tables t)
+    (markdown-table-wrap-pretty--forget-edited-tables (point-min) (point-max))
     (when markdown-table-wrap-pretty--refresh-timer
       (cancel-timer markdown-table-wrap-pretty--refresh-timer)
       (setq markdown-table-wrap-pretty--refresh-timer nil))
@@ -795,6 +840,7 @@ so the returned count reflects what the user actually sees change."
   (let ((count 0))
     (dolist (r regions)
       (let ((beg (car r)) (end (cdr r)))
+        (markdown-table-wrap-pretty--forget-edited-tables beg end)
         (if (eq state 'pretty)
             (progn
               (markdown-table-wrap-pretty--undecorate-table beg end)
@@ -848,6 +894,8 @@ raw; otherwise the location rules below decide:
    ;; No region: point on a table -> toggle it; else toggle all.
    (t
     (let ((bounds (markdown-table-wrap-pretty--table-bounds (point))))
+      (when bounds
+        (markdown-table-wrap-pretty--forget-edited-tables (car bounds) (cdr bounds)))
       (cond
        ((null bounds)
         (let* ((all (markdown-table-wrap-pretty--table-regions
