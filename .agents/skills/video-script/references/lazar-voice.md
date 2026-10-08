@@ -20,13 +20,13 @@ This is an explicit production preference established September 29, 2026, rather
 
 ## Presentation mode
 
-Infer the mode from the current brief, footage, and instructions. Preferences from another video do not automatically determine this video's mode.
+Default Lazar’s teleprompter scripts to **talking head with prepared overlays**, applying the camera-facing narration rule in the main skill. Record narration and screen captures separately. Use live screen operation language only when Lazar explicitly requests a live walkthrough; an improvised demo outline is also a separate, explicitly requested format.
 
 | Mode | Spoken approach |
 |---|---|
-| Screen walkthrough | Use present-tense actions and intentional navigation when the page change matters: “Let's go to the Metrics Explorer page.” Speak as someone guiding the viewer through the workflow. Describe the finding and its significance without narrating every click. |
+| Explicitly requested live screen walkthrough | Use present-tense actions and intentional navigation when the page change matters: “Let's go to the Metrics Explorer page.” Speak as someone guiding the viewer through the workflow. Describe the finding and its significance without narrating every click. |
 | Completed investigation | Introductions such as “Here's how I did it” establish past tense. Keep connected actions in that timeline. General capabilities can remain present tense; proposed follow-ups stay conditional. |
-| Talking head with prepared overlays | Explain the behavior or workflow while the edit illustrates it. Avoid claiming to operate the computer in real time when the presenter is speaking to camera over prepared captures. |
+| Talking head with prepared overlays (teleprompter default) | Explain the example, behavior, evidence, and significance while separately recorded screen overlays illustrate them. Keep clicks and navigation in VIDEO. Say “The trace contains…” or “The linked issue shows…” rather than “I’m on…” or “Let’s open…”. Every line must work while facing the camera continuously. |
 | Improvised demo outline | When requested, give a short ordered list of speaking cues that can be glanced at while filming. Do not turn it into a verbose pseudo-script. Full AV narration remains the default for an AV-script request. |
 
 Use **you** for the viewer's capabilities and guidance, **I** for Lazar's own actions, and **we** for a clearly shared activity. Bridge changes in perspective. Pronoun consistency supports the voice but does not establish it by itself.
@@ -35,7 +35,7 @@ Use **you** for the viewer's capabilities and guidance, **I** for Lazar's own ac
 
 | Wording Lazar corrected | Preferred or used wording | What to carry forward |
 |---|---|---|
-| “Now I'm in the Metrics Explorer page.” | “Let's go to the Metrics Explorer page.” | Intentional navigation in a walkthrough. The viewer should understand the transition. |
+| “Now I'm in the Metrics Explorer page.” | “Let's go to the Metrics Explorer page.” | Applies only to an explicitly requested live walkthrough. For teleprompter narration, use an indirect explanation such as “Metrics Explorer shows the metric grouped by region.” |
 | “With the Sentry plugin, I had the agent do the investigation for me.” | “Then I asked Codex to investigate using the Sentry Agent plugin.” | Straightforward action, natural word order, and varied sentence openings. |
 | “duration application metric” | “an application metric to measure checkout duration” | Name the thing and explain its purpose in ordinary language. |
 | “Here's how I did it” followed by “I'll go group the metric…” | “I needed to verify that finding, so I went to Sentry and grouped the metric by region.” | A connected reason for the step, in the established timeline. |

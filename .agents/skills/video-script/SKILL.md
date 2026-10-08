@@ -45,7 +45,7 @@ When writing or revising Lazar's own videos, read [Lazar's voice and presentatio
 
 - Write friendly, casual, direct narration addressed to the viewer. For Sentry and development topics, assume a developer audience unless the brief says otherwise. Use **150 WPM** for estimates unless this video's delivery is measured or Lazar specifies another pace.
 - Build a connected explanation of what the viewer is trying to learn, what the evidence shows, and why the next step follows. Voice includes cadence, vocabulary, transitions, and the angle of the story; matching **you/I** pronouns alone is insufficient.
-- Establish the presentation mode from the request and this video's context: a screen walkthrough, a completed investigation, or talking head with prepared overlays. Match navigation language and tense to that mode. Provide concise speaking cues instead of word-for-word narration when Lazar requests an outline for an improvised demo.
+- Default Lazar’s teleprompter scripts to talking head with separately recorded screen overlays, following the recording rule below. Use live navigation language only when he explicitly requests a live screen walkthrough. Provide concise speaking cues instead of word-for-word narration when he requests an outline for an improvised demo.
 - Prioritize current explicit feedback, then previous user corrections and scripts he actually used or recorded. A generated draft is not an approved voice sample just because it is the newest version. Generic examples later in this skill illustrate format, not Lazar's voice.
 - Before delivering, read the hook and connected narration aloud. Check that the transitions sound like something he would say to the viewer, that the technical terms are clear, and that the claims match the demonstrated evidence. Use the reference's calibration checklist.
 
@@ -256,13 +256,23 @@ Example: “On ‘European backend,’ draw attention to the bolded `eu-west` ro
 - Keep each Markdown table cell on one source line. Separate visual directions with complete sentences and bold labels such as **Text overlay:**. Use separate rows for discrete thoughts or changes in audio state; keep a continuous narrator sentence in one row with visual sync cues. Do not rely on HTML line-break tags or literal newlines inside table cells.
 - Be specific about screen recordings — name the app, the view, the interaction, and any text the viewer should notice.
 
+### Camera-Facing Narration with Separately Recorded Overlays
+
+For Lazar’s teleprompter scripts, always write narration he can read entirely facing the camera. Talking-head footage and screen recordings are separate recording sessions; the editor adds the screen footage as overlays. Do not require him to operate or look at his computer while delivering any line. Only an explicit request for a live walkthrough overrides this default.
+
+- Explain the example, behavior, evidence, and significance indirectly while the overlay illustrates them. Prefer “The trace connects the agent’s search to the products endpoint” or “The linked issue includes the repeating query.”
+- Avoid language that implies live operation or navigation: “I’m on the homepage,” “I click,” “Let’s open the trace,” “Now let’s return,” or “I’ll open its issue.” Replacing “I” with “you” or “we” does not remove that coupling. Put clicks, selections, navigation, and capture instructions in VIDEO, never in the teleprompter or spoken AUDIO.
+- General capabilities and descriptions of evidence can use present tense. Use past tense for verified events or completed actions, and conditional language for proposed follow-ups. Do not invent a completed investigation simply to avoid live-demo wording.
+- Keep the explanation friendly and viewer-facing; indirect reference to screen content does not mean third-person or passive narration. First-person ownership (“my plant store”), recommendations (“I’d look at…”), and viewer guidance are still appropriate when they do not imply operating the screen during delivery.
+- Tie overlays to explanatory phrase cues, such as “almost sixteen seconds,” so the edit can synchronize to the recorded narration. Before delivering, read the complete copy as a camera-only take: every line must make sense without switching from the teleprompter to the computer. Keep AV AUDIO and teleprompter wording identical.
+
 ### Tense and Point-of-View Consistency
 
 Apply this check when generating, revising, or regenerating any script or teleprompter copy:
 
 - Establish who is speaking and who each passage refers to. Use **you/your** for viewer guidance, **I/my** for the presenter’s own actions or examples, and **we/our** only when the shared group or activity is clear. Do not switch between them within the same explanation without a reason.
-- Make a change in perspective explicit. For example, keep “You type your question… You click the suggestion…” throughout a viewer-facing explanation, then bridge into the presenter’s demonstration with “Let me show you an example from my app.” Returning to a viewer-facing CTA is a natural, deliberate shift.
-- Choose the time frame for the demonstration and carry it through connected actions. Use present tense for a walkthrough (“I open… I select…”), and past tense for a completed investigation (“I opened… I selected…”). An introduction such as “Here’s how I did it” establishes a past-tense account; do not drift into “I’ll open…” midway through it.
+- Make a change in perspective explicit. Keep a general explanation viewer-facing, then introduce a personal example with “The example comes from my app.” Returning to a viewer-facing CTA is a natural, deliberate shift. For teleprompter scripts, explain the workflow without directing live clicks or navigation.
+- Choose the time frame for the demonstration and carry it through connected actions. Use present-tense actions only for an explicitly requested live walkthrough (“I open… I select…”), and past tense for a completed investigation (“I opened… I selected…”). An introduction such as “Here’s how I did it” establishes a past-tense account; do not drift into “I’ll open…” midway through it.
 - Preserve meaningful differences in time: general product capabilities can remain present tense, and proposed next steps should remain future or conditional. Never turn a proposed action into a claim that it happened just to make the grammar uniform.
 - Read across sentence and segment boundaries after each edit. Check pronoun referents, tense, and transitions, then synchronize the AV narration and teleprompter wording while preserving valid pause cues. Consistency means a coherent viewpoint and timeline, not forcing every sentence into one pronoun or tense.
 
@@ -304,6 +314,8 @@ For additional AV row patterns or an explicitly different creator/short-form bri
 ### Teleprompter Copy and Pause Cues
 
 Preserve the document title, existing frontmatter, compact header metadata, and Flow at the top. After that header, place `## Teleprompter Copy`, followed by `## AV Script`. Put recording notes, publishing metadata, and evidence after the AV script. Reordering these two script sections must not remove or relocate the header below them. Apply this order to new scripts and revisions unless the user requests otherwise.
+
+Apply the camera-facing narration rule above to all teleprompter dialogue and matching AV AUDIO; keep screen operations in VIDEO.
 
 Whenever generating or regenerating a teleprompter copy, **always include intentional `[PAUSE]` cues**. Treat this as part of writing the copy, not an optional finishing step.
 
