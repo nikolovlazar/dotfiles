@@ -8,6 +8,8 @@
   (setq-local fill-column 80
               visual-fill-column-width 80
               visual-fill-column-center-text nil)
+  ;; Clear the per-character trigger table left by the old Auto Fill setup.
+  (kill-local-variable 'auto-fill-chars)
   (auto-fill-mode -1)
   (visual-line-mode 1)
   (visual-fill-column-mode 1))

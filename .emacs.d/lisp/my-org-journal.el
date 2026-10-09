@@ -31,10 +31,7 @@
                     quotes))))))
     (unless quotes (user-error "No quotes found in %s" my/org-journal-quote-file))
     (let ((quote (nth (random (length quotes)) quotes)))
-      (with-temp-buffer
-        (insert (car quote))
-        (let ((fill-column 78)) (fill-region (point-min) (point-max)))
-        (concat (buffer-string) "\n— " (cdr quote))))))
+      (concat (car quote) "\n— " (cdr quote)))))
 
 (defun my/org-journal-ensure-file (&optional time)
   "Create a missing daily journal from the shared template for TIME."
