@@ -2,6 +2,7 @@
 (require 'org)
 (require 'org-id)
 (require 'org-capture)
+(require 'calendar)
 (require 'my-org-paths)
 
 (defun my/org-journal-file (&optional time)
@@ -81,6 +82,120 @@
     (org-fold-show-entry)
     (forward-line 1)))
 
+(defun my/org-journal-date (file)
+  "Return FILE's calendar date when it matches the daily journal layout."
+  (when (and file
+             (string-match
+              "/\\([0-9]\\{4\\}\\)-\\([0-9]\\{2\\}\\)-\\([0-9]\\{2\\}\\)\\.org\\'"
+              file))
+    (let* ((year (string-to-number (match-string 1 file)))
+           (month (string-to-number (match-string 2 file)))
+           (day (string-to-number (match-string 3 file)))
+           (date (list month day year)))
+      (when (and (calendar-date-is-valid-p date)
+                 (equal (expand-file-name file)
+                        (my/org-journal-file (encode-time 0 0 12 day month year))))
+        date))))
+
+(defun my/org-journal-existing ()
+  "Return existing daily journals as (DATE . FILE), oldest first."
+  (let ((directory
+         (expand-file-name
+          (car (split-string my/org-journal-file-format "%")) org-directory))
+        entries)
+    (when (file-directory-p directory)
+      (dolist (file (directory-files-recursively directory "\\.org\\'"))
+        (let ((date (my/org-journal-date file)))
+          (when (and date (file-regular-p file))
+            (push (cons date file) entries)))))
+    (sort entries
+          (lambda (a b)
+            (< (calendar-absolute-from-gregorian (car a))
+               (calendar-absolute-from-gregorian (car b)))))))
+
+(defun my/org-journal-current-date ()
+  "Return the current daily journal's date, or today's calendar date."
+  (or (my/org-journal-date buffer-file-name) (calendar-current-date)))
+
+(defun my/org-journal--navigate (next)
+  "Open the nearest existing journal after the current date if NEXT.
+Otherwise open the nearest existing journal before it."
+  (let* ((date (calendar-absolute-from-gregorian (my/org-journal-current-date)))
+         (entries (my/org-journal-existing))
+         (entry
+          (seq-find
+           (lambda (entry)
+             (funcall (if next #'> #'<)
+                      (calendar-absolute-from-gregorian (car entry)) date))
+           (if next entries (reverse entries)))))
+    (unless entry
+      (user-error "No %s daily journal" (if next "next" "previous")))
+    (find-file (cdr entry))))
+
+(defun my/org-journal-previous ()
+  "Open the previous existing daily journal, skipping days without one.
+Outside a daily journal, navigate relative to today."
+  (interactive)
+  (my/org-journal--navigate nil))
+
+(defun my/org-journal-next ()
+  "Open the next existing daily journal, skipping days without one.
+Outside a daily journal, navigate relative to today."
+  (interactive)
+  (my/org-journal--navigate t))
+
+(defface my/org-journal-calendar-face
+  '((t (:inherit link :underline t)))
+  "Face marking existing journal dates with blue, underlined numbers."
+  :group 'calendar)
+
+(defun my/org-journal-calendar-mark ()
+  "Mark visible dates that have a daily journal, refreshing from disk."
+  (dolist (overlay (overlays-in (point-min) (point-max)))
+    (when (overlay-get overlay 'my/org-journal-calendar)
+      (delete-overlay overlay)))
+  (save-excursion
+    (dolist (entry (my/org-journal-existing))
+      (when (calendar-date-is-visible-p (car entry))
+        (calendar-cursor-to-visible-date (car entry))
+        (let ((overlay
+               (make-overlay (save-excursion
+                               (skip-chars-backward "0-9")
+                               (point))
+                             (1+ (point)))))
+          (overlay-put overlay 'my/org-journal-calendar t)
+          (overlay-put overlay 'help-echo (cdr entry))
+          (overlay-put overlay 'face 'my/org-journal-calendar-face))))))
+
+(defun my/org-journal-calendar-open ()
+  "Open the existing daily journal on the selected calendar date."
+  (interactive)
+  (let* ((date (calendar-cursor-to-date t))
+         (file (my/org-journal-file
+                (encode-time 0 0 12 (nth 1 date) (car date) (nth 2 date)))))
+    (unless (file-regular-p file)
+      (user-error "No daily journal for %s" (calendar-date-string date)))
+    (calendar-exit)
+    (find-file file)))
+
+(defun my/org-journal-calendar ()
+  "Pick an existing daily journal in a calendar with marked dates.
+Start on the current journal's date, or today.  RET opens the selected
+journal; q quits.  Standard calendar keys browse days and months."
+  (interactive)
+  (let ((date (my/org-journal-current-date))
+        (calendar-buffer "*Journal Calendar*"))
+    (calendar)
+    (use-local-map (copy-keymap calendar-mode-map))
+    (local-set-key (kbd "RET") #'my/org-journal-calendar-open)
+    (local-set-key (kbd "r") #'calendar-redraw)
+    (setq-local header-line-format
+                "Daily journals: blue underlined dates have entries | RET open | q quit | r refresh")
+    (add-hook 'calendar-today-visible-hook #'my/org-journal-calendar-mark nil t)
+    (add-hook 'calendar-today-invisible-hook #'my/org-journal-calendar-mark nil t)
+    (calendar-goto-date date)
+    (my/org-journal-calendar-mark)))
+
 (defun my/org-journal-capture ()
   "Capture a timestamped entry under today's Notes heading."
   (interactive)
@@ -92,6 +207,9 @@
                "%U\n%?\n" :empty-lines 1))
 (global-set-key (kbd "C-c n j") #'my/org-journal-today)
 (global-set-key (kbd "C-c n J") #'my/org-journal-capture)
+(global-set-key (kbd "C-c n [") #'my/org-journal-previous)
+(global-set-key (kbd "C-c n ]") #'my/org-journal-next)
+(global-set-key (kbd "C-c n d") #'my/org-journal-calendar)
 
 
 (defface my/org-journal-quote-face
