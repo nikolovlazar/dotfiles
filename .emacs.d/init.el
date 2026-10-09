@@ -74,7 +74,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -94,6 +94,14 @@
   (package-install 'company))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'my-coding)
+
+;; Highlight dotenv files, including .env.local and .env.example.
+(unless (package-installed-p 'dotenv-mode)
+  (unless (assq 'dotenv-mode package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'dotenv-mode))
+(autoload 'dotenv-mode "dotenv-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.env\\(?:\\..*\\)?\\'" . dotenv-mode))
 
 ;; Project sidebar for terminal and graphical frames.
 (unless (package-installed-p 'treemacs)
