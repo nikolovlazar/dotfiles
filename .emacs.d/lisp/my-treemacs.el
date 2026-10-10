@@ -10,6 +10,19 @@
       treemacs-read-string-input 'from-minibuffer)
 (require 'treemacs)
 
+;; Treemacs 3.2 removes nodes in every scope, including unrelated workspaces.
+(defun my/treemacs-remove-project-in-current-workspace (original &rest args)
+  "Run ORIGINAL with ARGS only in scopes sharing the current workspace."
+  (let* ((workspace (treemacs-current-workspace))
+         (treemacs--scope-storage
+          (cl-remove-if-not
+           (lambda (entry)
+             (eq workspace (treemacs-scope-shelf->workspace (cdr entry))))
+           treemacs--scope-storage)))
+    (apply original args)))
+(advice-add 'treemacs-do-remove-project-from-workspace :around
+            #'my/treemacs-remove-project-in-current-workspace)
+
 ;; Theme application can enable minor modes with a numeric argument.
 ;; Treemacs expects a named indicator setting instead of prompting.
 (defun my/treemacs-fringe-mode-args (args)
