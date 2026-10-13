@@ -74,7 +74,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -102,6 +102,15 @@
   (package-install 'dotenv-mode))
 (autoload 'dotenv-mode "dotenv-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.env\\(?:\\..*\\)?\\'" . dotenv-mode))
+
+;; Highlight Markdown prose and fenced code blocks.
+(unless (package-installed-p 'markdown-mode)
+  (unless (assq 'markdown-mode package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'markdown-mode))
+(autoload 'markdown-mode "markdown-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.\\(?:md\\|markdown\\)\\'" . markdown-mode))
+(setq markdown-fontify-code-blocks-natively t)
 
 ;; Project sidebar for terminal and graphical frames.
 (unless (package-installed-p 'treemacs)
