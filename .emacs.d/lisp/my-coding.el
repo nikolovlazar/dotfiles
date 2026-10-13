@@ -50,7 +50,7 @@
 
 (defun my/coding-buffer-setup ()
   "Enable core editor features in programming buffers."
-  (setq-local display-line-numbers-type t
+  (setq-local display-line-numbers-type 'relative
               indent-tabs-mode nil
               tab-width 2
               tab-always-indent 'complete)
