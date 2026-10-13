@@ -58,6 +58,18 @@
 (global-set-key (kbd "C-c w k") #'windmove-up)
 (global-set-key (kbd "C-c w l") #'windmove-right)
 
+;; Copy the region to macOS as well as the Emacs kill ring.
+(when (eq system-type 'darwin)
+  (defun my/copy-region-to-clipboard (beg end)
+    "Copy the region from BEG to END to the macOS clipboard and kill ring."
+    (interactive "r")
+    (let ((coding-system-for-write 'utf-8-unix))
+      (unless (zerop (call-process-region beg end "/usr/bin/pbcopy" nil nil nil))
+        (user-error "Could not copy to the macOS clipboard")))
+    (kill-ring-save beg end)
+    (message "Copied to macOS clipboard"))
+  (global-set-key (kbd "M-w") #'my/copy-region-to-clipboard))
+
 ;; Built-in conveniences.
 (which-key-mode 1)
 (fido-vertical-mode 1)
