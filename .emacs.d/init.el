@@ -222,6 +222,20 @@
          :target (file+head ,my/org-note-file-format "#+title: ${title}\n")
          :unnarrowed t)))
 (require 'org-roam)
+
+;; Node titles contain spaces; do not complete a word when typing one.
+(defun my/org-roam-read-title (read-node &rest args)
+  "Read a node title with Space inserting text instead of completing it."
+  (minibuffer-with-setup-hook
+      (lambda ()
+        (use-local-map
+         (make-composed-keymap
+          (let ((map (make-sparse-keymap)))
+            (define-key map (kbd "SPC") #'self-insert-command)
+            map)
+          (current-local-map))))
+    (apply read-node args)))
+(advice-add 'org-roam-node-read :around #'my/org-roam-read-title)
 (require 'my-org-reflections)
 ;; Keep the full graph compact enough for Emacs to render.
 (setq org-roam-graph-executable "neato"
