@@ -6,7 +6,7 @@
 (require 'editorconfig)
 
 ;; Install once with: npm --prefix ~/.emacs.d/language-servers install
-;; typescript-language-server typescript@6
+;; typescript-language-server typescript@6 pyright
 (let ((bin (expand-file-name "language-servers/node_modules/.bin" user-emacs-directory)))
   (add-to-list 'exec-path bin)
   (unless (member bin (split-string (getenv "PATH") path-separator))
@@ -17,13 +17,15 @@
                   (jsdoc "https://github.com/tree-sitter/tree-sitter-jsdoc" "v0.23.2" "src")
                   (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "typescript/src")
                   (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "tsx/src")
-                  (json "https://github.com/tree-sitter/tree-sitter-json" "v0.24.8" "src")))
+                  (json "https://github.com/tree-sitter/tree-sitter-json" "v0.24.8" "src")
+                  (go "https://github.com/tree-sitter/tree-sitter-go" "v0.25.0" "src")
+                  (python "https://github.com/tree-sitter/tree-sitter-python" "v0.25.0" "src")))
   (setf (alist-get (car recipe) treesit-language-source-alist) (cdr recipe)))
 
 (defun my/coding-install-grammars ()
-  "Download and compile missing JavaScript, TypeScript, TSX and JSON grammars."
+  "Download and compile missing grammars for the configured coding modes."
   (interactive)
-  (dolist (language '(javascript jsdoc typescript tsx json))
+  (dolist (language '(javascript jsdoc typescript tsx json go python))
     (unless (treesit-language-available-p language)
       (treesit-install-language-grammar language))))
 
@@ -45,6 +47,8 @@
                  ("\\.[cm]?js\\'" . js-ts-mode)
                  ("\\.json\\'" . json-ts-mode)))
   (add-to-list 'auto-mode-alist entry))
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 (add-to-list 'major-mode-remap-alist '(js-mode . js-ts-mode))
 (add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode))
 
@@ -62,12 +66,24 @@
 (editorconfig-mode 1)
 
 (defun my/coding-start-eglot ()
-  "Start JavaScript/TypeScript intelligence for a local source file."
+  "Start language intelligence for a supported local source file."
   (when (and buffer-file-name
              (not (file-remote-p default-directory))
-             (executable-find "typescript-language-server"))
+             (executable-find
+              (cond ((derived-mode-p 'go-ts-mode) "gopls")
+                    ((derived-mode-p 'python-mode 'python-ts-mode) "pyright-langserver")
+                    (t "typescript-language-server"))))
     (eglot-ensure)))
-(dolist (hook '(js-ts-mode-hook typescript-ts-mode-hook tsx-ts-mode-hook))
+(add-to-list 'eglot-server-programs
+             '((python-mode python-ts-mode) . ("pyright-langserver" "--stdio")))
+
+(defun my/go-buffer-setup ()
+  "Use Go's standard tab indentation."
+  (setq-local indent-tabs-mode t tab-width 8))
+(add-hook 'go-ts-mode-hook #'my/go-buffer-setup)
+
+(dolist (hook '(js-ts-mode-hook typescript-ts-mode-hook tsx-ts-mode-hook
+                go-ts-mode-hook python-mode-hook python-ts-mode-hook))
   (add-hook hook #'my/coding-start-eglot))
 
 ;; C-c e groups coding actions; Org and existing global shortcuts are untouched.
