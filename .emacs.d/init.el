@@ -86,7 +86,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode kitty-graphics))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -123,6 +123,16 @@
 (autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.\\(?:md\\|markdown\\)\\'" . markdown-mode))
 (setq markdown-fontify-code-blocks-natively t)
+
+;; Mermaid diagrams and image previews in Ghostty terminal frames.
+(unless (package-installed-p 'mermaid-mode)
+  (unless (assq 'mermaid-mode package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'mermaid-mode))
+(unless (package-installed-p 'kitty-graphics)
+  (package-vc-install '(kitty-graphics :url "https://github.com/cashmeredev/kitty-graphics.el"
+                                       :branch "master")))
+(require 'my-mermaid)
 
 ;; Project sidebar for terminal and graphical frames.
 (unless (package-installed-p 'treemacs)
