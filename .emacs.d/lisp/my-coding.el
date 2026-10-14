@@ -74,8 +74,17 @@
                     ((derived-mode-p 'python-mode 'python-ts-mode) "pyright-langserver")
                     (t "typescript-language-server"))))
     (eglot-ensure)))
+;; Pyright can watch files itself; avoid exhausting Emacs's file descriptors.
+(defclass my/eglot-pyright (eglot-lsp-server) ())
+(cl-defmethod eglot-client-capabilities ((server my/eglot-pyright))
+  (let ((capabilities (cl-call-next-method)))
+    (plist-put (plist-get (plist-get capabilities :workspace)
+                          :didChangeWatchedFiles)
+               :dynamicRegistration :json-false)
+    capabilities))
 (add-to-list 'eglot-server-programs
-             '((python-mode python-ts-mode) . ("pyright-langserver" "--stdio")))
+             '((python-mode python-ts-mode)
+               . (my/eglot-pyright "pyright-langserver" "--stdio")))
 
 (defun my/go-buffer-setup ()
   "Use Go's standard tab indentation."
