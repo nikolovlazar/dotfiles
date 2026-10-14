@@ -3,8 +3,12 @@
              (expand-file-name "lisp/markdown-table-wrap" user-emacs-directory))
 (require 'markdown-table-wrap-pretty)
 (require 'org-element)
-(setq markdown-table-wrap-pretty-default-on-major-modes '(org-mode))
+(setq markdown-table-wrap-pretty-default-on-major-modes
+      '(org-mode markdown-mode gfm-mode))
 (add-hook 'org-mode-hook #'markdown-table-wrap-pretty-mode)
+(add-hook 'markdown-mode-hook #'markdown-table-wrap-pretty-mode)
+(with-eval-after-load 'markdown-mode
+  (define-key markdown-mode-map (kbd "C-c n t") #'markdown-table-wrap-pretty-toggle))
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c n t") #'markdown-table-wrap-pretty-toggle))
 (defun my/org-table-render-inline (cell)
