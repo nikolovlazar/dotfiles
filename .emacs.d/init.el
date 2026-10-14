@@ -57,6 +57,10 @@
 (global-set-key (kbd "C-c w j") #'windmove-down)
 (global-set-key (kbd "C-c w k") #'windmove-up)
 (global-set-key (kbd "C-c w l") #'windmove-right)
+(global-set-key (kbd "C-M-h") #'windmove-left)
+(global-set-key (kbd "C-M-j") #'windmove-down)
+(global-set-key (kbd "C-M-k") #'windmove-up)
+(global-set-key (kbd "C-M-l") #'windmove-right)
 
 ;; Copy the region to macOS as well as the Emacs kill ring.
 (when (eq system-type 'darwin)
