@@ -4,6 +4,7 @@
 (require 'eglot)
 (require 'company)
 (require 'editorconfig)
+(require 'hideshow)
 
 ;; Install once with: npm --prefix ~/.emacs.d/language-servers install
 ;; typescript-language-server typescript@6 pyright
@@ -61,6 +62,7 @@
   (display-line-numbers-mode 1)
   (font-lock-mode 1)
   (electric-pair-local-mode 1)
+  (hs-minor-mode 1)
   (company-mode 1))
 (add-hook 'prog-mode-hook #'my/coding-buffer-setup)
 (editorconfig-mode 1)
@@ -104,6 +106,13 @@
 (define-key prog-mode-map (kbd "C-c e p") #'flymake-goto-prev-error)
 (define-key prog-mode-map (kbd "C-c e h") #'eldoc-doc-buffer)
 (define-key prog-mode-map (kbd "C-c e c") #'company-complete)
+
+;; C-c f groups folding actions in every programming mode.
+(define-key hs-minor-mode-map (kbd "C-c f f") #'hs-toggle-hiding)
+(define-key hs-minor-mode-map (kbd "C-c f h") #'hs-hide-block)
+(define-key hs-minor-mode-map (kbd "C-c f s") #'hs-show-block)
+(define-key hs-minor-mode-map (kbd "C-c f a") #'hs-hide-all)
+(define-key hs-minor-mode-map (kbd "C-c f o") #'hs-show-all)
 
 (provide 'my-coding)
 ;;; my-coding.el ends here
