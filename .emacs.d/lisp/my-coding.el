@@ -2,6 +2,23 @@
 
 (require 'treesit)
 (require 'eglot)
+
+(defun my/coding-display-documentation (docs interactive)
+  "Display DOCS and focus the documentation window on INTERACTIVE requests."
+  (eldoc-display-in-buffer docs interactive)
+  (when interactive
+    (select-window (get-buffer-window (eldoc-doc-buffer) t))))
+
+;; Request fresh documentation with C-c e h; never collect it on idle.
+(setq eldoc-display-functions '(my/coding-display-documentation)
+      eglot-code-action-indications nil)
+(global-eldoc-mode -1)
+
+(defun my/coding-disable-automatic-eldoc ()
+  "Keep Eldoc manual, including after Eglot enables its managed mode."
+  (eldoc-mode -1))
+(add-hook 'prog-mode-hook #'my/coding-disable-automatic-eldoc)
+(add-hook 'eglot-managed-mode-hook #'my/coding-disable-automatic-eldoc)
 (require 'company)
 (require 'editorconfig)
 (require 'hideshow)
@@ -104,7 +121,7 @@
 (define-key prog-mode-map (kbd "C-c e d") #'flymake-show-buffer-diagnostics)
 (define-key prog-mode-map (kbd "C-c e n") #'flymake-goto-next-error)
 (define-key prog-mode-map (kbd "C-c e p") #'flymake-goto-prev-error)
-(define-key prog-mode-map (kbd "C-c e h") #'eldoc-doc-buffer)
+(define-key prog-mode-map (kbd "C-c e h") #'eldoc-print-current-symbol-info)
 (define-key prog-mode-map (kbd "C-c e c") #'company-complete)
 
 ;; C-c f groups folding actions in every programming mode.
