@@ -36,6 +36,21 @@
 (when (executable-find "git")
   (treemacs-git-mode 'simple))
 
+(defun my/treemacs-rebuild ()
+  "Rebuild scoped sidebars from their workspaces without stale node records.
+Project lists are preserved; expanded directories are collapsed.  Use this
+when a failed Treemacs operation leaves an empty or inconsistent sidebar."
+  (interactive)
+  (treemacs-run-in-every-buffer
+   (treemacs-with-writable-buffer
+    (treemacs--reset-dom)
+    (treemacs--invalidate-buffer-project-cache)
+    (erase-buffer)
+    (setq treemacs--projects-end nil)
+    (treemacs--render-projects
+     (treemacs-workspace->projects (treemacs-current-workspace)))
+    (goto-char (point-min)))))
+
 (defun my/treemacs-toggle ()
   "Toggle the sidebar, adding the current project when opening it."
   (interactive)
