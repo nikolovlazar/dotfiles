@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """
-or-audit.py — OpenRouter China-provider audit & model-config sync for pi.
+or-audit.py — OpenRouter provider-jurisdiction audit & model-config sync for pi.
+
+Why
+  Keeps prompts and code away from providers under PRC jurisdiction, per my
+  own data-handling policy, and prefers zero-data-retention endpoints. This is
+  a personal policy, not a judgment about any company or country: edit
+  CN_WATCHLIST and use --geo / --watch to fit your own.
 
 What it does
   scan      Scan ~/.pi/agent/sessions/**/*.jsonl for models you actually used
             (openrouter provider only) and OpenRouter generation IDs.
   audit     For each generation: GET /api/v1/generation → who served it, flag
-            Chinese-origin / CN-HQ / watchlisted providers.
+            providers on the watchlist or matching the HQ filter.
   coverage  For each model: GET /models/{author}/{slug}/endpoints → which CN
             providers serve it → compare with the model's openRouterRouting
             override in model.json → report gaps (unignored CN slugs).
@@ -28,14 +34,19 @@ Modes / flags
   --config     path to model.json (default ~/.pi/agent/model.json)
 
 Auth   OPENROUTER_API_KEY env var, else the OAuth token in ~/.pi/agent/auth.json.
-Exit   0 clean · 1 CN gap/flag found (or remaining after sync) · 2 operational error.
+Exit   0 nothing matched · 1 watchlist gap/flag found (or remaining after sync) ·
+       2 operational error.
 
-Built-in Chinese-origin slugs (OpenRouter's self-reported domicile may say SG
-or none, so this is a watchlist, not an HQ filter):
+Default PRC-jurisdiction watchlist. Best-effort, not authoritative: membership
+is my own judgment and may be incomplete, outdated, or wrong for some entries;
+some entries are model labs rather than inference hosts; OpenRouter's
+self-reported domicile may say SG or be empty, so this is a watchlist, not an
+HQ filter. A clean result means nothing matched, not that no such provider
+served a request:
   z-ai siliconflow alibaba moonshotai minimax stepfun
   deepseek tencent baidu xiaomi nex-agi streamlake
 HQ filter (geo) flags providers whose self-reported headquarters matches
-(default CN; extend with --geo).
+(default CN; extend with --geo, e.g. --geo CN,HK). The field is often empty.
 """
 
 import argparse
@@ -148,7 +159,7 @@ def endpoints_for(token, model):
 def flag_of(slug, hq, geo, watch):
     flags = []
     if slug in CN_WATCHLIST:
-        flags.append("chinese-origin")
+        flags.append("watchlist-cn")
     if slug in watch:
         flags.append("watchlist")
     if hq and str(hq).upper() in geo:
@@ -157,7 +168,7 @@ def flag_of(slug, hq, geo, watch):
 
 
 def cn_slugs_serving(eps, by_name, geo, watch):
-    """Deduped, sorted slugs of CN-flagged providers among endpoints `eps`."""
+    """Deduped, sorted slugs of watchlist-flagged providers among endpoints `eps`."""
     slugs = set()
     for e in eps:
         rec = by_name.get(e.get("provider_name")) or {}
@@ -201,9 +212,6 @@ def merged_routing(existing, cn_slugs, eps, zdr_names, by_name):
             notes.append("set zdr=true")
         else:
             notes.append("NOT setting zdr (no endpoint survives ignore+ZDR filters)")
-    if "allow_fallbacks" not in merged and not eligible:
-        # nothing eligible under the strict filters; keep default fallbacks
-        notes.append("keep allow_fallbacks default (no ZDR endpoint eligible)")
     if merged == existing:
         return None, notes
     return merged, notes
@@ -293,7 +301,7 @@ def probe_model(token, model, config, by_name, geo, watch):
         for name, slug, hq in flagged:
             print(f"  !! FLAGGED candidate still eligible: {name} (slug={slug}, HQ={hq})")
         return 1
-    print("  no CN-flagged candidates eligible ✓")
+    print("  none matched the watchlist/HQ filter (best-effort)")
     return 0
 
 
@@ -353,9 +361,6 @@ def main():
                 print(f"probe {m} failed: {ex}", file=sys.stderr)
                 rc = max(rc, 2)
         sys.exit(rc)
-
-    if not model_list:
-        model_list = []
 
     # ---- coverage + sync -------------------------------------------------
     by_name, by_slug = load_providers(token)
