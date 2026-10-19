@@ -131,7 +131,7 @@ Agents are markdown files with YAML frontmatter:
 name: my-agent
 description: What this agent does
 tools: read, grep, find, ls
-model: claude-haiku-4-5
+model: anthropic/claude-haiku-5.5
 ---
 
 System prompt for the agent goes here.
@@ -149,10 +149,10 @@ Project agents override user agents with the same name when `agentScope: "both"`
 
 | Agent | Purpose | Model | Tools |
 |-------|---------|-------|-------|
-| `scout` | Fast codebase recon | Haiku | read, grep, find, ls, bash |
-| `planner` | Implementation plans | Sonnet | read, grep, find, ls |
-| `reviewer` | Code review | Sonnet | read, grep, find, ls, bash |
-| `worker` | General-purpose | Sonnet | (all default) |
+| `scout` | Fast codebase recon | Haiku 5.5 | read, grep, find, ls, bash |
+| `planner` | Implementation plans | Opus 5.5 | read, grep, find, ls |
+| `reviewer` | Code review | Sonnet 5.5 | read, grep, find, ls, bash |
+| `worker` | General-purpose | Sonnet 5.5 | (all default) |
 
 ## Workflow Prompts
 
