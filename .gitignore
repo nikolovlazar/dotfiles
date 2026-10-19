@@ -54,6 +54,23 @@
 /.claude/*
 !/.claude/settings.json
 
+# Pi agent's portable configuration only. Credentials, device and trust state,
+# session history, provider catalogs, installed skills, and managed installs
+# stay local.
+!/.pi/
+/.pi/*
+!/.pi/agent/
+/.pi/agent/*
+!/.pi/agent/agents/
+!/.pi/agent/agents/**
+!/.pi/agent/extensions/
+!/.pi/agent/extensions/**
+!/.pi/agent/prompts/
+!/.pi/agent/prompts/**
+!/.pi/agent/mcp.json
+!/.pi/agent/model.json
+!/.pi/agent/or-audit.py
+
 # Emacs source is public; its nested .gitignore excludes private/runtime files.
 !/.emacs.d/
 !/.emacs.d/**

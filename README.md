@@ -46,6 +46,7 @@ The other approved configuration is:
 
 - `.agents/skills` and `.agents/.skill-lock.json`, excluding explicitly private skills, skill-studio quarantine, and generated agent state. Private skills stay in the real home skills directory and are excluded by both allowlists.
 - `.claude/settings.json` only. Local settings, hooks, plugins, skills, credentials, and session state remain local.
+- `.pi/agent` portable agent configuration only: custom agents, extensions, prompts, `model.json`, `mcp.json`, and `or-audit.py`. Credentials, device and trust state, session history, provider catalogs, installed skills, and managed installs stay local.
 - `.emacs.d` source configuration, excluding private `local.el`, packages, databases, caches, and editor state.
 - `.oh-my-zsh/themes`.
 - `Library/Application Support/Cursor/User/settings.json` and `keybindings.json` only.

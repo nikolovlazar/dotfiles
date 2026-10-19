@@ -1,0 +1,59 @@
+{
+  "$schema": "https://pi.dev/schemas/models.schema.json",
+  "providers": {
+    "openrouter": {
+      "modelOverrides": {
+        "z-ai/glm-5.3": {
+          "compat": {
+            "openRouterRouting": {
+              "ignore": [
+                "z-ai",
+                "siliconflow",
+                "alibaba",
+                "baidu"
+              ],
+              "data_collection": "deny",
+              "zdr": true
+            }
+          }
+        },
+        "moonshotai/kimi-k2.6": {
+          "compat": {
+            "openRouterRouting": {
+              "ignore": [
+                "baidu",
+                "moonshotai",
+                "siliconflow",
+                "streamlake"
+              ],
+              "data_collection": "deny",
+              "zdr": true
+            }
+          }
+        },
+        "openai/gpt-oss-120b": {
+          "compat": {
+            "openRouterRouting": {
+              "ignore": [
+                "siliconflow"
+              ],
+              "data_collection": "deny",
+              "zdr": true
+            }
+          }
+        },
+        "qwen/qwen3.8-27b": {
+          "compat": {
+            "openRouterRouting": {
+              "ignore": [
+                "alibaba"
+              ],
+              "data_collection": "deny",
+              "zdr": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

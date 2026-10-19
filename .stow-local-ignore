@@ -2,7 +2,7 @@
 # These rules permit real ancestor directories but exclude unapproved children.
 
 # Only approved top-level roots may be deployed.
-^/(?!(?:\.agents|\.claude|\.config|\.emacs\.d|\.oh-my-zsh|Library)(?:/|$)|\.zshrc$).*
+^/(?!(?:\.agents|\.claude|\.config|\.emacs\.d|\.oh-my-zsh|\.pi|Library)(?:/|$)|\.zshrc$).*
 
 # Approved application configs, with narrower Raycast and Zed boundaries.
 ^/\.config/(?!(?:btop|ghostty|kitty|lazydocker|lazygit|mise|nvim|raycast|tmux|wezterm|zed)(?:/|$)).*
@@ -14,6 +14,11 @@
 ^/\.agents/skills/\.skill-studio-quarantine(?:/.*)?
 ^/\.agents/skills/sentry-content-research(?:/.*)?
 ^/\.claude/(?!settings\.json$).*
+
+# Pi agent's portable configuration only; credentials, device and trust state,
+# session history, provider catalogs, installed skills, and installs stay local.
+^/\.pi/(?!agent(?:/|$)).*
+^/\.pi/agent/(?!(?:agents|extensions|prompts|mcp\.json|model\.json|or-audit\.py)(?:/|$)).*
 
 # Keep the Oh My Zsh installation local; deploy only custom themes.
 ^/\.oh-my-zsh/(?!themes(?:/|$)).*
