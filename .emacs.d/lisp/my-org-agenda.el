@@ -61,6 +61,19 @@
   "Face for the less prominent agenda source filename."
   :group 'org-agenda)
 
+(defun my/org-agenda-entry-dates-label ()
+  "Return \"Deadline YYYY-MM-DD Day\" / \"Scheduled ...\" for the entry at point."
+  (string-join
+   (delq nil
+         (mapcar
+          (lambda (spec)
+            (let ((ts (org-entry-get nil (car spec))))
+              (and ts (format "%s %s" (cdr spec)
+                              (format-time-string "%Y-%m-%d %a"
+                                                  (org-time-string-to-time ts))))))
+          '(("SCHEDULED" . "Scheduled") ("DEADLINE" . "Deadline"))))
+   " "))
+
 (defun my/org-agenda-format-row (row)
   "Put the task first, capped at 80 columns, then scheduling and its file."
   (let ((heading (get-text-property 0 'txt row)))
@@ -77,6 +90,11 @@
                             (get-text-property 0 'extra row))))
              (date (replace-regexp-in-string "[[:space:]]+" " " date))
              (date (string-remove-suffix ":" date))
+             ;; Plain TODO lists (e.g. "Future") carry no time info, so show
+             ;; the entry's own DEADLINE / SCHEDULED dates.
+             (date (if (string-empty-p date)
+                       (my/org-agenda-entry-dates-label)
+                     date))
              (file (file-name-nondirectory buffer-file-name))
              (result (concat "  " task "  " (unless (string-empty-p date)
                                                   (concat date "  ")) file)))
@@ -94,6 +112,40 @@
         result))))
 
 (advice-add 'org-agenda-format-item :filter-return #'my/org-agenda-format-row)
+
+;;; Weekly agenda with "Unplanned" and "Future" sections
+
+(defun my/org-agenda-entry-day (property)
+  "Absolute day of PROPERTY (\"DEADLINE\" or \"SCHEDULED\") at point, or nil."
+  (let ((ts (org-entry-get nil property)))
+    (and ts (org-time-string-to-absolute ts))))
+
+(defun my/org-agenda-skip-planned ()
+  "Skip entries that have a DEADLINE or SCHEDULED date."
+  (when (or (my/org-agenda-entry-day "DEADLINE")
+            (my/org-agenda-entry-day "SCHEDULED"))
+    (org-with-wide-buffer (or (outline-next-heading) (point-max)))))
+
+(defun my/org-agenda-skip-not-future ()
+  "Skip entries unless a DEADLINE or SCHEDULED date is more than a week ahead."
+  (let* ((limit (+ (org-today) 7))
+         (days (delq nil (list (my/org-agenda-entry-day "DEADLINE")
+                               (my/org-agenda-entry-day "SCHEDULED")))))
+    (unless (seq-some (lambda (day) (> day limit)) days)
+      (org-with-wide-buffer (or (outline-next-heading) (point-max))))))
+
+;; Replaces the built-in weekly agenda on "a": the next 7 days from today (so
+;; "Future" starts exactly where the agenda ends), then undated and far-off tasks.
+(setq org-agenda-custom-commands
+      '(("a" "Week, Unplanned and Future"
+         ((agenda "" ((org-agenda-span 7)
+                      (org-agenda-start-on-weekday nil)))
+          (todo "TODO|PROGRESS|WAITING"
+                ((org-agenda-overriding-header "Future")
+                 (org-agenda-skip-function #'my/org-agenda-skip-not-future)))
+          (todo "TODO|PROGRESS|WAITING"
+                ((org-agenda-overriding-header "Unplanned")
+                 (org-agenda-skip-function #'my/org-agenda-skip-planned)))))))
 
 (provide 'my-org-agenda)
 ;;; my-org-agenda.el ends here
