@@ -90,7 +90,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode kitty-graphics))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode kitty-graphics evil evil-surround))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -102,6 +102,15 @@
 (require 'flash-isearch)
 (global-set-key (kbd "C-c j") #'flash-jump)
 (flash-isearch-mode 1)
+
+;; Vim editing in text buffers only; Emacs keys everywhere else.
+(dolist (pkg '(evil evil-surround))
+  (unless (package-installed-p pkg)
+    (unless (assq pkg package-archive-contents)
+      (package-refresh-contents))
+    (package-install pkg)))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'my-evil)
 
 ;; Completion menus work in both graphical and terminal frames.
 (unless (package-installed-p 'company)
