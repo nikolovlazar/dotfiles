@@ -11,6 +11,11 @@
   (define-key markdown-mode-map (kbd "C-c n t") #'markdown-table-wrap-pretty-toggle))
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c n t") #'markdown-table-wrap-pretty-toggle))
+(defface my/org-table-local-link
+  '((t :inherit org-link :underline nil :slant italic))
+  "Org links to notes and files in tables: same colour, italic, not underlined.
+External URLs keep the underline, since only those are clickable in the terminal.")
+
 (defun my/org-table-render-inline (cell)
   "Render Org emphasis, links and entities in CELL without changing its source."
   (cl-labels
@@ -44,11 +49,16 @@
              (when face
                (add-face-text-property 0 (length text) face t text))
              (when (eq type 'link)
-               (add-face-text-property 0 (length text) 'org-link t text)
-               (add-text-properties
-                0 (length text)
-                (list 'mouse-face 'highlight
-                      'help-echo (org-element-property :raw-link object)) text))
+               (let ((external (member (org-element-property :type object)
+                                       '("http" "https" "ftp" "mailto"))))
+                 (add-face-text-property
+                  0 (length text)
+                  (if external 'org-link 'my/org-table-local-link) t text)
+                 (add-text-properties
+                  0 (length text)
+                  (append (when external '(mouse-face highlight))
+                          (list 'help-echo (org-element-property :raw-link object)))
+                  text)))
              (concat text (make-string blank ?\s))))))
     (mapconcat #'render
                (org-element-parse-secondary-string
@@ -63,5 +73,9 @@
 
 (advice-add 'markdown-table-wrap-pretty--render-inline-spans-in-cell
             :around #'my/org-table-inline-dispatch)
+
+;; Cmd-clickable links in terminal frames (OSC 8), since pretty tables hide URLs.
+(require 'my-osc8-links)
+(my-osc8-links-mode 1)
 
 (provide 'my-org-tables)
