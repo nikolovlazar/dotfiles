@@ -52,6 +52,36 @@
               "zdr": true
             }
           }
+        },
+        "z-ai/glm-5.3-flash": {
+          "compat": {
+            "openRouterRouting": {
+              "ignore": [
+                "z-ai",
+                "siliconflow",
+                "alibaba",
+                "baidu"
+              ],
+              "data_collection": "deny",
+              "zdr": true
+            }
+          }
+        },
+        "minimax/minimax-m3.1-flash": {
+          "compat": {
+            "openRouterRouting": {
+              "ignore": [
+                "minimax",
+                "streamlake",
+                "novita",
+                "siliconflow",
+                "alibaba",
+                "baidu"
+              ],
+              "data_collection": "deny",
+              "zdr": true
+            }
+          }
         }
       }
     }
