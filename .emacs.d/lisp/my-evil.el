@@ -17,6 +17,16 @@
 ;; Evil 1.15 expects the globalized-mode macro to define this; Emacs 31 doesn't.
 (defvar evil-mode-buffers nil)
 
+;; Block cursor everywhere except insert state, where it's a bar.
+(setq evil-default-cursor '(box)
+      evil-normal-state-cursor 'box
+      evil-motion-state-cursor 'box
+      evil-visual-state-cursor 'box
+      evil-replace-state-cursor 'hbar
+      evil-operator-state-cursor 'box
+      evil-emacs-state-cursor 'box
+      evil-insert-state-cursor '(bar . 2))
+
 (require 'evil)
 (evil-mode 1)
 
@@ -28,6 +38,11 @@
 ;; from these). Everything else falls back to `evil-default-state' (emacs).
 (dolist (mode '(text-mode prog-mode conf-mode))
   (evil-set-initial-state mode 'normal))
+
+;; Emacs has no mode for these, so they open in `fundamental-mode', which
+;; isn't derived from the modes above. Give them one that is.
+(add-to-list 'auto-mode-alist
+             '("/\\.\\(?:git\\|docker\\|npm\\|prettier\\)ignore\\'" . conf-unix-mode))
 
 ;; Never touch the minibuffer or special buffers.
 (setq evil-want-minibuffer nil)
@@ -70,5 +85,20 @@
 (when (require 'evil-surround nil t)
   (global-evil-surround-mode 1))
 
-(provide 'my-evil)
 ;;; my-evil.el ends here
+
+;; Terminal frames ignore `cursor-type'; init.el pins them to a steady block
+;; via escape sequences, so switch to a steady bar while in insert state.
+(defvar my/tty-cursor-shape nil)
+(defun my/evil-tty-cursor ()
+  "Send a bar cursor in insert state, a block otherwise (terminal only)."
+  (unless (display-graphic-p)
+    (let ((shape (if (and (bound-and-true-p evil-local-mode)
+                          (eq evil-state 'insert))
+                     "\e[6 q" "\e[2 q")))
+      (unless (equal shape my/tty-cursor-shape)
+        (setq my/tty-cursor-shape shape)
+        (send-string-to-terminal shape)))))
+(add-hook 'post-command-hook #'my/evil-tty-cursor)
+
+(provide 'my-evil)
