@@ -56,7 +56,7 @@ When writing or revising Lazar's own videos, read [Lazar's voice and presentatio
 Use this sequence for every new or revised Lazar video unless he explicitly requests a different format. Do not ask him to reconfirm it each time:
 
 1. **Hook — 20–30 seconds.** Earn attention in the first few seconds, then build a reason to continue through a recognizable situation, a meaningful question or gap, and a concrete payoff. A common problem the intended audience recognizes is the preferred starting point when it fits the topic; choose another architecture when it is stronger. At 150 WPM this is roughly 50–75 spoken words before allowing for deliberate pauses.
-2. **Title-card bumper — 2–3 seconds.** Use his existing premade MOGRT and change only its labels. State the exact title text in VIDEO. It is a breather after the hook, with **no narration**. Specify silence or the asset's known audio sting in AUDIO; do not invent a new animation, filename, or soundtrack. Default to three seconds of silence when no asset audio is specified.
+2. **Title-card bumper — 2–3 seconds.** Use his existing premade MOGRT and change only its labels. It has exactly three labels: **title row 1** and **title row 2** (large, bold; together they form the title, split across two lines) and a **subtitle** (one line, smaller, regular). Write text for all three and state each label's exact text in VIDEO. Keep each title row short enough for large type (one to three words) and balance the two rows; the subtitle can carry the longer promise or framing. Do not cram a whole sentence into one title row or leave a row empty. It is a breather after the hook, with **no narration**. Specify silence or the asset's known audio sting in AUDIO; do not invent a new animation, filename, or soundtrack. Default to three seconds of silence when no asset audio is specified.
 3. **Body.** Immediately begin fulfilling the hook's promise; do not greet the viewer or repeat the introduction. Choose the first body beat from the active subject and supply any prerequisite context before its demonstration or explanation.
 
 These durations and the bumper are Lazar's production preference, not a universal retention finding. The first-seconds guidance in the format tables describes **initial relevance**, not the duration of the whole hook. If a later brief explicitly requests a shorter opening, follow it. If a short total runtime cannot fit the established format, surface that concrete tradeoff rather than silently dropping the bumper or compressing the hook.
@@ -155,7 +155,7 @@ For Lazar, fill this topic-independent structure from the active brief. Timings 
 - Payoff: [specific outcome the body can deliver]
 
 **TITLE CARD** (0:25–0:28)
-- Existing premade MOGRT; title text: [labels for the active subject]
+- Existing premade MOGRT; title row 1: [label], title row 2: [label], subtitle: [label]
 - No narration; three seconds of silence unless an existing sting is specified
 
 **BODY: FIRST PROMISED STEP** (from 0:28)
@@ -300,7 +300,7 @@ This is a topic-independent AV template, not finished dialogue. Replace every br
 
 | VIDEO | AUDIO |
 |---|---|
-| Existing premade MOGRT. Set title text to "[title labels for the active subject]". | No narration, ~3 seconds; silence. |
+| Existing premade MOGRT. Title row 1 (large, bold): "[label]". Title row 2 (large, bold): "[label]". Subtitle (smaller, regular): "[label]". | No narration, ~3 seconds; silence. |
 
 ## BODY: FIRST PROMISED STEP (from 00:28)
 
