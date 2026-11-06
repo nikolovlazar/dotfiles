@@ -90,7 +90,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode kitty-graphics evil evil-surround))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode json-mode kitty-graphics evil evil-surround))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -127,6 +127,17 @@
   (package-install 'dotenv-mode))
 (autoload 'dotenv-mode "dotenv-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.env\\(?:\\..*\\)?\\'" . dotenv-mode))
+
+;; JSON editing, including Org `json` src blocks (C-c ' to edit).
+(unless (package-installed-p 'json-mode)
+  (unless (assq 'json-mode package-archive-contents)
+    (package-refresh-contents))
+  (package-install 'json-mode))
+(autoload 'json-mode "json-mode" nil t)
+(with-eval-after-load 'json-mode
+  (setq js-indent-level 2)
+  (define-key json-mode-map (kbd "C-c C-f") #'json-pretty-print-buffer)
+  (define-key json-mode-map (kbd "C-c C-r") #'json-pretty-print))
 
 ;; Highlight Markdown prose and fenced code blocks.
 (unless (package-installed-p 'markdown-mode)
