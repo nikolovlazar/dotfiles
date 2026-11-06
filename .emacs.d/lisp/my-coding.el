@@ -9,7 +9,7 @@
   (when interactive
     (select-window (get-buffer-window (eldoc-doc-buffer) t))))
 
-;; Request fresh documentation with C-c e h; never collect it on idle.
+;; Request fresh documentation with C-c e h (e = eglot); never collect it on idle.
 (setq eldoc-display-functions '(my/coding-display-documentation)
       eglot-code-action-indications nil)
 (global-eldoc-mode -1)
@@ -114,10 +114,21 @@
                 go-ts-mode-hook python-mode-hook python-ts-mode-hook))
   (add-hook hook #'my/coding-start-eglot))
 
-;; C-c e groups coding actions; Org and existing global shortcuts are untouched.
+;; C-c e = Eglot/code actions (C-c c is org-capture, so it can't be a prefix).
+;;   r rename   a actions   f format buffer
+;;   h hover    c complete  d diagnostics   n/p next/prev error
 (define-key prog-mode-map (kbd "C-c e r") #'eglot-rename)
 (define-key prog-mode-map (kbd "C-c e a") #'eglot-code-actions)
-(define-key prog-mode-map (kbd "C-c e f") #'eglot-format-buffer)
+(defun my/format-buffer ()
+  "Format with Eglot when connected; otherwise use a built-in formatter."
+  (interactive)
+  (cond ((and (fboundp 'eglot-managed-p) (eglot-managed-p))
+         (eglot-format-buffer))
+        ((derived-mode-p 'json-mode 'json-ts-mode 'js-json-mode)
+         (require 'json-mode)
+         (json-pretty-print-buffer))
+        (t (indent-region (point-min) (point-max)))))
+(define-key prog-mode-map (kbd "C-c e f") #'my/format-buffer)
 (define-key prog-mode-map (kbd "C-c e d") #'flymake-show-buffer-diagnostics)
 (define-key prog-mode-map (kbd "C-c e n") #'flymake-goto-next-error)
 (define-key prog-mode-map (kbd "C-c e p") #'flymake-goto-prev-error)
