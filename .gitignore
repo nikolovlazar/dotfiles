@@ -26,6 +26,8 @@
 !/.config/nvim/**
 !/.config/tmux/
 !/.config/tmux/**
+!/.config/rex/
+!/.config/rex/**
 !/.config/wezterm/
 !/.config/wezterm/**
 
