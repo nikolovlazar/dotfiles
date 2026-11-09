@@ -4,7 +4,8 @@
       "args": [
         "mcp"
       ],
-      "command": "railway"
+      "command": "railway",
+      "enabled": false
     }
   }
 }
