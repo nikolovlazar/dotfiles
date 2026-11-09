@@ -2,7 +2,7 @@
 # These rules permit real ancestor directories but exclude unapproved children.
 
 # Only approved top-level roots may be deployed.
-^/(?!(?:\.agents|\.claude|\.config|\.emacs\.d|\.oh-my-zsh|\.pi|Library)(?:/|$)|\.zshrc$).*
+^/(?!(?:\.agents|\.claude|\.config|\.emacs\.d|\.hermes|\.oh-my-zsh|\.pi|Library)(?:/|$)|\.zshrc$).*
 
 # Approved application configs, with narrower Raycast and Zed boundaries.
 ^/\.config/(?!(?:btop|ghostty|kitty|lazydocker|lazygit|mise|nvim|raycast|tmux|wezterm|zed)(?:/|$)).*
@@ -19,6 +19,10 @@
 # session history, provider catalogs, installed skills, and installs stay local.
 ^/\.pi/(?!agent(?:/|$)).*
 ^/\.pi/agent/(?!(?:agents|extensions|prompts|mcp\.json|model\.json|or-audit\.py)(?:/|$)).*
+
+# Hermes: only the provider-routing sync script; config, credentials, sessions,
+# memory, and state stay local.
+^/\.hermes/(?!apply-provider-routing\.py$).*
 
 # Keep the Oh My Zsh installation local; deploy only custom themes.
 ^/\.oh-my-zsh/(?!themes(?:/|$)).*

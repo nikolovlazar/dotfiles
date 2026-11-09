@@ -73,6 +73,12 @@
 !/.pi/agent/model.json
 !/.pi/agent/or-audit.py
 
+# Hermes agent: only the script that syncs provider routing from Pi's model.json.
+# Config, credentials, sessions, memory, and state stay local.
+!/.hermes/
+/.hermes/*
+!/.hermes/apply-provider-routing.py
+
 # Emacs source is public; its nested .gitignore excludes private/runtime files.
 !/.emacs.d/
 !/.emacs.d/**

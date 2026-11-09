@@ -83,6 +83,42 @@
               "zdr": true
             }
           }
+        },
+        "deepseek/deepseek-v4.1-flash-1017": {
+          "compat": {
+            "openRouterRouting": {
+              "only": [
+                "deepinfra",
+                "fireworks",
+                "together",
+                "baseten",
+                "parasail",
+                "nebius",
+                "crusoe",
+                "coreweave",
+                "mistral",
+                "cloudflare",
+                "cohere",
+                "digitalocean",
+                "modal",
+                "wafer",
+                "particle-ai",
+                "inference-net",
+                "ionstream",
+                "open-inference",
+                "relace",
+                "morph",
+                "primeintellect",
+                "makora",
+                "reka",
+                "venice",
+                "phala",
+                "near-ai"
+              ],
+              "data_collection": "deny",
+              "zdr": true
+            }
+          }
         }
       }
     }

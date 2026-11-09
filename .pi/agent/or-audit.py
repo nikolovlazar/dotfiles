@@ -382,7 +382,9 @@ def main():
         cn = cn_slugs_serving(eps, by_name, geo, watch)
         existing = routing_for(config, model)
         have = set((existing or {}).get("ignore") or [])
-        missing = [s for s in cn if s not in have]
+        only = set((existing or {}).get("only") or [])
+        # an allowlist already excludes every slug not in it
+        missing = [s for s in cn if s not in have and (not only or s in only)]
         status = "ok" if not missing else f"GAP: {missing}"
         print(
             f"  {model}: endpoints={len(eps)} cn-serving={cn or '[]'} "
