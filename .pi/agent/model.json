@@ -46,7 +46,8 @@
           "compat": {
             "openRouterRouting": {
               "ignore": [
-                "alibaba"
+                "alibaba",
+                "streamlake"
               ],
               "data_collection": "deny",
               "zdr": true
