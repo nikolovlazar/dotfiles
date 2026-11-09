@@ -279,6 +279,9 @@
       org-roam-ui-follow t
       org-roam-ui-update-on-save t
       org-roam-ui-open-on-start t)
+;; org-roam-ui 2022 release trips native-compile forward-reference warnings;
+;; silence them here instead of updating the package.
+(setq native-comp-async-report-warnings-errors 'silent)
 (global-set-key (kbd "C-c n u") #'org-roam-ui-open)
 
 ;; Review and sync notes through the existing Git repository.
