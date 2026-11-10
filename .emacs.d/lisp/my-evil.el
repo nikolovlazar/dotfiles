@@ -12,6 +12,7 @@
       evil-default-state 'emacs
       evil-want-Y-yank-to-eol t
       evil-respect-visual-line-mode t ; j/k/0/$ follow wrapped screen lines
+      evil-echo-state nil            ; no "-- INSERT --" in the echo area
       evil-esc-delay 0.01)
 
 ;; Evil 1.15 expects the globalized-mode macro to define this; Emacs 31 doesn't.

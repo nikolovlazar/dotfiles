@@ -82,6 +82,14 @@
 (recentf-mode 1)
 (show-paren-mode 1)
 
+;; Saving a file is not news: keep "Wrote /path" out of the echo area.
+(defun my/silent-save (function &rest args)
+  "Call FUNCTION with ARGS without echoing its message."
+  (let ((inhibit-message t))
+    (apply function args)))
+(advice-add 'basic-save-buffer :around #'my/silent-save)
+(advice-add 'write-file :around #'my/silent-save)
+
 (require 'package)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -90,7 +98,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode json-mode kitty-graphics evil evil-surround))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode json-mode kitty-graphics evil evil-surround doom-modeline))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -176,9 +184,12 @@
   (package-install 'treemacs-persp))
 (require 'my-workspaces)
 
-;; Built-in tinted Modus themes and the theme toggle.
+;; Faces are painted from the terminal's ANSI palette; see my-theme.el.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'my-theme)
+
+;; Quiet Evil state tag on a neutral mode line.
+(require 'my-modeline)
 
 ;; Personal paths belong in the ignored local configuration.
 (require 'my-org-paths)

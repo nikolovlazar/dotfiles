@@ -1,39 +1,142 @@
-;;; my-theme.el --- Tinted Modus theme switching -*- lexical-binding: t; -*-
+;;; my-theme.el --- One theme painted from the terminal's own palette -*- lexical-binding: t; -*-
 
-;; In terminal frames (e.g. inside Rex) no theme is forced: the terminal
-;; owns the colors and background.  GUI frames still get Modus.
+;; The terminal (Rex) owns every colour, including light/dark.  Emacs therefore
+;; refuses to pick its own: the default face leaves background and foreground
+;; unspecified so the terminal shows through, and every other face asks for an
+;; ANSI palette slot by name ("red", "brightblack", ...).  The terminal decides
+;; what those slots look like, so whatever theme it runs — now or later — Emacs
+;; matches it without knowing anything about it.  One theme, no light/dark
+;; switching, nothing to keep in sync.
 
-(defvar my/gui-theme 'modus-operandi
-  "Theme used in graphical frames.")
+(defconst my/ansi-faces
+  '(;; Canvas: leave both colours to the terminal.
+    (default ((t (:background "unspecified-bg" :foreground "unspecified-fg"))))
+    (cursor ((t (:background "unspecified-fg"))))
+    ;; Selection and search use reverse video, i.e. the terminal's own pair.
+    (region ((t (:inverse-video t))))
+    (secondary-selection ((t (:inverse-video t))))
+    (highlight ((t (:inverse-video t))))
+    (isearch ((t (:inverse-video t :weight bold))))
+    (isearch-fail ((t (:foreground "red" :weight bold))))
+    (lazy-highlight ((t (:underline t :weight bold))))
+    (match ((t (:underline t :weight bold))))
+    (show-paren-match ((t (:foreground "cyan" :weight bold :underline t))))
+    (show-paren-mismatch ((t (:foreground "red" :weight bold :underline t))))
+    ;; Chrome: transparent like the canvas.  A tty cannot draw a box, but it
+    ;; does draw underline, so the bar gets a hairline in the text colour.
+    (mode-line ((t (:background "unspecified-bg" :foreground "unspecified-fg"
+                     :underline t))))
+    (mode-line-inactive ((t (:background "unspecified-bg" :foreground "brightblack"
+                              :underline t))))
+    (mode-line-emphasis ((t (:weight bold))))
+    (mode-line-buffer-id ((t (:weight bold))))
+    (mode-line-highlight ((t (:inverse-video t))))
+    (header-line ((t (:background "unspecified-bg" :foreground "unspecified-fg"
+                       :underline t))))
+    (tab-line ((t (:background "brightblack"))))
+    (tab-bar ((t (:background "brightblack"))))
+    (tab-bar-tab ((t (:inverse-video t :weight bold))))
+    (tab-bar-tab-inactive ((t (:foreground "brightblack"))))
+    (minibuffer-prompt ((t (:foreground "cyan" :weight bold))))
+    (vertical-border ((t (:foreground "brightblack"))))
+    (window-divider ((t (:foreground "brightblack"))))
+    (window-divider-first-pixel ((t (:foreground "brightblack"))))
+    (window-divider-last-pixel ((t (:foreground "brightblack"))))
+    (line-number ((t (:foreground "brightblack"))))
+    (line-number-current-line ((t (:foreground "unspecified-fg" :weight bold))))
+    (fill-column-indicator ((t (:foreground "brightblack"))))
+    (shadow ((t (:foreground "brightblack"))))
+    (link ((t (:foreground "cyan" :underline t))))
+    (link-visited ((t (:foreground "magenta" :underline t))))
+    (button ((t (:foreground "cyan" :underline t))))
+    (error ((t (:foreground "red" :weight bold))))
+    (warning ((t (:foreground "yellow" :weight bold))))
+    (success ((t (:foreground "green" :weight bold))))
+    (trailing-whitespace ((t (:foreground "red" :inverse-video t))))
+    (whitespace-space ((t (:foreground "brightblack"))))
+    (whitespace-tab ((t (:foreground "brightblack"))))
+    ;; Programming
+    (font-lock-comment-face ((t (:foreground "brightblack" :slant italic))))
+    (font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
+    (font-lock-doc-face ((t (:foreground "brightblack" :slant italic))))
+    (font-lock-string-face ((t (:foreground "green"))))
+    (font-lock-keyword-face ((t (:foreground "magenta" :weight bold))))
+    (font-lock-builtin-face ((t (:foreground "magenta"))))
+    (font-lock-function-name-face ((t (:foreground "blue"))))
+    (font-lock-variable-name-face ((t (:foreground "cyan"))))
+    (font-lock-type-face ((t (:foreground "yellow"))))
+    (font-lock-constant-face ((t (:foreground "cyan"))))
+    (font-lock-preprocessor-face ((t (:foreground "magenta"))))
+    (font-lock-negation-char-face ((t (:foreground "red"))))
+    (font-lock-regexp-grouping-backslash ((t (:foreground "yellow" :weight bold))))
+    (font-lock-regexp-grouping-construct ((t (:foreground "yellow" :weight bold))))
+    (font-lock-warning-face ((t (:foreground "red" :weight bold))))
+    (completions-common-part ((t (:foreground "cyan" :weight bold))))
+    ;; Popups need an opaque background; ANSI 8 keeps it inside the palette.
+    (tooltip ((t (:background "brightblack" :foreground "unspecified-fg"))))
+    (company-tooltip ((t (:background "brightblack" :foreground "unspecified-fg"))))
+    (company-tooltip-selection ((t (:background "brightblack" :foreground "cyan" :weight bold))))
+    (company-tooltip-common ((t (:foreground "cyan" :weight bold))))
+    (company-tooltip-annotation ((t (:foreground "brightblack"))))
+    (company-scrollbar-bg ((t (:background "brightblack"))))
+    (company-scrollbar-fg ((t (:background "cyan"))))
+    (diff-added ((t (:foreground "green"))))
+    (diff-removed ((t (:foreground "red"))))
+    (diff-changed ((t (:foreground "yellow"))))
+    (diff-refine-added ((t (:foreground "green" :inverse-video t))))
+    (diff-refine-removed ((t (:foreground "red" :inverse-video t))))
+    ;; Org: the writing surface, no block backgrounds so the terminal shows.
+    (org-hide ((t (:foreground "unspecified-bg"))))
+    (org-level-1 ((t (:foreground "blue" :weight bold))))
+    (org-level-2 ((t (:foreground "cyan" :weight bold))))
+    (org-level-3 ((t (:foreground "magenta" :weight bold))))
+    (org-level-4 ((t (:foreground "green" :weight bold))))
+    (org-level-5 ((t (:foreground "yellow" :weight bold))))
+    (org-level-6 ((t (:foreground "red" :weight bold))))
+    (org-level-7 ((t (:foreground "brightblack" :weight bold))))
+    (org-level-8 ((t (:weight bold))))
+    (org-document-title ((t (:weight bold))))
+    (org-document-info ((t (:foreground "brightblack"))))
+    (org-document-info-keyword ((t (:foreground "brightblack"))))
+    (org-meta-line ((t (:foreground "brightblack"))))
+    (org-todo ((t (:foreground "red" :weight bold))))
+    (org-done ((t (:foreground "green" :weight bold))))
+    (org-headline-done ((t (:foreground "brightblack"))))
+    (org-priority ((t (:foreground "magenta"))))
+    (org-date ((t (:foreground "cyan" :underline t))))
+    (org-scheduled ((t (:foreground "green"))))
+    (org-scheduled-today ((t (:foreground "cyan" :weight bold))))
+    (org-scheduled-previously ((t (:foreground "yellow"))))
+    (org-deadline-announce ((t (:foreground "red" :weight bold))))
+    (org-upcoming-deadline ((t (:foreground "yellow"))))
+    (org-agenda-date ((t (:foreground "blue" :weight bold))))
+    (org-agenda-date-today ((t (:foreground "cyan" :weight bold))))
+    (org-agenda-date-weekend ((t (:foreground "magenta"))))
+    (org-agenda-structure ((t (:weight bold))))
+    (org-link ((t (:foreground "cyan" :underline t))))
+    (org-code ((t (:foreground "cyan"))))
+    (org-verbatim ((t (:foreground "yellow"))))
+    (org-table ((t (:foreground "brightblack"))))
+    (org-block ((t (:foreground "unspecified-fg"))))
+    (org-block-begin-line ((t (:foreground "brightblack" :slant italic))))
+    (org-block-end-line ((t (:inherit org-block-begin-line))))
+    (org-quote ((t (:slant italic))))
+    (org-verse ((t (:slant italic))))
+    (org-checkbox ((t (:foreground "cyan" :weight bold))))
+    (org-checkbox-statistics-todo ((t (:foreground "red" :weight bold))))
+    (org-checkbox-statistics-done ((t (:foreground "green" :weight bold))))
+    (org-formula ((t (:foreground "magenta"))))
+    (org-special-keyword ((t (:foreground "brightblack")))))
+  "Faces expressed purely in terminal palette slots.")
 
-(defun my/apply-theme (&optional frame)
-  "Load the GUI theme for graphical FRAME; leave terminal frames alone."
-  (with-selected-frame (or frame (selected-frame))
-    (if (display-graphic-p)
-        (unless custom-enabled-themes
-          (load-theme my/gui-theme t))
-      (mapc #'disable-theme custom-enabled-themes)
-      (set-face-background 'default "unspecified-bg" (selected-frame)))))
+(unless (custom-theme-p 'my-terminal)
+  (deftheme my-terminal
+    "Faces painted from the terminal's ANSI palette; background stays transparent."))
 
-(defun toggle-themes ()
-  "Toggle between the light and dark tinted Modus themes (GUI only)."
-  (interactive)
-  (if (not (display-graphic-p))
-      (message "Terminal frame: colors are handled by the terminal (Rex)")
-    (setq my/gui-theme (if (memq 'modus-operandi custom-enabled-themes)
-                           'modus-vivendi-tinted
-                         'modus-operandi))
-    (mapc #'disable-theme custom-enabled-themes)
-    (load-theme my/gui-theme t)))
+(apply #'custom-theme-set-faces 'my-terminal my/ansi-faces)
+(mapc #'disable-theme (remove 'my-terminal custom-enabled-themes))
+(unless (custom-theme-enabled-p 'my-terminal)
+  (enable-theme 'my-terminal))
 
-(defun my/modus-theme-variant (_original &optional _no-confirm _no-enable)
-  "Use the two-theme toggle for the built-in variant command."
-  (toggle-themes))
-
-(advice-add 'theme-choose-variant :around #'my/modus-theme-variant)
-(global-set-key (kbd "C-c t") #'toggle-themes)
-
-(add-hook 'after-make-frame-functions #'my/apply-theme)
-(my/apply-theme)
 (provide 'my-theme)
 ;;; my-theme.el ends here
