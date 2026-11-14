@@ -73,6 +73,15 @@
 !/.pi/agent/model.json
 !/.pi/agent/or-audit.py
 
+# Oh My Pi (omp) portable configuration only. Credentials (agent.db, secrets.yml),
+# model/skill/history databases, caches, logs, locks, and sessions stay local.
+!/.omp/
+/.omp/*
+!/.omp/agent/
+/.omp/agent/*
+!/.omp/agent/config.yml
+!/.omp/agent/models.yml
+
 # Hermes agent: only the script that syncs provider routing from Pi's model.json.
 # Config, credentials, sessions, memory, and state stay local.
 !/.hermes/

@@ -1,0 +1,66 @@
+providers:
+  openrouter:
+    modelOverrides:
+      anthropic/claude-haiku-5.5:
+        maxContextWindow: 1000000
+        compat:
+          extraBody:
+            provider:
+              data_collection: deny
+      deepseek/deepseek-v4.1-flash-1017:
+        compat:
+          extraBody:
+            provider:
+              ignore:
+                - alibaba
+                - baidu
+                - deepseek
+                - siliconflow
+                - stepfun
+                - streamlake
+              data_collection: deny
+              zdr: true
+      moonshotai/kimi-k3.1-pro:
+        compat:
+          extraBody:
+            provider:
+              ignore:
+                - alibaba
+                - moonshotai
+              data_collection: deny
+              zdr: true
+      minimax/minimax-m3.1-flash:
+        compat:
+          extraBody:
+            provider:
+              ignore:
+                - minimax
+                - streamlake
+                - siliconflow
+                - alibaba
+                - baidu
+              data_collection: deny
+              zdr: true
+      z-ai/glm-5.3-flash:
+        compat:
+          extraBody:
+            provider:
+              ignore:
+                - siliconflow
+                - streamlake
+                - z-ai
+                - alibaba
+                - baidu
+              data_collection: deny
+              zdr: true
+      z-ai/glm-5.3:
+        compat:
+          extraBody:
+            provider:
+              ignore:
+                - alibaba
+                - baidu
+                - siliconflow
+                - z-ai
+              data_collection: deny
+              zdr: true

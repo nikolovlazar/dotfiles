@@ -2,7 +2,7 @@
 # These rules permit real ancestor directories but exclude unapproved children.
 
 # Only approved top-level roots may be deployed.
-^/(?!(?:\.agents|\.claude|\.config|\.emacs\.d|\.hermes|\.oh-my-zsh|\.pi|Library)(?:/|$)|\.zshrc$).*
+^/(?!(?:\.agents|\.claude|\.config|\.emacs\.d|\.hermes|\.oh-my-zsh|\.omp|\.pi|Library)(?:/|$)|\.zshrc$).*
 
 # Approved application configs, with narrower Raycast and Zed boundaries.
 ^/\.config/(?!(?:btop|ghostty|kitty|lazydocker|lazygit|mise|nvim|raycast|tmux|wezterm|zed)(?:/|$)).*
@@ -19,6 +19,11 @@
 # session history, provider catalogs, installed skills, and installs stay local.
 ^/\.pi/(?!agent(?:/|$)).*
 ^/\.pi/agent/(?!(?:agents|extensions|prompts|mcp\.json|model\.json|or-audit\.py)(?:/|$)).*
+
+# Oh My Pi (omp) portable configuration only; credentials, databases, caches,
+# logs, locks, and sessions stay local.
+^/\.omp/(?!agent(?:/|$)).*
+^/\.omp/agent/(?!(?:config|models)\.yml$).*
 
 # Hermes: only the provider-routing sync script; config, credentials, sessions,
 # memory, and state stay local.

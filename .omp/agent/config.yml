@@ -1,0 +1,54 @@
+modelRoles:
+  smol: openrouter/anthropic/claude-haiku-5.5
+  slow: openrouter/google/gemini-4-carbon:high
+  plan: openrouter/google/gemini-4-carbon:high
+  task: openrouter/openai/gpt-6.1-terra
+  advisor: openrouter/google/gemini-4-hydrogen:medium
+  vision: openrouter/anthropic/claude-haiku-5.5
+  commit: openrouter/deepseek/deepseek-v4.1-flash-1017:low
+  tiny: openrouter/deepseek/deepseek-v4.1-flash-1017:low
+  memory: openrouter/deepseek/deepseek-v4.1-flash-1017:low
+  widget: openrouter/deepseek/deepseek-v4.1-flash-1017:low
+  judge: openrouter/typesafe/jev-1.14
+  default: openrouter/google/gemini-4-carbon
+composer:
+  shape: band
+theme:
+  dark: titanium
+  light: light
+update:
+  auto: true
+setupVersion: 3
+task:
+  showResolvedModelBadge: true
+  agentModelOverrides:
+    scout: openrouter/anthropic/claude-haiku-5.5:low
+    sonic: openrouter/deepseek/deepseek-v4.1-flash-1017:low
+    task: openrouter/openai/gpt-6.1-terra
+    reviewer: openrouter/google/gemini-4-hydrogen:high
+    security-reviewer: openrouter/google/gemini-4-carbon:high
+retry:
+  fallbackChains:
+    default:
+      - openrouter/anthropic/claude-sonnet-5.5
+      - openrouter/openai/gpt-6.1-sol
+    smol:
+      - openrouter/deepseek/deepseek-v4.1-flash-1017:low
+      - openrouter/openai/gpt-6-luna:low
+    task:
+      - openrouter/google/gemini-4-hydrogen
+      - openrouter/moonshotai/kimi-k3.1-pro
+      - openrouter/anthropic/claude-sonnet-5.5
+    slow:
+      - openrouter/anthropic/claude-opus-5.5:high
+      - openrouter/openai/gpt-6.1-sol:high
+    judge:
+      - openrouter/~typesafe/jev-latest
+      - openrouter/perplexity/pplx-decider-flash-v1.2
+      - "@tiny"
+      - "@smol"
+prewalk:
+  auto: "on"
+  autoTarget: "@smol"
+  into: "@smol"
+  from: "@default"

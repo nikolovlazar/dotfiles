@@ -47,6 +47,7 @@ The other approved configuration is:
 - `.agents/skills` and `.agents/.skill-lock.json`, excluding explicitly private skills, skill-studio quarantine, and generated agent state. Private skills stay in the real home skills directory and are excluded by both allowlists.
 - `.claude/settings.json` only. Local settings, hooks, plugins, skills, credentials, and session state remain local.
 - `.pi/agent` portable agent configuration only: custom agents, extensions, prompts, `model.json`, `mcp.json`, and `or-audit.py`. Credentials, device and trust state, session history, provider catalogs, installed skills, and managed installs stay local.
+- `.omp/agent/config.yml` and `.omp/agent/models.yml` only. Credentials (`agent.db`, `secrets.yml`), model/history/skill databases, caches, logs, locks, and session state stay local.
 - `.hermes/apply-provider-routing.py` only. It generates Hermes' OpenRouter `provider_routing` block in `~/.hermes/config.yaml` from Pi's `model.json`, so both agents share one routing policy (`zdr` has no Hermes equivalent and is skipped). Run it after editing `model.json` or running `or-audit.py --sync`; `--check` reports drift. Hermes' config, credentials, sessions, and memory stay local.
 - `.emacs.d` source configuration, excluding private `local.el`, packages, databases, caches, and editor state.
 - `.oh-my-zsh/themes`.
