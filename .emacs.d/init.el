@@ -198,17 +198,22 @@
 ;; Agenda sources exclude configured support directories and hidden files.
 (require 'org)
 (require 'org-agenda)
+(require 'org-capture)
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "PROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
       org-log-done 'time
       org-refile-targets '((org-agenda-files :maxlevel . 3))
       org-refile-use-outline-path 'file
-      org-outline-path-complete-in-steps nil
-      org-capture-templates
-      '(("i" "Daily task" entry
-         (file+headline my/org-journal-ensure-file "Tasks")
-         "* TODO %?\n")))
+      org-outline-path-complete-in-steps nil)
+
+;; Register capture templates with `add-to-list' rather than `setq': re-evaluating
+;; this buffer must not drop templates contributed by the lisp/ modules, whose
+;; `require' is a no-op once the feature is provided.
+(add-to-list 'org-capture-templates
+             '("i" "Daily task" entry
+               (file+headline my/org-journal-ensure-file "Tasks")
+               "* TODO %?\n"))
 
 ;; Share daily journal files and templates with Neovim.
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
