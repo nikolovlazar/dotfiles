@@ -11,6 +11,7 @@ modelRoles:
   widget: openrouter/deepseek/deepseek-v4.1-flash-1017:low
   judge: openrouter/typesafe/jev-1.14
   default: openrouter/google/gemini-4-carbon
+symbolPreset: nerd
 composer:
   shape: band
 theme:
