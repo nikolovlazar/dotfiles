@@ -53,3 +53,5 @@ prewalk:
   autoTarget: "@smol"
   into: "@smol"
   from: "@default"
+defaultThinkingLevel: auto
+hideThinkingBlock: true
