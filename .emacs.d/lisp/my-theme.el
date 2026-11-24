@@ -133,7 +133,22 @@
   (deftheme my-terminal
     "Faces painted from the terminal's ANSI palette; background stays transparent."))
 
-(apply #'custom-theme-set-faces 'my-terminal my/ansi-faces)
+;; Palette slot names ("brightblack", "unspecified-bg") only exist on text
+;; terminals; a graphical frame (Emacs.app, `emacsclient -c') fails with
+;; "Unknown color" when it meets them.  Restrict every spec to tty frames so
+;; graphical frames keep Emacs's own faces.
+(defun my/ansi-faces-tty-only (specs)
+  "Return SPECS with each unconditional `t' display narrowed to tty frames."
+  (mapcar (lambda (spec)
+            (list (car spec)
+                  (mapcar (lambda (entry)
+                            (if (eq (car entry) t)
+                                (cons '((type tty)) (cdr entry))
+                              entry))
+                          (cadr spec))))
+          specs))
+
+(apply #'custom-theme-set-faces 'my-terminal (my/ansi-faces-tty-only my/ansi-faces))
 (mapc #'disable-theme (remove 'my-terminal custom-enabled-themes))
 (unless (custom-theme-enabled-p 'my-terminal)
   (enable-theme 'my-terminal))

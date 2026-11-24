@@ -98,7 +98,7 @@
         ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("gnu" . 20) ("nongnu" . 20) ("melpa-stable" . 20) ("melpa" . 0))
-      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode json-mode kitty-graphics evil evil-surround doom-modeline))
+      package-selected-packages '(org-roam org-roam-ui magit visual-fill-column flash company treemacs persp-mode treemacs-persp dotenv-mode markdown-mode mermaid-mode json-mode kitty-graphics evil evil-surround doom-modeline log4e org-focus-hud org-auto-scheduler org-timegrid org-caldav))
 (package-initialize)
 
 ;; Jump to visible text and show labels during incremental search.
@@ -225,6 +225,7 @@
 (require 'my-org-prose)
 (require 'my-org-tables)
 (require 'my-org-agenda)
+(require 'my-org-auto-scheduler)
 
 (defun my/org-refresh-agenda-files ()
   "Discover current agenda files without scanning templates or backups."

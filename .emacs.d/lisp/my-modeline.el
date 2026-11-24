@@ -27,12 +27,13 @@ chip follows whatever palette the terminal is using.")
   ;; These faces are themed, so a plain `set-face-attribute' is overridden at
   ;; redisplay; the override spec is the only thing that outranks a theme.
   (face-spec-set 'doom-modeline-evil-normal-state
-                 '((t (:background "unspecified-bg" :foreground "unspecified-fg"
-                      :weight bold)))
+                 '((((type tty)) (:background "unspecified-bg"
+                                  :foreground "unspecified-fg" :weight bold)))
                  'face-override-spec)
   (dolist (entry my/evil-tag-ansi)
     (face-spec-set (intern (format "doom-modeline-evil-%s-state" (car entry)))
-                   `((t (:background ,(cdr entry) :foreground "black" :weight bold)))
+                   `((((type tty)) (:background ,(cdr entry) :foreground "black"
+                                    :weight bold)))
                    'face-override-spec)))
 
 (my/evil-tag-apply)
