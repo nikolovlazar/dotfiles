@@ -1,0 +1,13 @@
+diff --git a/org-focus-hud.el b/org-focus-hud.el
+index adebb77..215905d 100644
+--- a/org-focus-hud.el
++++ b/org-focus-hud.el
+@@ -3286,7 +3286,7 @@ to window size; manual toggling is rarely needed."
+ ;; Evil/Spacemacs compatibility for Focus HUD mode map:
+ (with-eval-after-load 'evil
+   (dolist (state '(normal motion visual))
+-    (evil-define-key state org-focus-hud-mode-map
++    (evil-define-key* state org-focus-hud-mode-map
+       (kbd "k")         #'org-focus-hud-add-checklist
+       (kbd "e")         #'org-focus-hud-edit-checklist
+       (kbd "E")         #'org-focus-hud-edit-checklist

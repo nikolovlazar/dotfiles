@@ -1,0 +1,44 @@
+diff --git a/org-auto-scheduler-review.el b/org-auto-scheduler-review.el
+index b93263a..60e3698 100644
+--- a/org-auto-scheduler-review.el
++++ b/org-auto-scheduler-review.el
+@@ -1730,7 +1730,7 @@ TASK is a list: (id start end tags consider headline sched-str marker depth stat
+ ;; "f" filter and "*" bulk-mark prefixes) win over evil state bindings.
+ (with-eval-after-load 'evil
+   (dolist (state '(normal motion))
+-    (evil-define-key state org-auto-scheduler-review-mode-map
++    (evil-define-key* state org-auto-scheduler-review-mode-map
+       ;; Core operations
+       (kbd "RET")     #'org-auto-scheduler-review-toggle
+       (kbd "TAB")     #'org-auto-scheduler-review-jump
+@@ -4916,7 +4916,7 @@ Can be invoked from either the review table or the timegrid via `i'."
+               (lambda (&rest _) (org-auto-scheduler--timegrid-sync-week-range)))
+   (with-eval-after-load 'evil
+     (dolist (state '(normal motion))
+-      (evil-define-key state org-timegrid-mode-map
++      (evil-define-key* state org-timegrid-mode-map
+         (kbd "n") #'org-timegrid-next-block
+         (kbd "p") #'org-timegrid-previous-block
+         (kbd "b") #'org-timegrid-backward-day
+@@ -5626,7 +5626,7 @@ Bound strictly to `I' in `org-auto-scheduler-review-mode'."
+ 
+ (with-eval-after-load 'evil
+   (dolist (state '(normal motion))
+-    (evil-define-key state org-auto-scheduler-dependency-explorer-mode-map
++    (evil-define-key* state org-auto-scheduler-dependency-explorer-mode-map
+       (kbd "q")   #'quit-window
+       (kbd "g")   #'org-auto-scheduler-dep-explorer-refresh
+       (kbd "r")   #'org-auto-scheduler-dep-explorer-refresh
+diff --git a/org-auto-scheduler.el b/org-auto-scheduler.el
+index 41a31e1..0b7937f 100644
+--- a/org-auto-scheduler.el
++++ b/org-auto-scheduler.el
+@@ -46,6 +46,8 @@
+ (require 'cl-lib)
+ (require 'org-id)
+ (require 'parse-time)
++;; Needed at compile time for `transient-define-prefix' further down.
++(eval-when-compile (require 'transient nil t))
+ (require 'org-agenda)
+ (require 'org-duration)
+ (require 'time-date)
